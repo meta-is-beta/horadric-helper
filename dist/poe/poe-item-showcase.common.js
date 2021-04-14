@@ -21908,24 +21908,6 @@ var registerHoradricHelperGlobalObject = function registerHoradricHelperGlobalOb
 // CONCATENATED MODULE: ./src/shared/mixins/shared.mixin.js
 
 /* harmony default export */ var shared_mixin = ({
-  props: {
-    id: {
-      type: String,
-      default: ""
-    },
-    reference: {
-      type: String,
-      default: ""
-    },
-    wrapperClass: {
-      type: String,
-      default: ""
-    },
-    tooltipWrapperClass: {
-      type: String,
-      default: ""
-    }
-  },
   data: function data() {
     return {
       show: false
@@ -21962,6 +21944,24 @@ var registerHoradricHelperGlobalObject = function registerHoradricHelperGlobalOb
 
 
 /* harmony default export */ var item_showcase_mixin = ({
+  props: {
+    id: {
+      type: String,
+      default: ""
+    },
+    reference: {
+      type: String,
+      default: ""
+    },
+    wrapperClass: {
+      type: String,
+      default: ""
+    },
+    tooltipWrapperClass: {
+      type: String,
+      default: ""
+    }
+  },
   mixins: [shared_mixin],
   data: function data() {
     return {
@@ -22331,6 +22331,24 @@ var poe_node_showcase_tooltip_component = normalizeComponent(
 
 
 /* harmony default export */ var node_showcase_mixin = ({
+  props: {
+    id: {
+      type: String,
+      default: ""
+    },
+    reference: {
+      type: String,
+      default: ""
+    },
+    wrapperClass: {
+      type: String,
+      default: ""
+    },
+    tooltipWrapperClass: {
+      type: String,
+      default: ""
+    }
+  },
   mixins: [shared_mixin],
   data: function data() {
     return {

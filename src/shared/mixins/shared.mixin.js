@@ -1,10 +1,4 @@
 export default {
-  props: {
-    id: { type: String, default: "" },
-    reference: { type: String, default: "" },
-    wrapperClass: { type: String, default: "" },
-    tooltipWrapperClass: { type: String, default: "" },
-  },
   data() {
     return {
       show: false,

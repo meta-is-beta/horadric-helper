@@ -3,6 +3,12 @@ import { registerHoradricHelperGlobalObject } from "./mixing-methods";
 import sharedMixin from "./shared.mixin";
 
 export default {
+  props: {
+    id: { type: String, default: "" },
+    reference: { type: String, default: "" },
+    wrapperClass: { type: String, default: "" },
+    tooltipWrapperClass: { type: String, default: "" },
+  },
   mixins: [sharedMixin],
   data: function () {
     return {
