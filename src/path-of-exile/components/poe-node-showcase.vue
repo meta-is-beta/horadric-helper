@@ -16,7 +16,10 @@
         trigger="hover"
         placement="auto"
         :popoverClass="popoverClassesComputed"
-        popoverBaseClass="horadric-helper-tooltip horadric-helper-popover"
+        :popoverWrapperClass="popoverWrapperClasses"
+        :popoverBaseClass="popoverBaseClasses"
+        :popoverInnerClass="popoverInnerClasses"
+        :popoverArrowClass="popoverArrowClasses"
       >
         <template slot="popover">
           <poe-node-showcase-tooltip

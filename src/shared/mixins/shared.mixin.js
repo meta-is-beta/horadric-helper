@@ -4,6 +4,20 @@ export default {
       show: false,
     };
   },
+  computed: {
+    popoverWrapperClasses() {
+      return "horadric-helper-wrapper";
+    },
+    popoverBaseClasses() {
+      return "horadric-helper-tooltip horadric-helper-popover";
+    },
+    popoverInnerClasses() {
+      return "horadric-helper-tooltip-inner horadric-helper-popover-inner";
+    },
+    popoverArrowClasses() {
+      return "horadric-helper-tooltip-arrow horadric-helper-popover-arrow";
+    },
+  },
   mounted() {
     this.registerShowcase();
   },

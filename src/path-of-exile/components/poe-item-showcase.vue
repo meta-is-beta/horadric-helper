@@ -18,7 +18,10 @@
         placement="auto"
         :offset="20"
         :popoverClass="popoverClassesComputed"
-        popoverBaseClass="horadric-helper-tooltip horadric-helper-popover"
+        :popoverWrapperClass="popoverWrapperClasses"
+        :popoverBaseClass="popoverBaseClasses"
+        :popoverInnerClass="popoverInnerClasses"
+        :popoverArrowClass="popoverArrowClasses"
       >
         <template slot="popover">
           <poe-item-showcase-tooltip
