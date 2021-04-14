@@ -1,12 +1,11 @@
 <template>
-  <div v-if="showItem" class="poe-item-showcase">
+  <div v-if="show" class="poe-item-showcase">
     <div
       v-if="options.displayMode.toLowerCase() === `showcase`"
       :class="wrapperClassesComputed"
     >
       <!-- Showcase -->
       <poe-item-showcase-tooltip
-        v-if="showItem"
         :item="item"
         :imageUrl="options.imageUrl"
         :showImage="showTooltipImage"
@@ -19,10 +18,10 @@
         placement="auto"
         :offset="20"
         :popoverClass="popoverClassesComputed"
+        popoverBaseClass="horadric-helper-tooltip horadric-helper-popover"
       >
         <template slot="popover">
           <poe-item-showcase-tooltip
-            v-if="showItem"
             :item="item"
             :imageUrl="options.imageUrl"
             :showImage="showTooltipImage"
@@ -45,7 +44,7 @@
 
 <script>
 import PoeItemShowcaseTooltip from "./fragments/poe-item-showcase-tooltip.vue";
-import processItemData from "@/path-of-exile/data-processors/poe-item-processor";
+import processData from "@/path-of-exile/data-processors/poe-item-processor";
 import itemShowacseMixin from "@/shared/mixins/item-showcase.mixin";
 
 export default {
@@ -55,8 +54,8 @@ export default {
   },
   mixins: [itemShowacseMixin],
   methods: {
-    processItemData(rawDescription) {
-      return processItemData(rawDescription);
+    processData(rawDescription) {
+      return processData(rawDescription);
     },
     getImageSize(size) {
       if (size === "auto") {

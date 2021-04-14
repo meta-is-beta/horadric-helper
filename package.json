@@ -5,7 +5,8 @@
   "scripts": {
     "start": "npm run serve",
     "serve": "vue-cli-service serve src/demo.main.js",
-    "build": "vue-cli-service build --target lib --inline-vue --name item-showcase src/build.main.js",
+    "build": "npm run build:poe",
+    "build:poe": "vue-cli-service build --dest ./dist/poe --target lib --inline-vue --name poe-item-showcase src/path-of-exile/main.js",
     "build:demo": "vue-cli-service build --inline-vue --name item-showcase src/demo.main.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"

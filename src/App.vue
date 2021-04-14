@@ -167,26 +167,32 @@ Has Assailum Skin. You can reclaim this by shift-clicking this item.`,
   },
   methods: {
     nodeDataUpdate() {
-      if (window.nodeShowcases) {
-        window.nodeShowcases.applyOptionsByReference("node-demo", {
-          nodeData: this.nodeData,
-          iconUrl: this.nodeIconUrl,
-          displayMode: this.nodeDisplayMode,
-          showIconInShowcase: this.nodeShowIconInShowcase,
-          labelText: this.nodeCustomLabelText,
-        });
+      if (window.HoradricHelper.nodeShowcases) {
+        window.HoradricHelper.nodeShowcases.applyOptionsByReference(
+          "node-demo",
+          {
+            rawData: this.nodeData,
+            iconUrl: this.nodeIconUrl,
+            displayMode: this.nodeDisplayMode,
+            showIconInShowcase: this.nodeShowIconInShowcase,
+            labelText: this.nodeCustomLabelText,
+          }
+        );
       }
     },
     itemDataUpdate() {
-      if (window.itemShowcases) {
-        window.itemShowcases.applyOptionsByReference("item-demo", {
-          itemData: this.itemData,
-          imageUrl: this.itemImageUrl,
-          displayMode: this.itemDisplayMode,
-          showIconInShowcase: this.itemShowIconInShowcase,
-          labelText: this.itemCustomLabelText,
-          imageSize: this.itemImageSize,
-        });
+      if (window.HoradricHelper.itemShowcases) {
+        window.HoradricHelper.itemShowcases.applyOptionsByReference(
+          "item-demo",
+          {
+            rawData: this.itemData,
+            imageUrl: this.itemImageUrl,
+            displayMode: this.itemDisplayMode,
+            showIconInShowcase: this.itemShowIconInShowcase,
+            labelText: this.itemCustomLabelText,
+            imageSize: this.itemImageSize,
+          }
+        );
       }
     },
   },

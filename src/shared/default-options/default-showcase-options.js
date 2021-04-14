@@ -1,5 +1,5 @@
 export default {
-  itemData: "",
+  rawData: "",
   displayMode: "",
   imageUrl: "",
   labelText: "",

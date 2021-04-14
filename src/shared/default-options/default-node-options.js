@@ -1,5 +1,5 @@
 export default {
-  nodeData: "",
+  rawData: "",
   displayMode: "",
   iconUrl: "",
   labelText: "",

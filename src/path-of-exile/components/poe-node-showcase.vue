@@ -1,12 +1,11 @@
 <template>
-  <div v-if="showNode" class="poe-node-showcase">
+  <div v-if="show" class="poe-node-showcase">
     <div
       v-if="options.displayMode.toLowerCase() === `showcase`"
       :class="wrapperClassesComputed"
     >
       <!-- Showcase -->
       <poe-node-showcase-tooltip
-        v-if="showNode"
         :node="node"
         :iconUrl="options.iconUrl"
         :showIcon="options.showIconInShowcase"
@@ -17,10 +16,10 @@
         trigger="hover"
         placement="auto"
         :popoverClass="popoverClassesComputed"
+        popoverBaseClass="horadric-helper-tooltip horadric-helper-popover"
       >
         <template slot="popover">
           <poe-node-showcase-tooltip
-            v-if="showNode"
             :node="node"
             :iconUrl="options.iconUrl"
             :showIcon="options.showIconInShowcase"
@@ -50,15 +49,15 @@
 import PoeNodeShowcaseTooltip from "@/path-of-exile/components/fragments/poe-node-showcase-tooltip.vue";
 import PoeNodeImage from "@/path-of-exile/components/fragments/poe-node-image.vue";
 import nodeShowcaseMixin from "@/shared/mixins/node-showcase.mixin";
-import processNodeData from "@/path-of-exile/data-processors/poe-node-processor";
+import processData from "@/path-of-exile/data-processors/poe-node-processor";
 
 export default {
   name: "PoeNodeShowcase",
   mixins: [nodeShowcaseMixin],
   components: { PoeNodeShowcaseTooltip, PoeNodeImage },
   methods: {
-    processNodeData(rawDescription) {
-      return processNodeData(rawDescription);
+    processData(rawDescription) {
+      return processData(rawDescription);
     },
   },
   computed: {
