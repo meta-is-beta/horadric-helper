@@ -96,6 +96,9 @@ export default {
 .poe-node-showcase {
   @include styles.font;
   @include styles.colors;
+  .poe-node-showcase-wrapper {
+    display: flex;
+  }
   .poe-node-showcase-node-name {
     line-height: 12px;
     font-size: 12px;
