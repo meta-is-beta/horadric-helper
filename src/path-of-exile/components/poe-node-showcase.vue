@@ -1,14 +1,14 @@
 <template>
   <div v-if="show" class="poe-node-showcase">
     <div
-      v-if="options.displayMode.toLowerCase() === `showcase`"
+      v-if="displayMode.toLowerCase() === `showcase`"
       :class="wrapperClassesComputed"
     >
       <!-- Showcase -->
       <poe-node-showcase-tooltip
         :node="node"
-        :iconUrl="options.iconUrl"
-        :showIcon="options.showIconInShowcase"
+        :iconUrl="imageSrc"
+        :showIcon="showIconInShowcase"
       />
     </div>
     <div v-else :class="wrapperClassesComputed">
@@ -24,13 +24,13 @@
         <template slot="popover">
           <poe-node-showcase-tooltip
             :node="node"
-            :iconUrl="options.iconUrl"
-            :showIcon="options.showIconInShowcase"
+            :iconUrl="imageSrc"
+            :showIcon="showIconInShowcase"
           />
         </template>
         <!-- Icon -->
-        <div v-if="options.displayMode.toLowerCase() === `icon`">
-          <poe-node-image :type="node.type" :iconUrl="options.iconUrl" />
+        <div v-if="displayMode.toLowerCase() === `icon`">
+          <poe-node-image :type="node.type" :iconUrl="imageSrc" />
           <div class="poe-showcase-label" v-if="!showCustomLabel">
             <div>{{ node.name }}</div>
             <div class="poe-node-showcase-node-name">{{ node.type }}</div>
@@ -51,28 +51,21 @@
 <script>
 import PoeNodeShowcaseTooltip from "@/path-of-exile/components/fragments/poe-node-showcase-tooltip.vue";
 import PoeNodeImage from "@/path-of-exile/components/fragments/poe-node-image.vue";
-import nodeShowcaseMixin from "@/shared/mixins/node-showcase.mixin";
-import processData from "@/path-of-exile/data-processors/poe-node-processor";
+import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
   name: "PoeNodeShowcase",
-  mixins: [nodeShowcaseMixin],
+  mixins: [showcaseMixin],
   components: { PoeNodeShowcaseTooltip, PoeNodeImage },
-  methods: {
-    processData(rawDescription) {
-      return processData(rawDescription);
-    },
-  },
   computed: {
+    imageSrc() {
+      return this.options.imageSrc;
+    },
     showCustomLabel() {
-      return this.options.labelText.length > 0;
+      return this.labelText.length > 0;
     },
     labelTextComputed() {
-      return this.options.labelText
-        ? this.options.labelText
-        : this.node
-        ? this.node.name
-        : "";
+      return this.labelText ? this.labelText : this.node ? this.node.name : "";
     },
     wrapperClassesComputed() {
       return `poe-node-showcase-wrapper ${this.wrapperClass}`;

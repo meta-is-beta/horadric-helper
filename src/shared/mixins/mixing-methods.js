@@ -28,12 +28,24 @@ const nodeShowcases = {
 const itemShowcases = {
   items: [],
   applyOptionsByReference(reference, options) {
-    const items = window.HoradricHelper.itemShowcases.items[reference];
-    if (!items) {
+    const referencedItems =
+      window.HoradricHelper.itemShowcases.items[reference];
+    if (!referencedItems) {
       return;
     }
 
-    items.forEach((item) => {
+    if (options.rawData) {
+      referencedItems.itemData = referencedItems.processRawData(
+        options.rawData
+      );
+    } else if (options.dataObject) {
+      referencedItems.itemData = referencedItems.processDataObject(
+        options.dataObject
+      );
+    } else {
+      throw new Error("Showcase data not provided");
+    }
+    referencedItems.forEach((item) => {
       item.applyOptions(options);
     });
   },

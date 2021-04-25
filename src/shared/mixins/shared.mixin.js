@@ -1,4 +1,9 @@
 export default {
+  props: {
+    displayMode: { type: String, default: "icon" },
+    labelText: { type: String, default: "" },
+    showIconInShowcase: { type: Boolean, default: false },
+  },
   data() {
     return {
       show: false,
@@ -28,18 +33,16 @@ export default {
         ...options,
       };
     },
-    processData() {
-      throw new Error();
-    },
   },
   watch: {
     options: {
       immediate: false,
-      handler: function (options) {
-        try {
-          this.data = this.processData(options.rawData);
+      handler: function ({ data }) {
+        if (data) {
+          this.data = data;
           this.show = true;
-        } catch (e) {
+        } else {
+          this.data = {};
           this.show = false;
         }
       },

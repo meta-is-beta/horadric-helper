@@ -2,43 +2,43 @@ import processItemDescription from "@/shared/data-processors/core-item-processor
 import { removeUnknownSections } from "@/shared/data-processors/processor-helper-functions";
 
 export default (rawDescription) => {
-  if (!rawDescription) {
-    throw new Error();
-  }
-
   const itemData = processItemDescription(rawDescription);
   const itemType = getItemType(itemData.sections);
 
   itemData.sections = fillUnknownSections(itemData.sections, itemType);
   itemData.sections = removeUnknownSections(itemData.sections);
 
+  const itemLevel = getItemLevel(itemData.sections);
   const itemInfluences = getItemInfluences(itemData.sections);
-  const itemLevel = itemData.sections.find((x) => x.name === "Item level");
   const itemRequirements = itemData.sections.find(
     (x) => x.name === "Requirements"
   );
   const itemEnchants = itemData.sections.find((x) => x.name === "Enchants");
   const itemImplicits = itemData.sections.find((x) => x.name === "Implicits");
-  const itemHeader = itemData.sections.find((x) => x.name === "Header");
   const itemSockets = itemData.sections.find((x) => x.name === "Sockets");
   const itemProperties = itemData.sections.find((x) => x.name === "Properties");
   const itemModifiers = itemData.sections.find((x) => x.name === "Modifiers");
   const itemGemDescription = itemData.sections.find(
     (x) => x.name === "Gem description"
   );
-  const itemCorruptionStatus = itemData.sections.some(
-    (x) => x.name === "Corruption status"
-  );
-  const itemMirroredStatus = itemData.sections.some(
-    (x) => x.name === "Mirrored status"
-  );
+
+  const itemStatuses = [];
+
+  if (itemData.sections.some((x) => x.name === "Corrupted status")) {
+    itemStatuses.push("corrupted");
+  }
+  if (itemData.sections.some((x) => x.name === "Mirrored status")) {
+    itemStatuses.push("mirrored");
+  }
+  if (itemData.sections.some((x) => x.name === "Split status")) {
+    itemStatuses.push("split");
+  }
 
   return {
     type: itemType,
     name: itemData.name,
     rarity: itemData.rarity,
     influences: itemInfluences,
-    header: itemHeader,
     level: itemLevel,
     requirements: itemRequirements,
     enchants: itemEnchants,
@@ -47,8 +47,7 @@ export default (rawDescription) => {
     properties: itemProperties,
     modifiers: itemModifiers,
     gemDescription: itemGemDescription,
-    isCorrupted: itemCorruptionStatus,
-    isMirrored: itemMirroredStatus,
+    statuses: itemStatuses,
   };
 };
 
@@ -75,7 +74,24 @@ const getItemInfluences = (sections) => {
     return [];
   }
 
-  return influencesSection.lines.map((x) => x.match(/([A-Z][a-z]*) Item$/)[1]);
+  return influencesSection.lines.map((line) =>
+    line
+      .match(/([A-Z][a-z]*) Item$/)[1]
+      .toLowerCase()
+      .trim()
+  );
+};
+
+const getItemLevel = (sections) => {
+  const itemLevelSection = sections.find((x) => x.name === "Item level");
+  if (!itemLevelSection || itemLevelSection.length < 1) {
+    return "";
+  }
+
+  return itemLevelSection.lines[0]
+    .match(/Item Level: ([0-9]+)/)[1]
+    .toLowerCase()
+    .trim();
 };
 
 const fillUnknownSections = (sections, itemType) => {
@@ -99,7 +115,7 @@ const fillUnknownSections = (sections, itemType) => {
     }
 
     if (section.lines.some((x) => x.match(/^Corrupted$/))) {
-      section.name = "Corruption status";
+      section.name = "Corrupted status";
       return;
     }
 
@@ -107,6 +123,12 @@ const fillUnknownSections = (sections, itemType) => {
       section.name = "Mirrored status";
       return;
     }
+
+    if (section.lines.some((x) => x.match(/^Split$/))) {
+      section.name = "Split status";
+      return;
+    }
+
     return;
   });
 

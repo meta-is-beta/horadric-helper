@@ -1,15 +1,15 @@
 <template>
   <div v-if="show" class="poe-item-showcase">
     <div
-      v-if="options.displayMode.toLowerCase() === `showcase`"
+      v-if="displayMode.toLowerCase() === `showcase`"
       :class="wrapperClassesComputed"
     >
       <!-- Showcase -->
       <poe-item-showcase-tooltip
         :item="item"
-        :imageUrl="options.imageUrl"
-        :showImage="showTooltipImage"
-        :imageSize="tooltipImageSize"
+        :iconUrl="iconSrc"
+        :showIcon="showTooltipIcon"
+        :iconSize="computedIconSize"
       />
     </div>
     <div v-else :class="wrapperClassesComputed">
@@ -26,14 +26,14 @@
         <template slot="popover">
           <poe-item-showcase-tooltip
             :item="item"
-            :imageUrl="options.imageUrl"
-            :showImage="showTooltipImage"
-            :imageSize="tooltipImageSize"
+            :iconUrl="iconSrc"
+            :showIcon="showIconInShowcase"
+            :iconSize="computedIconSize"
           />
         </template>
         <!-- Icon -->
-        <div v-if="options.displayMode.toLowerCase() === `icon`">
-          <img :width="linkImageSize" :src="options.imageUrl" />
+        <div v-if="displayMode.toLowerCase() === `icon`">
+          <img :width="computedIconSize" :src="iconSrc" />
           <div class="poe-showcase-label">
             {{ labelTextComputed }}
           </div>
@@ -47,20 +47,20 @@
 
 <script>
 import PoeItemShowcaseTooltip from "./fragments/poe-item-showcase-tooltip.vue";
-import processData from "@/path-of-exile/data-processors/poe-item-processor";
-import itemShowacseMixin from "@/shared/mixins/item-showcase.mixin";
+import processRawData from "@/path-of-exile/data-processors/poe-item-processor.ts";
+import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
   name: "PoeItemShowcase",
   components: {
     PoeItemShowcaseTooltip,
   },
-  mixins: [itemShowacseMixin],
+  props: {
+    iconSize: { type: String, default: "auto" },
+  },
+  mixins: [showcaseMixin],
   methods: {
-    processData(rawDescription) {
-      return processData(rawDescription);
-    },
-    getImageSize(size) {
+    getIconSize(size) {
       if (size === "auto") {
         switch (this.item.type) {
           case "Equipment":
@@ -68,7 +68,6 @@ export default {
           case "Flask":
             return 50;
           case "Gem":
-            return 50;
           default:
             return 50;
         }
@@ -88,6 +87,9 @@ export default {
     },
   },
   computed: {
+    item() {
+      return this.showcaseData;
+    },
     wrapperClassesComputed() {
       return `poe-item-showcase-wrapper ${this.wrapperClass}`;
     },
@@ -95,36 +97,30 @@ export default {
       return `poe-item-showcase-popover ${this.tooltipWrapperClass}`;
     },
     labelTextComputed() {
-      return this.options.labelText
-        ? this.options.labelText
-        : this.item
-        ? this.item.name
-        : "";
+      return this.labelText ? this.labelText : this.item ? this.item.name : "";
     },
     linkClassesComputed() {
-      let classes = `${this.options.linkClasses} item-link`;
+      let classes = `item-link`;
       if (this.item.rarity) {
-        return (
-          classes + ` item-link item-link-${this.item.rarity.toLowerCase()}`
-        );
+        classes += `item-link-${this.item.rarity.toLowerCase()}`;
       }
       return classes;
     },
-    showTooltipImage() {
-      return this.options.showIconInShowcase;
+    computedIconSize() {
+      return this.getIconSize(this.iconSize);
     },
-    linkImageSize() {
-      return this.getImageSize(this.options.imageSize);
-    },
-    tooltipImageSize() {
-      return this.getImageSize(this.options.imageSize);
-    },
+  },
+  showcaseMetadata: {
+    type: "poe-item",
+    processRawData,
+    processDataObject: (data) => data,
   },
 };
 </script>
 
 <style lang="scss">
 @use "./../_styles" as styles;
+
 .poe-item-showcase-popover {
   box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.6);
   z-index: 10000;

@@ -6,8 +6,8 @@
         <div v-if="item.influences.length > 0" />
       </div>
       <div class="item-header-center">
-        <div>{{ itemName }}</div>
-        <div v-if="itemHasSubname">{{ itemSubname }}</div>
+        <div>{{ item.name }}</div>
+        <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
       </div>
       <div :class="rightHeaderPanelClasses">
         <div v-if="item.influences.length > 0" />
@@ -26,18 +26,15 @@
         }}</span>
       </div>
       <!-- Item level -->
-      <div
-        class="item-separator"
-        v-if="itemHasLevel && itemProperties.length > 0"
-      ></div>
-      <div v-if="itemHasLevel">
-        {{ itemLevel.text }}<span v-if="itemLevel.level">: </span>
-        <span class="item-level-value" v-if="itemLevel.level">{{
-          itemLevel.level
-        }}</span>
+      <div class="item-separator" v-if="item.level"></div>
+      <div v-if="item.level">
+        Item Level:
+        <span class="item-level-value" v-if="itemLevel.level">
+          {{ item.level }}
+        </span>
       </div>
       <!-- Enchants -->
-      <div class="item-separator" v-if="itemHasEnchants"></div>
+      <div class="item-separator" v-if="item.enchants"></div>
       <div
         v-for="(enchant, index) in itemEnchants"
         :key="`${index}-enchant`"
@@ -46,7 +43,7 @@
         {{ enchant }}
       </div>
       <!-- Implicits -->
-      <div class="item-separator" v-if="itemHasImplicits"></div>
+      <div class="item-separator" v-if="item.implicits"></div>
       <div
         v-for="(implicit, index) in itemImplicits"
         :key="`${index}-implicit`"
@@ -55,16 +52,16 @@
         {{ implicit }}
       </div>
       <!-- Gem description -->
-      <div class="item-separator" v-if="itemHasGemDescription"></div>
+      <div class="item-separator" v-if="item.gemDescription"></div>
       <div
-        v-for="(desciptionLine, index) in itemGemDescription"
+        v-for="(desciptionLine, index) in item.gemDescription"
         :key="`${index}-gem-desc`"
         class="gem-description"
       >
         {{ desciptionLine }}
       </div>
       <!-- Modifiers -->
-      <div class="item-separator" v-if="itemHasModifiers"></div>
+      <div class="item-separator" v-if="item.modifiers"></div>
       <div
         v-for="(modifier, index) in itemModifiers"
         :key="`${index}-modifier`"
@@ -76,13 +73,15 @@
       <div class="item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
       <!-- Mirrored -->
       <div class="item-mirrored" v-if="itemIsMirrored">Mirrored</div>
+      <!-- Split -->
+      <div class="item-split" v-if="itemIsSplit">Split</div>
       <!-- Image -->
-      <div class="item-separator" v-if="showTooltipImage"></div>
+      <div class="item-separator" v-if="showTooltipIcon"></div>
       <img
         class="item-image"
-        :src="imageUrl"
-        v-show="showTooltipImage"
-        :width="imageSize"
+        :src="iconUrl"
+        v-show="showTooltipIcon"
+        :width="iconSize"
       />
     </div>
   </div>
@@ -93,9 +92,9 @@ export default {
   name: "PoeItemShowcaseTooltip",
   props: {
     item: { type: Object, default: () => {} },
-    imageUrl: { type: String, default: "" },
-    imageSize: { type: Number, default: 50 },
-    showImage: { type: Boolean, default: false },
+    iconUrl: { type: String, default: "" },
+    iconSize: { type: Number, default: 50 },
+    showIcon: { type: Boolean, default: false },
   },
   methods: {
     getModifierClasses(modifier) {
@@ -108,33 +107,8 @@ export default {
     },
   },
   computed: {
-    showTooltipImage() {
-      return this.showImage && this.imageUrl;
-    },
-    itemName() {
-      return this.item.header ? this.item.header.lines[1] : "";
-    },
-    itemSubname() {
-      return this.item.header && this.item.header.lines.length > 1
-        ? this.item.header.lines[2]
-        : "";
-    },
-    itemHasSubname() {
-      return !!this.itemSubname;
-    },
-    itemLevel() {
-      const itemLevelLine = this.item.level
-        ? this.item.level.lines[0].split(":")
-        : "";
-      return itemLevelLine
-        ? {
-            text: itemLevelLine[0],
-            level: itemLevelLine[1],
-          }
-        : void 0;
-    },
-    itemHasLevel() {
-      return !!this.itemLevel;
+    showTooltipIcon() {
+      return this.showIcon && this.iconUrl;
     },
     itemProperties() {
       return this.item.properties
@@ -158,18 +132,12 @@ export default {
         ? this.item.enchants.lines.map((x) => x.replace("(enchant)", "").trim())
         : [];
     },
-    itemHasEnchants() {
-      return this.itemEnchants && this.itemEnchants.length > 0;
-    },
     itemImplicits() {
       return this.item.implicits
         ? this.item.implicits.lines.map((x) =>
             x.replace("(implicit)", "").trim()
           )
         : [];
-    },
-    itemHasImplicits() {
-      return this.itemImplicits && this.itemImplicits.length > 0;
     },
     itemModifiers() {
       return this.item.modifiers
@@ -179,20 +147,14 @@ export default {
           }))
         : [];
     },
-    itemHasModifiers() {
-      return this.itemModifiers && this.itemModifiers.length > 0;
-    },
     itemIsCorrupted() {
-      return !!this.item.isCorrupted;
+      return !!this.item.statuses.some((s) => s === "corrupted");
     },
     itemIsMirrored() {
-      return !!this.item.isMirrored;
+      return !!this.item.statuses.some((s) => s === "mirrored");
     },
-    itemGemDescription() {
-      return this.item.gemDescription ? this.item.gemDescription.lines : [];
-    },
-    itemHasGemDescription() {
-      return this.itemGemDescription && this.itemGemDescription.length > 0;
+    itemIsSplit() {
+      return !!this.item.statuses.some((s) => s === "split");
     },
     wrapperClasses() {
       let classes = "item-wrapper";
@@ -349,7 +311,8 @@ export default {
 
   .item-implicit,
   .item-modifier,
-  .item-mirrored {
+  .item-mirrored,
+  .item-split {
     color: var(--poe-color-augmented);
   }
 
@@ -362,7 +325,8 @@ export default {
   }
 
   .item-corrupted,
-  .item-mirrored {
+  .item-mirrored,
+  .item-split {
     margin-top: 6px;
   }
 

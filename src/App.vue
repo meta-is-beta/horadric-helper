@@ -1,110 +1,18 @@
 <template>
   <div id="app">
-    <div class="poe-node-demo">
-      <div class="poe-node-showcase-demo">
-        <poe-node-showcase reference="node-demo" />
-      </div>
-      <div class="poe-node-demo-control-panel">
-        <h2>node settings</h2>
-        <p>
-          <label><b>Display mode: </b></label>
-          <select @change="nodeDataUpdate" v-model="nodeDisplayMode">
-            <option disabled value="">Please select one</option>
-            <option>Icon</option>
-            <option>Text</option>
-            <option>Showcase</option>
-          </select>
-          <label for="node-icon-checkbox" style="margin-left: 10px"
-            ><b>Show icon in showcase: </b></label
-          >
-          <input
-            id="node-icon-checkbox"
-            @change="nodeDataUpdate"
-            type="checkbox"
-            v-model="nodeShowIconInShowcase"
-          />
-        </p>
-        <p v-show="nodeDisplayMode != `Showcase`">
-          <label><b>Custom label text: </b></label>
-          <textarea
-            @change="nodeDataUpdate"
-            type="text"
-            v-model="nodeCustomLabelText"
-            rows="1"
-          />
-        </p>
-        <p>
-          <label><b>Icon url</b></label>
-          <br />
-          <textarea @change="nodeDataUpdate" v-model="nodeIconUrl" rows="3" />
-        </p>
-        <p>
-          <label><b>Node data</b></label>
-          <br />
-          <textarea @change="nodeDataUpdate" v-model="nodeData" rows="10" />
-        </p>
-      </div>
-    </div>
-    <div class="poe-node-demo">
-      <div class="poe-item-showcase-demo">
-        <poe-item-showcase reference="item-demo" />
-      </div>
-      <div class="poe-item-demo-control-panel">
-        <h2>item settings</h2>
-        <p>
-          <label><b>Display mode: </b></label>
-          <select @change="itemDataUpdate" v-model="itemDisplayMode">
-            <option disabled value="">Please select one</option>
-            <option>Icon</option>
-            <option>Text</option>
-            <option>Showcase</option>
-          </select>
-          <label for="item-icon-checkbox" style="margin-left: 10px">
-            <b>Show image in showcase: </b>
-          </label>
-          <input
-            id="item-icon-checkbox"
-            @change="itemDataUpdate"
-            type="checkbox"
-            v-model="itemShowIconInShowcase"
-          />
-          <label style="margin-left: 10px">
-            <b>Image size: </b>
-          </label>
-          <select @change="itemDataUpdate" v-model="itemImageSize">
-            <option disabled value="">Please select one</option>
-            <option>auto</option>
-            <option>sm</option>
-            <option>md</option>
-            <option>lg</option>
-            <option>xlg</option>
-          </select>
-        </p>
-        <p v-show="itemDisplayMode != `Showcase`">
-          <label><b>Custom label text: </b></label>
-          <textarea
-            @change="itemDataUpdate"
-            type="text"
-            v-model="itemCustomLabelText"
-            rows="1"
-          />
-        </p>
-        <p>
-          <label><b>Image url</b></label>
-          <br />
-          <textarea @change="itemDataUpdate" v-model="itemImageUrl" rows="3" />
-        </p>
-        <p>
-          <label><b>Item data</b></label>
-          <br />
-          <textarea @change="itemDataUpdate" v-model="itemData" rows="10" />
-        </p>
-      </div>
+    <div class="poe-item-showcase-demo">
+      <poe-item-showcase
+        reference="item-demo"
+        displayMode="icon"
+        labelText=""
+        :showIconInShowcase="false"
+      />
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable vue/no-unused-components */
 import PoeItemShowcase from "@/path-of-exile/components/poe-item-showcase.vue";
 import PoeNodeShowcase from "@/path-of-exile/components/poe-node-showcase.vue";
 
@@ -114,85 +22,48 @@ export default {
     PoeItemShowcase,
     PoeNodeShowcase,
   },
-  data() {
-    return {
-      nodeCustomLabelText: "",
-      nodeDisplayMode: "Icon",
-      nodeShowIconInShowcase: false,
-      nodeData: `Type: Keystone
-Acrobatics
---------
-30% Chance to Dodge Attack Hits.
-50% less Armour, 30% less Energy Shield, 30% less Chance to Block Spell and Attack Damage.`,
-      nodeIconUrl:
-        "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/1/1a/KeystoneAcrobatics_passive_skill_icon.png",
-
-      itemCustomLabelText: "",
-      itemDisplayMode: "Icon",
-      itemShowIconInShowcase: false,
-      itemImageSize: "auto",
-      itemData: `Rarity: Rare
-Brood Halo
-Harlequin Mask
---------
-Quality: +20% (augmented)
-Evasion Rating: 319 (augmented)
-Energy Shield: 63 (augmented)
---------
-Requirements:
-Level: 70
-Str: 98
-Dex: 155
-Int: 73
---------
-Sockets: G-G-R-B
---------
-Item Level: 85
---------
-Caustic Arrow has 20% chance to inflict Withered on Hit for 2 seconds base Duration (enchant)
---------
-Grants Level 20 Aspect of the Spider Skill
-83% increased Evasion and Energy Shield
-+98 to maximum Life
-Regenerate 26 Life per second
-+47% to Lightning Resistance
-+1 to Level of Socketed AoE Gems (crafted)
-10% increased Area of Effect (crafted)
---------
-Elder Item
---------
-Has Assailum Skin. You can reclaim this by shift-clicking this item.`,
-      itemImageUrl: `https://static.wikia.nocookie.net/pathofexile_gamepedia/images/5/56/Harlequin_Mask_inventory_icon.png`,
-    };
-  },
   methods: {
     nodeDataUpdate() {
       if (window.HoradricHelper.nodeShowcases) {
         window.HoradricHelper.nodeShowcases.applyOptionsByReference(
           "node-demo",
-          {
-            rawData: this.nodeData,
-            iconUrl: this.nodeIconUrl,
-            displayMode: this.nodeDisplayMode,
-            showIconInShowcase: this.nodeShowIconInShowcase,
-            labelText: this.nodeCustomLabelText,
-          }
+          this.nodeOptions
         );
       }
     },
     itemDataUpdate() {
-      if (window.HoradricHelper.itemShowcases) {
-        window.HoradricHelper.itemShowcases.applyOptionsByReference(
-          "item-demo",
-          {
-            rawData: this.itemData,
-            imageUrl: this.itemImageUrl,
-            displayMode: this.itemDisplayMode,
-            showIconInShowcase: this.itemShowIconInShowcase,
-            labelText: this.itemCustomLabelText,
-            imageSize: this.itemImageSize,
-          }
-        );
+      if (window.HoradricHelper) {
+        window.HoradricHelper.applyConfig("item-demo", {
+          iconSrc:
+            "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/5/56/Harlequin_Mask_inventory_icon.png",
+          rawData: `
+Item Class: Jewel
+Rarity: Normal
+Crimson Jewel
+--------
+Item Level: 49
+--------
+Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.
+
+Item Class: Support Skill Gems
+Rarity: Gem
+Controlled Destruction Support
+--------
+Spell, Support
+Level: 20 (Max)
+Cost & Reservation Multiplier: 130%
+--------
+Requirements:
+Level: 70
+Int: 111
+--------
+Supports attack skills, or spell skills that deal damage.
+--------
+Supported Skills have 100% reduced Critical Strike Chance
+Supported Skills deal 44% more Spell Damage
+--------
+This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Active Skill Gem you wish to augment. Right click to remove from a socket.`,
+        });
       }
     },
   },

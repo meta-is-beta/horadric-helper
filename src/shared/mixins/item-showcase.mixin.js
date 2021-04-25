@@ -34,9 +34,13 @@ export default {
       const items = horadricHelperObject.itemShowcases.items;
 
       if (items[this.reference]) {
-        items[this.reference].push(itemObject);
+        items[this.reference].itemList.push(itemObject);
       } else {
-        items[this.reference] = [itemObject];
+        items[this.reference] = {
+          itemData: {},
+          itemList: [itemObject],
+          ...this.showcaseMetadata,
+        };
       }
     },
   },

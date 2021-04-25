@@ -1,0 +1,12 @@
+--- 0.5 ---
+[x] move display options to properties
+[x] add alternative to raw data
+[x] refactor how statuses are handled
+[x] add "Split" status
+[] add auto image detection for items from wiki and poedb
+[] research png shadows
+[] create demos as separate components
+[] update poe item processor for 3.14
+[] fix talismans in poe processor
+[] add currency to poe processor
+[] make image/icon size generic
