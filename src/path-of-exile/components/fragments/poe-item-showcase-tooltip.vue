@@ -26,10 +26,13 @@
         }}</span>
       </div>
       <!-- Item level -->
-      <div class="item-separator" v-if="item.level"></div>
+      <div
+        class="item-separator"
+        v-if="item.level && itemProperties.length > 0"
+      ></div>
       <div v-if="item.level">
         Item Level:
-        <span class="item-level-value" v-if="itemLevel.level">
+        <span class="item-level-value" v-if="item.level">
           {{ item.level }}
         </span>
       </div>
@@ -112,8 +115,8 @@ export default {
     },
     itemProperties() {
       return this.item.properties
-        ? this.item.properties.lines.map((x) => {
-            const propertyLine = x.split(":");
+        ? this.item.properties.map((line) => {
+            const propertyLine = line.split(":");
             const property = {
               key: propertyLine[0].replace(" (augmented)", "").trim(),
             };
@@ -129,19 +132,17 @@ export default {
     },
     itemEnchants() {
       return this.item.enchants
-        ? this.item.enchants.lines.map((x) => x.replace("(enchant)", "").trim())
+        ? this.item.enchants.map((x) => x.replace("(enchant)", "").trim())
         : [];
     },
     itemImplicits() {
       return this.item.implicits
-        ? this.item.implicits.lines.map((x) =>
-            x.replace("(implicit)", "").trim()
-          )
+        ? this.item.implicits.map((x) => x.replace("(implicit)", "").trim())
         : [];
     },
     itemModifiers() {
       return this.item.modifiers
-        ? this.item.modifiers.lines.map((x) => ({
+        ? this.item.modifiers.map((x) => ({
             text: x.replace("(crafted)", "").trim(),
             isCrafter: x.includes("(crafted)"),
           }))
@@ -211,8 +212,9 @@ export default {
 .poe-item-showcase-popover {
   .item-wrapper {
     min-width: 360px;
-    border: 2px solid white;
+    border: 1px solid white;
     background-color: black;
+    padding: 2px;
 
     & .item-image {
       margin-top: 12px;
@@ -223,40 +225,40 @@ export default {
   .item-header {
     white-space: nowrap;
     font-size: 22px;
-    margin: 4px;
-    display: flex;
+    width: 100%;
+
+    & div {
+      display: inline-block;
+    }
+
+    & .item-header-left-panel {
+      float: left;
+    }
+
+    & .item-header-right-panel {
+      float: right;
+    }
 
     &.item-header-single {
       height: 32px;
       background-image: url(../../../assets/poe/Item-ui-header-single.png);
 
       & .item-header-left-panel {
+        height: 32px;
         background-image: url(../../../assets/poe/Item-ui-header-single.png);
-        width: 32px;
-        &.item-influenced img {
-          margin-top: 2px;
-          position: absolute;
-          margin-left: -5px;
-        }
+        width: 28px;
       }
-
       & .item-header-right-panel {
+        height: 32px;
         background-image: url(../../../assets/poe/Item-ui-header-single.png);
-        width: 32px;
-        background-position-x: -1px;
-
-        &.item-influenced img {
-          margin-top: 2px;
-          position: relative;
-          right: 6px;
-        }
+        width: 28px;
       }
-
+      & .item-influenced div {
+        margin-top: 2px;
+        display: flex;
+      }
       & .item-header-center {
-        width: 100%;
         line-height: 23px;
-        padding-left: 10px;
-        padding-right: 10px;
 
         & div:nth-child(1) {
           margin-top: 4px;
@@ -270,20 +272,41 @@ export default {
 
       & .item-header-left-panel {
         background-image: url(../../../assets/poe/Item-ui-header-double.png);
-        width: 40px;
+        width: 44px;
+        height: 52px;
+        &.item-influenced div {
+          float: left;
+          width: 38px;
+          margin-left: 6px;
+        }
       }
 
       & .item-header-right-panel {
         background-image: url(../../../assets/poe/Item-ui-header-double.png);
-        width: 40px;
-        background-position-x: -8px;
+        width: 44px;
+        height: 52px;
+
+        &.item-influenced div {
+          float: right;
+          width: 38px;
+        }
+      }
+
+      & .item-influenced div {
+        margin-top: 12px;
+        display: flex;
       }
 
       & .item-header-center {
-        width: 100%;
         line-height: 23px;
+        height: 52px;
+
+        & div {
+          display: block;
+        }
+
         & div:nth-child(1) {
-          margin-top: 2px;
+          margin-top: 3px;
         }
       }
 
@@ -314,6 +337,7 @@ export default {
   .item-mirrored,
   .item-split {
     color: var(--poe-color-augmented);
+    white-space: nowrap;
   }
 
   .item-enchant {
@@ -340,8 +364,9 @@ export default {
   }
 
   .item-stats {
-    padding: 12px;
+    padding: 16px;
     padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   .unique-item {
@@ -444,8 +469,6 @@ export default {
     background-repeat: no-repeat;
     background-size: 27px;
     height: 25px;
-    margin-top: 12px;
-    margin-left: 4px;
   }
   .item-influenced-crusader div {
     background-position-y: 0;

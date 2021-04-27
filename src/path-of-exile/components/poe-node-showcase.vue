@@ -116,12 +116,10 @@ export default {
   border-radius: 5px;
   justify-content: center;
   line-height: 18px;
-
   & div:nth-child(1) {
     padding-top: 0px;
     line-height: 20px;
   }
-
   & div:nth-child(2) {
     padding-bottom: 3px;
   }

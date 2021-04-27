@@ -10,6 +10,13 @@ module.exports = {
     },
   },
   chainWebpack: (config) => {
+    // TypeScript loader
+    config.module.rule("ts");
+    config.module.rule("ts").use("ts-loader");
+    config.module.rule("ts").use("babel-loader");
+    config.module.rule("ts").use("cache-loader");
+    config.plugin("fork-ts-checker");
+    // Assets to basae64 conversion
     config.module
       .rule("images")
       .use("url-loader")

@@ -1,5 +1,3 @@
-import "./../types";
-
 export default (rawData: String): PoeItemDataSection[] => {
   const rawSections = rawDataToRawSections(rawData);
   let namedSections = rawSectionsToNamedSections(rawSections);
@@ -84,7 +82,7 @@ const getSectionName = (section: String[]): String => {
     return "Sockets";
   }
 
-  if (section.some((x) => x.match(/([A-Z][a-z]*) Item$/))) {
+  if (section.some((x) => x.match(/^([A-Z][a-z]*) Item$/))) {
     return "Influences";
   }
 
@@ -98,6 +96,10 @@ const getSectionName = (section: String[]): String => {
 
   if (section.some((x) => x.match(/^Split$/))) {
     return "Split status";
+  }
+
+  if (section.some((x) => x.match(/Talisman Tier:/))) {
+    return "Talisman tier";
   }
 
   return "Unknown";
@@ -115,29 +117,35 @@ const fillUnknownSections = (
   }
 
   const headerSection = sections.find((x) => x.name === "Header");
-  const headerSectionIndex = headerSection.index;
-  const itemTypeLine = headerSection.lines[0];
+
+  if (!headerSection) {
+    return sections;
+  }
+
+  const headerSectionIndex = headerSection?.index;
   const itemRarityLine = headerSection.lines[1];
 
   const itemIsGem = itemRarityLine.includes("Gem");
-  const itemIsNormal = itemTypeLine.includes("Normal");
+  const itemIsNormal = itemRarityLine.includes("Normal");
 
   if (sections[headerSectionIndex + 1].name === "Unknown") {
     sections[headerSectionIndex + 1].name = "Properties";
   }
 
   if (!itemIsNormal && !itemIsGem) {
-    const modifiersIndex = sections.find((x) => x.name === "Unknown").index;
-    sections[modifiersIndex].name = "Modifiers";
+    const modifiersIndex = sections.find((x) => x.name === "Unknown")?.index;
+    if (modifiersIndex) sections[modifiersIndex].name = "Modifiers";
   }
 
   if (itemIsGem) {
     const gemDescriptionIndex = sections.find((x) => x.name === "Unknown")
-      .index;
-    sections[gemDescriptionIndex].name = "Gem description";
+      ?.index;
+    if (gemDescriptionIndex) {
+      sections[gemDescriptionIndex].name = "Gem description";
 
-    if (sections[gemDescriptionIndex + 1].name === "Unknown") {
-      sections[gemDescriptionIndex + 1].name = "Modifiers";
+      if (sections[gemDescriptionIndex + 1].name === "Unknown") {
+        sections[gemDescriptionIndex + 1].name = "Modifiers";
+      }
     }
   }
 

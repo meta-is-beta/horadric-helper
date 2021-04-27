@@ -8,7 +8,7 @@
       <poe-item-showcase-tooltip
         :item="item"
         :iconUrl="iconSrc"
-        :showIcon="showTooltipIcon"
+        :showIcon="showIconInShowcase"
         :iconSize="computedIconSize"
       />
     </div>
@@ -102,7 +102,7 @@ export default {
     linkClassesComputed() {
       let classes = `item-link`;
       if (this.item.rarity) {
-        classes += `item-link-${this.item.rarity.toLowerCase()}`;
+        classes += ` item-link-${this.item.rarity.toLowerCase()}`;
       }
       return classes;
     },

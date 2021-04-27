@@ -49,6 +49,7 @@ export default {
     applyConfig(showcaseData, iconSrc) {
       this.showcaseData = showcaseData;
       this.iconSrc = iconSrc;
+      this.show = true;
     },
   },
 };

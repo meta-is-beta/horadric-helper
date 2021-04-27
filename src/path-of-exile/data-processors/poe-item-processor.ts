@@ -1,8 +1,7 @@
-import "./../types";
-import extractSections from "./sections-extractor";
+import mapSections from "./sections-mapper";
 
 export default (rawData: String): PoeItem => {
-  const sections: PoeItemDataSection[] = extractSections(rawData);
+  const sections: PoeItemDataSection[] = mapSections(rawData);
   const headerSection = getHeaderSection(sections);
   const itemClass = getItemClass(headerSection);
 
@@ -25,19 +24,31 @@ export default (rawData: String): PoeItem => {
   };
 };
 
-const getHeaderSection = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Header");
+const getHeaderSection = (sections: PoeItemDataSection[]): PoeItemDataSection =>
+  sections.find((x) => x.name === "Header") as PoeItemDataSection;
 
-const getItemClass = (headerSection: PoeItemDataSection) =>
-  headerSection.lines[0].match(/Item Class:([A-z ]+)/)[1].trim();
+const getItemClass = (headerSection: PoeItemDataSection) => {
+  const classMatch = headerSection.lines[0].match(/Item Class:([A-z ]+)/);
+  if (classMatch && classMatch.length > 0) {
+    return classMatch[1].trim();
+  }
 
-const getItemRarity = (headerSection: PoeItemDataSection) =>
-  headerSection.lines[1].match(/Rarity:([A-z ]+)/)[1].trim() as
-    | "normal"
-    | "rare"
-    | "magic"
-    | "unique"
-    | "gem";
+  return "";
+};
+const getItemRarity = (headerSection: PoeItemDataSection) => {
+  const rarityMatch = headerSection.lines[1].match(/Rarity:([A-z ]+)/);
+
+  if (rarityMatch && rarityMatch.length > 0) {
+    return rarityMatch[1].trim() as
+      | "normal"
+      | "rare"
+      | "magic"
+      | "unique"
+      | "gem";
+  }
+
+  return "";
+};
 
 const getItemName = (headerSection: PoeItemDataSection) =>
   headerSection.lines[2].trim();
@@ -60,20 +71,21 @@ const getItemInfluences = (sections: PoeItemDataSection[]) => {
     return [];
   }
 
-  return influencesSection.lines.map((line) =>
-    line
-      .match(/([A-Z][a-z]+) Item$/)[1]
-      .toLowerCase()
-      .trim()
-  ) as (
-    | "crusader"
-    | "warlord"
-    | "hunter"
-    | "redeemer"
-    | "elder"
-    | "shaper"
-    | "replica"
-  )[];
+  return influencesSection.lines.map((line) => {
+    const lineMatch = line.match(/([A-Z][a-z]+) Item$/);
+
+    if (lineMatch && lineMatch.length > 0) {
+      return lineMatch[1].toLowerCase().trim() as
+        | "crusader"
+        | "warlord"
+        | "hunter"
+        | "redeemer"
+        | "elder"
+        | "shaper"
+        | "replica";
+    }
+    return "";
+  });
 };
 
 const getItemLevel = (sections: PoeItemDataSection[]) => {
@@ -82,7 +94,15 @@ const getItemLevel = (sections: PoeItemDataSection[]) => {
     return "";
   }
 
-  return itemLevelSection.lines[0].match(/Item Level: ([0-9]+)/)[1].trim();
+  const itemLevelMatch = itemLevelSection.lines[0].match(
+    /Item Level: ([0-9]+)/
+  );
+
+  if (itemLevelMatch && itemLevelMatch.length > 0) {
+    return itemLevelMatch[1].trim();
+  }
+
+  return "";
 };
 
 const getItemStatuses = (sections: PoeItemDataSection[]) => {
@@ -102,16 +122,16 @@ const getItemStatuses = (sections: PoeItemDataSection[]) => {
 };
 
 const getRequirements = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Requirements").lines;
+  sections.find((x) => x.name === "Requirements")?.lines;
 const getEnchants = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Enchants").lines;
+  sections.find((x) => x.name === "Enchants")?.lines;
 const getImplicits = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Implicits").lines;
+  sections.find((x) => x.name === "Implicits")?.lines;
 const getSockets = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Sockets").lines;
+  sections.find((x) => x.name === "Sockets")?.lines;
 const getProperties = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Properties").lines;
+  sections.find((x) => x.name === "Properties")?.lines;
 const getModifiers = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Modifiers").lines;
+  sections.find((x) => x.name === "Modifiers")?.lines;
 const getGemDescription = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Gem description").lines;
+  sections.find((x) => x.name === "Gem description")?.lines;
