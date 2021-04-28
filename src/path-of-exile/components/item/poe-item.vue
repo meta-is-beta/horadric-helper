@@ -5,7 +5,7 @@
       :class="wrapperClassesComputed"
     >
       <!-- Showcase -->
-      <poe-item-showcase-tooltip
+      <poe-item-showcase
         :item="item"
         :iconUrl="iconSrc"
         :showIcon="showIconInShowcase"
@@ -24,7 +24,7 @@
         :popoverArrowClass="popoverArrowClasses"
       >
         <template slot="popover">
-          <poe-item-showcase-tooltip
+          <poe-item-showcase
             :item="item"
             :iconUrl="iconSrc"
             :showIcon="showIconInShowcase"
@@ -46,14 +46,14 @@
 </template>
 
 <script>
-import PoeItemShowcaseTooltip from "./fragments/poe-item-showcase-tooltip.vue";
+import PoeItemShowcase from "./poe-item-showcase.vue";
 import processRawData from "@/path-of-exile/data-processors/poe-item-processor.ts";
 import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
-  name: "PoeItemShowcase",
+  name: "PoeItem",
   components: {
-    PoeItemShowcaseTooltip,
+    PoeItemShowcase,
   },
   props: {
     iconSize: { type: String, default: "auto" },
@@ -119,12 +119,13 @@ export default {
 </script>
 
 <style lang="scss">
-@use "./../_styles" as styles;
+@use "./../../_styles" as styles;
 
 .poe-item-showcase-popover {
-  box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   z-index: 10000;
 }
+
 .poe-item-showcase,
 .poe-item-showcase-popover {
   @include styles.font;
@@ -147,6 +148,24 @@ export default {
   }
   .poe-item-showcase-wrapper {
     display: flex;
+  }
+}
+.poe-showcase-label {
+  margin-top: 5px;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgba(1, 1, 1, 0.8);
+  border: 1px solid #303030;
+  border-radius: 5px;
+  justify-content: center;
+  line-height: 18px;
+  & div:nth-child(1) {
+    padding-top: 0px;
+    line-height: 20px;
+  }
+  & div:nth-child(2) {
+    padding-bottom: 3px;
   }
 }
 </style>

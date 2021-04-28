@@ -4,9 +4,8 @@
 [x] refactor how statuses are handled
 [x] add "Split" status
 [] add auto image detection for items from wiki and poedb
-[] research png shadows
-[] create demos as separate components
-[] update poe item processor for 3.14
-[] fix talismans in poe processor
-[] add currency to poe processor
-[] make image/icon size generic
+[x] create demos as separate components
+[x] update poe item processor for 3.14
+[x] fix talismans in poe processor
+[x] add currency to poe processor
+[x] make image/icon size generic

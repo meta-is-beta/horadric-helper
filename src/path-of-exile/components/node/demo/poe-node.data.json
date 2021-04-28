@@ -1,0 +1,62 @@
+{
+  "nodes": [
+    {
+      "reference": "Acrobatics",
+      "props": {
+        "displayMode": "icon",
+        "labelText": "",
+        "showIconInShowcase": false
+      },
+      "data": {
+        "dataObject": {
+          "name": "Acrobatics",
+          "type": "Keystone",
+          "description": [
+            "30% Chance to Dodge Attack Hits.",
+            "50% less Armour, 30% less Energy Shield, 30% less Chance to Block Spell and Attack Damage."
+          ]
+        },
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/1/1a/KeystoneAcrobatics_passive_skill_icon.png"
+      }
+    },
+    {
+      "reference": "Magnifier",
+      "props": {
+        "displayMode": "icon",
+        "labelText": "",
+        "showIconInShowcase": false
+      },
+      "data": {
+        "dataObject": {
+          "name": "Magnifier",
+          "type": "Notable",
+          "description": [
+            "10% increased Area of Effect",
+            "10% increased Area Damage",
+            "+10% to Critical Strike Multiplier "
+          ]
+        },
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png"
+      }
+    },
+    {
+      "reference": "Cold damage",
+      "props": {
+        "displayMode": "icon",
+        "labelText": "",
+        "showIconInShowcase": false
+      },
+      "data": {
+        "dataObject": {
+          "name": "Cold damage",
+          "type": "basic",
+          "description": [
+            "15% increased Cold Damage",
+            "8% increased Cold Damage"
+          ]
+        },
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/a1/ColdDamagenode_passive_skill_icon.png"
+      }
+    }
+  ]
+}

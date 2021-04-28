@@ -65,9 +65,21 @@ export default {
 </script>
 
 <style lang="scss">
+.poe-node-showcase-popover {
+  .node-showcase-tooltip-wrapper {
+    border: 0;
+    padding: 0px;
+  }
+}
+.poe-node-showcase {
+  .node-showcase-tooltip-wrapper {
+    border: 2px solid #403b2e;
+    padding: 2px;
+  }
+}
+
 .node-showcase-tooltip-wrapper {
   background-color: black;
-  border: 2px solid #403b2e;
   transform: scale(0.8);
 
   & .node-header {
@@ -87,8 +99,19 @@ export default {
     }
     & .node-header-left,
     & .node-header-right {
-      width: 66px;
+      height: 73px;
       background-image: url(../../../assets/poe/Node-ui-header.png);
+    }
+    & div {
+      display: inline-block;
+    }
+
+    & .node-header-left-panel {
+      float: left;
+    }
+
+    & .node-header-right-panel {
+      float: right;
     }
   }
   & .node-icon {
@@ -98,6 +121,10 @@ export default {
   &.node-basic {
     & .node-header {
       background-position-y: -1278px;
+      & .node-header-left,
+      & .node-header-right {
+        width: 89px;
+      }
       & .node-header-left {
         background-position-y: -1203px;
       }
@@ -118,6 +145,10 @@ export default {
   &.node-notable {
     & .node-header {
       background-position-y: -377px;
+      & .node-header-left,
+      & .node-header-right {
+        width: 93px;
+      }
       & .node-header-left {
         background-position-y: -302px;
       }
@@ -130,6 +161,10 @@ export default {
     & .node-header {
       color: #e2dedd !important;
       background-position-y: -152px;
+      & .node-header-left,
+      & .node-header-right {
+        width: 66px;
+      }
       & .node-header-left {
         background-position-y: -77px;
       }

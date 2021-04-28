@@ -92,7 +92,7 @@
 
 <script>
 export default {
-  name: "PoeItemShowcaseTooltip",
+  name: "PoeItemShowcase",
   props: {
     item: { type: Object, default: () => {} },
     iconUrl: { type: String, default: "" },
@@ -208,13 +208,24 @@ export default {
 </script>
 
 <style lang="scss">
+.poe-item-showcase-popover {
+  .item-wrapper {
+    border: 0;
+    padding: 0px;
+  }
+}
+.poe-item-showcase {
+  .item-wrapper {
+    border: 1px solid white;
+    padding: 2px;
+  }
+}
+
 .poe-item-showcase,
 .poe-item-showcase-popover {
   .item-wrapper {
     min-width: 360px;
-    border: 1px solid white;
-    background-color: black;
-    padding: 2px;
+    background-color: rgba(0, 0, 0, 1);
 
     & .item-image {
       margin-top: 12px;
@@ -242,16 +253,11 @@ export default {
     &.item-header-single {
       height: 32px;
       background-image: url(../../../assets/poe/Item-ui-header-single.png);
-
-      & .item-header-left-panel {
-        height: 32px;
-        background-image: url(../../../assets/poe/Item-ui-header-single.png);
-        width: 28px;
-      }
+      & .item-header-left-panel,
       & .item-header-right-panel {
         height: 32px;
-        background-image: url(../../../assets/poe/Item-ui-header-single.png);
         width: 28px;
+        background-image: url(../../../assets/poe/Item-ui-header-single.png);
       }
       & .item-influenced div {
         margin-top: 2px;
@@ -352,6 +358,7 @@ export default {
   .item-mirrored,
   .item-split {
     margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .item-separator {
@@ -461,6 +468,25 @@ export default {
     }
     & .item-header-right-panel {
       background-position-y: 849px;
+    }
+  }
+
+  .currency-item {
+    &.item-wrapper {
+      border-color: var(--poe-color-currency);
+    }
+    & .item-header {
+      color: var(--poe-color-currency);
+      background-position-y: -239px;
+    }
+    & .item-separator {
+      background-position-y: -8px;
+    }
+    & .item-header-left-panel {
+      background-position-y: -205px;
+    }
+    & .item-header-right-panel {
+      background-position-y: -273px;
     }
   }
 

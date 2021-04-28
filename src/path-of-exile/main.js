@@ -1,5 +1,5 @@
-import PoeItemShowcase from "@/path-of-exile/components/poe-item-showcase.vue";
-import PoeNodeShowcase from "@/path-of-exile/components/poe-node-showcase.vue";
+import PoeItem from "@/path-of-exile/components/item/poe-item.vue";
+import PoeNode from "@/path-of-exile/components/node/poe-node.vue";
 import VTooltip from "v-tooltip";
 import Vue from "vue";
 import vueCustomElement from "vue-custom-element";
@@ -9,5 +9,9 @@ Vue.config.productionTip = false;
 Vue.use(VTooltip);
 Vue.use(vueCustomElement);
 
-Vue.customElement("poe-item-showcase", PoeItemShowcase);
-Vue.customElement("poe-node-showcase", PoeNodeShowcase);
+let prefix = process.env.VUE_APP_WEB_COMPONENT_PREFIX
+  ? `${process.env.VUE_APP_WEB_COMPONENT_PREFIX}-`
+  : "";
+
+Vue.customElement(`${prefix}poe-item`, PoeItem);
+Vue.customElement(`${prefix}poe-node`, PoeNode);

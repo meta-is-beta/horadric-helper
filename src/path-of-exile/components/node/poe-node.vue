@@ -5,9 +5,9 @@
       :class="wrapperClassesComputed"
     >
       <!-- Showcase -->
-      <poe-node-showcase-tooltip
+      <poe-node-showcase
         :node="node"
-        :iconUrl="imageSrc"
+        :iconUrl="iconSrc"
         :showIcon="showIconInShowcase"
       />
     </div>
@@ -22,15 +22,15 @@
         :popoverArrowClass="popoverArrowClasses"
       >
         <template slot="popover">
-          <poe-node-showcase-tooltip
+          <poe-node-showcase
             :node="node"
-            :iconUrl="imageSrc"
+            :iconUrl="iconSrc"
             :showIcon="showIconInShowcase"
           />
         </template>
         <!-- Icon -->
         <div v-if="displayMode.toLowerCase() === `icon`">
-          <poe-node-image :type="node.type" :iconUrl="imageSrc" />
+          <poe-node-image :type="node.type" :iconUrl="iconSrc" />
           <div class="poe-showcase-label" v-if="!showCustomLabel">
             <div>{{ node.name }}</div>
             <div class="poe-node-showcase-node-name">{{ node.type }}</div>
@@ -49,17 +49,17 @@
 </template>
 
 <script>
-import PoeNodeShowcaseTooltip from "@/path-of-exile/components/fragments/poe-node-showcase-tooltip.vue";
-import PoeNodeImage from "@/path-of-exile/components/fragments/poe-node-image.vue";
+import PoeNodeShowcase from "./poe-node-showcase.vue";
+import PoeNodeImage from "./poe-node-image.vue";
 import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
-  name: "PoeNodeShowcase",
+  name: "PoeNode",
   mixins: [showcaseMixin],
-  components: { PoeNodeShowcaseTooltip, PoeNodeImage },
+  components: { PoeNodeShowcase, PoeNodeImage },
   computed: {
-    imageSrc() {
-      return this.options.imageSrc;
+    node() {
+      return this.showcaseData;
     },
     showCustomLabel() {
       return this.labelText.length > 0;
@@ -74,11 +74,18 @@ export default {
       return `poe-node-showcase-popover ${this.tooltipWrapperClass}`;
     },
   },
+  showcaseMetadata: {
+    type: "poe-node",
+    processRawData: () => {
+      throw new Error("Raw data processor not implemented for PoE nodes.");
+    },
+    processDataObject: (data) => data,
+  },
 };
 </script>
 
 <style lang="scss">
-@use "./../_styles" as styles;
+@use "./../../_styles" as styles;
 
 .poe-node-showcase-popover {
   z-index: 10000;
@@ -103,11 +110,11 @@ export default {
 .poe-node-showcase-popover {
   .node-showcase-tooltip-wrapper {
     background-color: black;
-    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   }
 }
 .poe-showcase-label {
-  margin-top: 3px;
+  margin-top: 5px;
   padding: 3px;
   padding-left: 5px;
   padding-right: 5px;

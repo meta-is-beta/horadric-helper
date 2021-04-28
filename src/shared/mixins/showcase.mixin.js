@@ -35,11 +35,12 @@ export default {
     registerShowcase() {
       const horadricHelperObject = registerHoradricHelperGlobalObject();
       const showcases = horadricHelperObject.showcases;
+      const reference = this.reference.replaceAll(" ", "-");
 
-      if (showcases[this.reference]) {
-        showcases[this.reference].applyConfigCallbacks.push(this.applyConfig);
+      if (showcases[reference]) {
+        showcases[reference].applyConfigCallbacks.push(this.applyConfig);
       } else {
-        showcases[this.reference] = {
+        showcases[reference] = {
           showcaseData: {},
           applyConfigCallbacks: [this.applyConfig],
           ...this.$options.showcaseMetadata,
@@ -58,6 +59,7 @@ const registerHoradricHelperGlobalObject = () => {
   window.HoradricHelper = window.HoradricHelper || {
     showcases: {},
     applyConfig(reference, config) {
+      reference = reference.replaceAll(" ", "-");
       const referencedShowcase = window.HoradricHelper.showcases[reference];
       if (!referencedShowcase) {
         return;
@@ -74,9 +76,13 @@ const registerHoradricHelperGlobalObject = () => {
       } else {
         throw new Error("Showcase data not provided");
       }
-      referencedShowcase.applyConfigCallbacks.forEach((callback) =>
-        callback(referencedShowcase.showcaseData, config.iconSrc)
-      );
+      referencedShowcase.applyConfigCallbacks.forEach((callback) => {
+        try {
+          callback(referencedShowcase.showcaseData, config.iconSrc);
+        } catch {
+          //no-op
+        }
+      });
     },
   };
 
