@@ -66,16 +66,25 @@ const registerHoradricHelperGlobalObject = () => {
       }
 
       if (config.rawData) {
+        if (!referencedShowcase.processRawData) {
+          throw new Error(
+            `Raw data processor is not plemented for showcase of type "${referencedShowcase.type}"`
+          );
+        }
         referencedShowcase.showcaseData = referencedShowcase.processRawData(
           config.rawData
         );
       } else if (config.dataObject) {
+        if (!referencedShowcase.processDataObject) {
+          referencedShowcase.processDataObject = (data) => data;
+        }
         referencedShowcase.showcaseData = referencedShowcase.processDataObject(
           config.dataObject
         );
       } else {
         throw new Error("Showcase data not provided");
       }
+
       referencedShowcase.applyConfigCallbacks.forEach((callback) => {
         try {
           callback(referencedShowcase.showcaseData, config.iconSrc);

@@ -76,9 +76,6 @@ export default {
   },
   showcaseMetadata: {
     type: "poe-node",
-    processRawData: () => {
-      throw new Error("Raw data processor not implemented for PoE nodes.");
-    },
     processDataObject: (data) => data,
   },
 };

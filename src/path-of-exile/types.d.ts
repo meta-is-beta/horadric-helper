@@ -42,8 +42,3 @@ type PoeNode = {
   type: "basic" | "notable" | "keystone";
   description: String[];
 };
-
-enum PoeObjectType {
-  Item = "item",
-  Node = "node",
-}

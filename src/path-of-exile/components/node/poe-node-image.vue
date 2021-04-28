@@ -23,7 +23,7 @@ export default {
 .node-icon {
   &.basic-node-icon {
     & img {
-      content: url(../../../assets/poe/Basic_passive_frame.png);
+      content: url(../../assets/Basic_passive_frame.png);
       background-size: 35px;
       background-position-x: 14px;
       background-position-y: 14px;
@@ -33,7 +33,7 @@ export default {
   }
   &.notable-node-icon {
     & img {
-      content: url(../../../assets/poe/Notable_passive_frame.png);
+      content: url(../../assets/Notable_passive_frame.png);
       background-position-x: 14px;
       background-position-y: 14px;
       background-repeat: no-repeat;
@@ -43,7 +43,7 @@ export default {
   }
   &.keystone-node-icon {
     & img {
-      content: url(../../../assets/poe/Keystone_passive_frame.png);
+      content: url(../../assets/Keystone_passive_frame.png);
       background-position-x: 18px;
       background-position-y: 18px;
       background-repeat: no-repeat;

@@ -113,7 +113,6 @@ export default {
   showcaseMetadata: {
     type: "poe-item",
     processRawData,
-    processDataObject: (data) => data,
   },
 };
 </script>

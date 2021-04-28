@@ -252,12 +252,13 @@ export default {
 
     &.item-header-single {
       height: 32px;
-      background-image: url(../../../assets/poe/Item-ui-header-single.png);
+      background-image: url(../../assets/Item-ui-header-single.png);
+
       & .item-header-left-panel,
       & .item-header-right-panel {
         height: 32px;
         width: 28px;
-        background-image: url(../../../assets/poe/Item-ui-header-single.png);
+        background-image: url(../../assets/Item-ui-header-single.png);
       }
       & .item-influenced div {
         margin-top: 2px;
@@ -274,28 +275,24 @@ export default {
 
     &.item-header-double {
       height: 52px;
-      background-image: url(../../../assets/poe/Item-ui-header-double.png);
+      background-image: url(../../assets/Item-ui-header-double.png);
 
-      & .item-header-left-panel {
-        background-image: url(../../../assets/poe/Item-ui-header-double.png);
+      & .item-header-left-panel,
+      & .item-header-right-panel {
+        background-image: url(../../assets/Item-ui-header-double.png);
         width: 44px;
         height: 52px;
-        &.item-influenced div {
-          float: left;
-          width: 38px;
-          margin-left: 6px;
-        }
       }
 
-      & .item-header-right-panel {
-        background-image: url(../../../assets/poe/Item-ui-header-double.png);
-        width: 44px;
-        height: 52px;
+      & .item-header-left-panel.item-influenced div {
+        float: left;
+        width: 38px;
+        margin-left: 6px;
+      }
 
-        &.item-influenced div {
-          float: right;
-          width: 38px;
-        }
+      & .item-header-right-panel.item-influenced div {
+        float: right;
+        width: 38px;
       }
 
       & .item-influenced div {
@@ -367,7 +364,7 @@ export default {
     background-position-x: center;
     margin-top: 4px;
     margin-bottom: 4px;
-    background-image: url(../../../assets/poe/Item-ui-separators.png);
+    background-image: url(../../assets/Item-ui-separators.png);
   }
 
   .item-stats {
@@ -491,7 +488,7 @@ export default {
   }
 
   .item-influenced div {
-    background-image: url(../../../assets/poe/Influence-icons.png);
+    background-image: url(../../assets/Influence-icons.png);
     background-repeat: no-repeat;
     background-size: 27px;
     height: 25px;

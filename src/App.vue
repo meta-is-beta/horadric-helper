@@ -40,8 +40,9 @@ h1 {
 .poe-demo,
 .poe-demo > div {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   height: 100%;
+  flex-wrap: wrap;
 }
 </style>

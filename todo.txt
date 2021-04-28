@@ -3,7 +3,6 @@
 [x] add alternative to raw data
 [x] refactor how statuses are handled
 [x] add "Split" status
-[] add auto image detection for items from wiki and poedb
 [x] create demos as separate components
 [x] update poe item processor for 3.14
 [x] fix talismans in poe processor
