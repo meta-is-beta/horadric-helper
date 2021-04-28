@@ -47,7 +47,7 @@
 
 <script>
 import PoeItemShowcase from "./poe-item-showcase.vue";
-import processRawData from "@/path-of-exile/data-processors/poe-item-processor.ts";
+import processRawData from "./item-data-processor/item-data-processor.ts";
 import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
@@ -148,24 +148,6 @@ export default {
   }
   .poe-item-showcase-wrapper {
     display: flex;
-  }
-}
-.poe-showcase-label {
-  margin-top: 5px;
-  padding: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: rgba(1, 1, 1, 0.8);
-  border: 1px solid #303030;
-  border-radius: 5px;
-  justify-content: center;
-  line-height: 18px;
-  & div:nth-child(1) {
-    padding-top: 0px;
-    line-height: 20px;
-  }
-  & div:nth-child(2) {
-    padding-bottom: 3px;
   }
 }
 </style>

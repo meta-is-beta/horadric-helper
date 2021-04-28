@@ -58,6 +58,7 @@ const getItemType = (itemClass: String) => {
   if (itemClass.includes("Flask")) return "Flask";
   if (itemClass.includes("Gem")) return "Gem";
   if (itemClass.includes("Currency")) return "Currency";
+  if (itemClass.includes("Maps")) return "Map";
 
   return "Equipment";
 };

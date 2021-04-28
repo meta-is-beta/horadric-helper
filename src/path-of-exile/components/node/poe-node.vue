@@ -113,22 +113,4 @@ export default {
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   }
 }
-.poe-showcase-label {
-  margin-top: 5px;
-  padding: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: rgba(1, 1, 1, 0.8);
-  border: 1px solid #303030;
-  border-radius: 5px;
-  justify-content: center;
-  line-height: 18px;
-  & div:nth-child(1) {
-    padding-top: 0px;
-    line-height: 20px;
-  }
-  & div:nth-child(2) {
-    padding-bottom: 3px;
-  }
-}
 </style>
