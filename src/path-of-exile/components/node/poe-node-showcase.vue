@@ -13,6 +13,7 @@
       <div
         v-for="(descLine, index) in nodeDescription"
         :key="`${index}-desc-line`"
+        :class="getDescriptionClasses(index)"
       >
         {{ descLine }}
       </div>
@@ -28,16 +29,23 @@
 
 <script>
 import PoeNodeImage from "./poe-node-image.vue";
+import poeShowcaseMixin from "./../shared/poe-showcase.mixin";
 
 export default {
   name: "PoeNodeShowcaseTooltip",
   props: {
     node: { type: Object, default: () => {} },
-    iconUrl: { type: String, default: "" },
-    showIcon: { type: Boolean, default: false },
   },
+  mixins: [poeShowcaseMixin],
   components: {
     PoeNodeImage,
+  },
+  methods: {
+    getDescriptionClasses(index) {
+      const classes = this.addDimedClass("description", index, "");
+
+      return classes;
+    },
   },
   computed: {
     nodeName() {
@@ -81,6 +89,10 @@ export default {
 .node-showcase-tooltip-wrapper {
   background-color: black;
   transform: scale(0.8);
+
+  & .dimed-line {
+    color: var(--poe-color-default-dimed) !important;
+  }
 
   & .node-header {
     min-width: 176px;

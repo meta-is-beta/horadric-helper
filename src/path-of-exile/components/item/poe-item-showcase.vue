@@ -19,12 +19,9 @@
       <div
         v-for="(property, index) in itemProperties"
         :key="`${index}-property`"
-      >
-        {{ property.key }}<span v-if="property.value">: </span>
-        <span class="item-property-value" v-if="property.value">{{
-          property.value
-        }}</span>
-      </div>
+        :class="getPropertyClasses(index)"
+        v-html="property"
+      ></div>
       <!-- Item level -->
       <div
         class="item-separator"
@@ -41,7 +38,7 @@
       <div
         v-for="(enchant, index) in itemEnchants"
         :key="`${index}-enchant`"
-        class="item-enchant"
+        :class="getEnchantsClasses(index)"
       >
         {{ enchant }}
       </div>
@@ -50,7 +47,7 @@
       <div
         v-for="(implicit, index) in itemImplicits"
         :key="`${index}-implicit`"
-        class="item-implicit"
+        :class="getImplicitClasses(index)"
       >
         {{ implicit }}
       </div>
@@ -59,7 +56,7 @@
       <div
         v-for="(desciptionLine, index) in item.gemDescription"
         :key="`${index}-gem-desc`"
-        class="gem-description"
+        :class="getGemDescriptionClasses(index)"
       >
         {{ desciptionLine }}
       </div>
@@ -68,7 +65,7 @@
       <div
         v-for="(modifier, index) in itemModifiers"
         :key="`${index}-modifier`"
-        :class="getModifierClasses(modifier)"
+        :class="getModifierClasses(modifier, index)"
       >
         {{ modifier.text }}
       </div>
@@ -91,20 +88,46 @@
 </template>
 
 <script>
+import poeShowcaseMixin from "./../shared/poe-showcase.mixin";
+
 export default {
   name: "PoeItemShowcase",
   props: {
     item: { type: Object, default: () => {} },
-    iconUrl: { type: String, default: "" },
     iconSize: { type: Number, default: 50 },
-    showIcon: { type: Boolean, default: false },
   },
+  mixins: [poeShowcaseMixin],
   methods: {
-    getModifierClasses(modifier) {
+    getPropertyClasses(index) {
+      const classes = this.addDimedClass("properties", index, "");
+
+      return classes;
+    },
+    getEnchantsClasses(index) {
+      let classes = "item-enchant";
+      classes = this.addDimedClass("enchants", index, classes);
+
+      return classes;
+    },
+    getImplicitClasses(index) {
+      let classes = "item-implicit";
+      classes = this.addDimedClass("implicits", index, classes);
+
+      return classes;
+    },
+    getGemDescriptionClasses(index) {
+      let classes = "gem-description";
+      classes = this.addDimedClass("decription", index, classes);
+
+      return classes;
+    },
+    getModifierClasses(modifier, index) {
       let classes = "item-modifier";
       if (modifier.isCrafter) {
         classes += " modifier-crafted";
       }
+
+      classes = this.addDimedClass("modifiers", index, classes);
 
       return classes;
     },
@@ -116,17 +139,13 @@ export default {
     itemProperties() {
       return this.item.properties
         ? this.item.properties.map((line) => {
-            const propertyLine = line.split(":");
-            const property = {
-              key: propertyLine[0].replace(" (augmented)", "").trim(),
-            };
-            if (propertyLine.length > 1) {
-              property.value = propertyLine[1]
-                .replace(" (augmented)", "")
-                .trim();
-            }
-
-            return property;
+            return line
+              .replace(" (augmented)", "")
+              .trim()
+              .replaceAll(
+                /([0-9-%+-]+|([0-9]+)|(Max)|(Min))/gi,
+                "<span class='item-property-value'>$1</span>"
+              );
           })
         : [];
     },
@@ -228,7 +247,7 @@ export default {
     background-color: rgba(0, 0, 0, 1);
 
     & .item-image {
-      margin-top: 12px;
+      margin-top: 4px;
       margin-bottom: 4px;
     }
   }
@@ -317,6 +336,10 @@ export default {
         margin-top: 12px;
       }
     }
+  }
+
+  .dimed-line {
+    color: var(--poe-color-default-dimed) !important;
   }
 
   .modifier-crafted {

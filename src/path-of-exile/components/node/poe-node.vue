@@ -9,6 +9,7 @@
         :node="node"
         :iconUrl="iconSrc"
         :showIcon="showIconInShowcase"
+        :dimedSections="dimedSections"
       />
     </div>
     <div v-else :class="wrapperClassesComputed">
@@ -26,6 +27,7 @@
             :node="node"
             :iconUrl="iconSrc"
             :showIcon="showIconInShowcase"
+            :dimedSections="dimedSections"
           />
         </template>
         <!-- Icon -->
@@ -51,11 +53,11 @@
 <script>
 import PoeNodeShowcase from "./poe-node-showcase.vue";
 import PoeNodeImage from "./poe-node-image.vue";
-import showcaseMixin from "@/shared/mixins/showcase.mixin";
+import mainMixin from "@/shared/mixins/main.mixin";
 
 export default {
   name: "PoeNode",
-  mixins: [showcaseMixin],
+  mixins: [mainMixin],
   components: { PoeNodeShowcase, PoeNodeImage },
   computed: {
     node() {

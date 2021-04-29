@@ -30,7 +30,8 @@
         "displayMode": "icon",
         "labelText": "",
         "showIconInShowcase": true,
-        "iconSize": "md"
+        "iconSize": "md",
+        "dimSections": "modifiers:1,2"
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/8/84/Thief%27s_Trinket_inventory_icon.png",
@@ -55,7 +56,8 @@
       "props": {
         "displayMode": "icon",
         "labelText": "",
-        "showIconInShowcase": true
+        "showIconInShowcase": true,
+        "dimSections": "modifiers:1"
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/c9/Diamond_Flask_inventory_icon.png",
@@ -79,7 +81,7 @@
       "props": {
         "displayMode": "icon",
         "labelText": "",
-        "showIconInShowcase": false
+        "showIconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/aa/Crimson_Jewel_inventory_icon.png",
@@ -116,7 +118,7 @@
       "props": {
         "displayMode": "icon",
         "labelText": "",
-        "showIconInShowcase": false
+        "showIconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/9/97/Martyr_of_Innocence_inventory_icon.png",

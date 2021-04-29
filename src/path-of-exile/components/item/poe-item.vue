@@ -10,6 +10,7 @@
         :iconUrl="iconSrc"
         :showIcon="showIconInShowcase"
         :iconSize="computedIconSize"
+        :dimedSections="dimedSections"
       />
     </div>
     <div v-else :class="wrapperClassesComputed">
@@ -29,6 +30,7 @@
             :iconUrl="iconSrc"
             :showIcon="showIconInShowcase"
             :iconSize="computedIconSize"
+            :dimedSections="dimedSections"
           />
         </template>
         <!-- Icon -->
@@ -48,7 +50,7 @@
 <script>
 import PoeItemShowcase from "./poe-item-showcase.vue";
 import processRawData from "./item-data-processor/item-data-processor.ts";
-import showcaseMixin from "@/shared/mixins/showcase.mixin";
+import mainMixin from "@/shared/mixins/main.mixin";
 
 export default {
   name: "PoeItem",
@@ -58,7 +60,7 @@ export default {
   props: {
     iconSize: { type: String, default: "auto" },
   },
-  mixins: [showcaseMixin],
+  mixins: [mainMixin],
   methods: {
     getIconSize(size) {
       if (size === "auto") {

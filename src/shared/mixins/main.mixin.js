@@ -6,6 +6,7 @@ export default {
     displayMode: { type: String, default: "icon" },
     labelText: { type: String, default: "" },
     showIconInShowcase: { type: Boolean, default: false },
+    dimSections: { type: String, default: "" },
   },
   data() {
     return {
@@ -26,6 +27,23 @@ export default {
     },
     popoverArrowClasses() {
       return "horadric-helper-tooltip-arrow horadric-helper-popover-arrow";
+    },
+    dimedSections() {
+      if (!this.dimSections || this.dimSections.length === 0) {
+        return {};
+      }
+      try {
+        const sections = {};
+        const sectionDirectives = this.dimSections.split(";");
+        sectionDirectives.forEach((directive) => {
+          const directiveComponents = directive.split(":");
+          const sectionName = directiveComponents[0];
+          sections[sectionName] = directiveComponents[1].split(",");
+        });
+        return sections;
+      } catch {
+        return {};
+      }
     },
   },
   mounted() {

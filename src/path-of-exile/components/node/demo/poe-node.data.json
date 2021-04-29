@@ -24,7 +24,8 @@
       "props": {
         "displayMode": "icon",
         "labelText": "",
-        "showIconInShowcase": false
+        "showIconInShowcase": false,
+        "dimSections": "description:3"
       },
       "data": {
         "dataObject": {
