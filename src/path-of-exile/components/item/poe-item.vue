@@ -15,9 +15,10 @@
     </div>
     <div v-else :class="wrapperClassesComputed">
       <v-popover
-        trigger="hover"
+        trigger="hover click"
         placement="auto"
-        :offset="20"
+        :offset="5"
+        hideOnTargetClick
         :popoverClass="popoverClassesComputed"
         :popoverWrapperClass="popoverWrapperClasses"
         :popoverBaseClass="popoverBaseClasses"
