@@ -3,9 +3,9 @@
     {
       "reference": "Acrobatics",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": false
+        "iconInShowcase": false
       },
       "data": {
         "dataObject": {
@@ -22,9 +22,9 @@
     {
       "reference": "Magnifier",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": false,
+        "iconInShowcase": false,
         "dimSections": "description:3"
       },
       "data": {
@@ -43,9 +43,9 @@
     {
       "reference": "Cold damage",
       "props": {
-        "displayMode": "icon",
+        "asText": true,
         "labelText": "",
-        "showIconInShowcase": false
+        "iconInShowcase": false
       },
       "data": {
         "dataObject": {

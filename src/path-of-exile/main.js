@@ -9,9 +9,9 @@ Vue.config.productionTip = false;
 Vue.use(VTooltip);
 Vue.use(vueCustomElement);
 
-let prefix = process.env.VUE_APP_WEB_COMPONENT_PREFIX
-  ? `${process.env.VUE_APP_WEB_COMPONENT_PREFIX}-`
+const prefix = process.env.VUE_APP_WEB_COMPONENT_PREFIX
+  ? `${process.env.VUE_APP_WEB_COMPONENT_PREFIX}`
   : "";
 
-Vue.customElement(`${prefix}poe-item`, PoeItem);
-Vue.customElement(`${prefix}poe-node`, PoeNode);
+Vue.customElement(`${prefix}-poe-item`, PoeItem);
+Vue.customElement(`${prefix}-poe-node`, PoeNode);

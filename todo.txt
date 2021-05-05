@@ -8,3 +8,7 @@
 [x] fix talismans in poe processor
 [x] add currency to poe processor
 [x] make image/icon size generic
+--- 0.6 ---
+[] Add default icon for PoE items and nodes
+[] Make "text" display mode default
+[] Craete config generator as part of demo

@@ -8,7 +8,7 @@
       <poe-node-showcase
         :node="node"
         :iconUrl="iconSrc"
-        :showIcon="showIconInShowcase"
+        :showIcon="iconInShowcase"
         :dimedSections="dimedSections"
       />
     </div>
@@ -27,7 +27,7 @@
           <poe-node-showcase
             :node="node"
             :iconUrl="iconSrc"
-            :showIcon="showIconInShowcase"
+            :showIcon="iconInShowcase"
             :dimedSections="dimedSections"
           />
         </template>

@@ -1154,7 +1154,7 @@
         imageUrl: "",
         labelText: "",
         imageSize: "auto",
-        showIconInShowcase: !1,
+        iconInShowcase: !1,
       },
       M = {
         data: function () {
@@ -1255,7 +1255,7 @@
               : e;
           },
           showTooltipImage: function () {
-            return this.options.showIconInShowcase;
+            return this.options.iconInShowcase;
           },
           linkImageSize: function () {
             return this.getImageSize(this.options.imageSize);
@@ -1284,7 +1284,7 @@
                             attrs: {
                               node: e.node,
                               iconUrl: e.options.iconUrl,
-                              showIcon: e.options.showIconInShowcase,
+                              showIcon: e.options.iconInShowcase,
                             },
                           })
                         : e._e(),
@@ -1314,7 +1314,7 @@
                                     attrs: {
                                       node: e.node,
                                       iconUrl: e.options.iconUrl,
-                                      showIcon: e.options.showIconInShowcase,
+                                      showIcon: e.options.iconInShowcase,
                                     },
                                   })
                                 : e._e(),
@@ -1477,7 +1477,7 @@
         displayMode: "",
         iconUrl: "",
         labelText: "",
-        showIconInShowcase: !1,
+        iconInShowcase: !1,
       },
       Z = {
         data: function () {
@@ -1589,7 +1589,7 @@
                 nodeData: this.nodeData,
                 iconUrl: this.nodeIconUrl,
                 displayMode: this.nodeDisplayMode,
-                showIconInShowcase: this.nodeShowIconInShowcase,
+                iconInShowcase: this.nodeShowIconInShowcase,
                 labelText: this.nodeCustomLabelText,
               });
           },
@@ -1599,7 +1599,7 @@
                 itemData: this.itemData,
                 imageUrl: this.itemImageUrl,
                 displayMode: this.itemDisplayMode,
-                showIconInShowcase: this.itemShowIconInShowcase,
+                iconInShowcase: this.itemShowIconInShowcase,
                 labelText: this.itemCustomLabelText,
                 imageSize: this.itemImageSize,
               });

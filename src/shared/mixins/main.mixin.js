@@ -3,9 +3,11 @@ export default {
     reference: { type: String, default: "" },
     wrapperClass: { type: String, default: "" },
     tooltipWrapperClass: { type: String, default: "" },
-    displayMode: { type: String, default: "icon" },
+    asIcon: { type: Boolean, default: true },
+    asText: { type: Boolean, default: false },
+    asShowcase: { type: Boolean, default: false },
     labelText: { type: String, default: "" },
-    showIconInShowcase: { type: Boolean, default: false },
+    iconInShowcase: { type: Boolean, default: false },
     dimSections: { type: String, default: "" },
   },
   data() {
@@ -16,6 +18,18 @@ export default {
     };
   },
   computed: {
+    displayMode() {
+      if (this.asShowcase) {
+        return "showcase";
+      }
+      if (this.asText) {
+        return "text";
+      }
+      if (this.asIcon) {
+        return "icon";
+      }
+      return "icon";
+    },
     popoverWrapperClasses() {
       return "horadric-helper-wrapper";
     },

@@ -3,9 +3,9 @@
     {
       "reference": "Flammability",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/1/16/Flammability_inventory_icon.png",
@@ -15,9 +15,9 @@
     {
       "reference": "Divergent Multiple Totems Support",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/cd/Multiple_Totems_Support_inventory_icon.png",
@@ -27,9 +27,9 @@
     {
       "reference": "Pandemonium Creed",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true,
+        "iconInShowcase": true,
         "iconSize": "md",
         "dimSections": "modifiers:1,2"
       },
@@ -41,9 +41,9 @@
     {
       "reference": "Plague Charm",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true,
+        "iconInShowcase": true,
         "iconSize": "md"
       },
       "data": {
@@ -54,9 +54,9 @@
     {
       "reference": "Chemist's Diamond Flask of Staunching",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true,
+        "iconInShowcase": true,
         "dimSections": "modifiers:1"
       },
       "data": {
@@ -67,9 +67,9 @@
     {
       "reference": "Rumi's Concoction",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/e/e5/Rumi%27s_Concoction_inventory_icon.png",
@@ -79,9 +79,9 @@
     {
       "reference": "Crimson Jewel",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/aa/Crimson_Jewel_inventory_icon.png",
@@ -91,10 +91,10 @@
     {
       "reference": "Rotund Unset Ring of Haast",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
         "iconSize": "md",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/7/7b/Unset_Ring_inventory_icon.png",
@@ -104,9 +104,10 @@
     {
       "reference": "Woe Road",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true,
+        "dimSections": "enchants:1;modifiers:all;properties:2"
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/29/Hydrascale_Boots_inventory_icon.png",
@@ -116,9 +117,9 @@
     {
       "reference": "Martyr of Innocence",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/9/97/Martyr_of_Innocence_inventory_icon.png",
@@ -128,9 +129,9 @@
     {
       "reference": "Exalted Orb",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/26/Exalted_Orb_inventory_icon.png",
@@ -140,9 +141,9 @@
     {
       "reference": "Deafening Essence of Woe",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/5/5a/Deafening_Essence_of_Woe_inventory_icon.png",
@@ -152,9 +153,9 @@
     {
       "reference": "Titan's Canyon Map of Venom",
       "props": {
-        "displayMode": "icon",
+        "asIcon": true,
         "labelText": "",
-        "showIconInShowcase": true
+        "iconInShowcase": true
       },
       "data": {
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/ce/Lighthouse_Map_%28Ritual%29_inventory_icon.png",
