@@ -14,15 +14,16 @@ export default {
     };
   },
   mounted() {
-    this.nodes.forEach((node) => {
-      window.HoradricHelper.applyConfig(node.reference, node.data);
-    });
+    window.HoradricHelper.applyConfig(this.nodes.map((n) => n.config));
   },
   render: function (h) {
     return (
       <div>
         {this.nodes.map((node, i) => (
-          <PoeNode reference={node.reference} props={{ ...node.props }} />
+          <PoeNode
+            reference={node.config.reference}
+            props={{ ...node.props }}
+          />
         ))}
       </div>
     );

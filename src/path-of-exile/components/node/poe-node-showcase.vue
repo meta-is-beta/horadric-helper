@@ -1,15 +1,15 @@
 <template>
   <div :class="wrapperClasses">
     <!-- Header -->
-    <div class="node-header">
-      <div class="node-header-left" />
-      <div class="node-header-center">
+    <div class="poe-node-header">
+      <div class="poe-node-header-left" />
+      <div class="poe-node-header-center">
         {{ nodeName }}
       </div>
-      <div class="node-header-right" />
+      <div class="poe-node-header-right" />
     </div>
     <!-- Description -->
-    <div class="node-description">
+    <div class="poe-node-description">
       <div
         v-for="(descLine, index) in nodeDescription"
         :key="`${index}-desc-line`"
@@ -29,14 +29,14 @@
 
 <script>
 import PoeNodeImage from "./poe-node-image.vue";
-import poeShowcaseMixin from "./../shared/poe-showcase.mixin";
+import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
   name: "PoeNodeShowcaseTooltip",
   props: {
     node: { type: Object, default: () => {} },
   },
-  mixins: [poeShowcaseMixin],
+  mixins: [showcaseMixin],
   components: {
     PoeNodeImage,
   },
@@ -61,9 +61,9 @@ export default {
       return this.iconUrl && this.showIcon;
     },
     wrapperClasses() {
-      let classes = `node-showcase-tooltip-wrapper`;
+      let classes = `poe-node-wrapper`;
       if (this.nodeType) {
-        classes += ` node-${this.nodeType.toLowerCase()}`;
+        classes += ` poe-node-${this.nodeType.toLowerCase()}`;
       }
 
       return classes;
@@ -74,19 +74,19 @@ export default {
 
 <style lang="scss">
 .poe-node-showcase-popover {
-  .node-showcase-tooltip-wrapper {
+  .poe-node-wrapper {
     border: 0;
     padding: 0px;
   }
 }
 .poe-node-showcase {
-  .node-showcase-tooltip-wrapper {
+  .poe-node-wrapper {
     border: 2px solid #403b2e;
     padding: 2px;
   }
 }
 
-.node-showcase-tooltip-wrapper {
+.poe-node-wrapper {
   background-color: black;
   transform: scale(0.8);
 
@@ -94,7 +94,7 @@ export default {
     color: var(--poe-color-default-dimed) !important;
   }
 
-  & .node-header {
+  & .poe-node-header {
     min-width: 176px;
     height: 73px;
     color: var(--poe-color-node-title);
@@ -102,15 +102,15 @@ export default {
     font-size: 28px;
     white-space: nowrap;
     background-image: url(../../assets/Node-ui-header.png);
-    & .node-header-center {
+    & .poe-node-header-center {
       justify-self: center;
       text-align: center;
       align-self: center;
       min-width: 100px;
       width: 100%;
     }
-    & .node-header-left,
-    & .node-header-right {
+    & .poe-node-header-left,
+    & .poe-node-header-right {
       height: 73px;
       background-image: url(../../assets/Node-ui-header.png);
     }
@@ -118,34 +118,34 @@ export default {
       display: inline-block;
     }
 
-    & .node-header-left-panel {
+    & .poe-node-header-left-panel {
       float: left;
     }
 
-    & .node-header-right-panel {
+    & .poe-node-header-right-panel {
       float: right;
     }
   }
-  & .node-icon {
+  & .poe-node-icon {
     padding-top: 12px;
     padding-bottom: 25px;
   }
-  &.node-basic {
-    & .node-header {
+  &.poe-node-basic {
+    & .poe-node-header {
       background-position-y: -1278px;
-      & .node-header-left,
-      & .node-header-right {
+      & .poe-node-header-left,
+      & .poe-node-header-right {
         width: 89px;
       }
-      & .node-header-left {
+      & .poe-node-header-left {
         background-position-y: -1203px;
       }
-      & .node-header-right {
+      & .poe-node-header-right {
         background-position-y: -1128px;
       }
     }
   }
-  & .node-description {
+  & .poe-node-description {
     padding: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -154,33 +154,33 @@ export default {
     font-size: 18px;
     line-height: 22px;
   }
-  &.node-notable {
-    & .node-header {
+  &.poe-node-notable {
+    & .poe-node-header {
       background-position-y: -377px;
-      & .node-header-left,
-      & .node-header-right {
+      & .poe-node-header-left,
+      & .poe-node-header-right {
         width: 93px;
       }
-      & .node-header-left {
+      & .poe-node-header-left {
         background-position-y: -302px;
       }
-      & .node-header-right {
+      & .poe-node-header-right {
         background-position-y: -227px;
       }
     }
   }
-  &.node-keystone {
-    & .node-header {
+  &.poe-node-keystone {
+    & .poe-node-header {
       color: #e2dedd !important;
       background-position-y: -152px;
-      & .node-header-left,
-      & .node-header-right {
+      & .poe-node-header-left,
+      & .poe-node-header-right {
         width: 66px;
       }
-      & .node-header-left {
+      & .poe-node-header-left {
         background-position-y: -77px;
       }
-      & .node-header-right {
+      & .poe-node-header-right {
         background-position-y: -2px;
       }
     }

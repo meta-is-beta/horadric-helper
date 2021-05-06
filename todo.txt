@@ -9,6 +9,6 @@
 [x] add currency to poe processor
 [x] make image/icon size generic
 --- 0.6 ---
-[] Add default icon for PoE items and nodes
-[] Make "text" display mode default
-[] Craete config generator as part of demo
+[x] Make "text" display mode default
+[x] Fix wrapper classes props
+[x] Change config application method to use objecta and lists of objects

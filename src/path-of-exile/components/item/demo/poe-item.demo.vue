@@ -14,15 +14,16 @@ export default {
     };
   },
   mounted() {
-    this.items.forEach((item) => {
-      window.HoradricHelper.applyConfig(item.reference, item.data);
-    });
+    window.HoradricHelper.applyConfig(this.items.map((i) => i.config));
   },
   render: function (h) {
     return (
       <div>
         {this.items.map((item, i) => (
-          <PoeItem reference={item.reference} props={{ ...item.props }} />
+          <PoeItem
+            reference={item.config.reference}
+            props={{ ...item.props }}
+          />
         ))}
       </div>
     );

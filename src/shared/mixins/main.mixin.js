@@ -1,10 +1,10 @@
 export default {
   props: {
+    classes: { type: String, default: "" },
+    popoverClasses: { type: String, default: "" },
     reference: { type: String, default: "" },
-    wrapperClass: { type: String, default: "" },
-    tooltipWrapperClass: { type: String, default: "" },
-    asIcon: { type: Boolean, default: true },
-    asText: { type: Boolean, default: false },
+    asIcon: { type: Boolean, default: false },
+    asText: { type: Boolean, default: true },
     asShowcase: { type: Boolean, default: false },
     labelText: { type: String, default: "" },
     iconInShowcase: { type: Boolean, default: false },
@@ -15,6 +15,12 @@ export default {
       show: false,
       showcaseData: {},
       iconSrc: "",
+      popoverWrapperClasses: "horadric-helper-wrapper",
+      popoverArrowClasses:
+        "horadric-helper-tooltip-arrow horadric-helper-popover-arrow",
+      popoverInnerClasses:
+        "horadric-helper-tooltip-inner horadric-helper-popover-inner",
+      popoverBaseClasses: "horadric-helper-tooltip horadric-helper-popover",
     };
   },
   computed: {
@@ -22,25 +28,13 @@ export default {
       if (this.asShowcase) {
         return "showcase";
       }
-      if (this.asText) {
-        return "text";
-      }
       if (this.asIcon) {
         return "icon";
       }
-      return "icon";
-    },
-    popoverWrapperClasses() {
-      return "horadric-helper-wrapper";
-    },
-    popoverBaseClasses() {
-      return "horadric-helper-tooltip horadric-helper-popover";
-    },
-    popoverInnerClasses() {
-      return "horadric-helper-tooltip-inner horadric-helper-popover-inner";
-    },
-    popoverArrowClasses() {
-      return "horadric-helper-tooltip-arrow horadric-helper-popover-arrow";
+      if (this.asText) {
+        return "text";
+      }
+      return "text";
     },
     dimedSections() {
       if (!this.dimSections || this.dimSections.length === 0) {
@@ -90,42 +84,54 @@ export default {
 const registerHoradricHelperGlobalObject = () => {
   window.HoradricHelper = window.HoradricHelper || {
     showcases: {},
-    applyConfig(reference, config) {
-      reference = reference.replaceAll(" ", "-");
-      const referencedShowcase = window.HoradricHelper.showcases[reference];
-      if (!referencedShowcase) {
-        return;
-      }
-
-      if (config.rawData) {
-        if (!referencedShowcase.processRawData) {
-          throw new Error(
-            `Raw data processor is not plemented for showcase of type "${referencedShowcase.type}"`
-          );
-        }
-        referencedShowcase.showcaseData = referencedShowcase.processRawData(
-          config.rawData
-        );
-      } else if (config.dataObject) {
-        if (!referencedShowcase.processDataObject) {
-          referencedShowcase.processDataObject = (data) => data;
-        }
-        referencedShowcase.showcaseData = referencedShowcase.processDataObject(
-          config.dataObject
-        );
+    applyConfig(config) {
+      if (Array.isArray(config)) {
+        applyConfigFromArray(config);
       } else {
-        throw new Error("Showcase data not provided");
+        applyConfigFromObject(config);
       }
-
-      referencedShowcase.applyConfigCallbacks.forEach((callback) => {
-        try {
-          callback(referencedShowcase.showcaseData, config.iconSrc);
-        } catch {
-          //no-op
-        }
-      });
     },
   };
 
   return window.HoradricHelper;
+};
+
+const applyConfigFromArray = (configArray) => {
+  configArray.forEach((configObject) => applyConfigFromObject(configObject));
+};
+
+const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
+  reference = reference.replaceAll(" ", "-");
+  const referencedShowcase = window.HoradricHelper.showcases[reference];
+  if (!referencedShowcase) {
+    return;
+  }
+
+  if (rawData) {
+    if (!referencedShowcase.processRawData) {
+      throw new Error(
+        `Raw data processor is not plemented for showcase of type "${referencedShowcase.type}"`
+      );
+    }
+    referencedShowcase.showcaseData = referencedShowcase.processRawData(
+      rawData
+    );
+  } else if (dataObject) {
+    if (!referencedShowcase.processDataObject) {
+      referencedShowcase.processDataObject = (data) => data;
+    }
+    referencedShowcase.showcaseData = referencedShowcase.processDataObject(
+      dataObject
+    );
+  } else {
+    throw new Error("Showcase data not provided");
+  }
+
+  referencedShowcase.applyConfigCallbacks.forEach((callback) => {
+    try {
+      callback(referencedShowcase.showcaseData, iconSrc);
+    } catch {
+      //no-op
+    }
+  });
 };

@@ -1,8 +1,8 @@
 <template>
-  <div v-if="show" class="poe-node-showcase">
+  <div v-if="show" :class="classesComputed">
     <div
       v-if="displayMode.toLowerCase() === `showcase`"
-      :class="wrapperClassesComputed"
+      class="poe-node-showcase-wrapper"
     >
       <!-- Showcase -->
       <poe-node-showcase
@@ -12,7 +12,7 @@
         :dimedSections="dimedSections"
       />
     </div>
-    <div v-else :class="wrapperClassesComputed">
+    <div v-else class="poe-node-showcase-wrapper">
       <v-popover
         trigger="hover click"
         placement="auto"
@@ -64,22 +64,21 @@ export default {
     node() {
       return this.showcaseData;
     },
+    classesComputed() {
+      return `poe-node-showcase ${this.classes}`;
+    },
+    popoverClassesComputed() {
+      return `poe-node-showcase-popover ${this.popoverClasses}`;
+    },
     showCustomLabel() {
       return this.labelText.length > 0;
     },
     labelTextComputed() {
       return this.labelText ? this.labelText : this.node ? this.node.name : "";
     },
-    wrapperClassesComputed() {
-      return `poe-node-showcase-wrapper ${this.wrapperClass}`;
-    },
-    popoverClassesComputed() {
-      return `poe-node-showcase-popover ${this.tooltipWrapperClass}`;
-    },
   },
   showcaseMetadata: {
     type: "poe-node",
-    processDataObject: (data) => data,
   },
 };
 </script>

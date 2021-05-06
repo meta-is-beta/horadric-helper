@@ -1,8 +1,8 @@
 <template>
-  <div v-if="show" class="poe-item-showcase">
+  <div v-if="show" :class="classesComputed">
     <div
       v-if="displayMode.toLowerCase() === `showcase`"
-      :class="wrapperClassesComputed"
+      class="poe-item-showcase-wrapper"
     >
       <!-- Showcase -->
       <poe-item-showcase
@@ -13,7 +13,7 @@
         :dimedSections="dimedSections"
       />
     </div>
-    <div v-else :class="wrapperClassesComputed">
+    <div v-else class="poe-item-showcase-wrapper">
       <v-popover
         trigger="hover click"
         placement="auto"
@@ -93,11 +93,11 @@ export default {
     item() {
       return this.showcaseData;
     },
-    wrapperClassesComputed() {
-      return `poe-item-showcase-wrapper ${this.wrapperClass}`;
+    classesComputed() {
+      return `poe-item-showcase ${this.classes}`;
     },
     popoverClassesComputed() {
-      return `poe-item-showcase-popover ${this.tooltipWrapperClass}`;
+      return `poe-item-showcase-popover ${this.popoverClasses}`;
     },
     labelTextComputed() {
       return this.labelText ? this.labelText : this.item ? this.item.name : "";

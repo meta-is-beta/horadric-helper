@@ -1,13 +1,13 @@
 {
   "nodes": [
     {
-      "reference": "Acrobatics",
       "props": {
         "asIcon": true,
         "labelText": "",
         "iconInShowcase": false
       },
-      "data": {
+      "config": {
+        "reference": "Acrobatics",
         "dataObject": {
           "name": "Acrobatics",
           "type": "Keystone",
@@ -20,14 +20,14 @@
       }
     },
     {
-      "reference": "Magnifier",
       "props": {
         "asIcon": true,
         "labelText": "",
         "iconInShowcase": false,
         "dimSections": "description:3"
       },
-      "data": {
+      "config": {
+        "reference": "Magnifier",
         "dataObject": {
           "name": "Magnifier",
           "type": "Notable",
@@ -43,11 +43,12 @@
     {
       "reference": "Cold damage",
       "props": {
-        "asText": true,
+        "asIcon": true,
         "labelText": "",
         "iconInShowcase": false
       },
-      "data": {
+      "config": {
+        "reference": "Cold damage",
         "dataObject": {
           "name": "Cold damage",
           "type": "basic",

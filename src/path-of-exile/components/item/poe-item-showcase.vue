@@ -5,7 +5,7 @@
       <div :class="leftHeaderPanelClasses">
         <div v-if="item.influences.length > 0" />
       </div>
-      <div class="item-header-center">
+      <div class="poe-item-header-center">
         <div>{{ item.name }}</div>
         <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
       </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <!-- Item stats -->
-    <div class="item-stats">
+    <div class="poe-item-stats">
       <!-- Properties -->
       <div
         v-for="(property, index) in itemProperties"
@@ -24,17 +24,17 @@
       ></div>
       <!-- Item level -->
       <div
-        class="item-separator"
+        class="poe-item-separator"
         v-if="item.level && itemProperties.length > 0"
       ></div>
       <div v-if="item.level">
         Item Level:
-        <span class="item-level-value" v-if="item.level">
+        <span class="poe-item-level-value" v-if="item.level">
           {{ item.level }}
         </span>
       </div>
       <!-- Enchants -->
-      <div class="item-separator" v-if="item.enchants"></div>
+      <div class="poe-item-separator" v-if="item.enchants"></div>
       <div
         v-for="(enchant, index) in itemEnchants"
         :key="`${index}-enchant`"
@@ -43,7 +43,7 @@
         {{ enchant }}
       </div>
       <!-- Implicits -->
-      <div class="item-separator" v-if="item.implicits"></div>
+      <div class="poe-item-separator" v-if="item.implicits"></div>
       <div
         v-for="(implicit, index) in itemImplicits"
         :key="`${index}-implicit`"
@@ -52,7 +52,7 @@
         {{ implicit }}
       </div>
       <!-- Gem description -->
-      <div class="item-separator" v-if="item.gemDescription"></div>
+      <div class="poe-item-separator" v-if="item.gemDescription"></div>
       <div
         v-for="(desciptionLine, index) in item.gemDescription"
         :key="`${index}-gem-desc`"
@@ -61,7 +61,7 @@
         {{ desciptionLine }}
       </div>
       <!-- Modifiers -->
-      <div class="item-separator" v-if="item.modifiers"></div>
+      <div class="poe-item-separator" v-if="item.modifiers"></div>
       <div
         v-for="(modifier, index) in itemModifiers"
         :key="`${index}-modifier`"
@@ -70,15 +70,15 @@
         {{ modifier.text }}
       </div>
       <!-- Corruption -->
-      <div class="item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
+      <div class="poe-item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
       <!-- Mirrored -->
-      <div class="item-mirrored" v-if="itemIsMirrored">Mirrored</div>
+      <div class="poe-item-mirrored" v-if="itemIsMirrored">Mirrored</div>
       <!-- Split -->
-      <div class="item-split" v-if="itemIsSplit">Split</div>
+      <div class="poe-item-split" v-if="itemIsSplit">Split</div>
       <!-- Image -->
-      <div class="item-separator" v-if="showTooltipIcon"></div>
+      <div class="poe-item-separator" v-if="showTooltipIcon"></div>
       <img
-        class="item-image"
+        class="poe-item-image"
         :src="iconUrl"
         v-show="showTooltipIcon"
         :width="iconSize"
@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import poeShowcaseMixin from "./../shared/poe-showcase.mixin";
+import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
   name: "PoeItemShowcase",
@@ -96,7 +96,7 @@ export default {
     item: { type: Object, default: () => {} },
     iconSize: { type: Number, default: 50 },
   },
-  mixins: [poeShowcaseMixin],
+  mixins: [showcaseMixin],
   methods: {
     getPropertyClasses(index) {
       const classes = this.addDimedClass("properties", index, "");
@@ -104,13 +104,13 @@ export default {
       return classes;
     },
     getEnchantsClasses(index) {
-      let classes = "item-enchant";
+      let classes = "poe-item-enchant";
       classes = this.addDimedClass("enchants", index, classes);
 
       return classes;
     },
     getImplicitClasses(index) {
-      let classes = "item-implicit";
+      let classes = "poe-item-implicit";
       classes = this.addDimedClass("implicits", index, classes);
 
       return classes;
@@ -122,7 +122,7 @@ export default {
       return classes;
     },
     getModifierClasses(modifier, index) {
-      let classes = "item-modifier";
+      let classes = "poe-item-modifier";
       if (modifier.isCrafter) {
         classes += " modifier-crafted";
       }
@@ -144,7 +144,7 @@ export default {
               .trim()
               .replaceAll(
                 /([0-9-%+-]+|([0-9]+)|(Max)|(Min))/gi,
-                "<span class='item-property-value'>$1</span>"
+                "<span class='poe-item-property-value'>$1</span>"
               );
           })
         : [];
@@ -177,7 +177,7 @@ export default {
       return !!this.item.statuses.some((s) => s === "split");
     },
     wrapperClasses() {
-      let classes = "item-wrapper";
+      let classes = "poe-item-wrapper";
       if (this.item.rarity) {
         classes += ` ${this.item.rarity.toLowerCase()}-item`;
       }
@@ -185,38 +185,38 @@ export default {
       return classes;
     },
     headerClasses() {
-      let classes = "item-header";
+      let classes = "poe-item-header";
       if (this.item.rarity === "Rare" || this.item.rarity === "Unique") {
-        classes += " item-header-double";
+        classes += " poe-item-header-double";
       } else {
-        classes += " item-header-single";
+        classes += " poe-item-header-single";
       }
 
       return classes;
     },
     leftHeaderPanelClasses() {
-      let classes = "item-header-left-panel";
+      let classes = "poe-item-header-left-panel";
 
       if (this.item.influences.length > 0) {
-        classes += ` item-influenced item-influenced-${this.item.influences[0].toLowerCase()}`;
+        classes += ` poe-item-influenced poe-item-influenced-${this.item.influences[0].toLowerCase()}`;
       }
 
       return classes;
     },
     rightHeaderPanelClasses() {
-      let classes = "item-header-right-panel";
+      let classes = "poe-item-header-right-panel";
 
       if (this.item.influences.length > 0) {
-        classes += " item-influenced";
+        classes += " poe-item-influenced";
       }
 
       if (this.item.influences.length === 1) {
-        classes += ` item-influenced-${this.item.influences[0].toLowerCase()}`;
+        classes += ` poe-item-influenced-${this.item.influences[0].toLowerCase()}`;
         return classes;
       }
 
       if (this.item.influences.length === 2) {
-        classes += ` item-influenced-${this.item.influences[1].toLowerCase()}`;
+        classes += ` poe-item-influenced-${this.item.influences[1].toLowerCase()}`;
         return classes;
       }
 
@@ -228,13 +228,13 @@ export default {
 
 <style lang="scss">
 .poe-item-showcase-popover {
-  .item-wrapper {
+  .poe-item-wrapper {
     border: 0;
     padding: 0px;
   }
 }
 .poe-item-showcase {
-  .item-wrapper {
+  .poe-item-wrapper {
     border: 1px solid white;
     padding: 2px;
   }
@@ -242,17 +242,17 @@ export default {
 
 .poe-item-showcase,
 .poe-item-showcase-popover {
-  .item-wrapper {
+  .poe-item-wrapper {
     min-width: 360px;
     background-color: rgba(0, 0, 0, 1);
 
-    & .item-image {
+    & .poe-item-image {
       margin-top: 4px;
       margin-bottom: 4px;
     }
   }
 
-  .item-header {
+  .poe-item-header {
     white-space: nowrap;
     font-size: 22px;
     width: 100%;
@@ -261,29 +261,29 @@ export default {
       display: inline-block;
     }
 
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       float: left;
     }
 
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       float: right;
     }
 
-    &.item-header-single {
+    &.poe-item-header-single {
       height: 32px;
       background-image: url(../../assets/Item-ui-header-single.png);
 
-      & .item-header-left-panel,
-      & .item-header-right-panel {
+      & .poe-item-header-left-panel,
+      & .poe-item-header-right-panel {
         height: 32px;
         width: 28px;
         background-image: url(../../assets/Item-ui-header-single.png);
       }
-      & .item-influenced div {
+      & .poe-item-influenced div {
         margin-top: 2px;
         display: flex;
       }
-      & .item-header-center {
+      & .poe-item-header-center {
         line-height: 23px;
 
         & div:nth-child(1) {
@@ -292,34 +292,34 @@ export default {
       }
     }
 
-    &.item-header-double {
+    &.poe-item-header-double {
       height: 52px;
       background-image: url(../../assets/Item-ui-header-double.png);
 
-      & .item-header-left-panel,
-      & .item-header-right-panel {
+      & .poe-item-header-left-panel,
+      & .poe-item-header-right-panel {
         background-image: url(../../assets/Item-ui-header-double.png);
         width: 44px;
         height: 52px;
       }
 
-      & .item-header-left-panel.item-influenced div {
+      & .poe-item-header-left-panel.poe-item-influenced div {
         float: left;
         width: 38px;
         margin-left: 6px;
       }
 
-      & .item-header-right-panel.item-influenced div {
+      & .poe-item-header-right-panel.poe-item-influenced div {
         float: right;
         width: 38px;
       }
 
-      & .item-influenced div {
+      & .poe-item-influenced div {
         margin-top: 12px;
         display: flex;
       }
 
-      & .item-header-center {
+      & .poe-item-header-center {
         line-height: 23px;
         height: 52px;
 
@@ -332,7 +332,7 @@ export default {
         }
       }
 
-      & .item-influenced img {
+      & .poe-item-influenced img {
         margin-top: 12px;
       }
     }
@@ -353,35 +353,35 @@ export default {
     color: var(--poe-color-gem);
   }
 
-  .item-property-value,
-  .item-level-value {
+  .poe-item-property-value,
+  .poe-item-level-value {
     color: white;
   }
 
-  .item-implicit,
-  .item-modifier,
-  .item-mirrored,
-  .item-split {
+  .poe-item-implicit,
+  .poe-item-modifier,
+  .poe-item-mirrored,
+  .poe-item-split {
     color: var(--poe-color-augmented);
     white-space: nowrap;
   }
 
-  .item-enchant {
+  .poe-item-enchant {
     color: var(--poe-color-essencemod);
   }
 
-  .item-corrupted {
+  .poe-item-corrupted {
     color: var(--poe-color-corrupted);
   }
 
-  .item-corrupted,
-  .item-mirrored,
-  .item-split {
+  .poe-item-corrupted,
+  .poe-item-mirrored,
+  .poe-item-split {
     margin-top: 6px;
     margin-bottom: 6px;
   }
 
-  .item-separator {
+  .poe-item-separator {
     height: 2px;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -390,151 +390,151 @@ export default {
     background-image: url(../../assets/Item-ui-separators.png);
   }
 
-  .item-stats {
+  .poe-item-stats {
     padding: 16px;
     padding-top: 4px;
     padding-bottom: 4px;
   }
 
   .unique-item {
-    &.item-wrapper {
+    &.poe-item-wrapper {
       border-color: var(--poe-color-unique);
     }
-    & .item-header {
+    & .poe-item-header {
       color: var(--poe-color-unique);
       background-position-y: 106px;
     }
-    & .item-separator {
+    & .poe-item-separator {
       background-position-y: -6px;
     }
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       background-position-y: 160px;
     }
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       background-position-y: 52px;
     }
   }
 
   .rare-item {
-    &.item-wrapper {
+    &.poe-item-wrapper {
       border-color: var(--poe-color-rare);
     }
-    & .item-header {
+    & .poe-item-header {
       color: var(--poe-color-rare);
       background-position-y: -55px;
     }
-    & .item-separator {
+    & .poe-item-separator {
       background-position-y: -4px;
     }
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       background-position-y: -1px;
     }
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       background-position-y: -109px;
     }
   }
 
   .magic-item {
-    &.item-wrapper {
+    &.poe-item-wrapper {
       border-color: var(--poe-color-magic);
     }
-    & .item-header {
+    & .poe-item-header {
       color: var(--poe-color-magic);
       background-position-y: 474px;
     }
-    & .item-separator {
+    & .poe-item-separator {
       background-position-y: -2px;
     }
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       background-position-y: 508px;
     }
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       background-position-y: 440px;
     }
   }
 
   .normal-item {
-    &.item-wrapper {
+    &.poe-item-wrapper {
       border-color: var(--poe-color-normal);
     }
-    & .item-header {
+    & .poe-item-header {
       color: var(--poe-color-normal);
       background-position-y: 578px;
     }
-    & .item-separator {
+    & .poe-item-separator {
       background-position-y: -8px;
     }
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       background-position-y: 612px;
     }
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       background-position-y: 544px;
     }
   }
 
   .gem-item {
-    &.item-wrapper {
+    &.poe-item-wrapper {
       border-color: var(--poe-color-gem);
     }
-    & .item-header {
+    & .poe-item-header {
       color: var(--poe-color-gem);
       background-position-y: 883px;
     }
-    & .item-separator {
+    & .poe-item-separator {
       background-position-y: -10px;
     }
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       background-position-y: 917px;
     }
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       background-position-y: 849px;
     }
   }
 
   .currency-item {
-    &.item-wrapper {
+    &.poe-item-wrapper {
       border-color: var(--poe-color-currency);
     }
-    & .item-header {
+    & .poe-item-header {
       color: var(--poe-color-currency);
       background-position-y: -239px;
     }
-    & .item-separator {
+    & .poe-item-separator {
       background-position-y: -8px;
     }
-    & .item-header-left-panel {
+    & .poe-item-header-left-panel {
       background-position-y: -205px;
     }
-    & .item-header-right-panel {
+    & .poe-item-header-right-panel {
       background-position-y: -273px;
     }
   }
 
-  .item-influenced div {
+  .poe-item-influenced div {
     background-image: url(../../assets/Influence-icons.png);
     background-repeat: no-repeat;
     background-size: 27px;
     height: 25px;
   }
-  .item-influenced-crusader div {
+  .poe-item-influenced-crusader div {
     background-position-y: 0;
   }
-  .item-influenced-warlord div {
+  .poe-item-influenced-warlord div {
     background-position-y: -28px;
   }
-  .item-influenced-hunter div {
+  .poe-item-influenced-hunter div {
     background-position-y: -56px;
   }
-  .item-influenced-redeemer div {
+  .poe-item-influenced-redeemer div {
     background-position-y: -80px;
   }
-  .item-influenced-elder div {
+  .poe-item-influenced-elder div {
     background-position-y: -108px;
   }
-  .item-influenced-shaper div {
+  .poe-item-influenced-shaper div {
     background-position-y: -135px;
   }
-  .item-influenced-replica div {
+  .poe-item-influenced-replica div {
     background-position-y: -163px;
   }
 }
