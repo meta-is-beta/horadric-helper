@@ -110,7 +110,7 @@ export default {
     & .poe-node-header-right-panel {
       width: 59px;
       height: 73px;
-      background-image: url(../../assets/Node-ui-header.png);
+      background-image: inherit;
     }
 
     & div {

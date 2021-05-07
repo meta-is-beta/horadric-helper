@@ -276,7 +276,7 @@ export default {
       & .poe-item-header-right-panel {
         height: 32px;
         width: 28px;
-        background-image: url(../../assets/Item-ui-header-single.png);
+        background-image: inherit;
       }
       & .poe-item-influenced div {
         margin-top: 2px;
@@ -293,7 +293,7 @@ export default {
 
       & .poe-item-header-left-panel,
       & .poe-item-header-right-panel {
-        background-image: url(../../assets/Item-ui-header-double.png);
+        background-image: inherit;
         width: 44px;
         height: 52px;
       }
