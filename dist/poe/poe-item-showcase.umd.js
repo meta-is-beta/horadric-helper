@@ -13454,6 +13454,82 @@ module.exports = equalArrays;
 
 /***/ }),
 
+/***/ "a434":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toInteger = __webpack_require__("a691");
+var toLength = __webpack_require__("50c4");
+var toObject = __webpack_require__("7b0b");
+var arraySpeciesCreate = __webpack_require__("65f0");
+var createProperty = __webpack_require__("8418");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
+
+var max = Math.max;
+var min = Math.min;
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
+
+// `Array.prototype.splice` method
+// https://tc39.es/ecma262/#sec-array.prototype.splice
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
+  splice: function splice(start, deleteCount /* , ...items */) {
+    var O = toObject(this);
+    var len = toLength(O.length);
+    var actualStart = toAbsoluteIndex(start, len);
+    var argumentsLength = arguments.length;
+    var insertCount, actualDeleteCount, A, k, from, to;
+    if (argumentsLength === 0) {
+      insertCount = actualDeleteCount = 0;
+    } else if (argumentsLength === 1) {
+      insertCount = 0;
+      actualDeleteCount = len - actualStart;
+    } else {
+      insertCount = argumentsLength - 2;
+      actualDeleteCount = min(max(toInteger(deleteCount), 0), len - actualStart);
+    }
+    if (len + insertCount - actualDeleteCount > MAX_SAFE_INTEGER) {
+      throw TypeError(MAXIMUM_ALLOWED_LENGTH_EXCEEDED);
+    }
+    A = arraySpeciesCreate(O, actualDeleteCount);
+    for (k = 0; k < actualDeleteCount; k++) {
+      from = actualStart + k;
+      if (from in O) createProperty(A, k, O[from]);
+    }
+    A.length = actualDeleteCount;
+    if (insertCount < actualDeleteCount) {
+      for (k = actualStart; k < len - actualDeleteCount; k++) {
+        from = k + actualDeleteCount;
+        to = k + insertCount;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+      for (k = len; k > len - actualDeleteCount + insertCount; k--) delete O[k - 1];
+    } else if (insertCount > actualDeleteCount) {
+      for (k = len - actualDeleteCount; k > actualStart; k--) {
+        from = k + actualDeleteCount - 1;
+        to = k + insertCount - 1;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+    }
+    for (k = 0; k < insertCount; k++) {
+      O[k + actualStart] = arguments[k + 2];
+    }
+    O.length = len - actualDeleteCount + insertCount;
+    return A;
+  }
+});
+
+
+/***/ }),
+
 /***/ "a454":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21909,7 +21985,11 @@ function _objectSpread2(target) {
 
   return target;
 }
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
+var es_array_splice = __webpack_require__("a434");
+
 // CONCATENATED MODULE: ./src/shared/mixins/main.mixin.js
+
 
 
 
@@ -22002,10 +22082,18 @@ function _objectSpread2(target) {
   mounted: function mounted() {
     this.registerShowcase();
   },
+  beforeDestroy: function beforeDestroy() {
+    this.unregisterShowcase();
+  },
   methods: {
+    applyConfig: function applyConfig(showcaseData, iconSrc) {
+      this.showcaseData = showcaseData;
+      this.iconSrc = iconSrc;
+      this.show = true;
+    },
     registerShowcase: function registerShowcase() {
-      var horadricHelperObject = registerHoradricHelperGlobalObject();
-      var showcases = horadricHelperObject.showcases;
+      var hhObject = registerHoradricHelperGlobalObject();
+      var showcases = hhObject.showcases;
       var reference = this.reference.replaceAll(" ", "-");
 
       if (showcases[reference]) {
@@ -22017,10 +22105,31 @@ function _objectSpread2(target) {
         }, this.$options.showcaseMetadata);
       }
     },
-    applyConfig: function applyConfig(showcaseData, iconSrc) {
-      this.showcaseData = showcaseData;
-      this.iconSrc = iconSrc;
-      this.show = true;
+    unregisterShowcase: function unregisterShowcase() {
+      var hhObject = window.HoradricHelper;
+
+      if (!hhObject) {
+        return;
+      }
+
+      var showcases = hhObject.showcases;
+      var reference = this.reference.replaceAll(" ", "-");
+
+      if (!showcases || !showcases[reference]) {
+        return;
+      }
+
+      var callbackIndex = showcases[reference].applyConfigCallbacks.indexOf(this.applyConfig);
+
+      if (callbackIndex < 0) {
+        return;
+      }
+
+      showcases[reference].applyConfigCallbacks.splice(callbackIndex, 1);
+
+      if (showcases[reference].applyConfigCallbacks.length < 1) {
+        delete showcases[reference];
+      }
     }
   }
 });
@@ -22076,9 +22185,13 @@ var applyConfigFromObject = function applyConfigFromObject(_ref) {
   }
 
   referencedShowcase.applyConfigCallbacks.forEach(function (callback) {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
+
     try {
       callback(referencedShowcase.showcaseData, iconSrc);
-    } catch (_unused2) {//no-op
+    } catch (_unused2) {// no-op
     }
   });
 };

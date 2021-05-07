@@ -57,10 +57,18 @@ export default {
   mounted() {
     this.registerShowcase();
   },
+  beforeDestroy() {
+    this.unregisterShowcase();
+  },
   methods: {
+    applyConfig(showcaseData, iconSrc) {
+      this.showcaseData = showcaseData;
+      this.iconSrc = iconSrc;
+      this.show = true;
+    },
     registerShowcase() {
-      const horadricHelperObject = registerHoradricHelperGlobalObject();
-      const showcases = horadricHelperObject.showcases;
+      const hhObject = registerHoradricHelperGlobalObject();
+      const showcases = hhObject.showcases;
       const reference = this.reference.replaceAll(" ", "-");
 
       if (showcases[reference]) {
@@ -73,10 +81,33 @@ export default {
         };
       }
     },
-    applyConfig(showcaseData, iconSrc) {
-      this.showcaseData = showcaseData;
-      this.iconSrc = iconSrc;
-      this.show = true;
+    unregisterShowcase() {
+      const hhObject = window.HoradricHelper;
+
+      if (!hhObject) {
+        return;
+      }
+
+      const showcases = hhObject.showcases;
+      const reference = this.reference.replaceAll(" ", "-");
+
+      if (!showcases || !showcases[reference]) {
+        return;
+      }
+
+      const callbackIndex = showcases[reference].applyConfigCallbacks.indexOf(
+        this.applyConfig
+      );
+
+      if (callbackIndex < 0) {
+        return;
+      }
+
+      showcases[reference].applyConfigCallbacks.splice(callbackIndex, 1);
+
+      if (showcases[reference].applyConfigCallbacks.length < 1) {
+        delete showcases[reference];
+      }
     },
   },
 };
@@ -103,6 +134,7 @@ const applyConfigFromArray = (configArray) => {
 const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
   reference = reference.replaceAll(" ", "-");
   const referencedShowcase = window.HoradricHelper.showcases[reference];
+
   if (!referencedShowcase) {
     return;
   }
@@ -128,10 +160,13 @@ const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
   }
 
   referencedShowcase.applyConfigCallbacks.forEach((callback) => {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
     try {
       callback(referencedShowcase.showcaseData, iconSrc);
     } catch {
-      //no-op
+      // no-op
     }
   });
 };
