@@ -4,7 +4,26 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": false
+        "iconInShowcase": true
+      },
+      "config": {
+        "reference": "Ancestral Bond",
+        "dataObject": {
+          "name": "Ancestral Bond",
+          "type": "keystone",
+          "description": [
+            "You can't deal Damage with Skills yourself",
+            "+1 to maximum number of Summoned Totems"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/totemmax.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInShowcase": true
       },
       "config": {
         "reference": "Acrobatics",
@@ -23,7 +42,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": false,
+        "iconInShowcase": true,
         "dimSections": "description:3"
       },
       "config": {
@@ -45,7 +64,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": false
+        "iconInShowcase": true
       },
       "config": {
         "reference": "Cold damage",

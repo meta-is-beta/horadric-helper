@@ -103,9 +103,9 @@ export default {
       return this.labelText ? this.labelText : this.item ? this.item.name : "";
     },
     linkClassesComputed() {
-      let classes = `item-link`;
+      let classes = `poe-item-link`;
       if (this.item.rarity) {
-        classes += ` item-link-${this.item.rarity.toLowerCase()}`;
+        classes += ` poe-item-link-${this.item.rarity.toLowerCase()}`;
       }
       return classes;
     },
@@ -133,19 +133,19 @@ export default {
   @include styles.font;
   @include styles.colors;
   display: inline-block;
-  .item-link-unique {
+  .poe-item-link-unique {
     color: var(--poe-color-unique);
   }
-  .item-link-rare {
+  .poe-item-link-rare {
     color: var(--poe-color-rare);
   }
-  .item-link-magic {
+  .poe-item-link-magic {
     color: var(--poe-color-magic);
   }
-  .item-link-normal {
+  .poe-item-link-normal {
     color: var(--poe-color-normal);
   }
-  .item-link-gem {
+  .poe-item-link-gem {
     color: var(--poe-color-gem);
   }
   .poe-item-showcase-wrapper {

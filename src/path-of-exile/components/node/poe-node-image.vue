@@ -13,15 +13,15 @@ export default {
   },
   computed: {
     nodeIconClasses() {
-      return `node-icon ${this.type.toLowerCase()}-node-icon`;
+      return `poe-node-icon poe-${this.type.toLowerCase()}-node-icon`;
     },
   },
 };
 </script>
 
 <style lang="scss">
-.node-icon {
-  &.basic-node-icon {
+.poe-node-icon {
+  &.poe-basic-node-icon {
     & img {
       content: url(../../assets/Basic_passive_frame.png);
       background-size: 35px;
@@ -31,7 +31,7 @@ export default {
       width: 62px;
     }
   }
-  &.notable-node-icon {
+  &.poe-notable-node-icon {
     & img {
       content: url(../../assets/Notable_passive_frame.png);
       background-position-x: 14px;
@@ -41,7 +41,7 @@ export default {
       width: 75px;
     }
   }
-  &.keystone-node-icon {
+  &.poe-keystone-node-icon {
     & img {
       content: url(../../assets/Keystone_passive_frame.png);
       background-position-x: 18px;

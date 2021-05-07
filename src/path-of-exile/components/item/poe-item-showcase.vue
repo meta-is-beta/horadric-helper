@@ -5,7 +5,7 @@
       <div :class="leftHeaderPanelClasses">
         <div v-if="item.influences.length > 0" />
       </div>
-      <div class="poe-item-header-center">
+      <div class="poe-item-header-center-panel">
         <div>{{ item.name }}</div>
         <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
       </div>
@@ -247,8 +247,7 @@ export default {
     background-color: rgba(0, 0, 0, 1);
 
     & .poe-item-image {
-      margin-top: 4px;
-      margin-bottom: 4px;
+      margin: 4px;
     }
   }
 
@@ -283,12 +282,8 @@ export default {
         margin-top: 2px;
         display: flex;
       }
-      & .poe-item-header-center {
-        line-height: 23px;
-
-        & div:nth-child(1) {
-          margin-top: 4px;
-        }
+      & .poe-item-header-center-panel {
+        line-height: 31px;
       }
     }
 
@@ -319,16 +314,11 @@ export default {
         display: flex;
       }
 
-      & .poe-item-header-center {
-        line-height: 23px;
-        height: 52px;
+      & .poe-item-header-center-panel {
+        line-height: 25px;
 
         & div {
           display: block;
-        }
-
-        & div:nth-child(1) {
-          margin-top: 3px;
         }
       }
 

@@ -2,11 +2,11 @@
   <div :class="wrapperClasses">
     <!-- Header -->
     <div class="poe-node-header">
-      <div class="poe-node-header-left" />
-      <div class="poe-node-header-center">
+      <div class="poe-node-header-left-panel" />
+      <div class="poe-node-header-center-panel">
         {{ nodeName }}
       </div>
-      <div class="poe-node-header-right" />
+      <div class="poe-node-header-right-panel" />
     </div>
     <!-- Description -->
     <div class="poe-node-description">
@@ -98,22 +98,21 @@ export default {
     min-width: 176px;
     height: 73px;
     color: var(--poe-color-node-title);
-    display: flex;
     font-size: 28px;
     white-space: nowrap;
     background-image: url(../../assets/Node-ui-header.png);
-    & .poe-node-header-center {
-      justify-self: center;
-      text-align: center;
-      align-self: center;
-      min-width: 100px;
-      width: 100%;
+
+    & .poe-node-header-center-panel {
+      line-height: 73px;
     }
-    & .poe-node-header-left,
-    & .poe-node-header-right {
+
+    & .poe-node-header-left-panel,
+    & .poe-node-header-right-panel {
+      width: 59px;
       height: 73px;
       background-image: url(../../assets/Node-ui-header.png);
     }
+
     & div {
       display: inline-block;
     }
@@ -127,20 +126,15 @@ export default {
     }
   }
   & .poe-node-icon {
-    padding-top: 12px;
-    padding-bottom: 25px;
+    padding-bottom: 14px;
   }
   &.poe-node-basic {
     & .poe-node-header {
       background-position-y: -1278px;
-      & .poe-node-header-left,
-      & .poe-node-header-right {
-        width: 89px;
-      }
-      & .poe-node-header-left {
+      & .poe-node-header-left-panel {
         background-position-y: -1203px;
       }
-      & .poe-node-header-right {
+      & .poe-node-header-right-panel {
         background-position-y: -1128px;
       }
     }
@@ -157,14 +151,10 @@ export default {
   &.poe-node-notable {
     & .poe-node-header {
       background-position-y: -377px;
-      & .poe-node-header-left,
-      & .poe-node-header-right {
-        width: 93px;
-      }
-      & .poe-node-header-left {
+      & .poe-node-header-left-panel {
         background-position-y: -302px;
       }
-      & .poe-node-header-right {
+      & .poe-node-header-right-panel {
         background-position-y: -227px;
       }
     }
@@ -173,14 +163,10 @@ export default {
     & .poe-node-header {
       color: #e2dedd !important;
       background-position-y: -152px;
-      & .poe-node-header-left,
-      & .poe-node-header-right {
-        width: 66px;
-      }
-      & .poe-node-header-left {
+      & .poe-node-header-left-panel {
         background-position-y: -77px;
       }
-      & .poe-node-header-right {
+      & .poe-node-header-right-panel {
         background-position-y: -2px;
       }
     }

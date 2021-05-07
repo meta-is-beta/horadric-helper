@@ -45,7 +45,7 @@
           </div>
         </div>
         <!-- Text -->
-        <span v-else class="node-link">{{ labelTextComputed }}</span>
+        <span v-else class="poe-node-link">{{ labelTextComputed }}</span>
       </v-popover>
     </div>
   </div>
@@ -89,6 +89,10 @@ export default {
 .poe-node-showcase-popover {
   z-index: 10000;
   max-width: 1000px;
+  .poe-node-wrapper {
+    background-color: black;
+    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .poe-node-showcase-popover,
@@ -102,14 +106,8 @@ export default {
     line-height: 12px;
     font-size: 12px;
   }
-  .node-link {
+  .poe-node-link {
     color: var(--poe-color-node-title);
-  }
-}
-.poe-node-showcase-popover {
-  .node-showcase-tooltip-wrapper {
-    background-color: black;
-    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   }
 }
 </style>
