@@ -127,7 +127,7 @@ export default {
     }
   }
   & .poe-node-icon {
-    padding-bottom: 14px;
+    padding-bottom: 16px;
   }
   &.poe-node-basic {
     & .poe-node-header {
