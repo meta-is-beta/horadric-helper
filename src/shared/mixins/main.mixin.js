@@ -60,6 +60,28 @@ export default {
   beforeDestroy() {
     this.unregisterShowcase();
   },
+  watch: {
+    reference: {
+      immediate: true,
+      handler: function (value) {
+        const hhObject = window.HoradricHelper;
+        if (
+          !hhObject ||
+          !hhObject.showcases ||
+          !hhObject.showcases[value] ||
+          !hhObject.showcases[value].showcaseData ||
+          !Object.keys(hhObject.showcases[value].showcaseData).length
+        ) {
+          return;
+        }
+
+        this.applyConfig(
+          hhObject.showcases[value].showcaseData,
+          hhObject.showcases[value].iconSrc
+        );
+      },
+    },
+  },
   methods: {
     applyConfig(showcaseData, iconSrc) {
       this.showcaseData = showcaseData;
@@ -69,7 +91,7 @@ export default {
     registerShowcase() {
       const hhObject = registerHoradricHelperGlobalObject();
       const showcases = hhObject.showcases;
-      const reference = this.reference.replaceAll(" ", "-");
+      const reference = this.reference;
 
       if (showcases[reference]) {
         showcases[reference].applyConfigCallbacks.push(this.applyConfig);
@@ -89,7 +111,7 @@ export default {
       }
 
       const showcases = hhObject.showcases;
-      const reference = this.reference.replaceAll(" ", "-");
+      const reference = this.reference;
 
       if (!showcases || !showcases[reference]) {
         return;
@@ -132,7 +154,6 @@ const applyConfigFromArray = (configArray) => {
 };
 
 const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
-  reference = reference.replaceAll(" ", "-");
   const referencedShowcase = window.HoradricHelper.showcases[reference];
 
   if (!referencedShowcase) {
@@ -158,6 +179,8 @@ const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
   } else {
     throw new Error("Showcase data not provided");
   }
+
+  referencedShowcase.iconSrc = iconSrc;
 
   referencedShowcase.applyConfigCallbacks.forEach((callback) => {
     if (!callback || typeof callback !== "function") {

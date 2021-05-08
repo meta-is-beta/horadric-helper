@@ -21985,6 +21985,7 @@ var es_array_splice = __webpack_require__("a434");
 
 
 
+
 /* harmony default export */ var main_mixin = ({
   props: {
     classes: {
@@ -22076,6 +22077,20 @@ var es_array_splice = __webpack_require__("a434");
   beforeDestroy: function beforeDestroy() {
     this.unregisterShowcase();
   },
+  watch: {
+    reference: {
+      immediate: true,
+      handler: function handler(value) {
+        var hhObject = window.HoradricHelper;
+
+        if (!hhObject || !hhObject.showcases || !hhObject.showcases[value] || !hhObject.showcases[value].showcaseData || !Object.keys(hhObject.showcases[value].showcaseData).length) {
+          return;
+        }
+
+        this.applyConfig(hhObject.showcases[value].showcaseData, hhObject.showcases[value].iconSrc);
+      }
+    }
+  },
   methods: {
     applyConfig: function applyConfig(showcaseData, iconSrc) {
       this.showcaseData = showcaseData;
@@ -22085,7 +22100,7 @@ var es_array_splice = __webpack_require__("a434");
     registerShowcase: function registerShowcase() {
       var hhObject = registerHoradricHelperGlobalObject();
       var showcases = hhObject.showcases;
-      var reference = this.reference.replaceAll(" ", "-");
+      var reference = this.reference;
 
       if (showcases[reference]) {
         showcases[reference].applyConfigCallbacks.push(this.applyConfig);
@@ -22104,7 +22119,7 @@ var es_array_splice = __webpack_require__("a434");
       }
 
       var showcases = hhObject.showcases;
-      var reference = this.reference.replaceAll(" ", "-");
+      var reference = this.reference;
 
       if (!showcases || !showcases[reference]) {
         return;
@@ -22150,7 +22165,6 @@ var applyConfigFromObject = function applyConfigFromObject(_ref) {
       rawData = _ref.rawData,
       dataObject = _ref.dataObject,
       iconSrc = _ref.iconSrc;
-  reference = reference.replaceAll(" ", "-");
   var referencedShowcase = window.HoradricHelper.showcases[reference];
 
   if (!referencedShowcase) {
@@ -22175,6 +22189,7 @@ var applyConfigFromObject = function applyConfigFromObject(_ref) {
     throw new Error("Showcase data not provided");
   }
 
+  referencedShowcase.iconSrc = iconSrc;
   referencedShowcase.applyConfigCallbacks.forEach(function (callback) {
     if (!callback || typeof callback !== "function") {
       return;

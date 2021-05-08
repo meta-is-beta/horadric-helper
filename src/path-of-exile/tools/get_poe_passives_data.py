@@ -8,15 +8,13 @@ import requests
 
 JSON_START_TOKEN = 'var passiveSkillTreeData = {'
 JSON_END_TOKEN = '};'
-CACHE_FILENAME = 'node_icon_mapping.json'
 
 
 def _fetch_passive_tree_page_html() -> str:
     r = requests.get('https://www.pathofexile.com/passive-skill-tree',
                      headers={
-                         'User-Agent':
-                         'Meta_Is_Beta passive icon lookup by name script',
-                         'From': 'Meta_Is_Beta@Meta_Is_Beta.com'
+                         'User-Agent': 'Meta_Is_Beta passives lookup script',
+                         'From': 'Meta.Is.Beta@gmail.com'
                      })
     r.raise_for_status()
     return r.text
@@ -32,30 +30,45 @@ def _extract_passive_skill_tree_data(html: str) -> Dict[str, Any]:
     return json.loads('{' + js_variable_contents + '}')
 
 
-def get_icon_mapping() -> Dict[str, str]:
-    try:
-        # Load from cache file if possible
-        with open(CACHE_FILENAME, 'rt') as fdi:
-            return json.load(fdi)
-    except FileNotFoundError:
-        # Fetch the latest skill tree, build the mapping then cache to file
-        tree_data = _extract_passive_skill_tree_data(
-            _fetch_passive_tree_page_html())
-        name_to_icon_mapping = {
-            node['name']: node['icon']
-            for node in tree_data['nodes'].values()
-            if 'name' in node and 'icon' in node
-        }
-        with open(CACHE_FILENAME, 'wt') as fdo:
-            json.dump(name_to_icon_mapping, fdo, indent=2)
-        return name_to_icon_mapping
+def generate_node_mapping() -> Dict[str, str]:
+    tree_data = _extract_passive_skill_tree_data(
+        _fetch_passive_tree_page_html())
+
+    nodes = []
+
+    for node in tree_data['nodes'].values():
+        node_mapping = {}
+
+        if "name" in node and "stats" in node and "icon" in node:
+            node_mapping = {
+                "reference": node["name"],
+                "dataObject": {
+                    "name": node["name"],
+                    "description": node["stats"]
+                },
+                "iconSrc": "https://web.poecdn.com/image/" + node["icon"]
+            }
+
+            nodeType = ""
+            if "ascendancyName" in node:
+                nodeType += "ascendancy "
+            if "isNotable" in node:
+                nodeType += "notable"
+            elif "isKeystone" in node:
+                nodeType += "keystone"
+            else:
+                nodeType += "basic"
+
+            node_mapping["dataObject"]["type"] = nodeType
+
+            nodes.append(node_mapping)
+
+    nodesObj = {"nodes": nodes}
+
+    with open("node_mapping.json", 'wt') as fdo:
+        json.dump(nodesObj, fdo, indent=2)
+    return nodesObj
 
 
 if __name__ == '__main__':
-    icon_mapping = get_icon_mapping()
-    assert icon_mapping.get('Chaos Innoculation') is None
-    assert icon_mapping.get('Chaos Inoculation').endswith(
-        'KeystoneChaosInoculation.png')
-    assert icon_mapping.get('Fettle').endswith(
-        'IncreasedMaximumLifeNotable.png')
-    assert icon_mapping.get('Annihilation').endswith('Annihilation.png')
+    generate_node_mapping()
