@@ -22100,7 +22100,7 @@ var es_array_splice = __webpack_require__("a434");
     registerShowcase: function registerShowcase() {
       var hhObject = registerHoradricHelperGlobalObject();
       var showcases = hhObject.showcases;
-      var reference = this.reference;
+      var reference = this.reference.replaceAll(" ", "-");
 
       if (showcases[reference]) {
         showcases[reference].applyConfigCallbacks.push(this.applyConfig);
@@ -22119,7 +22119,7 @@ var es_array_splice = __webpack_require__("a434");
       }
 
       var showcases = hhObject.showcases;
-      var reference = this.reference;
+      var reference = this.reference.replaceAll(" ", "-");
 
       if (!showcases || !showcases[reference]) {
         return;
@@ -22165,6 +22165,7 @@ var applyConfigFromObject = function applyConfigFromObject(_ref) {
       rawData = _ref.rawData,
       dataObject = _ref.dataObject,
       iconSrc = _ref.iconSrc;
+  reference = reference.replaceAll(" ", "-");
   var referencedShowcase = window.HoradricHelper.showcases[reference];
 
   if (!referencedShowcase) {

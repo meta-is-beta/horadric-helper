@@ -91,7 +91,7 @@ export default {
     registerShowcase() {
       const hhObject = registerHoradricHelperGlobalObject();
       const showcases = hhObject.showcases;
-      const reference = this.reference;
+      const reference = this.reference.replaceAll(" ", "-");
 
       if (showcases[reference]) {
         showcases[reference].applyConfigCallbacks.push(this.applyConfig);
@@ -111,7 +111,7 @@ export default {
       }
 
       const showcases = hhObject.showcases;
-      const reference = this.reference;
+      const reference = this.reference.replaceAll(" ", "-");
 
       if (!showcases || !showcases[reference]) {
         return;
@@ -154,6 +154,7 @@ const applyConfigFromArray = (configArray) => {
 };
 
 const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
+  reference = reference.replaceAll(" ", "-");
   const referencedShowcase = window.HoradricHelper.showcases[reference];
 
   if (!referencedShowcase) {
