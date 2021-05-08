@@ -41,6 +41,7 @@ def generate_node_mapping() -> Dict[str, str]:
 
         if "name" in node and "stats" in node and "icon" in node:
             node_mapping = {
+                "reference": node["name"],
                 "dataObject": {
                     "name": node["name"],
                     "description": node["stats"]
