@@ -65,7 +65,22 @@ export default {
       return this.showcaseData;
     },
     classesComputed() {
-      return `poe-node-showcase ${this.classes}`;
+      let classes = `poe-node-showcase ${this.classes}`;
+
+      switch (this.displayMode) {
+        case "showcase":
+          classes += " poe-node-display-showcase";
+          break;
+        case "icon":
+          classes += " poe-node-display-icon";
+          break;
+        case "text":
+        default:
+          classes += " poe-node-display-text";
+          break;
+      }
+
+      return classes;
     },
     popoverClassesComputed() {
       return `poe-node-showcase-popover ${this.popoverClasses}`;

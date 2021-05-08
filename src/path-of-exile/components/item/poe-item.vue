@@ -94,7 +94,22 @@ export default {
       return this.showcaseData;
     },
     classesComputed() {
-      return `poe-item-showcase ${this.classes}`;
+      let classes = `poe-item-showcase ${this.classes}`;
+
+      switch (this.displayMode) {
+        case "showcase":
+          classes += " poe-item-display-showcase";
+          break;
+        case "icon":
+          classes += " poe-item-display-icon";
+          break;
+        case "text":
+        default:
+          classes += " poe-item-display-text";
+          break;
+      }
+
+      return classes;
     },
     popoverClassesComputed() {
       return `poe-item-showcase-popover ${this.popoverClasses}`;

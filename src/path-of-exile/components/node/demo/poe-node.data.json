@@ -21,7 +21,7 @@
     },
     {
       "props": {
-        "asShowcase": true,
+        "asIcon": true,
         "labelText": "",
         "iconInShowcase": true
       },
@@ -82,7 +82,7 @@
     {
       "reference": "Pursuit of Faith",
       "props": {
-        "asShowcase": true,
+        "asIcon": true,
         "labelText": "",
         "iconInShowcase": true
       },
