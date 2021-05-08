@@ -41,7 +41,6 @@ def generate_node_mapping() -> Dict[str, str]:
 
         if "name" in node and "stats" in node and "icon" in node:
             node_mapping = {
-                "reference": node["name"],
                 "dataObject": {
                     "name": node["name"],
                     "description": node["stats"]
@@ -65,7 +64,7 @@ def generate_node_mapping() -> Dict[str, str]:
 
     nodesObj = {"nodes": nodes}
 
-    with open("node_mapping.json", 'wt') as fdo:
+    with open("passive_node_data.json", 'wt') as fdo:
         json.dump(nodesObj, fdo, indent=2)
     return nodesObj
 
