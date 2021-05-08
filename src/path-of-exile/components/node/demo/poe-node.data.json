@@ -53,7 +53,7 @@
           "description": [
             "10% increased Area of Effect",
             "10% increased Area Damage",
-            "+10% to Critical Strike Multiplier "
+            "+10% to Critical Strike Multiplier"
           ]
         },
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png"
@@ -77,6 +77,47 @@
           ]
         },
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/a1/ColdDamagenode_passive_skill_icon.png"
+      }
+    },
+    {
+      "reference": "Pursuit of Faith",
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInShowcase": true
+      },
+      "config": {
+        "reference": "Pursuit of Faith",
+        "dataObject": {
+          "name": "Pursuit of Faith",
+          "type": "ascendancy Notable",
+          "description": [
+            "100% increased Totem Duration",
+            "+1 to maximum number of Summoned Totems",
+            "100% increased Totem Placement speed"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Hierophant/SpiritualEmpowerment.png"
+      }
+    },
+    {
+      "reference": "Cold damage",
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInShowcase": true
+      },
+      "config": {
+        "reference": "Energy Shield, Power Charge Duration",
+        "dataObject": {
+          "name": "Energy Shield, Power Charge Duration",
+          "type": "ascendancy basic",
+          "description": [
+            "6% increased maximum Energy Shield",
+            "15% increased Power Charge Duration"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Occultist/IncreasedEnergyShieldCriticalStrikeChance.png"
       }
     }
   ]

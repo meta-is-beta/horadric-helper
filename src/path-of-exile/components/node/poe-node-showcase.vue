@@ -63,7 +63,7 @@ export default {
     wrapperClasses() {
       let classes = `poe-node-wrapper`;
       if (this.nodeType) {
-        classes += ` poe-node-${this.nodeType.toLowerCase()}`;
+        classes += ` poe-node-${this.nodeType.replace(" ", "-").toLowerCase()}`;
       }
 
       return classes;
@@ -89,6 +89,7 @@ export default {
 .poe-node-wrapper {
   background-color: black;
   transform: scale(0.8);
+  min-width: 360px;
 
   & .dimed-line {
     color: var(--poe-color-default-dimed) !important;
@@ -168,6 +169,18 @@ export default {
       }
       & .poe-node-header-right-panel {
         background-position-y: -2px;
+      }
+    }
+  }
+  &.poe-node-ascendancy-notable,
+  &.poe-node-ascendancy-basic {
+    & .poe-node-header {
+      background-position-y: -827px;
+      & .poe-node-header-left-panel {
+        background-position-y: -677px;
+      }
+      & .poe-node-header-right-panel {
+        background-position-y: -752px;
       }
     }
   }
