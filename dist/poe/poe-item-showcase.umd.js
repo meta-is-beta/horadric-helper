@@ -22113,13 +22113,18 @@ var es_array_splice = __webpack_require__("a434");
     reference: {
       immediate: true,
       handler: function handler(value) {
-        var hhObject = window.HoradricHelper;
-
-        if (!hhObject || !hhObject.showcases || !hhObject.showcases[value] || !hhObject.showcases[value].showcaseData || !Object.keys(hhObject.showcases[value].showcaseData).length) {
+        if (!value) {
           return;
         }
 
-        this.applyConfig(hhObject.showcases[value].showcaseData, hhObject.showcases[value].iconSrc);
+        var hhObject = window.HoradricHelper;
+        var reference = value.replaceAll(" ", "-");
+
+        if (!hhObject || !hhObject.showcases || !hhObject.showcases[reference] || !hhObject.showcases[reference].showcaseData || !Object.keys(hhObject.showcases[reference].showcaseData).length) {
+          return;
+        }
+
+        this.applyConfig(hhObject.showcases[reference].showcaseData, hhObject.showcases[reference].iconSrc);
       }
     }
   },

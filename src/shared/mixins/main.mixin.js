@@ -65,20 +65,26 @@ export default {
     reference: {
       immediate: true,
       handler: function (value) {
+        if (!value) {
+          return;
+        }
+
         const hhObject = window.HoradricHelper;
+        const reference = value.replaceAll(" ", "-");
+
         if (
           !hhObject ||
           !hhObject.showcases ||
-          !hhObject.showcases[value] ||
-          !hhObject.showcases[value].showcaseData ||
-          !Object.keys(hhObject.showcases[value].showcaseData).length
+          !hhObject.showcases[reference] ||
+          !hhObject.showcases[reference].showcaseData ||
+          !Object.keys(hhObject.showcases[reference].showcaseData).length
         ) {
           return;
         }
 
         this.applyConfig(
-          hhObject.showcases[value].showcaseData,
-          hhObject.showcases[value].iconSrc
+          hhObject.showcases[reference].showcaseData,
+          hhObject.showcases[reference].iconSrc
         );
       },
     },
