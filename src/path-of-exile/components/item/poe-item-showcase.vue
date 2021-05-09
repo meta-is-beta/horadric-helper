@@ -260,6 +260,7 @@ export default {
 
     & .poe-item-icon {
       margin: 4px;
+      margin-top: 8px;
     }
   }
 
@@ -395,7 +396,7 @@ export default {
   .poe-item-stats {
     padding: 16px;
     padding-top: 4px;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
   }
 
   .unique-item {
