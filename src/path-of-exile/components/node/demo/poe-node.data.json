@@ -3,8 +3,10 @@
     {
       "props": {
         "asIcon": true,
+        "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInShowcase": false,
+        "iconBesideShowcase": true
       },
       "config": {
         "reference": "Ancestral Bond",

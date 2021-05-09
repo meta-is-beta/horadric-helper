@@ -1,8 +1,17 @@
 export default {
   props: {
     iconUrl: { type: String, default: "" },
-    showIcon: { type: Boolean, default: false },
+    showIconInside: { type: Boolean, default: false },
+    showIconOutside: { type: Boolean, default: false },
     dimedSections: { type: Object, default: () => {} },
+  },
+  computed: {
+    shouldShowIconInside() {
+      return this.showIconInside && this.iconUrl;
+    },
+    shouldShowIconOutside() {
+      return this.showIconOutside && this.iconUrl;
+    },
   },
   methods: {
     addDimedClass(sectionName, index, classes) {

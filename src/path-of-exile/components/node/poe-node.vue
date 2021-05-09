@@ -1,14 +1,12 @@
 <template>
   <div v-if="show" :class="classesComputed">
-    <div
-      v-if="displayMode.toLowerCase() === `showcase`"
-      class="poe-node-showcase-wrapper"
-    >
+    <div v-if="displayMode === `showcase`" class="poe-node-showcase-wrapper">
       <!-- Showcase -->
       <poe-node-showcase
         :node="node"
         :iconUrl="iconSrc"
-        :showIcon="iconInShowcase"
+        :showIconInside="iconInShowcase"
+        :showIconOutside="iconBesideShowcase"
         :dimedSections="dimedSections"
       />
     </div>
@@ -27,12 +25,13 @@
           <poe-node-showcase
             :node="node"
             :iconUrl="iconSrc"
-            :showIcon="iconInShowcase"
+            :showIconInside="iconInShowcase"
+            :showIconOutside="iconBesideShowcase"
             :dimedSections="dimedSections"
           />
         </template>
         <!-- Icon -->
-        <div v-if="displayMode.toLowerCase() === `icon`">
+        <div v-if="displayMode === `icon`">
           <poe-node-image :type="node.type" :iconUrl="iconSrc" />
           <div class="poe-showcase-label" v-if="!showCustomLabel">
             <div>{{ node.name }}</div>

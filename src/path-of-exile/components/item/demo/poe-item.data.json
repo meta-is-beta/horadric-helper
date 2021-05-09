@@ -2,7 +2,8 @@
   "items": [
     {
       "props": {
-        "asIcon": true,
+        "asIcon": false,
+        "asShowcase": true,
         "labelText": "",
         "iconInShowcase": true
       },
@@ -116,9 +117,11 @@
     },
     {
       "props": {
-        "asIcon": true,
+        "asText": false,
+        "asIcon": false,
+        "asShowcase": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconBesideShowcase": false
       },
       "config": {
         "reference": "Martyr of Innocence",

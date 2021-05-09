@@ -1,29 +1,38 @@
 <template>
-  <div :class="wrapperClasses">
-    <!-- Header -->
-    <div class="poe-node-header">
-      <div class="poe-node-header-left-panel" />
-      <div class="poe-node-header-center-panel">
-        {{ nodeName }}
-      </div>
-      <div class="poe-node-header-right-panel" />
-    </div>
-    <!-- Description -->
-    <div class="poe-node-description">
-      <div
-        v-for="(descLine, index) in nodeDescription"
-        :key="`${index}-desc-line`"
-        :class="getDescriptionClasses(index)"
-      >
-        {{ descLine }}
-      </div>
-    </div>
-    <!-- Icon -->
+  <div style="display: flex; transform: scale(0.8)">
+    <!-- Outside Icon -->
     <poe-node-image
-      v-if="showTooltipIcon"
+      class="poe-node-icon-beside-showcase"
+      v-if="shouldShowIconOutside"
       :type="nodeType"
       :iconUrl="this.iconUrl"
     />
+    <div :class="wrapperClasses">
+      <!-- Header -->
+      <div class="poe-node-header">
+        <div class="poe-node-header-left-panel" />
+        <div class="poe-node-header-center-panel">
+          {{ nodeName }}
+        </div>
+        <div class="poe-node-header-right-panel" />
+      </div>
+      <!-- Description -->
+      <div class="poe-node-description">
+        <div
+          v-for="(descLine, index) in nodeDescription"
+          :key="`${index}-desc-line`"
+          :class="getDescriptionClasses(index)"
+        >
+          {{ descLine }}
+        </div>
+      </div>
+      <!-- Inside Icon -->
+      <poe-node-image
+        v-if="shouldShowIconInside"
+        :type="nodeType"
+        :iconUrl="this.iconUrl"
+      />
+    </div>
   </div>
 </template>
 
@@ -57,9 +66,6 @@ export default {
     nodeDescription() {
       return this.node ? this.node.description : [];
     },
-    showTooltipIcon() {
-      return this.iconUrl && this.showIcon;
-    },
     wrapperClasses() {
       let classes = `poe-node-wrapper`;
       if (this.nodeType) {
@@ -73,6 +79,11 @@ export default {
 </script>
 
 <style lang="scss">
+.poe-node-icon-beside-showcase {
+  align-self: flex-start;
+  object-fit: contain;
+  margin-right: 12px;
+}
 .poe-node-showcase-popover {
   .poe-node-wrapper {
     border: 0;
@@ -88,7 +99,6 @@ export default {
 
 .poe-node-wrapper {
   background-color: black;
-  transform: scale(0.8);
   min-width: 360px;
 
   & .dimed-line {

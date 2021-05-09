@@ -1,88 +1,98 @@
 <template>
-  <div :class="wrapperClasses">
-    <!-- Header -->
-    <div :class="headerClasses">
-      <div :class="leftHeaderPanelClasses">
-        <div v-if="item.influences.length > 0" />
+  <div style="display: flex">
+    <!-- Outside Icon -->
+    <img
+      class="poe-item-icon poe-item-icon-beside-showcase"
+      :src="iconUrl"
+      v-show="shouldShowIconOutside"
+      :width="iconSize"
+      height="auto"
+    />
+    <div :class="wrapperClasses">
+      <!-- Header -->
+      <div :class="headerClasses">
+        <div :class="leftHeaderPanelClasses">
+          <div v-if="item.influences.length > 0" />
+        </div>
+        <div class="poe-item-header-center-panel">
+          <div>{{ item.name }}</div>
+          <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
+        </div>
+        <div :class="rightHeaderPanelClasses">
+          <div v-if="item.influences.length > 0" />
+        </div>
       </div>
-      <div class="poe-item-header-center-panel">
-        <div>{{ item.name }}</div>
-        <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
+      <!-- Item stats -->
+      <div class="poe-item-stats">
+        <!-- Properties -->
+        <div
+          v-for="(property, index) in itemProperties"
+          :key="`${index}-property`"
+          :class="getPropertyClasses(index)"
+          v-html="property"
+        ></div>
+        <!-- Item level -->
+        <div
+          class="poe-item-separator"
+          v-if="item.level && itemProperties.length > 0"
+        ></div>
+        <div v-if="item.level">
+          Item Level:
+          <span class="poe-item-level-value" v-if="item.level">
+            {{ item.level }}
+          </span>
+        </div>
+        <!-- Enchants -->
+        <div class="poe-item-separator" v-if="item.enchants"></div>
+        <div
+          v-for="(enchant, index) in itemEnchants"
+          :key="`${index}-enchant`"
+          :class="getEnchantsClasses(index)"
+        >
+          {{ enchant }}
+        </div>
+        <!-- Implicits -->
+        <div class="poe-item-separator" v-if="item.implicits"></div>
+        <div
+          v-for="(implicit, index) in itemImplicits"
+          :key="`${index}-implicit`"
+          :class="getImplicitClasses(index)"
+        >
+          {{ implicit }}
+        </div>
+        <!-- Gem description -->
+        <div class="poe-item-separator" v-if="item.gemDescription"></div>
+        <div
+          v-for="(desciptionLine, index) in item.gemDescription"
+          :key="`${index}-gem-desc`"
+          :class="getGemDescriptionClasses(index)"
+        >
+          {{ desciptionLine }}
+        </div>
+        <!-- Modifiers -->
+        <div class="poe-item-separator" v-if="item.modifiers"></div>
+        <div
+          v-for="(modifier, index) in itemModifiers"
+          :key="`${index}-modifier`"
+          :class="getModifierClasses(modifier, index)"
+        >
+          {{ modifier.text }}
+        </div>
+        <!-- Corruption -->
+        <div class="poe-item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
+        <!-- Mirrored -->
+        <div class="poe-item-mirrored" v-if="itemIsMirrored">Mirrored</div>
+        <!-- Split -->
+        <div class="poe-item-split" v-if="itemIsSplit">Split</div>
+        <!-- Inside Icon -->
+        <div class="poe-item-separator" v-if="shouldShowIconInside"></div>
+        <img
+          class="poe-item-icon"
+          :src="iconUrl"
+          v-show="shouldShowIconInside"
+          :width="iconSize"
+        />
       </div>
-      <div :class="rightHeaderPanelClasses">
-        <div v-if="item.influences.length > 0" />
-      </div>
-    </div>
-    <!-- Item stats -->
-    <div class="poe-item-stats">
-      <!-- Properties -->
-      <div
-        v-for="(property, index) in itemProperties"
-        :key="`${index}-property`"
-        :class="getPropertyClasses(index)"
-        v-html="property"
-      ></div>
-      <!-- Item level -->
-      <div
-        class="poe-item-separator"
-        v-if="item.level && itemProperties.length > 0"
-      ></div>
-      <div v-if="item.level">
-        Item Level:
-        <span class="poe-item-level-value" v-if="item.level">
-          {{ item.level }}
-        </span>
-      </div>
-      <!-- Enchants -->
-      <div class="poe-item-separator" v-if="item.enchants"></div>
-      <div
-        v-for="(enchant, index) in itemEnchants"
-        :key="`${index}-enchant`"
-        :class="getEnchantsClasses(index)"
-      >
-        {{ enchant }}
-      </div>
-      <!-- Implicits -->
-      <div class="poe-item-separator" v-if="item.implicits"></div>
-      <div
-        v-for="(implicit, index) in itemImplicits"
-        :key="`${index}-implicit`"
-        :class="getImplicitClasses(index)"
-      >
-        {{ implicit }}
-      </div>
-      <!-- Gem description -->
-      <div class="poe-item-separator" v-if="item.gemDescription"></div>
-      <div
-        v-for="(desciptionLine, index) in item.gemDescription"
-        :key="`${index}-gem-desc`"
-        :class="getGemDescriptionClasses(index)"
-      >
-        {{ desciptionLine }}
-      </div>
-      <!-- Modifiers -->
-      <div class="poe-item-separator" v-if="item.modifiers"></div>
-      <div
-        v-for="(modifier, index) in itemModifiers"
-        :key="`${index}-modifier`"
-        :class="getModifierClasses(modifier, index)"
-      >
-        {{ modifier.text }}
-      </div>
-      <!-- Corruption -->
-      <div class="poe-item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
-      <!-- Mirrored -->
-      <div class="poe-item-mirrored" v-if="itemIsMirrored">Mirrored</div>
-      <!-- Split -->
-      <div class="poe-item-split" v-if="itemIsSplit">Split</div>
-      <!-- Image -->
-      <div class="poe-item-separator" v-if="showTooltipIcon"></div>
-      <img
-        class="poe-item-image"
-        :src="iconUrl"
-        v-show="showTooltipIcon"
-        :width="iconSize"
-      />
     </div>
   </div>
 </template>
@@ -133,9 +143,6 @@ export default {
     },
   },
   computed: {
-    showTooltipIcon() {
-      return this.showIcon && this.iconUrl;
-    },
     itemProperties() {
       return this.item.properties
         ? this.item.properties.map((line) => {
@@ -227,6 +234,11 @@ export default {
 </script>
 
 <style lang="scss">
+.poe-item-icon-beside-showcase {
+  align-self: flex-start;
+  object-fit: contain;
+  margin-right: 12px;
+}
 .poe-item-showcase-popover {
   .poe-item-wrapper {
     border: 0;
@@ -246,7 +258,7 @@ export default {
     min-width: 360px;
     background-color: rgba(0, 0, 0, 1);
 
-    & .poe-item-image {
+    & .poe-item-icon {
       margin: 4px;
     }
   }

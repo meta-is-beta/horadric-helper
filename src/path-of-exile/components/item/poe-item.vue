@@ -1,14 +1,12 @@
 <template>
   <div v-if="show" :class="classesComputed">
-    <div
-      v-if="displayMode.toLowerCase() === `showcase`"
-      class="poe-item-showcase-wrapper"
-    >
+    <div v-if="displayMode === `showcase`" class="poe-item-showcase-wrapper">
       <!-- Showcase -->
       <poe-item-showcase
         :item="item"
         :iconUrl="iconSrc"
-        :showIcon="iconInShowcase"
+        :showIconInside="iconInShowcase"
+        :showIconOutside="iconBesideShowcase"
         :iconSize="computedIconSize"
         :dimedSections="dimedSections"
       />
@@ -29,13 +27,14 @@
           <poe-item-showcase
             :item="item"
             :iconUrl="iconSrc"
-            :showIcon="iconInShowcase"
+            :showIconInside="iconInShowcase"
+            :showIconOutside="iconBesideShowcase"
             :iconSize="computedIconSize"
             :dimedSections="dimedSections"
           />
         </template>
         <!-- Icon -->
-        <div v-if="displayMode.toLowerCase() === `icon`">
+        <div v-if="displayMode === `icon`">
           <img :width="computedIconSize" :src="iconSrc" />
           <div class="poe-showcase-label">
             {{ labelTextComputed }}
@@ -139,8 +138,11 @@ export default {
 @use "./../../_styles" as styles;
 
 .poe-item-showcase-popover {
-  box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   z-index: 10000;
+
+  .poe-item-wrapper {
+    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .poe-item-showcase,

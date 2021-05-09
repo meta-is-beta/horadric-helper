@@ -8,6 +8,7 @@ export default {
     asShowcase: { type: Boolean, default: false },
     labelText: { type: String, default: "" },
     iconInShowcase: { type: Boolean, default: false },
+    iconBesideShowcase: { type: Boolean, default: false },
     dimSections: { type: String, default: "" },
   },
   data() {
