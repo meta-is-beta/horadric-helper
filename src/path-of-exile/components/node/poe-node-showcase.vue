@@ -100,10 +100,6 @@ export default {
 .poe-node-wrapper {
   background-color: black;
 
-  & .dimed-line {
-    color: var(--poe-color-default-dimed) !important;
-  }
-
   & .poe-node-header {
     height: 73px;
     color: var(--poe-color-node-title);

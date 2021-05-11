@@ -9,6 +9,7 @@
         :showIconOutside="iconBesideShowcase"
         :iconSize="computedIconSize"
         :dimedSections="dimedSections"
+        :hiddenSections="hiddenSections"
       />
     </div>
     <div v-else class="poe-item-showcase-wrapper">
@@ -31,6 +32,7 @@
             :showIconOutside="iconBesideShowcase"
             :iconSize="computedIconSize"
             :dimedSections="dimedSections"
+            :hiddenSections="hiddenSections"
           />
         </template>
         <!-- Icon -->

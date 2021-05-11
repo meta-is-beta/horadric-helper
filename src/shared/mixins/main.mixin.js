@@ -2,14 +2,20 @@ export default {
   props: {
     classes: { type: String, default: "" },
     popoverClasses: { type: String, default: "" },
+
     reference: { type: String, default: "" },
+
+    labelText: { type: String, default: "" },
+
     asIcon: { type: Boolean, default: false },
     asText: { type: Boolean, default: true },
     asShowcase: { type: Boolean, default: false },
-    labelText: { type: String, default: "" },
+
     iconInShowcase: { type: Boolean, default: false },
     iconBesideShowcase: { type: Boolean, default: false },
+
     dimSections: { type: String, default: "" },
+    hideSections: { type: String, default: "" },
   },
   data() {
     return {
@@ -38,21 +44,10 @@ export default {
       return "text";
     },
     dimedSections() {
-      if (!this.dimSections || this.dimSections.length === 0) {
-        return {};
-      }
-      try {
-        const sections = {};
-        const sectionDirectives = this.dimSections.split(";");
-        sectionDirectives.forEach((directive) => {
-          const directiveComponents = directive.split(":");
-          const sectionName = directiveComponents[0];
-          sections[sectionName] = directiveComponents[1].split(",");
-        });
-        return sections;
-      } catch {
-        return {};
-      }
+      return getSelectedSections(this.dimSections);
+    },
+    hiddenSections() {
+      return getSelectedSections(this.hideSections);
     },
   },
   mounted() {
@@ -139,6 +134,29 @@ export default {
       }
     },
   },
+};
+
+const getSelectedSections = (sectionsString) => {
+  if (!sectionsString || sectionsString.length === 0) {
+    return {};
+  }
+  try {
+    const sections = {};
+    const sectionDirectives = sectionsString.split(";");
+    sectionDirectives.forEach((directive) => {
+      if (directive.includes(":")) {
+        const directiveComponents = directive.split(":");
+        const sectionName = directiveComponents[0];
+        sections[sectionName] = directiveComponents[1].split(",");
+      } else {
+        sections[directive] = "all";
+      }
+    });
+
+    return sections;
+  } catch {
+    return {};
+  }
 };
 
 const registerHoradricHelperGlobalObject = () => {

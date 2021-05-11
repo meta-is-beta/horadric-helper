@@ -3,7 +3,9 @@ export default {
     iconUrl: { type: String, default: "" },
     showIconInside: { type: Boolean, default: false },
     showIconOutside: { type: Boolean, default: false },
+
     dimedSections: { type: Object, default: () => {} },
+    hiddenSections: { type: Object, default: () => {} },
   },
   computed: {
     shouldShowIconInside() {
@@ -24,6 +26,23 @@ export default {
       }
 
       return classes;
+    },
+    addHiddenClasses(sectionName, index, classes) {
+      if (
+        this.hiddenSections[sectionName] &&
+        (this.hiddenSections[sectionName].includes("all") ||
+          this.hiddenSections[sectionName].includes((index + 1).toString()))
+      ) {
+        classes += " hidden-line";
+      }
+
+      return classes;
+    },
+    sectionShouldBeFullyHidden(sectionName) {
+      return (
+        this.hiddenSections[sectionName] &&
+        this.hiddenSections[sectionName].includes("all")
+      );
     },
   },
 };

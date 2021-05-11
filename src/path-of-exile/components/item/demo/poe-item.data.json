@@ -5,7 +5,8 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInShowcase": true,
+        "hideSections": "properties"
       },
       "config": {
         "reference": "Flammability",
@@ -17,7 +18,8 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInShowcase": true,
+        "hideSections": "description:1,2,3"
       },
       "config": {
         "reference": "Divergent Multiple Totems Support",
@@ -31,7 +33,8 @@
         "labelText": "",
         "iconInShowcase": true,
         "iconSize": "md",
-        "dimSections": "modifiers:1,2"
+        "dimSections": "modifiers:1,2",
+        "hideSections": "modifiers;statuses"
       },
       "config": {
         "reference": "Pandemonium Creed",
@@ -107,7 +110,7 @@
         "asIcon": true,
         "labelText": "",
         "iconInShowcase": true,
-        "dimSections": "enchants:1;modifiers:all;properties:2"
+        "dimSections": "enchants:1;modifiers;properties:2"
       },
       "config": {
         "reference": "Woe Road",

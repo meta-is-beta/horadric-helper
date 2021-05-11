@@ -4,7 +4,7 @@
     <img
       class="poe-item-icon poe-item-icon-beside-showcase"
       :src="iconUrl"
-      v-show="shouldShowIconOutside"
+      v-if="shouldShowIconOutside"
       :width="iconSize"
       height="auto"
     />
@@ -25,71 +25,82 @@
       <!-- Item stats -->
       <div class="poe-item-stats">
         <!-- Properties -->
-        <div
-          v-for="(property, index) in itemProperties"
-          :key="`${index}-property`"
-          :class="getPropertyClasses(index)"
-          v-html="property"
-        ></div>
+        <div class="poe-item-separator" v-if="shouldShowItemProperties"></div>
+        <div v-if="shouldShowItemProperties">
+          <div
+            v-for="(property, index) in itemProperties"
+            :key="`${index}-property`"
+            :class="getPropertyClasses(index)"
+            v-html="property"
+          ></div>
+        </div>
         <!-- Item level -->
-        <div
-          class="poe-item-separator"
-          v-if="item.level && itemProperties.length > 0"
-        ></div>
-        <div v-if="item.level">
+        <div class="poe-item-separator" v-if="shouldShowItemLevel"></div>
+        <div v-if="shouldShowItemLevel">
           Item Level:
           <span class="poe-item-level-value" v-if="item.level">
             {{ item.level }}
           </span>
         </div>
         <!-- Enchants -->
-        <div class="poe-item-separator" v-if="item.enchants"></div>
-        <div
-          v-for="(enchant, index) in itemEnchants"
-          :key="`${index}-enchant`"
-          :class="getEnchantsClasses(index)"
-        >
-          {{ enchant }}
+        <div class="poe-item-separator" v-if="shouldShowItemEnchants"></div>
+        <div v-if="shouldShowItemEnchants">
+          <div
+            v-for="(enchant, index) in itemEnchants"
+            :key="`${index}-enchant`"
+            :class="getEnchantsClasses(index)"
+          >
+            {{ enchant }}
+          </div>
         </div>
         <!-- Implicits -->
-        <div class="poe-item-separator" v-if="item.implicits"></div>
-        <div
-          v-for="(implicit, index) in itemImplicits"
-          :key="`${index}-implicit`"
-          :class="getImplicitClasses(index)"
-        >
-          {{ implicit }}
+        <div class="poe-item-separator" v-if="shouldShowItemImplicits"></div>
+        <div v-if="shouldShowItemImplicits">
+          <div
+            v-for="(implicit, index) in itemImplicits"
+            :key="`${index}-implicit`"
+            :class="getImplicitClasses(index)"
+          >
+            {{ implicit }}
+          </div>
         </div>
         <!-- Gem description -->
-        <div class="poe-item-separator" v-if="item.gemDescription"></div>
-        <div
-          v-for="(desciptionLine, index) in item.gemDescription"
-          :key="`${index}-gem-desc`"
-          :class="getGemDescriptionClasses(index)"
-        >
-          {{ desciptionLine }}
+        <div class="poe-item-separator" v-if="shouldShowGemDescription"></div>
+        <div v-if="shouldShowGemDescription">
+          <div
+            v-for="(desciptionLine, index) in item.gemDescription"
+            :key="`${index}-gem-desc`"
+            :class="getGemDescriptionClasses(index)"
+          >
+            {{ desciptionLine }}
+          </div>
         </div>
         <!-- Modifiers -->
-        <div class="poe-item-separator" v-if="item.modifiers"></div>
-        <div
-          v-for="(modifier, index) in itemModifiers"
-          :key="`${index}-modifier`"
-          :class="getModifierClasses(modifier, index)"
-        >
-          {{ modifier.text }}
+        <div class="poe-item-separator" v-if="shouldShowItemModifiers"></div>
+        <div v-if="shouldShowItemModifiers">
+          <div
+            v-for="(modifier, index) in itemModifiers"
+            :key="`${index}-modifier`"
+            :class="getModifierClasses(modifier, index)"
+          >
+            {{ modifier.text }}
+          </div>
         </div>
-        <!-- Corruption -->
-        <div class="poe-item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
-        <!-- Mirrored -->
-        <div class="poe-item-mirrored" v-if="itemIsMirrored">Mirrored</div>
-        <!-- Split -->
-        <div class="poe-item-split" v-if="itemIsSplit">Split</div>
+        <!-- Statuses -->
+        <div v-if="shouldShowStatuses">
+          <!-- Corruption -->
+          <div class="poe-item-corrupted" v-if="itemIsCorrupted">Corrupted</div>
+          <!-- Mirrored -->
+          <div class="poe-item-mirrored" v-if="itemIsMirrored">Mirrored</div>
+          <!-- Split -->
+          <div class="poe-item-split" v-if="itemIsSplit">Split</div>
+        </div>
         <!-- Inside Icon -->
         <div class="poe-item-separator" v-if="shouldShowIconInside"></div>
         <img
           class="poe-item-icon"
           :src="iconUrl"
-          v-show="shouldShowIconInside"
+          v-if="shouldShowIconInside"
           :width="iconSize"
         />
       </div>
@@ -109,25 +120,29 @@ export default {
   mixins: [showcaseMixin],
   methods: {
     getPropertyClasses(index) {
-      const classes = this.addDimedClass("properties", index, "");
+      let classes = this.addDimedClass("properties", index, "");
+      classes = this.addHiddenClasses("properties", index, classes);
 
       return classes;
     },
     getEnchantsClasses(index) {
       let classes = "poe-item-enchant";
       classes = this.addDimedClass("enchants", index, classes);
+      classes = this.addHiddenClasses("enchants", index, classes);
 
       return classes;
     },
     getImplicitClasses(index) {
       let classes = "poe-item-implicit";
       classes = this.addDimedClass("implicits", index, classes);
+      classes = this.addHiddenClasses("implicits", index, classes);
 
       return classes;
     },
     getGemDescriptionClasses(index) {
       let classes = "gem-description";
       classes = this.addDimedClass("decription", index, classes);
+      classes = this.addHiddenClasses("decription", index, classes);
 
       return classes;
     },
@@ -138,11 +153,47 @@ export default {
       }
 
       classes = this.addDimedClass("modifiers", index, classes);
+      classes = this.addHiddenClasses("modifiers", index, classes);
 
       return classes;
     },
   },
   computed: {
+    shouldShowItemLevel() {
+      return this.item.level && !this.sectionShouldBeFullyHidden("item-level");
+    },
+    shouldShowItemProperties() {
+      return (
+        this.itemProperties.length > 0 &&
+        !this.sectionShouldBeFullyHidden("properties")
+      );
+    },
+    shouldShowItemEnchants() {
+      return (
+        this.itemEnchants.length > 0 &&
+        !this.sectionShouldBeFullyHidden("enchants")
+      );
+    },
+    shouldShowItemImplicits() {
+      return (
+        this.itemImplicits.length > 0 &&
+        !this.sectionShouldBeFullyHidden("implicits")
+      );
+    },
+    shouldShowGemDescription() {
+      return (
+        this.item.gemDescription &&
+        !this.sectionShouldBeFullyHidden("description")
+      );
+    },
+    shouldShowItemModifiers() {
+      return (
+        this.item.modifiers && !this.sectionShouldBeFullyHidden("modifiers")
+      );
+    },
+    shouldShowStatuses() {
+      return !this.sectionShouldBeFullyHidden("statuses");
+    },
     itemProperties() {
       return this.item.properties
         ? this.item.properties.map((line) => {
@@ -331,10 +382,6 @@ export default {
     }
   }
 
-  .dimed-line {
-    color: var(--poe-color-default-dimed) !important;
-  }
-
   .modifier-crafted {
     color: var(--poe-color-essencemod) !important;
   }
@@ -374,21 +421,23 @@ export default {
     margin-bottom: 6px;
   }
 
-  .poe-item-separator {
-    height: 2px;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    background-image: url(../../assets/Item-ui-separators.png);
-  }
-
   .poe-item-stats {
     padding: 16px;
     padding-top: 4px;
     padding-bottom: 10px;
     display: inline-block;
     min-width: 360px;
+    .poe-item-separator {
+      height: 2px;
+      background-repeat: no-repeat;
+      background-position-x: center;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      background-image: url(../../assets/Item-ui-separators.png);
+      &:first-of-type {
+        display: none;
+      }
+    }
   }
 
   .unique-item {
