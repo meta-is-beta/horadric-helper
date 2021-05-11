@@ -239,6 +239,7 @@ export default {
   object-fit: contain;
   margin-right: 12px;
 }
+
 .poe-item-showcase-popover {
   .poe-item-wrapper {
     border: 0;
@@ -255,8 +256,8 @@ export default {
 .poe-item-showcase,
 .poe-item-showcase-popover {
   .poe-item-wrapper {
-    min-width: 360px;
     background-color: rgba(0, 0, 0, 1);
+    display: inline-block;
 
     & .poe-item-icon {
       margin: 4px;
@@ -265,21 +266,10 @@ export default {
   }
 
   .poe-item-header {
+    display: flex;
+    justify-content: space-between;
     white-space: nowrap;
     font-size: 22px;
-    width: 100%;
-
-    & div {
-      display: inline-block;
-    }
-
-    & .poe-item-header-left-panel {
-      float: left;
-    }
-
-    & .poe-item-header-right-panel {
-      float: right;
-    }
 
     &.poe-item-header-single {
       height: 32px;
@@ -397,6 +387,8 @@ export default {
     padding: 16px;
     padding-top: 4px;
     padding-bottom: 10px;
+    display: inline-block;
+    min-width: 360px;
   }
 
   .unique-item {

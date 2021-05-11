@@ -12,3 +12,6 @@
 [x] Make "text" display mode default
 [x] Fix wrapper classes props
 [x] Change config application method to use objecta and lists of objects
+--- 0.7 ---
+[] Add "hide-sections"
+[] Fix text overflow / min-width

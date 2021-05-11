@@ -99,23 +99,19 @@ export default {
 
 .poe-node-wrapper {
   background-color: black;
-  min-width: 360px;
 
   & .dimed-line {
     color: var(--poe-color-default-dimed) !important;
   }
 
   & .poe-node-header {
-    min-width: 176px;
     height: 73px;
     color: var(--poe-color-node-title);
     font-size: 28px;
     white-space: nowrap;
     background-image: url(../../assets/Node-ui-header.png);
-
-    & .poe-node-header-center-panel {
-      line-height: 73px;
-    }
+    display: flex;
+    justify-content: space-between;
 
     & .poe-node-header-left-panel,
     & .poe-node-header-right-panel {
@@ -124,16 +120,8 @@ export default {
       background-image: inherit;
     }
 
-    & div {
-      display: inline-block;
-    }
-
-    & .poe-node-header-left-panel {
-      float: left;
-    }
-
-    & .poe-node-header-right-panel {
-      float: right;
+    & .poe-node-header-center-panel {
+      line-height: 70px;
     }
   }
   & .poe-node-icon {
@@ -158,6 +146,7 @@ export default {
     color: var(--poe-color-augmented);
     font-size: 18px;
     line-height: 22px;
+    min-width: 250px;
   }
   &.poe-node-notable {
     & .poe-node-header {

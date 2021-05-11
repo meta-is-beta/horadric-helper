@@ -2,8 +2,8 @@
   "items": [
     {
       "props": {
-        "asIcon": false,
-        "asShowcase": true,
+        "asIcon": true,
+        "asShowcase": false,
         "labelText": "",
         "iconInShowcase": true
       },
@@ -143,8 +143,8 @@
     },
     {
       "props": {
-        "asIcon": false,
-        "asShowcase": true,
+        "asIcon": true,
+        "asShowcase": false,
         "labelText": "",
         "iconInShowcase": true
       },
