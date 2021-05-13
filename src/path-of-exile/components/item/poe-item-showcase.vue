@@ -198,7 +198,7 @@ export default {
       return this.item.properties
         ? this.item.properties.map((line) => {
             return line
-              .replace(" (augmented)", "")
+              .replace("(augmented)", "")
               .trim()
               .replaceAll(
                 /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi,
