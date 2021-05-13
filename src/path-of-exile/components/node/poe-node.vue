@@ -104,7 +104,7 @@ export default {
 
 .poe-node-showcase-popover {
   z-index: 10000;
-  max-width: 1000px;
+
   .poe-node-wrapper {
     background-color: black;
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);

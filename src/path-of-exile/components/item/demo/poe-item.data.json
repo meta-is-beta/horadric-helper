@@ -5,8 +5,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true,
-        "hideSections": "properties"
+        "iconInShowcase": true
       },
       "config": {
         "reference": "Flammability",
@@ -18,8 +17,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true,
-        "hideSections": "description:1,2,3"
+        "iconInShowcase": true
       },
       "config": {
         "reference": "Divergent Multiple Totems Support",
@@ -167,6 +165,47 @@
         "reference": "Titan's Canyon Map of Venom",
         "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/ce/Lighthouse_Map_%28Ritual%29_inventory_icon.png",
         "rawData": "Item Class: Maps\nRarity: Magic\nTitan's Canyon Map of Venom\n--------\nMap Tier: 15\nAtlas Region: Valdo's Rest\nItem Quantity: +29% (augmented)\nItem Rarity: +17% (augmented)\nMonster Pack Size: +11% (augmented)\n--------\nItem Level: 85\n--------\nMonsters Poison on Hit\nUnique Boss has 35% increased Life\nUnique Boss has 70% increased Area of Effect\n--------\nTravel to this Map by using it in a personal Map Device. Maps can only be used once."
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconInShowcase": true
+      },
+      "config": {
+        "reference": "Winter Orb",
+        "dataObject": {
+          "name": "Winter Orb",
+          "baseName": "Winter Orb",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "gemDescription": [
+            "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration."
+          ],
+          "modifiers": [
+            "Base duration is 1.6 seconds",
+            "Deals (30-232) to (37-291) Cold Damage",
+            "Maximum 10 Stages",
+            "Fires projectiles every 1.6 seconds",
+            "25% increased Duration per Stage",
+            "15% increased Projectile Frequency per Stage",
+            "100% more Projectile Frequency while Channelling",
+            "Increases and Reductions to Cast Speed also apply to Projectile Frequency"
+          ],
+          "properties": [
+            "Cold, Spell, Channelling, AoE, Duration, Projectile, Orb",
+            "Cast Time: 0.25s",
+            "Critical Strike Chance: 6%",
+            "Mana Cost: (2-4)",
+            "Attack Speed: 100%",
+            "Effectiveness of Added Damage: 50%",
+            "Damage Multiplier: 100%",
+            "Base duration: 1.6s"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostFury.png"
       }
     }
   ]

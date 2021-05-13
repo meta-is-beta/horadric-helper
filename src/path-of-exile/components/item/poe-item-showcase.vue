@@ -12,14 +12,14 @@
       <!-- Header -->
       <div :class="headerClasses">
         <div :class="leftHeaderPanelClasses">
-          <div v-if="item.influences.length > 0" />
+          <div v-if="itemInfluences.length > 0" />
         </div>
         <div class="poe-item-header-center-panel">
           <div>{{ item.name }}</div>
           <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
         </div>
         <div :class="rightHeaderPanelClasses">
-          <div v-if="item.influences.length > 0" />
+          <div v-if="itemInfluences.length > 0" />
         </div>
       </div>
       <!-- Item stats -->
@@ -201,7 +201,7 @@ export default {
               .replace(" (augmented)", "")
               .trim()
               .replaceAll(
-                /([0-9-%+-]+|([0-9]+)|(Max)|(Min))/gi,
+                /([0-9-%+-]+|([0-9.]+[s]*)|(Max)|(Min))/gi,
                 "<span class='poe-item-property-value'>$1</span>"
               );
           })
@@ -225,14 +225,20 @@ export default {
           }))
         : [];
     },
+    itemInfluences() {
+      return this.item.influences ? this.item.influences : [];
+    },
+    itemStatuses() {
+      return this.item.statuses ? this.item.statuses : [];
+    },
     itemIsCorrupted() {
-      return !!this.item.statuses.some((s) => s === "corrupted");
+      return !!this.itemStatuses.some((s) => s === "corrupted");
     },
     itemIsMirrored() {
-      return !!this.item.statuses.some((s) => s === "mirrored");
+      return !!this.itemStatuses.some((s) => s === "mirrored");
     },
     itemIsSplit() {
-      return !!this.item.statuses.some((s) => s === "split");
+      return !!this.itemStatuses.some((s) => s === "split");
     },
     wrapperClasses() {
       let classes = "poe-item-wrapper";
@@ -255,8 +261,8 @@ export default {
     leftHeaderPanelClasses() {
       let classes = "poe-item-header-left-panel";
 
-      if (this.item.influences.length > 0) {
-        classes += ` poe-item-influenced poe-item-influenced-${this.item.influences[0].toLowerCase()}`;
+      if (this.itemInfluences.length > 0) {
+        classes += ` poe-item-influenced poe-item-influenced-${this.itemInfluences[0].toLowerCase()}`;
       }
 
       return classes;
@@ -264,17 +270,17 @@ export default {
     rightHeaderPanelClasses() {
       let classes = "poe-item-header-right-panel";
 
-      if (this.item.influences.length > 0) {
+      if (this.itemInfluences.length > 0) {
         classes += " poe-item-influenced";
       }
 
-      if (this.item.influences.length === 1) {
-        classes += ` poe-item-influenced-${this.item.influences[0].toLowerCase()}`;
+      if (this.itemInfluences.length === 1) {
+        classes += ` poe-item-influenced-${this.itemInfluences[0].toLowerCase()}`;
         return classes;
       }
 
-      if (this.item.influences.length === 2) {
-        classes += ` poe-item-influenced-${this.item.influences[1].toLowerCase()}`;
+      if (this.itemInfluences.length === 2) {
+        classes += ` poe-item-influenced-${this.itemInfluences[1].toLowerCase()}`;
         return classes;
       }
 
