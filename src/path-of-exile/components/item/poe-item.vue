@@ -5,8 +5,8 @@
       <poe-item-showcase
         :item="item"
         :iconUrl="iconSrc"
-        :showIconInside="iconInShowcase"
-        :showIconOutside="iconBesideShowcase"
+        :showIconInside="iconInside"
+        :showIconOutside="iconOutside"
         :iconSize="computedIconSize"
         :dimedSections="dimedSections"
         :hiddenSections="hiddenSections"
@@ -28,8 +28,8 @@
           <poe-item-showcase
             :item="item"
             :iconUrl="iconSrc"
-            :showIconInside="iconInShowcase"
-            :showIconOutside="iconBesideShowcase"
+            :showIconInside="iconInside"
+            :showIconOutside="iconOutside"
             :iconSize="computedIconSize"
             :dimedSections="dimedSections"
             :hiddenSections="hiddenSections"

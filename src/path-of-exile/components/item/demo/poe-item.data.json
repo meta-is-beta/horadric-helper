@@ -5,7 +5,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Flammability",
@@ -17,7 +17,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Divergent Multiple Totems Support",
@@ -29,7 +29,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true,
+        "iconInside": true,
         "iconSize": "md",
         "dimSections": "modifiers:1,2",
         "hideSections": "modifiers;statuses"
@@ -44,7 +44,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true,
+        "iconInside": true,
         "iconSize": "md"
       },
       "config": {
@@ -57,7 +57,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true,
+        "iconInside": true,
         "dimSections": "modifiers:1"
       },
       "config": {
@@ -70,7 +70,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Rumi's Concoction",
@@ -82,7 +82,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Crimson Jewel",
@@ -95,7 +95,7 @@
         "asIcon": true,
         "labelText": "",
         "iconSize": "md",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Rotund Unset Ring of Haast",
@@ -107,7 +107,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true,
+        "iconInside": true,
         "dimSections": "enchants:1;modifiers;properties:2"
       },
       "config": {
@@ -122,7 +122,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconBesideShowcase": false
+        "iconOutside": false
       },
       "config": {
         "reference": "Martyr of Innocence",
@@ -134,7 +134,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Exalted Orb",
@@ -147,7 +147,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Deafening Essence of Woe",
@@ -159,7 +159,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Titan's Canyon Map of Venom",
@@ -172,7 +172,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Winter Orb",

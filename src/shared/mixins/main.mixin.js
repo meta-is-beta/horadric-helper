@@ -11,8 +11,8 @@ export default {
     asText: { type: Boolean, default: true },
     asShowcase: { type: Boolean, default: false },
 
-    iconInShowcase: { type: Boolean, default: false },
-    iconBesideShowcase: { type: Boolean, default: false },
+    iconInside: { type: Boolean, default: false },
+    iconOutside: { type: Boolean, default: false },
 
     dimSections: { type: String, default: "" },
     hideSections: { type: String, default: "" },

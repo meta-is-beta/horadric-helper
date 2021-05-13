@@ -5,8 +5,8 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": false,
-        "iconBesideShowcase": true
+        "iconInside": false,
+        "iconOutside": true
       },
       "config": {
         "reference": "Ancestral Bond",
@@ -25,7 +25,7 @@
       "props": {
         "asIcon": true,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Acrobatics",
@@ -45,7 +45,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true,
+        "iconInside": true,
         "dimSections": "description:3"
       },
       "config": {
@@ -68,7 +68,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Cold damage",
@@ -89,7 +89,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Pursuit of Faith",
@@ -111,7 +111,7 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInShowcase": true
+        "iconInside": true
       },
       "config": {
         "reference": "Energy Shield, Power Charge Duration",

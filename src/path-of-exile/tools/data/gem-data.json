@@ -2182,10 +2182,10 @@
     "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/CurseOnHit.png"
   },
   {
-    "reference": "High",
+    "reference": "High-Impact Mine Support",
     "dataObject": {
-      "name": "High",
-      "baseName": "High",
+      "name": "High-Impact Mine Support",
+      "baseName": "High-Impact Mine Support",
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [
