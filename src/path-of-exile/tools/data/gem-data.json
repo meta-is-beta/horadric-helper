@@ -10150,7 +10150,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalAuraElementalDamageHealing.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalAuraElementalDamageHealing.png"
   },
   {
     "reference": "Doom Blast",
@@ -17677,7 +17677,7 @@
         "Damage Multiplier: (100%-122.8%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalAncestralWarchief.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalAncestralWarchief.png"
   },
   {
     "reference": "Vaal Arc",
@@ -17712,7 +17712,7 @@
         "Base duration: 4s"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalArcChain.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalArcChain.png"
   },
   {
     "reference": "Vaal Blade Vortex",
@@ -17744,7 +17744,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalBladeVortex.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalBladeVortex.png"
   },
   {
     "reference": "Vaal Blight",
@@ -17777,7 +17777,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalBlight.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalBlight.png"
   },
   {
     "reference": "Vaal Breach",
@@ -17802,7 +17802,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalBreach.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalBreach.png"
   },
   {
     "reference": "Vaal Burning Arrow",
@@ -17833,7 +17833,7 @@
         "Damage Multiplier: (160%-198%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalBurningArrow.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalBurningArrow.png"
   },
   {
     "reference": "Vaal Clarity",
@@ -17864,7 +17864,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalClarity.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalClarity.png"
   },
   {
     "reference": "Vaal Cold Snap",
@@ -17899,7 +17899,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalColdSnap.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalColdSnap.png"
   },
   {
     "reference": "Vaal Cyclone",
@@ -17929,7 +17929,7 @@
         "Damage Multiplier: (50%-61.4%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalCyclone.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalCyclone.png"
   },
   {
     "reference": "Vaal Detonate Dead",
@@ -17957,7 +17957,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalDetonateDead.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalDetonateDead.png"
   },
   {
     "reference": "Vaal Discipline",
@@ -17988,7 +17988,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalDiscipline.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalDiscipline.png"
   },
   {
     "reference": "Vaal Double Strike",
@@ -18020,7 +18020,7 @@
         "Damage Multiplier: (28%-33%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalDoubleStrike.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalDoubleStrike.png"
   },
   {
     "reference": "Vaal Earthquake",
@@ -18050,7 +18050,7 @@
         "Damage Multiplier: (60%-71%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalEarthquake.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalEarthquake.png"
   },
   {
     "reference": "Vaal Fireball",
@@ -18080,7 +18080,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalFireballSpiralNova.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalFireballSpiralNova.png"
   },
   {
     "reference": "Vaal Flameblast",
@@ -18110,7 +18110,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalFlameblast.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalFlameblast.png"
   },
   {
     "reference": "Vaal Glacial Hammer",
@@ -18145,7 +18145,7 @@
         "Damage Multiplier: (155%-200%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGlacialHammer.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalGlacialHammer.png"
   },
   {
     "reference": "Vaal Grace",
@@ -18177,7 +18177,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGrace.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalGrace.png"
   },
   {
     "reference": "Vaal Ground Slam",
@@ -18207,7 +18207,7 @@
         "Damage Multiplier: (190%-300%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGroundSlam.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalGroundSlam.png"
   },
   {
     "reference": "Vaal Haste",
@@ -18240,7 +18240,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalHaste.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalHaste.png"
   },
   {
     "reference": "Vaal Ice Nova",
@@ -18268,7 +18268,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalIceNova.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalIceNova.png"
   },
   {
     "reference": "Vaal Immortal Call",
@@ -18298,7 +18298,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalImmortalCall.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalImmortalCall.png"
   },
   {
     "reference": "Vaal Impurity of Fire",
@@ -18431,7 +18431,7 @@
         "Damage Multiplier: (80%-98.2%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalLightningStrike.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalLightningStrike.png"
   },
   {
     "reference": "Vaal Lightning Trap",
@@ -18465,7 +18465,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalLightningTrap.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalLightningTrap.png"
   },
   {
     "reference": "Vaal Lightning Warp",
@@ -18492,7 +18492,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalLightningWarpInstant.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalLightningWarpInstant.png"
   },
   {
     "reference": "Vaal Molten Shell",
@@ -18528,7 +18528,7 @@
         "Base duration: 9s"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalMoltenShell.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalMoltenShell.png"
   },
   {
     "reference": "Vaal Power Siphon",
@@ -18559,7 +18559,7 @@
         "Damage Multiplier: (150%-184.2%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalPowerSiphon.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalPowerSiphon.png"
   },
   {
     "reference": "Vaal Rain of Arrows",
@@ -18589,7 +18589,7 @@
         "Damage Multiplier: (80%-100.1%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalRainOfArrows.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalRainOfArrows.png"
   },
   {
     "reference": "Vaal Reave",
@@ -18619,7 +18619,7 @@
         "Damage Multiplier: (150%-180%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalReave.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalReave.png"
   },
   {
     "reference": "Vaal Righteous Fire",
@@ -18650,7 +18650,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalRighteousFire.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalRighteousFire.png"
   },
   {
     "reference": "Vaal Spark",
@@ -18680,7 +18680,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalSparkSpiralNova.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalSparkSpiralNova.png"
   },
   {
     "reference": "Vaal Spectral Throw",
@@ -18708,7 +18708,7 @@
         "Damage Multiplier: (91%-135.46%)"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalThrownWeapon.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalThrownWeapon.png"
   },
   {
     "reference": "Vaal Storm Call",
@@ -18738,7 +18738,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalStormCall.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalStormCall.png"
   },
   {
     "reference": "Vaal Summon Skeletons",
@@ -18768,7 +18768,7 @@
         "Damage Multiplier: 100%"
       ]
     },
-    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalSummonSkeletons.png"
+    "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/VaalGems/VaalSummonSkeletons.png"
   },
   {
     "reference": "Vengeance",

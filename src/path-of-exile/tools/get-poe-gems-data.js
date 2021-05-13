@@ -70,19 +70,29 @@ const mapData = (rawData) => {
             ),
           ].filter((p) => p != ""),
         },
-        iconSrc: skillId
-          ? skillId.includes("Support") && skillId.includes("Plus")
-            ? `${GEMS_ICONS_CDN_BASE_URL}Support/SupportPlus/${skillId.replace(
+        iconSrc: ((skillId) => {
+          if (!skillId) return "";
+
+          if (skillId.includes("Support")) {
+            if (skillId.includes("Plus")) {
+              return `${GEMS_ICONS_CDN_BASE_URL}Support/SupportPlus/${skillId.replace(
                 "Support",
                 ""
-              )}.png`
-            : skillId.includes("Support")
-            ? `${GEMS_ICONS_CDN_BASE_URL}Support/${skillId.replace(
-                "Support",
-                ""
-              )}.png`
-            : `${GEMS_ICONS_CDN_BASE_URL}${skillId}.png`
-          : "",
+              )}.png`;
+            }
+
+            return `${GEMS_ICONS_CDN_BASE_URL}Support/${skillId.replace(
+              "Support",
+              ""
+            )}.png`;
+          }
+
+          if (skillId.includes("Vaal")) {
+            return `${GEMS_ICONS_CDN_BASE_URL}VaalGems/${skillId}.png`;
+          }
+
+          return `${GEMS_ICONS_CDN_BASE_URL}${skillId}.png`;
+        })(skillId),
       };
       return mappedEntry;
     })
