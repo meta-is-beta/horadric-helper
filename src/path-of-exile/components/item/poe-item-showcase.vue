@@ -36,7 +36,7 @@
         </div>
         <!-- Item level -->
         <div class="poe-item-separator" v-if="shouldShowItemLevel"></div>
-        <div v-if="shouldShowItemLevel">
+        <div :class="getItemLevelClasses()" v-if="shouldShowItemLevel">
           Item Level:
           <span class="poe-item-level-value" v-if="item.level">
             {{ item.level }}
@@ -119,6 +119,9 @@ export default {
   },
   mixins: [showcaseMixin],
   methods: {
+    getItemLevelClasses() {
+      return this.addDimedClass("item-level", 1, "poe-item-level");
+    },
     getPropertyClasses(index) {
       let classes = this.addDimedClass("properties", index, "");
       classes = this.addHiddenClasses("properties", index, classes);
