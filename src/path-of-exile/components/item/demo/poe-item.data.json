@@ -207,6 +207,47 @@
         },
         "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostFury.png"
       }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Frostblink",
+        "dataObject": {
+          "name": "Frostblink",
+          "baseName": "Frostblink",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "gemDescription": [
+            "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills."
+          ],
+          "modifiers": [
+            "Base duration is 3 seconds",
+            "(15-19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area",
+            "(80-99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
+            "Deals (9-832) to (14-1248) Cold Damage",
+            "(0-38)% increased maximum travel distance",
+            "+(0-3) to radius"
+          ],
+          "properties": [
+            "Spell, Movement, Duration, Cold, Travel, Blink, AoE",
+            "Cast Time: 0s",
+            "Critical Strike Chance: 5%",
+            "Mana Cost: (12-22)",
+            "Attack Speed: 100%",
+            "Effectiveness of Added Damage: 140%",
+            "Stored Uses: 1",
+            "Cooldown: (3s-2.6s)",
+            "Damage Multiplier: 100%",
+            "Base duration: 3s"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostblinkSkillGem.png"
+      }
     }
   ]
 }

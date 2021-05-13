@@ -201,7 +201,7 @@ export default {
               .replace(" (augmented)", "")
               .trim()
               .replaceAll(
-                /([0-9-%+-]+|([0-9.]+)|(Max)|(Min))/gi,
+                /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi,
                 "<span class='poe-item-property-value'>$1</span>"
               );
           })
