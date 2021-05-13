@@ -16,7 +16,7 @@
       <v-popover
         trigger="hover click"
         placement="auto"
-        :offset="5"
+        :offset="10"
         hideOnTargetClick
         :popoverClass="popoverClassesComputed"
         :popoverWrapperClass="popoverWrapperClasses"

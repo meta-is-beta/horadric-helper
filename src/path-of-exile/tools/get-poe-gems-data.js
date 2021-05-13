@@ -60,7 +60,9 @@ const mapData = (rawData) => {
           rarity: "Gem",
           class: "Skill Gems",
           gemDescription: ($(".tc.-gemdesc").html() || "").split("<br>"),
-          modifiers: ($(".tc.-mod").html() || "").split("<br>"),
+          modifiers: ($(".tc.-mod").html() || "")
+            .split("<br>")
+            .filter((p) => p != ""),
           properties: [
             gemData["gem tags"].split(",").join(", "),
             ...Array.from(

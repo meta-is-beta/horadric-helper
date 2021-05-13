@@ -1926,7 +1926,7 @@
       "gemDescription": [
         "Supports any skill gem. Once this gem reaches level 2 or above, will apply a mana multiplier to supported gems. Cannot support skills that don't come from gems."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: (100%-92%)",
         "Attack Speed: 100%",
@@ -4768,7 +4768,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -5080,7 +5080,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -5098,7 +5098,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -5170,7 +5170,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -5188,7 +5188,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -7245,7 +7245,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -7317,7 +7317,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: (96%-92%)",
         "Attack Speed: 100%",
@@ -7493,7 +7493,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -7547,7 +7547,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -7659,7 +7659,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -7802,7 +7802,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 95%",
         "Attack Speed: 100%",
@@ -7820,7 +7820,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 90%",
         "Attack Speed: 100%",
@@ -8176,7 +8176,7 @@
       "gemDescription": [
         "Summons an immortal Harbinger minion. When you are near a rare or unique enemy, the minion will occasionally grant you a buff giving significantly increased Damage, Attack Speed, and Movement Speed, reducing the Damage you take, and causing Bleeding Enemies that you Kill to Explode, dealing 10% of their maximum Life as Physical Damage."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -8220,7 +8220,7 @@
       "gemDescription": [
         "Summons an immortal Harbinger minion. The minion will cast a random buff on you that grants one or all of the following: Fire 2 additional Projectiles, Chain 2 additional times, Projectiles Pierce 2 additional targets, or Projectiles Fork then Fork an additional time."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -8264,7 +8264,7 @@
       "gemDescription": [
         "Summons an immortal Harbinger minion. While you are channelling, the minion will occasionally cast a buff on you that reduces the Damage you take, makes you avoid all Stuns and Ailments, and prevents Curses affecting you."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -8308,7 +8308,7 @@
       "gemDescription": [
         "Summons an immortal Harbinger minion. The minion will occasionally apply a Chill or Shock with increased effect to an enemy that chains to other nearby enemies."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -8352,7 +8352,7 @@
       "gemDescription": [
         "Summons an immortal Harbinger minion. The minion has two buff spells it will cast on you: Arcane Surge, granting More Spell Damage, Cast Speed and Mana Regeneration, and a buff that grants Chance to Shock and Lightning Penetration."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -8396,7 +8396,7 @@
       "gemDescription": [
         "Summons an immortal Harbinger minion. The minion will occasionally create an aura on you that increases the Action Speed of you and all allies near you."
       ],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Cast Time: 1s",
         "Attack Speed: 100%",
@@ -8593,7 +8593,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -8611,7 +8611,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -8671,7 +8671,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -8730,7 +8730,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -8871,7 +8871,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -8907,7 +8907,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -8961,7 +8961,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9125,7 +9125,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9143,7 +9143,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9161,7 +9161,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9179,7 +9179,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9197,7 +9197,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9217,7 +9217,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9237,7 +9237,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9257,7 +9257,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9277,7 +9277,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9297,7 +9297,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9335,7 +9335,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9393,7 +9393,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -9925,7 +9925,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -10037,7 +10037,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": [""],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": [
         "Mana Multiplier: 100%",
         "Attack Speed: 100%",
@@ -15389,7 +15389,7 @@
       "rarity": "Gem",
       "class": "Skill Gems",
       "gemDescription": ["Creates a portal to the current area's town."],
-      "modifiers": [""],
+      "modifiers": [],
       "properties": ["Spell", "Cast Time: 2.5s"]
     },
     "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/Portal.png"
