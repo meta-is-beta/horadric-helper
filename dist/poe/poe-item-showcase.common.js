@@ -21066,12 +21066,12 @@ var staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ab2703f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=0240a266&
-var poe_item_showcasevue_type_template_id_0240a266_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('img',{staticClass:"poe-item-icon poe-item-icon-beside-showcase",attrs:{"src":_vm.iconUrl,"width":_vm.iconSize,"height":"auto"}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(_vm.item.name != _vm.item.baseName)?_c('div',[_vm._v(_vm._s(_vm.item.baseName))]):_vm._e()]),_c('div',{class:_vm.rightHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()])]),_c('div',{staticClass:"poe-item-stats"},[(_vm.shouldShowItemProperties)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',_vm._l((_vm.itemProperties),function(property,index){return _c('div',{key:(index + "-property"),class:_vm.getPropertyClasses(index),domProps:{"innerHTML":_vm._s(property)}})}),0):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',[_vm._v(" Item Level: "),(_vm.item.level)?_c('span',{staticClass:"poe-item-level-value"},[_vm._v(" "+_vm._s(_vm.item.level)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',_vm._l((_vm.itemEnchants),function(enchant,index){return _c('div',{key:(index + "-enchant"),class:_vm.getEnchantsClasses(index)},[_vm._v(" "+_vm._s(enchant)+" ")])}),0):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',_vm._l((_vm.itemImplicits),function(implicit,index){return _c('div',{key:(index + "-implicit"),class:_vm.getImplicitClasses(index)},[_vm._v(" "+_vm._s(implicit)+" ")])}),0):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',_vm._l((_vm.item.gemDescription),function(desciptionLine,index){return _c('div',{key:(index + "-gem-desc"),class:_vm.getGemDescriptionClasses(index)},[_vm._v(" "+_vm._s(desciptionLine)+" ")])}),0):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',_vm._l((_vm.itemModifiers),function(modifier,index){return _c('div',{key:(index + "-modifier"),class:_vm.getModifierClasses(modifier, index)},[_vm._v(" "+_vm._s(modifier.text)+" ")])}),0):_vm._e(),(_vm.shouldShowStatuses)?_c('div',[(_vm.itemIsCorrupted)?_c('div',{staticClass:"poe-item-corrupted"},[_vm._v("Corrupted")]):_vm._e(),(_vm.itemIsMirrored)?_c('div',{staticClass:"poe-item-mirrored"},[_vm._v("Mirrored")]):_vm._e(),(_vm.itemIsSplit)?_c('div',{staticClass:"poe-item-split"},[_vm._v("Split")]):_vm._e()]):_vm._e(),(_vm.shouldShowIconInside)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowIconInside)?_c('img',{staticClass:"poe-item-icon",attrs:{"src":_vm.iconUrl,"width":_vm.iconSize}}):_vm._e()])])])}
-var poe_item_showcasevue_type_template_id_0240a266_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ab2703f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=fdd84eb8&
+var poe_item_showcasevue_type_template_id_fdd84eb8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('img',{staticClass:"poe-item-icon poe-item-icon-beside-showcase",attrs:{"src":_vm.iconUrl,"width":_vm.iconSize,"height":"auto"}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(_vm.item.name != _vm.item.baseName)?_c('div',[_vm._v(_vm._s(_vm.item.baseName))]):_vm._e()]),_c('div',{class:_vm.rightHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()])]),_c('div',{staticClass:"poe-item-stats"},[(_vm.shouldShowItemProperties)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',_vm._l((_vm.itemProperties),function(property,index){return _c('div',{key:(index + "-property"),class:_vm.getPropertyClasses(index),domProps:{"innerHTML":_vm._s(property)}})}),0):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',[_vm._v(" Item Level: "),(_vm.item.level)?_c('span',{staticClass:"poe-item-level-value"},[_vm._v(" "+_vm._s(_vm.item.level)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',_vm._l((_vm.itemEnchants),function(enchant,index){return _c('div',{key:(index + "-enchant"),class:_vm.getEnchantsClasses(index)},[_vm._v(" "+_vm._s(enchant)+" ")])}),0):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',_vm._l((_vm.itemImplicits),function(implicit,index){return _c('div',{key:(index + "-implicit"),class:_vm.getImplicitClasses(index)},[_vm._v(" "+_vm._s(implicit)+" ")])}),0):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',_vm._l((_vm.item.gemDescription),function(desciptionLine,index){return _c('div',{key:(index + "-gem-desc"),class:_vm.getGemDescriptionClasses(index)},[_vm._v(" "+_vm._s(desciptionLine)+" ")])}),0):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',_vm._l((_vm.itemModifiers),function(modifier,index){return _c('div',{key:(index + "-modifier"),class:_vm.getModifierClasses(modifier, index)},[_vm._v(" "+_vm._s(modifier.text)+" ")])}),0):_vm._e(),(_vm.shouldShowStatuses)?_c('div',[(_vm.itemIsCorrupted)?_c('div',{staticClass:"poe-item-corrupted"},[_vm._v("Corrupted")]):_vm._e(),(_vm.itemIsMirrored)?_c('div',{staticClass:"poe-item-mirrored"},[_vm._v("Mirrored")]):_vm._e(),(_vm.itemIsSplit)?_c('div',{staticClass:"poe-item-split"},[_vm._v("Split")]):_vm._e()]):_vm._e(),(_vm.shouldShowIconInside)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowIconInside)?_c('img',{staticClass:"poe-item-icon",attrs:{"src":_vm.iconUrl,"width":_vm.iconSize}}):_vm._e()])])])}
+var poe_item_showcasevue_type_template_id_fdd84eb8_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=0240a266&
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=fdd84eb8&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -21081,12 +21081,6 @@ var es_array_map = __webpack_require__("d81d");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
 var es_string_trim = __webpack_require__("498a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__("5319");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
 var es_array_includes = __webpack_require__("caad");
@@ -21157,8 +21151,6 @@ var es_regexp_to_string = __webpack_require__("25f0");
   }
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=script&lang=js&
-
-
 
 
 
@@ -21348,23 +21340,23 @@ var es_regexp_to_string = __webpack_require__("25f0");
     },
     itemProperties: function itemProperties() {
       return this.item.properties ? this.item.properties.map(function (line) {
-        return line.replace("(augmented)", "").trim().replaceAll(/(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi, "<span class='poe-item-property-value'>$1</span>");
+        return line.replaceAll("(augmented)", "").trim().replaceAll(/(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi, "<span class='poe-item-property-value'>$1</span>");
       }) : [];
     },
     itemEnchants: function itemEnchants() {
       return this.item.enchants ? this.item.enchants.map(function (x) {
-        return x.replace("(enchant)", "").trim();
+        return x.replaceAll("(enchant)", "").trim();
       }) : [];
     },
     itemImplicits: function itemImplicits() {
       return this.item.implicits ? this.item.implicits.map(function (x) {
-        return x.replace("(implicit)", "").trim();
+        return x.replaceAll("(implicit)", "").trim();
       }) : [];
     },
     itemModifiers: function itemModifiers() {
       return this.item.modifiers ? this.item.modifiers.map(function (x) {
         return {
-          text: x.replace("(crafted)", "").trim(),
+          text: x.replaceAll("(crafted)", "").trim(),
           isCrafter: x.includes("(crafted)")
         };
       }) : [];
@@ -21556,8 +21548,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   item_poe_item_showcasevue_type_script_lang_js_,
-  poe_item_showcasevue_type_template_id_0240a266_render,
-  poe_item_showcasevue_type_template_id_0240a266_staticRenderFns,
+  poe_item_showcasevue_type_template_id_fdd84eb8_render,
+  poe_item_showcasevue_type_template_id_fdd84eb8_staticRenderFns,
   false,
   null,
   null,
@@ -21572,11 +21564,17 @@ var es_array_find = __webpack_require__("7db0");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
 var es_string_match = __webpack_require__("466d");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("ac1f");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
 var es_string_split = __webpack_require__("1276");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__("5319");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("159b");

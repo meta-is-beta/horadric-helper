@@ -198,7 +198,7 @@ export default {
       return this.item.properties
         ? this.item.properties.map((line) => {
             return line
-              .replace("(augmented)", "")
+              .replaceAll("(augmented)", "")
               .trim()
               .replaceAll(
                 /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi,
@@ -209,18 +209,18 @@ export default {
     },
     itemEnchants() {
       return this.item.enchants
-        ? this.item.enchants.map((x) => x.replace("(enchant)", "").trim())
+        ? this.item.enchants.map((x) => x.replaceAll("(enchant)", "").trim())
         : [];
     },
     itemImplicits() {
       return this.item.implicits
-        ? this.item.implicits.map((x) => x.replace("(implicit)", "").trim())
+        ? this.item.implicits.map((x) => x.replaceAll("(implicit)", "").trim())
         : [];
     },
     itemModifiers() {
       return this.item.modifiers
         ? this.item.modifiers.map((x) => ({
-            text: x.replace("(crafted)", "").trim(),
+            text: x.replaceAll("(crafted)", "").trim(),
             isCrafter: x.includes("(crafted)"),
           }))
         : [];
