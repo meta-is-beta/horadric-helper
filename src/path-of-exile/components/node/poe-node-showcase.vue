@@ -101,9 +101,9 @@ export default {
   background-color: black;
 
   & .poe-node-header {
-    height: 73px;
+    height: 55px;
     color: var(--poe-color-node-title);
-    font-size: 28px;
+    font-size: 22px;
     white-space: nowrap;
     background-image: url(../../assets/Node-ui-header.png);
     display: flex;
@@ -111,44 +111,41 @@ export default {
 
     & .poe-node-header-left-panel,
     & .poe-node-header-right-panel {
-      width: 59px;
-      height: 73px;
+      width: 44px;
+      height: 55px;
       background-image: inherit;
     }
 
     & .poe-node-header-center-panel {
-      line-height: 70px;
+      line-height: 55px;
     }
   }
   & .poe-node-icon {
-    padding-bottom: 16px;
+    padding-bottom: 10px;
   }
   &.poe-node-basic {
     & .poe-node-header {
-      background-position-y: 301px;
+      background-position-y: -114px;
       & .poe-node-header-left-panel {
-        background-position-y: 376px;
+        background-position-y: 0px;
       }
       & .poe-node-header-right-panel {
-        background-position-y: -451px;
+        background-position-y: -57px;
       }
     }
   }
   & .poe-node-description {
     padding: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     text-align: left;
     color: var(--poe-color-augmented);
-    font-size: 18px;
-    line-height: 22px;
+    line-height: 20px;
     min-width: 250px;
   }
   &.poe-node-notable {
     & .poe-node-header {
-      background-position-y: -377px;
+      background-position-y: -284px;
       & .poe-node-header-left-panel {
-        background-position-y: -302px;
+        background-position-y: -170px;
       }
       & .poe-node-header-right-panel {
         background-position-y: -227px;
@@ -158,24 +155,24 @@ export default {
   &.poe-node-keystone {
     & .poe-node-header {
       color: #e2dedd !important;
-      background-position-y: -152px;
+      background-position-y: -456px;
       & .poe-node-header-left-panel {
-        background-position-y: -77px;
+        background-position-y: -399px;
       }
       & .poe-node-header-right-panel {
-        background-position-y: -2px;
+        background-position-y: -342px;
       }
     }
   }
   &.poe-node-ascendancy-notable,
   &.poe-node-ascendancy-basic {
     & .poe-node-header {
-      background-position-y: -827px;
+      background-position-y: 57px;
       & .poe-node-header-left-panel {
-        background-position-y: -677px;
+        background-position-y: 171px;
       }
       & .poe-node-header-right-panel {
-        background-position-y: -752px;
+        background-position-y: 114px;
       }
     }
   }
