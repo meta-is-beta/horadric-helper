@@ -3,7 +3,7 @@
     {
       "props": {
         "asIcon": true,
-        "asShowcase": false,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": false,
         "iconOutside": true
@@ -24,6 +24,7 @@
     {
       "props": {
         "asIcon": true,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true
       },
@@ -43,7 +44,7 @@
     {
       "props": {
         "asIcon": true,
-        "asShowcase": false,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true,
         "dimSections": "description:3"
@@ -66,7 +67,7 @@
       "reference": "Cold damage",
       "props": {
         "asIcon": true,
-        "asShowcase": false,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true
       },
@@ -87,7 +88,7 @@
       "reference": "Pursuit of Faith",
       "props": {
         "asIcon": true,
-        "asShowcase": false,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true
       },
@@ -109,7 +110,7 @@
       "reference": "Cold damage",
       "props": {
         "asIcon": true,
-        "asShowcase": false,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true
       },

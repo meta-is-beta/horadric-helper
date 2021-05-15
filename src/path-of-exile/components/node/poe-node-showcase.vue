@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; transform: scale(0.8)">
+  <div style="display: flex">
     <!-- Outside Icon -->
     <poe-node-image
       class="poe-node-icon-beside-showcase"
@@ -125,12 +125,12 @@ export default {
   }
   &.poe-node-basic {
     & .poe-node-header {
-      background-position-y: -1278px;
+      background-position-y: 301px;
       & .poe-node-header-left-panel {
-        background-position-y: -1203px;
+        background-position-y: 376px;
       }
       & .poe-node-header-right-panel {
-        background-position-y: -1128px;
+        background-position-y: -451px;
       }
     }
   }
