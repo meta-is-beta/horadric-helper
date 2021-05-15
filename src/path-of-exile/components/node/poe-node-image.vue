@@ -23,6 +23,10 @@ export default {
 
 <style lang="scss">
 .poe-node-icon {
+  transform: scale(0.9);
+  min-width: 75px;
+  min-height: 75px;
+
   &.poe-basic-node-icon,
   &.poe-ascendancy-basic-node-icon {
     & img {

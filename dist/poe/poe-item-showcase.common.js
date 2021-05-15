@@ -22496,12 +22496,12 @@ var poe_node_showcasevue_type_template_id_5d71af02_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ab2703f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/node/poe-node-image.vue?vue&type=template&id=902b5bd6&
-var poe_node_imagevue_type_template_id_902b5bd6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.nodeIconClasses},[_c('img',{style:(("background-image: url(" + (this.iconUrl) + ")"))})])}
-var poe_node_imagevue_type_template_id_902b5bd6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ab2703f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/node/poe-node-image.vue?vue&type=template&id=3d4fc0c3&
+var poe_node_imagevue_type_template_id_3d4fc0c3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.nodeIconClasses},[_c('img',{style:(("background-image: url(" + (this.iconUrl) + ")"))})])}
+var poe_node_imagevue_type_template_id_3d4fc0c3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/node/poe-node-image.vue?vue&type=template&id=902b5bd6&
+// CONCATENATED MODULE: ./src/path-of-exile/components/node/poe-node-image.vue?vue&type=template&id=3d4fc0c3&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/node/poe-node-image.vue?vue&type=script&lang=js&
 
@@ -22546,8 +22546,8 @@ var poe_node_imagevue_type_style_index_0_lang_scss_ = __webpack_require__("e737"
 
 var poe_node_image_component = normalizeComponent(
   node_poe_node_imagevue_type_script_lang_js_,
-  poe_node_imagevue_type_template_id_902b5bd6_render,
-  poe_node_imagevue_type_template_id_902b5bd6_staticRenderFns,
+  poe_node_imagevue_type_template_id_3d4fc0c3_render,
+  poe_node_imagevue_type_template_id_3d4fc0c3_staticRenderFns,
   false,
   null,
   null,
