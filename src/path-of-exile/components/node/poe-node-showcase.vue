@@ -138,7 +138,6 @@ export default {
     padding: 10px;
     text-align: left;
     color: var(--poe-color-augmented);
-    line-height: 20px;
     min-width: 250px;
   }
   &.poe-node-notable {

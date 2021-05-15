@@ -44,7 +44,7 @@
     {
       "props": {
         "asIcon": true,
-        "asShowcase": true,
+        "asShowcase": false,
         "labelText": "",
         "iconInside": true,
         "dimSections": "description:3"
@@ -67,7 +67,7 @@
       "reference": "Cold damage",
       "props": {
         "asIcon": true,
-        "asShowcase": true,
+        "asShowcase": false,
         "labelText": "",
         "iconInside": true
       },
@@ -110,7 +110,7 @@
       "reference": "Cold damage",
       "props": {
         "asIcon": true,
-        "asShowcase": true,
+        "asShowcase": false,
         "labelText": "",
         "iconInside": true
       },
