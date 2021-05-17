@@ -120,7 +120,7 @@ export default {
       line-height: 55px;
     }
   }
-  & .poe-node-icon {
+  & .poe-node-image-wrapper {
     padding-bottom: 10px;
   }
   &.poe-node-basic {

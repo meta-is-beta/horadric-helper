@@ -3,7 +3,7 @@
     {
       "props": {
         "asIcon": true,
-        "asShowcase": true,
+        "asShowcase": false,
         "labelText": "",
         "iconInside": false,
         "iconOutside": true
