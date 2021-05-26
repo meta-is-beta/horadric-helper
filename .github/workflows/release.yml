@@ -26,10 +26,14 @@ jobs:
       - name: Run tests
         run: npm run test:unit
 
+      - run: pwd
+
       - run: rm -rf ./dist/
 
       - name: Build project
         run: npm run build
+
+      - run: pwd
 
       - run: ls ./dist/poe/ -la
 
