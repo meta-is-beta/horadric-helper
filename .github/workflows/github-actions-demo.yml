@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - ci
+
 jobs:
   Build-Horadric-Helper-Main:
     runs-on: ubuntu-latest
@@ -26,6 +26,7 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Deploy
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Release
