@@ -26,12 +26,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - run: ls -la
-
-      - uses: actions/upload-artifact@v2
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          name: horadric-helper
-          path: |
-            ./dist/**
-            !./dist/**/*.html
-            !./dist/**/*.map
+          commit_message: Release
