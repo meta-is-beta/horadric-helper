@@ -29,7 +29,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - run: ls -la
+      - run: ls ./dist/poe/ -la
 
       - name: Deploy
         uses: stefanzweifel/git-auto-commit-action@v4
