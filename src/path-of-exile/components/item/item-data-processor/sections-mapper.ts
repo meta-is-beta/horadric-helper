@@ -90,12 +90,12 @@ const getSectionName = (section: String[]): String => {
     return "Corrupted status";
   }
 
-  if (section.some((x) => x.match(/^Mirrored$/))) {
-    return "Mirrored status";
-  }
-
   if (section.some((x) => x.match(/^Split$/))) {
     return "Split status";
+  }
+
+  if (section.some((x) => x.match(/^Mirrored$/))) {
+    return "Mirrored status";
   }
 
   if (section.some((x) => x.match(/Talisman Tier:/))) {
