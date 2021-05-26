@@ -26,10 +26,10 @@ jobs:
       - name: Run tests
         run: npm run test:unit
 
+      - run: rm -rf ./dist/
+
       - name: Build project
         run: npm run build
-
-      - run: rm -rf ./dist/
 
       - run: ls ./dist/poe/ -la
 
