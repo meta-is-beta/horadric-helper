@@ -32,4 +32,4 @@ jobs:
       - name: Deploy
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Release
+          commit_message: Main release
