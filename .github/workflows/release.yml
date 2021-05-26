@@ -28,7 +28,9 @@ jobs:
 
       - run: pwd
 
-      - run: rm -rf ./dist/
+      - run: rm -rf ./dist
+
+      - run: ls -la
 
       - name: Build project
         run: npm run build
