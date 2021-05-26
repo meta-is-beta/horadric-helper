@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve src/demo.main.js",
     "build": "npm run build:poe",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --passWithNoTests",
     "lint": "vue-cli-service lint",
     "lint:fix": "npm run lint --fix",
     "build:demo": "vue-cli-service build --inline-vue --name item-showcase src/demo.main.js",
