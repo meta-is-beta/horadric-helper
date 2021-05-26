@@ -26,23 +26,12 @@ jobs:
       - name: Run tests
         run: npm run test:unit
 
-      - run: pwd
-
-      - run: rm -rf ./dist
-
-      - run: ls -la
-
       - name: Build project
         run: npm run build
-
-      - run: pwd
-
-      - run: ls ./dist/poe/ -la
-
-      - run: rm -rf ./dist/
 
       - name: Deploy
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: "main"
+          skip_dirty_check: true
           commit_message: Main release
