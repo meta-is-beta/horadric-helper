@@ -141,7 +141,6 @@ export default {
 
 .poe-item-showcase-popover {
   z-index: 10000;
-
   .poe-item-wrapper {
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   }
