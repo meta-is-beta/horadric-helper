@@ -17,7 +17,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
-          repository: "main"
+          repository: ${{ github.repository }}
           ref: ${{ github.head_ref }}
 
       - name: Install dependencies
@@ -33,4 +33,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Release
-          repository: "main"
+          repository: ${{ github.repository }}
