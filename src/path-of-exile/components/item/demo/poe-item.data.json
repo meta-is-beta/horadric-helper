@@ -1,0 +1,267 @@
+{
+  "items": [
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": true,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Flammability",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/1/16/Flammability_inventory_icon.png",
+        "rawData": "Item Class: Active Skill Gems\nRarity: Gem\nFlammability\n--------\nSpell, AoE, Duration, Fire, Curse, Hex\nLevel: 20 (Max)\nCost: 50 Mana\nCast Time: 0.50 sec\n--------\nRequirements:\nLevel: 70\nStr: 68\nInt: 98\n--------\nCurses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit.\n--------\nBase duration is 10.90 seconds\nCurse gains 10 Doom per second if you Cast this Spell yourself\n+10 to radius\nCursed enemies have -44% to Fire Resistance\nHits against Cursed Enemies have +25% chance to Ignite\n--------\nPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket."
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Divergent Multiple Totems Support",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/cd/Multiple_Totems_Support_inventory_icon.png",
+        "rawData": "Item Class: Support Skill Gems\nRarity: Gem\nDivergent Multiple Totems Support\n--------\nTotem, Support\nLevel: 19\nCost & Reservation Multiplier: 150%\nQuality: +20% (augmented)\nAlternate Quality\n--------\nRequirements:\nLevel: 69\nStr: 69\nInt: 48\n--------\nSupports skills which summon totems.\n--------\n10% increased Totem Damage\nSupported Skills have +2 to maximum number of Summoned Totems\nSupported Skills Summon two Totems instead of one\nSupported Skills deal 22% less Damage"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true,
+        "iconSize": "md",
+        "dimSections": "modifiers:1,2",
+        "hideSections": "modifiers;statuses"
+      },
+      "config": {
+        "reference": "Pandemonium Creed",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/8/84/Thief%27s_Trinket_inventory_icon.png",
+        "rawData": "Item Class: Trinkets\nRarity: Rare\nPandemonium Creed\nThief's Trinket\n--------\nRequirements:\nLevel: 40\n--------\nItem Level: 76\n--------\n2% chance to receive additional Blight items when opening a Reward Chest in a Heist\nHeist Chests have a 5% chance to contain more valuable Uniques\n7% increased Quantity of Items dropped in Heists\n16% increased Rarity of Items dropped in Heists\n--------\nYou must find the sculpture The Catch in a Smuggler's Den or Underbelly Blueprint to be able to equip this\n--------\nCorrupted"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true,
+        "iconSize": "md"
+      },
+      "config": {
+        "reference": "Plague Charm",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/0/04/Ashscale_Talisman_inventory_icon.png",
+        "rawData": "Item Class: Amulets\nRarity: Rare\nPlague Charm\nAshscale Talisman\n--------\nRequirements:\nLevel: 43\n--------\nItem Level: 73\n--------\nTalisman Tier: 1\n--------\nAllocates Nimbleness (enchant)\n--------\n26% increased Fire Damage (implicit)\n--------\n13% increased Fire Damage\n11% increased Cast Speed\n+89 to maximum Life\n+23% to Cold Resistance\n--------\nThe fire of the hearth is a docile dog,\nleashed and tamed.\nThe fire of the First Ones is a ravening wolf,\nwild and free.\n- The Wolven King\n\n--------\nCorrupted"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true,
+        "dimSections": "modifiers:1"
+      },
+      "config": {
+        "reference": "Chemist's Diamond Flask of Staunching",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/c9/Diamond_Flask_inventory_icon.png",
+        "rawData": "Item Class: Critical Utility Flasks\nRarity: Magic\nChemist's Diamond Flask of Staunching\n--------\nQuality: +20% (augmented)\nLasts 4.8 (augmented) Seconds\nConsumes 15 (augmented) of 40 Charges on use\nCurrently has 40 Charges\nYour Critical Strike Chance is Lucky\n--------\nRequirements:\nLevel: 27\n--------\nItem Level: 59\n--------\n22% reduced Charges used\nImmunity to Bleeding and Corrupted Blood during Flask effect\nRemoves Bleeding and Corrupted Blood on use"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Rumi's Concoction",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/e/e5/Rumi%27s_Concoction_inventory_icon.png",
+        "rawData": "Item Class: Utility Flasks\nRarity: Unique\nRumi's Concoction\nGranite Flask\n--------\nQuality: +20% (augmented)\nLasts 4.8 (augmented) Seconds\nConsumes 30 of 60 Charges on use\nCurrently has 60 Charges\n+3000 to Armour\n--------\nRequirements:\nLevel: 68\n--------\nItem Level: 76\n--------\n+17% Chance to Block Attack Damage during Flask effect\n+6% Chance to Block Spell Damage during Flask effect"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Crimson Jewel",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/aa/Crimson_Jewel_inventory_icon.png",
+        "rawData": "Item Class: Jewel\nRarity: Normal\nCrimson Jewel\n--------\nItem Level: 49"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconSize": "md",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Rotund Unset Ring of Haast",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/7/7b/Unset_Ring_inventory_icon.png",
+        "rawData": "Item Class: Rings\nRarity: Magic\nRotund Unset Ring of Haast\n--------\nQuality (Critical Modifiers): +3% (augmented)\n--------\nRequirements:\nLevel: 67\nDex: 90\n--------\nSockets: G\n--------\nItem Level: 84\n--------\nHas 1 Socket (implicit)\n--------\n+63 to maximum Life\n+48% to Cold Resistance\n--------\nElder Item\n-------\n\nCorrupted"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true,
+        "dimSections": "enchants:1;modifiers;properties:2"
+      },
+      "config": {
+        "reference": "Woe Road",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/29/Hydrascale_Boots_inventory_icon.png",
+        "rawData": "Item Class: Boots\nRarity: Rare\nWoe Road\nHydrascale Boots\n--------\nQuality: +20% (augmented)\nArmour: 161 (augmented)\nEvasion Rating: 175 (augmented)\n--------\nRequirements:\nLevel: 70\nStr: 155\nDex: 56\nInt: 68\n--------\nSockets: R-R R-R\n--------\nItem Level: 73\n--------\n70% increased Mana Regeneration Rate if you've cast a Spell Recently (enchant)\n--------\n+27 to Dexterity\n+28 to Armour\n+40 to Evasion Rating\n+82 to maximum Life\n+42% to Lightning Resistance\n30% increased Movement Speed\n24% increased Stun and Block Recovery"
+      }
+    },
+    {
+      "props": {
+        "asText": false,
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconOutside": false
+      },
+      "config": {
+        "reference": "Martyr of Innocence",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/9/97/Martyr_of_Innocence_inventory_icon.png",
+        "rawData": "Item Class: Staves\nRarity: Unique\nMartyr of Innocence\nHighborn Staff\n--------\nStaff\nQuality: +26% (augmented)\nPhysical Damage: 60-183 (augmented)\nElemental Damage: 338-524 (augmented)\nCritical Strike Chance: 6.50%\nAttacks per Second: 1.15\nWeapon Range: 13\n--------\nRequirements:\nLevel: 70\nStr: 89\nDex: 70\nInt: 155\n--------\nSockets: G-B-B-B-B \n--------\nItem Level: 75\n--------\n+18% Chance to Block Attack Damage while wielding a Staff (implicit)\n--------\nGrants Level 15 Vengeance Skill\n+14% Chance to Block Attack Damage while wielding a Staff\n100% increased Fire Damage\nAdds 338 to 524 Fire Damage\nDamage Penetrates 15% of Fire Resistance if you have Blocked Recently\nImmune to Freeze and Chill while Ignited\nBattlemage\n--------\nYou have been found guilty.\nLet the fires cleanse you of your sins.\n"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Exalted Orb",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/26/Exalted_Orb_inventory_icon.png",
+        "rawData": "Item Class: Stackable Currency\nRarity: Currency\nExalted Orb\n--------\nStack Size: 1/10\n--------\nAugments a rare item with a new random modifier\n--------\nRight click this item then left click a rare item to apply it. Rare items can have up to six random modifiers. The item's Catalyst quality increases the chance of applying a modifier which matches the quality type. Removes 20% Quality applied by Catalysts on use.\n"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Deafening Essence of Woe",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/5/5a/Deafening_Essence_of_Woe_inventory_icon.png",
+        "rawData": "Item Class: Stackable Currency\nRarity: Currency\nDeafening Essence of Hatred\n--------\nStack Size: 1/9\n--------\nUpgrades a normal item to rare or reforges a rare item, guaranteeing one property\n\nTwo Handed Melee Weapon: Adds (128-169) to (252-292) Cold Damage\nOther Weapon: Adds (70-91) to (138-158) Cold Damage\nArmour: (46-48)% to Cold Resistance\nQuiver: (46-48)% to Cold Resistance\nBelt: (46-48)% to Cold Resistance\nOther Jewellery: (31-34)% increased Cold Damage\n--------\nRight click this item then left click a normal or rare item to apply it.\n"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Titan's Canyon Map of Venom",
+        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/c/ce/Lighthouse_Map_%28Ritual%29_inventory_icon.png",
+        "rawData": "Item Class: Maps\nRarity: Magic\nTitan's Canyon Map of Venom\n--------\nMap Tier: 15\nAtlas Region: Valdo's Rest\nItem Quantity: +29% (augmented)\nItem Rarity: +17% (augmented)\nMonster Pack Size: +11% (augmented)\n--------\nItem Level: 85\n--------\nMonsters Poison on Hit\nUnique Boss has 35% increased Life\nUnique Boss has 70% increased Area of Effect\n--------\nTravel to this Map by using it in a personal Map Device. Maps can only be used once."
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Winter Orb",
+        "dataObject": {
+          "name": "Winter Orb",
+          "baseName": "Winter Orb",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "gemDescription": [
+            "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration."
+          ],
+          "modifiers": [
+            "Base duration is 1.6 seconds",
+            "Deals (30-232) to (37-291) Cold Damage",
+            "Maximum 10 Stages",
+            "Fires projectiles every 1.6 seconds",
+            "25% increased Duration per Stage",
+            "15% increased Projectile Frequency per Stage",
+            "100% more Projectile Frequency while Channelling",
+            "Increases and Reductions to Cast Speed also apply to Projectile Frequency"
+          ],
+          "properties": [
+            "Cold, Spell, Channelling, AoE, Duration, Projectile, Orb",
+            "Cast Time: 0.25s",
+            "Critical Strike Chance: 6%",
+            "Mana Cost: (2-4)",
+            "Attack Speed: 100%",
+            "Effectiveness of Added Damage: 50%",
+            "Damage Multiplier: 100%",
+            "Base duration: 1.6s"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostFury.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconInside": true
+      },
+      "config": {
+        "reference": "Frostblink",
+        "dataObject": {
+          "name": "Frostblink",
+          "baseName": "Frostblink",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "gemDescription": [
+            "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills."
+          ],
+          "modifiers": [
+            "Base duration is 3 seconds",
+            "(15-19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area",
+            "(80-99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
+            "Deals (9-832) to (14-1248) Cold Damage",
+            "(0-38)% increased maximum travel distance",
+            "+(0-3) to radius"
+          ],
+          "properties": [
+            "Spell, Movement, Duration, Cold, Travel, Blink, AoE",
+            "Cast Time: 0s",
+            "Critical Strike Chance: 5%",
+            "Mana Cost: (12-22)",
+            "Attack Speed: 100%",
+            "Effectiveness of Added Damage: 140%",
+            "Stored Uses: 1",
+            "Cooldown: (3s-2.6s)",
+            "Damage Multiplier: 100%",
+            "Base duration: 3s"
+          ]
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostblinkSkillGem.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "asShowcase": false,
+        "labelText": "",
+        "iconInside": true,
+        "dimSections": "item-level"
+      },
+      "config": {
+        "reference": "Life Flask",
+        "iconSrc": "https://web.poecdn.com/gen/image/WzksMTQseyJmIjoiMkRJdGVtc1wvRmxhc2tzXC9saWZlZmxhc2sxMSIsInciOjEsImgiOjIsInNjYWxlIjp0cnVlLCJsZXZlbCI6MX1d/4d10cf0cac/Item.png",
+        "rawData": "Item Class: Life Flasks\nRarity: Magic\nBubbling Divine Life Flask of Staunching\n--------\nQuality: +20% (augmented)\nRecovers 1440 (augmented) Life over 3 (augmented) Seconds\nConsumes 15 of 45 Charges on use\nCurrently has 0 Charges\n--------\nRequirements:\nLevel: 60\n--------\nItem Level: 69\n--------\n50% reduced Amount Recovered\n135% increased Recovery rate\n50% of Recovery applied Instantly\nImmunity to Bleeding and Corrupted Blood during Flask effect\nRemoves Bleeding and Corrupted Blood on use"
+      }
+    }
+  ]
+}
