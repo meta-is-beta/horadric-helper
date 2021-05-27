@@ -38,4 +38,4 @@ jobs:
           commit_message: Main release
 
       - name: Purge CDN for 'latest' tag
-        run: ./.github/workflows/refresh-cdn.sh
+        run: sh ./.github/workflows/refresh-cdn.sh
