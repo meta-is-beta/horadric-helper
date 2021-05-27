@@ -7,6 +7,7 @@ on:
 jobs:
   Build-Horadric-Helper-Main:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Setup node
