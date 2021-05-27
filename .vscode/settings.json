@@ -69,7 +69,6 @@
   // ===
   // Css intelisense path to scan
   // ===
-  "html-css-class-completion.includeGlobPattern": "src/assets/styles/tailwind/tailwind-compiled.css",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
