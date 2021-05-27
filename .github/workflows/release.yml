@@ -7,7 +7,6 @@ on:
 jobs:
   Build-Horadric-Helper-Main:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: Setup node
@@ -31,6 +30,7 @@ jobs:
         run: npm run build
 
       - name: Deploy
+        continue-on-error: true
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: "main"
