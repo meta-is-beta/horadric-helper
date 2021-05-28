@@ -1,4 +1,5 @@
 name: Release Horadric Helper
+on: []
 
 jobs:
   Release-Horadric-Helper:
