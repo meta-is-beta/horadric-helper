@@ -1,11 +1,7 @@
-name: Build Horadric Helper
-on:
-  push:
-    branches:
-      - main
+name: Release Horadric Helper
 
 jobs:
-  Build-Horadric-Helper-Main:
+  Release-Horadric-Helper:
     runs-on: ubuntu-latest
 
     steps:
