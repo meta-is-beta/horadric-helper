@@ -1,5 +1,8 @@
 name: Release Horadric Helper
-on: []
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   Release-Horadric-Helper:
