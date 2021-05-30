@@ -105,7 +105,7 @@ You can apply props to change behaviour for individual components.
 ></poe-passive>
 ```
 
-### Item config
+## Item config
 
 When library is loaded it will register global object called `HoradricHelper`.
 You can use `HoradricHelper.applyConfig` method to load either single `config` object or array `config` objects.
