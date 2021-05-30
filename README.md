@@ -112,7 +112,7 @@ You can use `HoradricHelper.applyConfig` method to load either single `config` o
 
 _In the future there will be diffrent configs for diffrent games, following configs are for Path of Exile only._
 
-#### `config` object
+#### Config object
 
 ```typescript
 type PoeConfig = {
@@ -130,8 +130,10 @@ type PoeConfig = {
 | `rawData`    | Only if `dataObject` is not set | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
 
 <br />
-#### `dataObject` object
-`dataObject` object will be diffrent depending on the type of
+#### Data object
+`dataObject` object will be diffrent depending on the type of item you want  to show.
+
+- Data object for ``poe-item`` components:
 ```typescript
 type PoeItem = {
   rarity: "normal" | "rare" | "magic" | "unique" | "gem" | "";
@@ -151,7 +153,14 @@ type PoeItem = {
   statuses: ("corrupted" | "mirrored" | "split")[];
 }
 ```
-
+- Data object for `poe-passive` components:
+```typescript
+type PoePassive = {
+  name: String;
+  type: "basic" | "notable" | "keystone";
+  description: String[];
+};
+```
 ## Item sections
 
 ## Packages
