@@ -195,7 +195,7 @@ type PoeItem = {
   // Optional
   // List of item's gem description text lines
   // Only applies to items with type "Gem"
-  // Eg (for Flammability): ["Curses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit."]
+  // Eg (for Increased Duration Support): ["Supports any skill that has a duration."]
   gemDescription: String[] | null;
 
   // Optional
@@ -207,8 +207,21 @@ type PoeItem = {
 ##### Data object for ``poe-passive`` components
 ```typescript
 type PoePassive = {
+  // Required
+  // Passives's name
   name: String;
+
+  // Required
+  // Passives's type
   type: "basic" | "notable" | "keystone";
+
+  // Required
+  // Passives's description
+  // Eg. for "Arcane Blessing":
+  // [
+  //   "50% increased Effect of Arcane Surge on you"
+  //   "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell"
+  // ]
   description: String[];
 };
 ```
