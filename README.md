@@ -73,16 +73,16 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 You can apply props to change behaviour for individual showcases.
 | Prop | Type | Description | PoE Item | PoE Passive |
 |:-------|:----------:|:------|:-----:|:-----:|
-| `reference` | `String` | Name used to target component when loading configs. See **Item config** section for details. | :heavy*check_mark: | :heavy_check_mark: |
+| `reference` | `String` | Name used to target component when loading configs. See **Item config** section for details. | :heavy_check_mark: | :heavy_check_mark: |
 | `classes` | `String` | Additional classes that will be applied to component.| :heavy_check_mark: | :heavy_check_mark: |
 | `popover-classes` | `String` | Additional classes that will be applied to popover. | :heavy_check_mark: | :heavy_check_mark: |
 | `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop. | :heavy_check_mark: | :heavy_check_mark: |
-| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (\_This is the default settings.*) | :heavy_check_mark: | :heavy_check_mark: |
+| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (\_This is the default settings.\*) | :heavy_check_mark: | :heavy_check_mark: |
 | `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
 | `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
 | `icon-inside` | `Bool` | Show icon inside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
 | `icon-outside` | `Bool` | Show icon outside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-size` | `auto|sm|md|lg|xlg` | Allows to set size of icon. Default is `auto`. | :heavy_check_mark: | :x: |
+| `icon-size` | `auto\|sm\|md\|lg\|xlg` | Allows to set size of icon. Default is `auto`. | :heavy_check_mark: | :x: |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 
