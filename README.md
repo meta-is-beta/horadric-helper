@@ -122,11 +122,11 @@ type PoeConfig = {
 };
 ```
 
-| Property name |      Required      |   Type   | Description                                                                                                            |
-| :-----------: | :----------------: | :------: | ---------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  `reference`  | :heavy_check_mark: | `string` | Reference name of components to which this config should apply to.                                                     |
-|   `iconSrc`   |        :x:         | `string` | Url of icon that will be displayed if any of `as-icon`, `icon-inside` or `icon-outside` props is set.                  |
-| `dataObject`  | :heavy_check_mark: | `object` | Object which describest all properties of item you want to display. Exact structure of that object is described below. | `rawData` | Only if `dataObject` is not set | `string` | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
+| Property name |      Required      |   Type   | Description |
+| :-----------: | :----------------: | :------: | -----       |
+|  `reference`  | :heavy_check_mark: | `string` | Reference name of components to which this config should apply to. |
+| `iconSrc` | :x: | `string` | Url of icon that will be displayed if any of `as-icon`, `icon-inside` or `icon-outside` props is set. |
+| `dataObject` | :heavy_check_mark: | `object` | Object which describest all properties of item you want to display. Exact structure of that object is described below. | `rawData` | Only if `dataObject` is not set | `string` | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
 
 <br />
 #### `dataObject` object
