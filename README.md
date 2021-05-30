@@ -116,16 +116,20 @@ _In the future there will be diffrent configs for diffrent games, following conf
 
 ```typescript
 type PoeConfig = {
+  // Required
   // Reference name of components to which this config should apply to.
   reference: String;
 
-  // Url of icon that will be displayed if any of icons props is set.
+  // Optional
+  // Url of icon that will be displayed if any of icon props is set.
   iconSrc: String | null;
 
+  // Required (exclusive with 'rawData' - use only one of them)
   // Object which describest all properties of item you want to display.
   // Exact structure of that object is described below.
   dataObject: PoeItem | PoePassive;
 
+  // Required (exclusive with 'dataObject' - use only one of them)
   // Raw item data pulled from the game.
   // So far this only works for items from Path of Exile.
   // (To copy item's data press crl+c while hovering over item in game)
