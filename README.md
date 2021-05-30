@@ -128,7 +128,7 @@ type PoeConfig = {
 
   // Raw item data pulled from the game.
   // So far this only works for items from Path of Exile.
-  // (You can crtl + c when in-game and while hovering over any item. This will copy that item's raw data to clipboard)
+  // (To copy item's data press crl+c while hovering over item in game)
   rawData: String | null;
 };
 ```
