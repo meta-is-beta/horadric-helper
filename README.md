@@ -64,7 +64,7 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 </script>
 ```
 
-#### 4. Item should be displayed on the page as icon.
+#### 4. Item should be displayed on the page.
 
 ![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
 
@@ -77,11 +77,11 @@ You can apply props to change behaviour for individual components.
 | `classes` | `String` | Additional classes that will be applied to component.| :heavy_check_mark: | :heavy_check_mark: |
 | `popover-classes` | `String` | Additional classes that will be applied to popover. | :heavy_check_mark: | :heavy_check_mark: |
 | `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop. | :heavy_check_mark: | :heavy_check_mark: |
-| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (\_This is the default settings.\*) | :heavy_check_mark: | :heavy_check_mark: |
+| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) | :heavy_check_mark: | :heavy_check_mark: |
 | `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
 | `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-inside` | `Bool` | Show icon inside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-outside` | `Bool` | Show icon outside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
+| `icon-inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) | :heavy_check_mark: | :heavy_check_mark: |
+| `icon-outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) | :heavy_check_mark: | :heavy_check_mark: |
 | `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. | :heavy_check_mark: | :x: |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
@@ -111,45 +111,47 @@ When library is loaded it will register global object called `HoradricHelper`.
 You can use `HoradricHelper.applyConfig` method to load either single `config` object or array of `config` objects.
 
 _In the future there will be diffrent configs for diffrent games, following configs are for Path of Exile only._
-
 #### Config object
 
 ```typescript
 type PoeConfig = {
   // Required
   // Reference name of components to which this config should apply to.
+  // Eg: If you set this value to "Headhunter", this config will be applied to all components with <poe-item reference="Headhunter">.
   reference: String;
 
   // Optional
-  // Url of icon that will be displayed if any of icon props is set.
+  // Url of icon that will be displayed if any of icon props are set.
   iconSrc: String | null;
 
   // Required (exclusive with 'rawData' - use only one of them)
-  // Object which describest all properties of item you want to display.
-  // Exact structure of that object is described below.
+  // Object which describes all properties of item or passive you want to display.
+  // Exact structure of that object is described in 'PoeItem' and 'PoePassive' sections.
   dataObject: PoeItem | PoePassive | null;
 
   // Required (exclusive with 'dataObject' - use only one of them)
   // Raw item data pulled from the game.
   // So far this only works for items from Path of Exile.
-  // (To copy item's data press crl+c while hovering over item in game)
+  // (To copy item's data press crl+c while hovering over an item in-game)
   rawData: String | null;
 };
 ```
 
 #### Data objects
-`dataObject` object will be diffrent depending on the type of item you want  to show.
 
 ##### Data object for ``poe-item`` components
 ```typescript
 type PoeItem = {
   // Required
+  // Item's rarity
   rarity: "Normal" | "Rare" | "Magic" | "Unique" | "Gem";
 
   // Required
+  // Item's type
   type: "Equipment" | "Gem" | "Jewel" | "Flask" | "Currency" | "Maps";
 
   // Required
+  // Item's name
   name: String;
 
   // Optional
@@ -177,7 +179,7 @@ type PoeItem = {
 
   // Optional
   // List of item's enchants text lines
-  // Eg: ["Allocates Nimbleness"]
+  // Eg: ["Allocates Beef"]
   enchants: String[] | null;
 
   // Optional
@@ -199,10 +201,10 @@ type PoeItem = {
   // Optional
   // List of item's statuses
   // Eg: ["Corrupted", "Split"]
-  statuses: ("Corrupted" | "Mirrored" | "Split")[];
+  statuses: ("Corrupted" | "Mirrored" | "Split")[] | null;
 }
 ```
-- Data object for `poe-passive` components:
+##### Data object for ``poe-passive`` components
 ```typescript
 type PoePassive = {
   name: String;
