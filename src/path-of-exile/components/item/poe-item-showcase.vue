@@ -229,10 +229,14 @@ export default {
         : [];
     },
     itemInfluences() {
-      return this.item.influences ? this.item.influences : [];
+      return this.item.influences
+        ? this.item.influences.map((i) => i.toLowerCase())
+        : [];
     },
     itemStatuses() {
-      return this.item.statuses ? this.item.statuses : [];
+      return this.item.statuses
+        ? this.item.statuses.map((s) => s.toLowerCase())
+        : [];
     },
     itemIsCorrupted() {
       return !!this.itemStatuses.some((s) => s === "corrupted");
@@ -253,7 +257,10 @@ export default {
     },
     headerClasses() {
       let classes = "poe-item-header";
-      if (this.item.rarity === "Rare" || this.item.rarity === "Unique") {
+      if (
+        this.item.rarity.toLowerCase() === "rare" ||
+        this.item.rarity.toLowerCase() === "unique"
+      ) {
         classes += " poe-item-header-double";
       } else {
         classes += " poe-item-header-single";

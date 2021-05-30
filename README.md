@@ -127,7 +127,7 @@ type PoeConfig = {
   // Required (exclusive with 'rawData' - use only one of them)
   // Object which describest all properties of item you want to display.
   // Exact structure of that object is described below.
-  dataObject: PoeItem | PoePassive;
+  dataObject: PoeItem | PoePassive | null;
 
   // Required (exclusive with 'dataObject' - use only one of them)
   // Raw item data pulled from the game.
@@ -137,27 +137,69 @@ type PoeConfig = {
 };
 ```
 
-#### Data object
+#### Data objects
 `dataObject` object will be diffrent depending on the type of item you want  to show.
 
-- Data object for ``poe-item`` components:
+##### Data object for ``poe-item`` components
 ```typescript
 type PoeItem = {
-  rarity: "normal" | "rare" | "magic" | "unique" | "gem" | "";
-  class: String | null;
-  type: String | null;
-  name: String | null;
+  // Required
+  rarity: "Normal" | "Rare" | "Magic" | "Unique" | "Gem";
+
+  // Required
+  type: "Equipment" | "Gem" | "Jewel" | "Flask" | "Currency" | "Maps";
+
+  // Required
+  name: String;
+
+  // Optional
+  // Name of item's base - eg. "Leather Belt" for Headhunter
   baseName: String | null;
-  influences: ("crusader" | "warlord" | "hunter" | "redeemer" | "elder" | "shaper" | "replica" | "")[];
+
+  // Optional
+  // List of influences on an item
+  // Eg: ["Elder", "Shaper"]
+  influences: ("Crusader" | "Warlord" | "Hunter" | "Redeemer" | "Elder" | "Shaper" | "Replica")[] | null;
+
+  // Optional
+  // Item's level
   level: String | null;
+
+  // Optional
+  // List of item's requirement text lines
+  // Eg: ["Dex: 12", "Str: 12"]
   requirements: String[] | null;
-  sockets: String[] | null;
+
+  // Optional
+  // List of item's properties text lines
+  // Eg: ["Armour: 9", "Energy Rating: 9"]
   properties: String[] | null;
+
+  // Optional
+  // List of item's enchants text lines
+  // Eg: ["Allocates Nimbleness"]
   enchants: String[] | null;
+
+  // Optional
+  // List of item's implicits text lines
+  // Eg: ["Has 1 Socket"]
   implicits: String[] | null;
+
+  // Optional
+  // List of item's modifiers text lines
+  // Eg: ["Adds 1 to 2 Cold Damage to Attacks", "6% Increased Attack Speed"]
   modifiers: String[] | null;
+
+  // Optional
+  // List of item's gem description text lines
+  // Only applies to items with type "Gem"
+  // Eg (for Flammability): ["Curses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit."]
   gemDescription: String[] | null;
-  statuses: ("corrupted" | "mirrored" | "split")[];
+
+  // Optional
+  // List of item's statuses
+  // Eg: ["Corrupted", "Split"]
+  statuses: ("Corrupted" | "Mirrored" | "Split")[];
 }
 ```
 - Data object for `poe-passive` components:
