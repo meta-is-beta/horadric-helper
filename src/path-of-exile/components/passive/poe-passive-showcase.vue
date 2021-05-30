@@ -107,7 +107,7 @@ export default {
     color: var(--poe-color-passive-title);
     font-size: 22px;
     white-space: nowrap;
-    background-image: url(../../assets/Node-ui-header.png);
+    background-image: url(../../assets/Passive-ui-header.png);
     display: flex;
     justify-content: space-between;
 

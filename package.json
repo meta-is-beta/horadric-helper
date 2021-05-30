@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint",
     "lint:fix": "npm run lint --fix",
     "build:demo": "vue-cli-service build --inline-vue --name item-showcase src/demo.main.js",
-    "build:poe": "vue-cli-service build --dest ./dist/poe --target lib --inline-vue --name poe-item-showcase src/path-of-exile/main.js",
+    "build:poe": "vue-cli-service build --dest ./dist/poe --target lib --inline-vue --name poe-showcase src/path-of-exile/main.js",
     "start": "npm run serve"
   },
   "dependencies": {
