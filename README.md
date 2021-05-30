@@ -82,7 +82,7 @@ You can apply props to change behaviour for individual components.
 | `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
 | `icon-inside` | `Bool` | Show icon inside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
 | `icon-outside` | `Bool` | Show icon outside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-size` | `auto\|sm\|md\|lg\|xlg` | Allows to set size of icon. Default is `auto`. | :heavy_check_mark: | :x: |
+| `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. | :heavy_check_mark: | :x: |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 
@@ -117,23 +117,40 @@ _In the future there will be diffrent configs for diffrent games, following conf
 ```typescript
 type PoeConfig = {
   dataObject: PoeItem | PoePassive;
-  rawData: String;
-  iconSrc: String;
+  rawData: String | null;
+  iconSrc: String | null;
 };
 ```
 
-| Property name |      Required      |   Type   | Description |
-| :-----------: | :----------------: | :------: | -----       |
-|  `reference`  | :heavy_check_mark: | `string` | Reference name of components to which this config should apply to. |
-| `iconSrc` | :x: | `string` | Url of icon that will be displayed if any of `as-icon`, `icon-inside` or `icon-outside` props is set. |
-| `dataObject` | :heavy_check_mark: | `object` | Object which describest all properties of item you want to display. Exact structure of that object is described below. | `rawData` | Only if `dataObject` is not set | `string` | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
+| Property name |      Required      | Description |
+| :-----------: | :----------------: | ----------- |
+|  `reference`  | :heavy_check_mark: | Reference name of components to which this config should apply to. |
+| `iconSrc`     | :x:                | Url of icon that will be displayed if any of `as-icon`, `icon-inside` or `icon-outside` props is set. |
+| `dataObject` | :heavy_check_mark: | Object which describest all properties of item you want to display. Exact structure of that object is described below. |
+| `rawData`    | Only if `dataObject` is not set | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
 
 <br />
 #### `dataObject` object
 `dataObject` object will be diffrent depending on the type of
-| Property name | Required | Type | Description |
-| :-----------: | -------- | ---- | ----------- |
-|
+```typescript
+type PoeItem = {
+  rarity: "normal" | "rare" | "magic" | "unique" | "gem" | "";
+  class: String | null;
+  type: String | null;
+  name: String | null;
+  baseName: String | null;
+  influences: ("crusader" | "warlord" | "hunter" | "redeemer" | "elder" | "shaper" | "replica" | "")[];
+  level: String | null;
+  requirements: String[] | null;
+  sockets: String[] | null;
+  properties: String[] | null;
+  enchants: String[] | null;
+  implicits: String[] | null;
+  modifiers: String[] | null;
+  gemDescription: String[] | null;
+  statuses: ("corrupted" | "mirrored" | "split")[];
+}
+```
 
 ## Item sections
 
