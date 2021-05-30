@@ -17,16 +17,16 @@ https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/poe-sho
 
 More about diffrent package types, self-hosting and versions in "Packages" section.
 
-## Usage tl:dr
+## Usage TL:DR
 
-1. Include `js` and `css` files on your site.
+#### 1. Include `js` and `css` files on your site.
 
 ```html
 <script src="poe-showcase.umd.min.js"></script>
 <link rel="stylesheet" href="poe-showcase.css" />
 ```
 
-2. Add component to your HTML.
+#### 2. Add component to your HTML.
 
 ```html
 <p>
@@ -34,7 +34,7 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 </p>
 ```
 
-3. Initialize config for referenced item.
+#### 3. Initialize config for referenced item.
 
 ```html
 <script>
@@ -64,15 +64,15 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 </script>
 ```
 
-4. Item should be displayed on the page as icon.
+#### 4. Item should be displayed on the page as icon.
 
 ![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
 
 ## Props
 
-You can apply props to change behaviour for individual showcases.
-| Prop | Type | Description | PoE Item | PoE Passive |
-|:-------|:----------:|:------|:-----:|:-----:|
+You can apply props to change behaviour for individual components.
+| Prop | Type | Description | PoE Items | PoE Passives |
+|:-------:|:----------:|:------|:-----:|:-----:|
 | `reference` | `String` | Name used to target component when loading configs. See **Item config** section for details. | :heavy_check_mark: | :heavy_check_mark: |
 | `classes` | `String` | Additional classes that will be applied to component.| :heavy_check_mark: | :heavy_check_mark: |
 | `popover-classes` | `String` | Additional classes that will be applied to popover. | :heavy_check_mark: | :heavy_check_mark: |
@@ -86,7 +86,54 @@ You can apply props to change behaviour for individual showcases.
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
 
-## Item config
+#### Usage examples
+
+```html
+<poe-item
+  reference="Headhunter"
+  as-item
+  dim-sections="properties:1,2"
+  icon-size="sm"
+></poe-item>
+```
+
+```html
+<poe-passive
+  reference="Beef"
+  as-showcase
+  label-text="Best passive"
+></poe-passive>
+```
+
+### Item config
+
+When library is loaded it will register global object called `HoradricHelper`.
+You can use `HoradricHelper.applyConfig` method to load either single `config` object or array `config` objects.
+
+_In the future there will be diffrent configs for diffrent games, following configs are for Path of Exile only._
+
+#### `config` object
+
+```typescript
+type PoeConfig = {
+  dataObject: PoeItem | PoePassive;
+  rawData: String;
+  iconSrc: String;
+};
+```
+
+| Property name |      Required      |   Type   | Description                                                                                                            |
+| :-----------: | :----------------: | :------: | ---------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  `reference`  | :heavy_check_mark: | `string` | Reference name of components to which this config should apply to.                                                     |
+|   `iconSrc`   |        :x:         | `string` | Url of icon that will be displayed if any of `as-icon`, `icon-inside` or `icon-outside` props is set.                  |
+| `dataObject`  | :heavy_check_mark: | `object` | Object which describest all properties of item you want to display. Exact structure of that object is described below. | `rawData` | Only if `dataObject` is not set | `string` | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
+
+<br />
+#### `dataObject` object
+`dataObject` object will be diffrent depending on the type of
+| Property name | Required | Type | Description |
+| :-----------: | -------- | ---- | ----------- |
+|
 
 ## Item sections
 

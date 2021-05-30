@@ -1,7 +1,8 @@
-type PoeShowcaseConfig = {
-  dataObject: PoeItem | PoeNode | null;
+type PoeConfig = {
+  reference: string;
+  dataObject: PoeItem | PoePassive | null;
   rawData: string | null;
-  iconSrc: URL;
+  iconSrc: string | null;
 };
 
 type PoeItem = {
@@ -37,7 +38,7 @@ type PoeItemDataSection = {
   index: number;
 };
 
-type PoeNode = {
+type PoePassive = {
   name: String;
   type: "basic" | "notable" | "keystone";
   description: String[];
