@@ -262,6 +262,16 @@
         "iconSrc": "https://web.poecdn.com/gen/image/WzksMTQseyJmIjoiMkRJdGVtc1wvRmxhc2tzXC9saWZlZmxhc2sxMSIsInciOjEsImgiOjIsInNjYWxlIjp0cnVlLCJsZXZlbCI6MX1d/4d10cf0cac/Item.png",
         "rawData": "Item Class: Life Flasks\nRarity: Magic\nBubbling Divine Life Flask of Staunching\n--------\nQuality: +20% (augmented)\nRecovers 1440 (augmented) Life over 3 (augmented) Seconds\nConsumes 15 of 45 Charges on use\nCurrently has 0 Charges\n--------\nRequirements:\nLevel: 60\n--------\nItem Level: 69\n--------\n50% reduced Amount Recovered\n135% increased Recovery rate\n50% of Recovery applied Instantly\nImmunity to Bleeding and Corrupted Blood during Flask effect\nRemoves Bleeding and Corrupted Blood on use"
       }
+    },
+    {
+      "props": {
+        "asIcon": true
+      },
+      "config": {
+        "reference": "Frosted Fishscale Gauntlets of Skill",
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
+        "rawData": "Item Class: Gloves\nRarity: Magic\nFrosted Fishscale Gauntlets of Skill\n--------\nArmour: 9\nEnergy Rating: 9\n--------\nRequirements:\nLevel: 2\nStr: 4\nDex: 4\n--------\nItem Level: 5\n--------\nAdds 1 to 2 Cold Damage to Attacks\n6% Increased Attack Speed"
+      }
     }
   ]
 }
