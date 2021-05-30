@@ -1,4 +1,4 @@
-#:skull: Horadric Helper :skull:
+# Horadric Helper 💀
 
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
@@ -73,11 +73,11 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 You can apply props to change behaviour for individual showcases.
 | Prop | Type | Description | PoE Item | PoE Passive |
 |:-------|:----------:|:------|:-----:|:-----:|
-| `reference` | `String` | Name used to target component when loading configs. See **Item config** section for details. | :heavy_check_mark: | :heavy_check_mark: |
+| `reference` | `String` | Name used to target component when loading configs. See **Item config** section for details. | :heavy*check_mark: | :heavy_check_mark: |
 | `classes` | `String` | Additional classes that will be applied to component.| :heavy_check_mark: | :heavy_check_mark: |
 | `popover-classes` | `String` | Additional classes that will be applied to popover. | :heavy_check_mark: | :heavy_check_mark: |
 | `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop. | :heavy_check_mark: | :heavy_check_mark: |
-| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (_This is the default settings._) | :heavy_check_mark: | :heavy_check_mark: |
+| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (\_This is the default settings.*) | :heavy_check_mark: | :heavy_check_mark: |
 | `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
 | `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
 | `icon-inside` | `Bool` | Show icon inside of showcase. (Only works if `iconSrc` was provided in config.) | :heavy_check_mark: | :heavy_check_mark: |
