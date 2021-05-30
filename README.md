@@ -108,7 +108,7 @@ You can apply props to change behaviour for individual components.
 ## Item config
 
 When library is loaded it will register global object called `HoradricHelper`.
-You can use `HoradricHelper.applyConfig` method to load either single `config` object or array `config` objects.
+You can use `HoradricHelper.applyConfig` method to load either single `config` object or array of `config` objects.
 
 _In the future there will be diffrent configs for diffrent games, following configs are for Path of Exile only._
 
@@ -116,18 +116,22 @@ _In the future there will be diffrent configs for diffrent games, following conf
 
 ```typescript
 type PoeConfig = {
-  dataObject: PoeItem | PoePassive;
-  rawData: String | null;
+  // Reference name of components to which this config should apply to.
+  reference: String;
+
+  // Url of icon that will be displayed if any of icons props is set.
   iconSrc: String | null;
+
+  // Object which describest all properties of item you want to display.
+  // Exact structure of that object is described below.
+  dataObject: PoeItem | PoePassive;
+
+  // Raw item data pulled from the game.
+  // So far this only works for items from Path of Exile.
+  // (You can crtl + c when in-game and while hovering over any item. This will copy that item's raw data to clipboard)
+  rawData: String | null;
 };
 ```
-
-| Property name |      Required      | Description |
-| :-----------: | :----------------: | ----------- |
-|  `reference`  | :heavy_check_mark: | Reference name of components to which this config should apply to. |
-| `iconSrc`     | :x:                | Url of icon that will be displayed if any of `as-icon`, `icon-inside` or `icon-outside` props is set. |
-| `dataObject` | :heavy_check_mark: | Object which describest all properties of item you want to display. Exact structure of that object is described below. |
-| `rawData`    | Only if `dataObject` is not set | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
 
 #### Data object
 `dataObject` object will be diffrent depending on the type of item you want  to show.
