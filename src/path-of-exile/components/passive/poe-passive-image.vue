@@ -1,5 +1,5 @@
 <template>
-  <div :class="nodeWrapperClasses">
+  <div :class="passiveWrapperClasses">
     <div />
     <img :src="this.iconUrl" />
   </div>
@@ -7,28 +7,28 @@
 
 <script>
 export default {
-  name: "PoeNodeImage",
+  name: "PoePassiveImage",
   props: {
     type: { type: String, required: true },
     iconUrl: { type: String, required: true },
   },
   computed: {
-    nodeIconClasses() {
-      return `poe-node-icon poe-${this.type
+    passiveIconClasses() {
+      return `poe-passive-icon poe-${this.type
         .replace(" ", "-")
-        .toLowerCase()}-node-icon`;
+        .toLowerCase()}-passive-icon`;
     },
-    nodeWrapperClasses() {
-      return `poe-node-image-wrapper poe-${this.type
+    passiveWrapperClasses() {
+      return `poe-passive-image-wrapper poe-${this.type
         .replace(" ", "-")
-        .toLowerCase()}-node-icon-wrapper`;
+        .toLowerCase()}-passive-icon-wrapper`;
     },
   },
 };
 </script>
 
 <style lang="scss">
-.poe-node-image-wrapper {
+.poe-passive-image-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ export default {
   }
 }
 
-.poe-basic-node-icon-wrapper {
+.poe-basic-passive-icon-wrapper {
   & div {
     width: 52px;
     content: url(../../assets/Basic_passive_frame.png);
@@ -53,7 +53,7 @@ export default {
   }
 }
 
-.poe-ascendancy-basic-node-icon-wrapper {
+.poe-ascendancy-basic-passive-icon-wrapper {
   & div {
     width: 52px;
     content: url(../../assets/Ascendancy_basic_passive_frame.png);
@@ -64,7 +64,7 @@ export default {
   }
 }
 
-.poe-notable-node-icon-wrapper {
+.poe-notable-passive-icon-wrapper {
   & div {
     width: 68px;
     content: url(../../assets/Notable_passive_frame.png);
@@ -74,7 +74,7 @@ export default {
     margin: 12px;
   }
 }
-.poe-ascendancy-notable-node-icon-wrapper {
+.poe-ascendancy-notable-passive-icon-wrapper {
   & div {
     width: 68px;
     content: url(../../assets/Ascendancy_notable_passive_frame.png);
@@ -85,7 +85,7 @@ export default {
   }
 }
 
-.poe-keystone-node-icon-wrapper {
+.poe-keystone-passive-icon-wrapper {
   & div {
     width: 88px;
     content: url(../../assets/Keystone_passive_frame.png);

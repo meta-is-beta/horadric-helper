@@ -63,7 +63,7 @@ def generate_node_mapping() -> Dict[str, str]:
 
             nodes.append(node_mapping)
 
-    nodesObj = {"nodes": nodes}
+    nodesObj = {"passives": nodes}
 
     with open("passive-node-data.json", 'wt') as fdo:
         json.dump(nodesObj, fdo, indent=2)

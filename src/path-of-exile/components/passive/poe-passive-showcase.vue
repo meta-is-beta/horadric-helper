@@ -1,25 +1,25 @@
 <template>
   <div style="display: flex">
     <!-- Outside Icon -->
-    <poe-node-image
-      class="poe-node-icon-beside-showcase"
+    <poe-passive-image
+      class="poe-passive-icon-beside-showcase"
       v-if="shouldShowIconOutside"
-      :type="nodeType"
+      :type="passiveType"
       :iconUrl="this.iconUrl"
     />
     <div :class="wrapperClasses">
       <!-- Header -->
-      <div class="poe-node-header">
-        <div class="poe-node-header-left-panel" />
-        <div class="poe-node-header-center-panel">
-          {{ nodeName }}
+      <div class="poe-passive-header">
+        <div class="poe-passive-header-left-panel" />
+        <div class="poe-passive-header-center-panel">
+          {{ passiveName }}
         </div>
-        <div class="poe-node-header-right-panel" />
+        <div class="poe-passive-header-right-panel" />
       </div>
       <!-- Description -->
-      <div class="poe-node-description">
+      <div class="poe-passive-description">
         <div
-          v-for="(descLine, index) in nodeDescription"
+          v-for="(descLine, index) in passiveDescription"
           :key="`${index}-desc-line`"
           :class="getDescriptionClasses(index)"
         >
@@ -27,9 +27,9 @@
         </div>
       </div>
       <!-- Inside Icon -->
-      <poe-node-image
+      <poe-passive-image
         v-if="shouldShowIconInside"
-        :type="nodeType"
+        :type="passiveType"
         :iconUrl="this.iconUrl"
       />
     </div>
@@ -37,17 +37,17 @@
 </template>
 
 <script>
-import PoeNodeImage from "./poe-node-image.vue";
+import PoePassiveImage from "./poe-passive-image.vue";
 import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
-  name: "PoeNodeShowcaseTooltip",
+  name: "PoePassiveShowcaseTooltip",
   props: {
-    node: { type: Object, default: () => {} },
+    passive: { type: Object, default: () => {} },
   },
   mixins: [showcaseMixin],
   components: {
-    PoeNodeImage,
+    PoePassiveImage,
   },
   methods: {
     getDescriptionClasses(index) {
@@ -57,19 +57,21 @@ export default {
     },
   },
   computed: {
-    nodeName() {
-      return this.node ? this.node.name : "";
+    passiveName() {
+      return this.passive ? this.passive.name : "";
     },
-    nodeType() {
-      return this.node ? this.node.type : "";
+    passiveType() {
+      return this.passive ? this.passive.type : "";
     },
-    nodeDescription() {
-      return this.node ? this.node.description : [];
+    passiveDescription() {
+      return this.passive ? this.passive.description : [];
     },
     wrapperClasses() {
-      let classes = `poe-node-wrapper`;
-      if (this.nodeType) {
-        classes += ` poe-node-${this.nodeType.replace(" ", "-").toLowerCase()}`;
+      let classes = `poe-passive-wrapper`;
+      if (this.passiveType) {
+        classes += ` poe-passive-${this.passiveType
+          .replace(" ", "-")
+          .toLowerCase()}`;
       }
 
       return classes;
@@ -79,98 +81,98 @@ export default {
 </script>
 
 <style lang="scss">
-.poe-node-icon-beside-showcase {
+.poe-passive-icon-beside-showcase {
   align-self: flex-start;
   object-fit: contain;
   margin-right: 12px;
 }
-.poe-node-showcase-popover {
-  .poe-node-wrapper {
+.poe-passive-showcase-popover {
+  .poe-passive-wrapper {
     border: 0;
     padding: 0px;
   }
 }
-.poe-node-showcase {
-  .poe-node-wrapper {
+.poe-passive-showcase {
+  .poe-passive-wrapper {
     border: 2px solid #403b2e;
     padding: 2px;
   }
 }
 
-.poe-node-wrapper {
+.poe-passive-wrapper {
   background-color: black;
 
-  & .poe-node-header {
+  & .poe-passive-header {
     height: 55px;
-    color: var(--poe-color-node-title);
+    color: var(--poe-color-passive-title);
     font-size: 22px;
     white-space: nowrap;
     background-image: url(../../assets/Node-ui-header.png);
     display: flex;
     justify-content: space-between;
 
-    & .poe-node-header-left-panel,
-    & .poe-node-header-right-panel {
+    & .poe-passive-header-left-panel,
+    & .poe-passive-header-right-panel {
       width: 44px;
       height: 55px;
       background-image: inherit;
     }
 
-    & .poe-node-header-center-panel {
+    & .poe-passive-header-center-panel {
       line-height: 55px;
     }
   }
-  & .poe-node-image-wrapper {
+  & .poe-passive-image-wrapper {
     padding-bottom: 10px;
   }
-  &.poe-node-basic {
-    & .poe-node-header {
+  &.poe-passive-basic {
+    & .poe-passive-header {
       background-position-y: -114px;
-      & .poe-node-header-left-panel {
+      & .poe-passive-header-left-panel {
         background-position-y: 0px;
       }
-      & .poe-node-header-right-panel {
+      & .poe-passive-header-right-panel {
         background-position-y: -57px;
       }
     }
   }
-  & .poe-node-description {
+  & .poe-passive-description {
     padding: 10px;
     text-align: left;
     color: var(--poe-color-augmented);
     min-width: 250px;
   }
-  &.poe-node-notable {
-    & .poe-node-header {
+  &.poe-passive-notable {
+    & .poe-passive-header {
       background-position-y: -284px;
-      & .poe-node-header-left-panel {
+      & .poe-passive-header-left-panel {
         background-position-y: -170px;
       }
-      & .poe-node-header-right-panel {
+      & .poe-passive-header-right-panel {
         background-position-y: -227px;
       }
     }
   }
-  &.poe-node-keystone {
-    & .poe-node-header {
+  &.poe-passive-keystone {
+    & .poe-passive-header {
       color: #e2dedd !important;
       background-position-y: -456px;
-      & .poe-node-header-left-panel {
+      & .poe-passive-header-left-panel {
         background-position-y: -399px;
       }
-      & .poe-node-header-right-panel {
+      & .poe-passive-header-right-panel {
         background-position-y: -342px;
       }
     }
   }
-  &.poe-node-ascendancy-notable,
-  &.poe-node-ascendancy-basic {
-    & .poe-node-header {
+  &.poe-passive-ascendancy-notable,
+  &.poe-passive-ascendancy-basic {
+    & .poe-passive-header {
       background-position-y: 57px;
-      & .poe-node-header-left-panel {
+      & .poe-passive-header-left-panel {
         background-position-y: 171px;
       }
-      & .poe-node-header-right-panel {
+      & .poe-passive-header-right-panel {
         background-position-y: 114px;
       }
     }

@@ -5,10 +5,10 @@
     <div class="poe-demo">
       <poe-item-demo />
     </div>
-    <h1>Poe nodes</h1>
+    <h1>Poe passives</h1>
     <br />
     <div class="poe-demo">
-      <poe-node-demo />
+      <poe-passive-demo />
     </div>
   </div>
 </template>
@@ -17,11 +17,11 @@
 /* eslint-disable vue/no-unused-components */
 
 import PoeItemDemo from "./path-of-exile/components/item/demo/poe-item.demo.vue";
-import PoeNodeDemo from "./path-of-exile/components/node/demo/poe-node.demo.vue";
+import PoePassiveDemo from "./path-of-exile/components/passive/demo/poe-passive.demo.vue";
 
 export default {
   name: "App",
-  components: { PoeItemDemo, PoeNodeDemo },
+  components: { PoeItemDemo, PoePassiveDemo },
 };
 </script>
 

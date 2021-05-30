@@ -1,16 +1,16 @@
 <template>
   <div v-if="show" :class="classesComputed">
-    <div v-if="displayMode === `showcase`" class="poe-node-showcase-wrapper">
+    <div v-if="displayMode === `showcase`" class="poe-passive-showcase-wrapper">
       <!-- Showcase -->
-      <poe-node-showcase
-        :node="node"
+      <poe-passive-showcase
+        :passive="passive"
         :iconUrl="iconSrc"
         :showIconInside="iconInside"
         :showIconOutside="iconOutside"
         :dimedSections="dimedSections"
       />
     </div>
-    <div v-else class="poe-node-showcase-wrapper">
+    <div v-else class="poe-passive-showcase-wrapper">
       <v-popover
         trigger="hover click"
         placement="auto"
@@ -23,8 +23,8 @@
         :popoverArrowClass="popoverArrowClasses"
       >
         <template slot="popover">
-          <poe-node-showcase
-            :node="node"
+          <poe-passive-showcase
+            :passive="passive"
             :iconUrl="iconSrc"
             :showIconInside="iconInside"
             :showIconOutside="iconOutside"
@@ -33,10 +33,12 @@
         </template>
         <!-- Icon -->
         <div v-if="displayMode === `icon`">
-          <poe-node-image :type="node.type" :iconUrl="iconSrc" />
+          <poe-passive-image :type="passive.type" :iconUrl="iconSrc" />
           <div class="poe-showcase-label" v-if="!showCustomLabel">
-            <div>{{ node.name }}</div>
-            <div class="poe-node-showcase-node-name">{{ node.type }}</div>
+            <div>{{ passive.name }}</div>
+            <div class="poe-passive-showcase-passive-name">
+              {{ passive.type }}
+            </div>
           </div>
           <div class="poe-showcase-label" v-else>
             <div>
@@ -45,7 +47,7 @@
           </div>
         </div>
         <!-- Text -->
-        <div v-else class="poe-node-link">
+        <div v-else class="poe-passive-link">
           <div>{{ labelTextComputed }}</div>
         </div>
       </v-popover>
@@ -54,48 +56,52 @@
 </template>
 
 <script>
-import PoeNodeShowcase from "./poe-node-showcase.vue";
-import PoeNodeImage from "./poe-node-image.vue";
+import PoePassiveShowcase from "./poe-passive-showcase.vue";
+import PoePassiveImage from "./poe-passive-image.vue";
 import mainMixin from "@/shared/mixins/main.mixin";
 
 export default {
-  name: "PoeNode",
+  name: "PoePassive",
   mixins: [mainMixin],
-  components: { PoeNodeShowcase, PoeNodeImage },
+  components: { PoePassiveShowcase, PoePassiveImage },
   computed: {
-    node() {
+    passive() {
       return this.showcaseData;
     },
     classesComputed() {
-      let classes = `poe-node-showcase ${this.classes}`;
+      let classes = `poe-passive-showcase ${this.classes}`;
 
       switch (this.displayMode) {
         case "showcase":
-          classes += " poe-node-display-showcase";
+          classes += " poe-passive-display-showcase";
           break;
         case "icon":
-          classes += " poe-node-display-icon";
+          classes += " poe-passive-display-icon";
           break;
         case "text":
         default:
-          classes += " poe-node-display-text";
+          classes += " poe-passive-display-text";
           break;
       }
 
       return classes;
     },
     popoverClassesComputed() {
-      return `poe-node-showcase-popover ${this.popoverClasses}`;
+      return `poe-passive-showcase-popover ${this.popoverClasses}`;
     },
     showCustomLabel() {
       return this.labelText.length > 0;
     },
     labelTextComputed() {
-      return this.labelText ? this.labelText : this.node ? this.node.name : "";
+      return this.labelText
+        ? this.labelText
+        : this.passive
+        ? this.passive.name
+        : "";
     },
   },
   showcaseMetadata: {
-    type: "poe-node",
+    type: "poe-passive",
   },
 };
 </script>
@@ -103,25 +109,25 @@ export default {
 <style lang="scss">
 @use "./../../_styles" as styles;
 
-.poe-node-showcase-popover {
+.poe-passive-showcase-popover {
   z-index: 10000;
-  .poe-node-wrapper {
+  .poe-passive-wrapper {
     background-color: black;
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   }
 }
 
-.poe-node-showcase-popover,
-.poe-node-showcase {
+.poe-passive-showcase-popover,
+.poe-passive-showcase {
   @include styles.font;
   @include styles.colors;
 
-  .poe-node-showcase-node-name {
+  .poe-passive-showcase-passive-name {
     line-height: 12px;
     font-size: 12px;
   }
-  .poe-node-link {
-    color: var(--poe-color-node-title);
+  .poe-passive-link {
+    color: var(--poe-color-passive-title);
   }
 }
 </style>
