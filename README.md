@@ -129,7 +129,6 @@ type PoeConfig = {
 | `dataObject` | :heavy_check_mark: | Object which describest all properties of item you want to display. Exact structure of that object is described below. |
 | `rawData`    | Only if `dataObject` is not set | Raw item data pulled from the game. So far this only works for items from Path of Exile. (You can `crtl + c` when in-game and while hovering over any item. This will copy that item's raw data to clipboard) |
 
-<br />
 #### Data object
 `dataObject` object will be diffrent depending on the type of item you want  to show.
 
