@@ -5,6 +5,7 @@
       <poe-passive-showcase
         :passive="passive"
         :iconUrl="iconSrc"
+        :iconSize="iconSize"
         :showIconInside="iconInside"
         :showIconOutside="iconOutside"
         :dimedSections="dimedSections"
@@ -26,6 +27,7 @@
           <poe-passive-showcase
             :passive="passive"
             :iconUrl="iconSrc"
+            :iconSize="iconSize"
             :showIconInside="iconInside"
             :showIconOutside="iconOutside"
             :dimedSections="dimedSections"
@@ -33,7 +35,11 @@
         </template>
         <!-- Icon -->
         <div v-if="displayMode === `icon`">
-          <poe-passive-image :type="passive.type" :iconUrl="iconSrc" />
+          <poe-passive-image
+            :type="passive.type"
+            :iconUrl="iconSrc"
+            :iconSize="iconSize"
+          />
           <div class="poe-showcase-label" v-if="!showCustomLabel">
             <div>{{ passive.name }}</div>
             <div class="poe-passive-showcase-passive-name">

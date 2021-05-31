@@ -6,7 +6,8 @@
         "asShowcase": false,
         "labelText": "",
         "iconInside": false,
-        "iconOutside": true
+        "iconOutside": true,
+        "iconSize": "xlg"
       },
       "config": {
         "reference": "Ancestral Bond",
@@ -47,7 +48,8 @@
         "asShowcase": false,
         "labelText": "",
         "iconInside": true,
-        "dimSections": "description:3"
+        "dimSections": "description:3",
+        "iconSize": "sm"
       },
       "config": {
         "reference": "Magnifier",
@@ -69,7 +71,8 @@
         "asIcon": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInside": true
+        "iconInside": true,
+        "iconSize": "lg"
       },
       "config": {
         "reference": "Cold damage",

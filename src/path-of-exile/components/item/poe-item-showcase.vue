@@ -1,12 +1,12 @@
 <template>
   <div style="display: flex">
     <!-- Outside Icon -->
-    <img
-      class="poe-item-icon poe-item-icon-beside-showcase"
-      :src="iconUrl"
+    <poe-item-image
       v-if="shouldShowIconOutside"
-      :width="iconSize"
-      height="auto"
+      :classes="`poe-item-icon poe-item-icon-beside-showcase`"
+      :iconSize="iconSize"
+      :type="item.type"
+      :iconUrl="iconUrl"
     />
     <div :class="wrapperClasses">
       <!-- Header -->
@@ -41,6 +41,17 @@
           <span class="poe-item-level-value" v-if="item.level">
             {{ item.level }}
           </span>
+        </div>
+        <!-- Requirements -->
+        <div
+          class="poe-item-separator"
+          v-if="shouldShowItemRequirements && !shouldShowItemLevel"
+        ></div>
+        <div
+          :class="getRequirementsClasses()"
+          v-if="shouldShowItemRequirements"
+        >
+          <div v-html="itemRequirements"></div>
         </div>
         <!-- Enchants -->
         <div class="poe-item-separator" v-if="shouldShowItemEnchants"></div>
@@ -97,11 +108,12 @@
         </div>
         <!-- Inside Icon -->
         <div class="poe-item-separator" v-if="shouldShowIconInside"></div>
-        <img
-          class="poe-item-icon"
-          :src="iconUrl"
+        <poe-item-image
           v-if="shouldShowIconInside"
-          :width="iconSize"
+          :classes="`poe-item-icon`"
+          :iconSize="iconSize"
+          :type="item.type"
+          :iconUrl="iconUrl"
         />
       </div>
     </div>
@@ -109,18 +121,24 @@
 </template>
 
 <script>
+import PoeItemImage from "./poe-item-image.vue";
 import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
   name: "PoeItemShowcase",
+  components: {
+    PoeItemImage,
+  },
   props: {
     item: { type: Object, default: () => {} },
-    iconSize: { type: Number, default: 50 },
   },
   mixins: [showcaseMixin],
   methods: {
     getItemLevelClasses() {
-      return this.addDimedClass("item-level", 1, "poe-item-level");
+      return this.addDimedClass("item-level", 0, "poe-item-level");
+    },
+    getRequirementsClasses() {
+      return this.addDimedClass("requirements", 0, "");
     },
     getPropertyClasses(index) {
       let classes = this.addDimedClass("properties", index, "");
@@ -165,6 +183,12 @@ export default {
     shouldShowItemLevel() {
       return this.item.level && !this.sectionShouldBeFullyHidden("item-level");
     },
+    shouldShowItemRequirements() {
+      return (
+        this.item.requirements &&
+        !this.sectionShouldBeFullyHidden("requirements")
+      );
+    },
     shouldShowItemProperties() {
       return (
         this.itemProperties.length > 0 &&
@@ -185,6 +209,8 @@ export default {
     },
     shouldShowGemDescription() {
       return (
+        this.item.type &&
+        this.item.type.toLowerCase() === "gem" &&
         this.item.gemDescription &&
         !this.sectionShouldBeFullyHidden("description")
       );
@@ -209,6 +235,21 @@ export default {
               );
           })
         : [];
+    },
+    itemRequirements() {
+      return this.item.requirements
+        ? "Requires " +
+            this.item.requirements
+              .map((line) => {
+                return line
+                  .trim()
+                  .replaceAll(
+                    /([0-9]+)/gi,
+                    "<span class='poe-item-requirement-value'>$1</span>"
+                  );
+              })
+              .join(", ")
+        : "";
     },
     itemEnchants() {
       return this.item.enchants
@@ -410,6 +451,7 @@ export default {
   }
 
   .poe-item-property-value,
+  .poe-item-requirement-value,
   .poe-item-level-value {
     color: white;
   }

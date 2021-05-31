@@ -5,9 +5,9 @@
       <poe-item-showcase
         :item="item"
         :iconUrl="iconSrc"
+        :iconSize="iconSize"
         :showIconInside="iconInside"
         :showIconOutside="iconOutside"
-        :iconSize="computedIconSize"
         :dimedSections="dimedSections"
         :hiddenSections="hiddenSections"
       />
@@ -28,16 +28,20 @@
           <poe-item-showcase
             :item="item"
             :iconUrl="iconSrc"
+            :iconSize="iconSize"
             :showIconInside="iconInside"
             :showIconOutside="iconOutside"
-            :iconSize="computedIconSize"
             :dimedSections="dimedSections"
             :hiddenSections="hiddenSections"
           />
         </template>
         <!-- Icon -->
         <div v-if="displayMode === `icon`">
-          <img :width="computedIconSize" :src="iconSrc" />
+          <poe-item-image
+            :iconSize="iconSize"
+            :iconUrl="iconSrc"
+            :type="item.type"
+          />
           <div class="poe-showcase-label">
             {{ labelTextComputed }}
           </div>
@@ -51,6 +55,7 @@
 
 <script>
 import PoeItemShowcase from "./poe-item-showcase.vue";
+import PoeItemImage from "./poe-item-image.vue";
 import processRawData from "./item-data-processor/item-data-processor.ts";
 import mainMixin from "@/shared/mixins/main.mixin";
 
@@ -58,38 +63,9 @@ export default {
   name: "PoeItem",
   components: {
     PoeItemShowcase,
-  },
-  props: {
-    iconSize: { type: String, default: "auto" },
+    PoeItemImage,
   },
   mixins: [mainMixin],
-  methods: {
-    getIconSize(size) {
-      if (size === "auto") {
-        switch (this.item.type) {
-          case "Equipment":
-            return 100;
-          case "Flask":
-            return 50;
-          case "Gem":
-          default:
-            return 50;
-        }
-      } else {
-        switch (size) {
-          case "sm":
-            return 30;
-          case "md":
-          default:
-            return 50;
-          case "lg":
-            return 80;
-          case "xlg":
-            return 100;
-        }
-      }
-    },
-  },
   computed: {
     item() {
       return this.showcaseData;
@@ -124,9 +100,6 @@ export default {
         classes += ` poe-item-link-${this.item.rarity.toLowerCase()}`;
       }
       return classes;
-    },
-    computedIconSize() {
-      return this.getIconSize(this.iconSize);
     },
   },
   showcaseMetadata: {

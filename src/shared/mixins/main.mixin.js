@@ -6,6 +6,7 @@ export default {
     reference: { type: String, default: "" },
 
     labelText: { type: String, default: "" },
+    iconSize: { type: String, default: "auto" },
 
     asIcon: { type: Boolean, default: false },
     asText: { type: Boolean, default: true },
@@ -137,9 +138,6 @@ export default {
 };
 
 const getSelectedSections = (sectionsString) => {
-  if (!sectionsString || sectionsString.length === 0) {
-    return {};
-  }
   try {
     const sections = {};
     const sectionDirectives = sectionsString.split(";");

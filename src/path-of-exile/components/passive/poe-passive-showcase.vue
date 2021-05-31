@@ -6,6 +6,7 @@
       v-if="shouldShowIconOutside"
       :type="passiveType"
       :iconUrl="this.iconUrl"
+      :iconSize="iconSize"
     />
     <div :class="wrapperClasses">
       <!-- Header -->
@@ -31,6 +32,7 @@
         v-if="shouldShowIconInside"
         :type="passiveType"
         :iconUrl="this.iconUrl"
+        :iconSize="iconSize"
       />
     </div>
   </div>

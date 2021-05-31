@@ -56,9 +56,12 @@
     {
       "props": {
         "asIcon": true,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true,
-        "dimSections": "modifiers:1"
+        "iconOutside": true,
+        "dimSections": "requirements:1;item-level:1;",
+        "hideSections": "requirements;item-level"
       },
       "config": {
         "reference": "Chemist's Diamond Flask of Staunching",

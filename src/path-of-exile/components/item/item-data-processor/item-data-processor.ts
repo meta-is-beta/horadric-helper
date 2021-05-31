@@ -123,7 +123,9 @@ const getItemStatuses = (sections: PoeItemDataSection[]) => {
 };
 
 const getRequirements = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Requirements")?.lines;
+  sections
+    .find((x) => x.name === "Requirements")
+    ?.lines.filter((x) => x !== "Requirements:");
 const getEnchants = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Enchants")?.lines;
 const getImplicits = (sections: PoeItemDataSection[]) =>

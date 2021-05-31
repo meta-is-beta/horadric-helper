@@ -1,6 +1,8 @@
 export default {
   props: {
     iconUrl: { type: String, default: "" },
+    iconSize: { type: String, default: "auto" },
+
     showIconInside: { type: Boolean, default: false },
     showIconOutside: { type: Boolean, default: false },
 
@@ -17,6 +19,12 @@ export default {
   },
   methods: {
     addDimedClass(sectionName, index, classes) {
+      if (
+        sectionName === "requirements" &&
+        this.dimedSections["requirements"]
+      ) {
+        debugger;
+      }
       if (
         this.dimedSections[sectionName] &&
         (this.dimedSections[sectionName].includes("all") ||

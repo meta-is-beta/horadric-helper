@@ -11,17 +11,17 @@ export default {
   props: {
     type: { type: String, required: true },
     iconUrl: { type: String, required: true },
+    iconSize: { type: String, default: "auto" },
   },
   computed: {
-    passiveIconClasses() {
-      return `poe-passive-icon poe-${this.type
-        .replace(" ", "-")
-        .toLowerCase()}-passive-icon`;
-    },
     passiveWrapperClasses() {
-      return `poe-passive-image-wrapper poe-${this.type
-        .replace(" ", "-")
-        .toLowerCase()}-passive-icon-wrapper`;
+      const passiveType = this.type.replace(" ", "-").toLowerCase();
+
+      return `
+      poe-passive-image-wrapper
+      poe-${passiveType}-passive-icon-wrapper
+      poe-passive-image-wrapper-size-${this.iconSize}
+      `;
     },
   },
 };
@@ -44,44 +44,25 @@ export default {
 
 .poe-basic-passive-icon-wrapper {
   & div {
-    width: 52px;
     content: url(../../assets/Basic_passive_frame.png);
-  }
-  & img {
-    height: 34px;
-    margin: 8px;
   }
 }
 
 .poe-ascendancy-basic-passive-icon-wrapper {
   & div {
-    width: 52px;
     content: url(../../assets/Ascendancy_basic_passive_frame.png);
-  }
-  & img {
-    height: 34px;
-    margin: 8px;
   }
 }
 
 .poe-notable-passive-icon-wrapper {
   & div {
-    width: 68px;
     content: url(../../assets/Notable_passive_frame.png);
   }
-  & img {
-    height: 40px;
-    margin: 12px;
-  }
 }
+
 .poe-ascendancy-notable-passive-icon-wrapper {
   & div {
-    width: 68px;
     content: url(../../assets/Ascendancy_notable_passive_frame.png);
-  }
-  & img {
-    height: 40px;
-    margin: 12px;
   }
 }
 
@@ -93,6 +74,80 @@ export default {
   & img {
     height: 54px;
     margin: 18px;
+  }
+}
+
+.poe-passive-image-wrapper-size-auto {
+  &.poe-basic-passive-icon-wrapper,
+  &.poe-ascendancy-basic-passive-icon-wrapper {
+    & div {
+      width: 52px;
+    }
+    & img {
+      height: 34px;
+      margin: 8px;
+    }
+  }
+
+  &.poe-notable-passive-icon-wrapper,
+  &.poe-ascendancy-notable-passive-icon-wrapper {
+    & div {
+      width: 68px;
+    }
+    & img {
+      height: 40px;
+      margin: 12px;
+    }
+  }
+
+  &.poe-keystone-passive-icon-wrapper {
+    & div {
+      width: 88px;
+    }
+    & img {
+      height: 54px;
+      margin: 18px;
+    }
+  }
+}
+
+.poe-passive-image-wrapper-size-sm {
+  & div {
+    width: 52px;
+  }
+  & img {
+    height: 34px;
+    margin: 8px;
+  }
+}
+
+.poe-passive-image-wrapper-size-md {
+  & div {
+    width: 68px;
+  }
+  & img {
+    height: 40px;
+    margin: 12px;
+  }
+}
+
+.poe-passive-image-wrapper-size-lg {
+  & div {
+    width: 88px;
+  }
+  & img {
+    height: 54px;
+    margin: 18px;
+  }
+}
+
+.poe-passive-image-wrapper-size-xlg {
+  & div {
+    width: 116px;
+  }
+  & img {
+    height: 76px;
+    margin: 22px;
   }
 }
 </style>
