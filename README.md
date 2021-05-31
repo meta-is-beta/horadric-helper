@@ -8,9 +8,9 @@ A JavaScript WebComponents library that allows you to display tooltips from ARPG
 - Path of Exile
 
 ## Table of Content
-- [How-to TL:DR](#how-to-tldr)
+- [How-to TLDR](#how-to-tldr)
 - [Installation](#installation)
-- [HTML Components](#packages)
+- [HTML Components](#html-components)
 - [HTML Component Props](#html-component-props)
 - [Configuration object](#configuration-object)
 
