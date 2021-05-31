@@ -172,7 +172,7 @@ type PoeConfig = {
   rawData: String | null;
 };
 ```
-#### `PoeItem` object
+### `PoeItem` object
 ```typescript
 type PoeItem = {
   // Required
@@ -237,7 +237,7 @@ type PoeItem = {
   statuses: ("corrupted" | "mirrored" | "split")[] | null;
 }
 ```
-#### `PoePassive` object
+### `PoePassive` object
 ```typescript
 type PoePassive = {
   // Required
@@ -249,7 +249,7 @@ type PoePassive = {
   type: "basic" | "notable" | "keystone" | "ascendancy basic" | "ascendancy notable";
 
   // Required
-  // List of passives's requirement text lines
+  // List of passives's description text lines
   // Eg. for "Arcane Blessing":
   // [
   //   "50% increased Effect of Arcane Surge on you"
