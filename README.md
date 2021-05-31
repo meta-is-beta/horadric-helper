@@ -4,26 +4,25 @@
 
 A JavaScript WebComponents library that allows you to display tooltips from ARPG games\* on you webstie using HTML tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
 
-_\*In this Beta version only Path of Exile theme is avalible. Working on more._
+**Currently supported games** (Version 0.6 Beta)
+- Path of Exile
 
-## Packages
+## Table of Content
+- [How-to TL:DR](#how-to-tldr)
+- [Installation](#installation)
+- [HTML Components](#packages)
+- [HTML Component Props](#html-component-props)
+- [Configuration object](#configuration-object)
 
-You can get both `js` and `css` package from jsDelivr CND:
-
-```url
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/poe-showcase.umd.min.js
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/poe-showcase.css
-```
-
-More about diffrent package types, self-hosting and versions in "Packages" section.
-
-## Usage TL:DR
+## How-to TLDR
+Short example of library usage.
+More complex examples with explanations can be found in the rest of the documentation.
 
 #### 1. Include `js` and `css` files on your site.
 
 ```html
-<script src="poe-showcase.umd.min.js"></script>
-<link rel="stylesheet" href="poe-showcase.css" />
+<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.css" />
 ```
 
 #### 2. Add component to your HTML.
@@ -68,50 +67,79 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 
 ![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
 
-## Props
+## Installation
+To enable Horadric Helper you simply need to include JavaScript and CSS files on your website (same as other js libraries).
 
-You can apply props to change behaviour for individual components.
-| Prop | Type | Description | PoE Items | PoE Passives |
-|:-------:|:----------:|:------|:-----:|:-----:|
-| `reference` | `String` | Name used to target components with the same reference when loading configs. See **Item config** section for details. | :heavy_check_mark: | :heavy_check_mark: |
-| `classes` | `String` | Additional classes that will be applied to component.| :heavy_check_mark: | :heavy_check_mark: |
-| `popover-classes` | `String` | Additional classes that will be applied to popover. | :heavy_check_mark: | :heavy_check_mark: |
-| `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop. | :heavy_check_mark: | :heavy_check_mark: |
-| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) | :heavy_check_mark: | :heavy_check_mark: |
-| `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
-| `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) | :heavy_check_mark: | :heavy_check_mark: |
-| `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. | :heavy_check_mark: | :x: |
-| `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
-| `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. | :heavy_check_mark: | :heavy_check_mark: |
+You can get both `js` and `css` files from jsDelivr CND:
 
-#### Usage examples
+```url
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.umd.min.js
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.css
+```
+**OR**
+You can get them from this repo's `/dist/poe` folder.
 
+**Notes**
+- There is also unminified version of JS available under `horadric-helper-poe.umd.js` name.
+- There are source-map files for both minified and normal versions.
+
+## HTML Components
+Package `horadric-helper-poe` contains 2 components:
+- `<poe-item>` - Can render equipment, gems, jewels, flasks, currency and maps
+- `<poe-passive>` - Can render passives, including ascendancy nodes
+
+To activate components you need to assign `reference` prop to them.
+This will allow you to later load configuration object for that reference.
+*(More about this in **Configuration** section)*
+```html
+<poe-item reference="Headhunter">
+```
+*Multiple components with the same reference can exist - any config applied to that reference will work for all of them.*
+
+## HTML Component Props
+
+You can apply props to set or change behaviour for individual components.
+| Prop | Type | Description |
+|:-------:|:----------:|:------|
+| `reference` | `String` | Name used to target components with the same reference when loading configs. See **Item config** section for details. |
+| `classes` | `String` | Additional classes that will be applied to root component.|
+| `popover-classes` | `String` | Additional classes that will be applied to popover. |
+| `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop. |
+| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) |
+| `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
+| `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. |
+| `icon-inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) |
+| `icon-outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) |
+| `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
+| `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. |
+| `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. |
+
+#### Examples
+Headhunter as small icon, with `properties` section hidden.
 ```html
 <poe-item
   reference="Headhunter"
-  as-item
-  dim-sections="properties:1,2"
+  as-icon
+  hide-sections="properties"
   icon-size="sm"
 ></poe-item>
 ```
 
+Beef passive as showcase, with icon displayed inside.
 ```html
 <poe-passive
   reference="Beef"
-  as-showcase
-  label-text="Best passive"
+  as-text
+  icon-inside
 ></poe-passive>
 ```
 
-## Item config
+## Configuration object
 
 When library is loaded it will register global object called `HoradricHelper`.
-You can use `HoradricHelper.applyConfig` method to load either single `config` object or array of `config` objects.
+You can use `HoradricHelper.applyConfig` method to load either single `PoeConfig` object or array of `PoeConfig` objects.
 
-_In the future there will be diffrent configs for diffrent games, following configs are for Path of Exile only._
-#### Config object
+### ``PoeConfig`` object
 
 ```typescript
 type PoeConfig = {
@@ -136,19 +164,16 @@ type PoeConfig = {
   rawData: String | null;
 };
 ```
-
-#### Data objects
-
-##### Data object for ``poe-item`` components
+#### `PoeItem` object
 ```typescript
 type PoeItem = {
   // Required
   // Item's rarity
-  rarity: "Normal" | "Rare" | "Magic" | "Unique" | "Gem";
+  rarity: "normal" | "rare" | "magic" | "unique" | "gem";
 
   // Required
   // Item's type
-  type: "Equipment" | "Gem" | "Jewel" | "Flask" | "Currency" | "Maps";
+  type: "equipment" | "gem" | "jewel" | "flask" | "currency" | "map";
 
   // Required
   // Item's name
@@ -160,8 +185,13 @@ type PoeItem = {
 
   // Optional
   // List of influences on an item
-  // Eg: ["Elder", "Shaper"]
-  influences: ("Crusader" | "Warlord" | "Hunter" | "Redeemer" | "Elder" | "Shaper" | "Replica")[] | null;
+  // Eg: ["elder", "shaper"]
+  influences: ("crusader" | "warlord" | "hunter" | "redeemer" | "elder" | "shaper" | "replica")[] | null;
+
+  // Optional
+  // List of item's properties text lines
+  // Eg: ["Armour: 9", "Energy Rating: 9"]
+  properties: String[] | null;
 
   // Optional
   // Item's level
@@ -171,11 +201,6 @@ type PoeItem = {
   // List of item's requirement text lines
   // Eg: ["Dex: 12", "Str: 12"]
   requirements: String[] | null;
-
-  // Optional
-  // List of item's properties text lines
-  // Eg: ["Armour: 9", "Energy Rating: 9"]
-  properties: String[] | null;
 
   // Optional
   // List of item's enchants text lines
@@ -200,11 +225,11 @@ type PoeItem = {
 
   // Optional
   // List of item's statuses
-  // Eg: ["Corrupted", "Split"]
-  statuses: ("Corrupted" | "Mirrored" | "Split")[] | null;
+  // Eg: ["corrupted", "split"]
+  statuses: ("corrupted" | "mirrored" | "split")[] | null;
 }
 ```
-##### Data object for ``poe-passive`` components
+#### `PoePassive` object
 ```typescript
 type PoePassive = {
   // Required
@@ -225,6 +250,147 @@ type PoePassive = {
   description: String[];
 };
 ```
+
+#### Examples of loading configs:
+
+**1. Item loaded from dataObject**
+As icon, with modified label text.
+```html
+<!-- Html --->
+<body>
+  <div>
+    <poe-item
+      reference="Stone of Lazhwar"
+      as-icon
+      label-text="Spell block amulet"
+    ></poe-item>
+  </div>
+</body>
+
+<!-- JavaScript --->
+<script>
+// Declaration of PoeItem object
+let lapisDataObject = {
+  rarity: "Unique",
+  type: "Equipment",
+  name: "Stone of Lazhwar",
+  baseName: "Lapis Amulet",
+  level: "57",
+  requirements: ["Level 5"],
+  implicits: ["+22 to Intelligence"],
+  modifiers: [
+    "14% Chance to Block Spell Damage",
+    "12% increased Cast Speed",
+    "+45 to maximum Mana"
+  ]
+};
+
+// Declaration of PoeConfig object
+let amuletConfig = {
+  reference: "Stone of Lazhwar",
+  iconSrc: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
+  // Assignment of PoeItem to PoeConfig
+  dataObject: lapisDataObject
+};
+
+// Loading config to <poe-item reference="Stone of Lazhwar"> component
+window.HoradricHelper.applyConfig(amuletConfig);
+
+</script>
+```
+
+**2. Item loaded from rawData**
+As showcase, with icon inside and with item level hidden.
+```html
+<!-- Html --->
+<body>
+  <div>
+    <poe-item
+      reference="Goldrim"
+      as-showcase
+      icon-inside
+      hide-sections="item-level"
+    ></poe-item>
+  </div>
+</body>
+
+<!-- JavaScript --->
+<script>
+// Declaration of PoeConfig object
+let helmConfig = {
+  reference: "Goldrim",
+  iconSrc: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
+  // Assignemnt of raw item data copied from the game
+  rawData: `
+    Item Class: Helmets
+    Rarity: Unique
+    Goldrim
+    Leather Cap
+    --------
+    Evasion Rating: 54 (augmented)
+    --------
+    Sockets: G-G-B-G
+    --------
+    Item Level: 60
+    --------
+    +35 to Evasion Rating
+    10% increased Rarity of Items found
+    +36% to all Elemental Resistances
+    Reflects 4 Physical Damage to Melee Attackers
+    --------
+    No metal slips as easily through the fingers as gold.
+  `
+};
+
+// Loading config to <poe-item reference="Goldrim"> component
+window.HoradricHelper.applyConfig(helmConfig);
+
+</script>
+```
+
+**3. Passive loaded from dataObject**
+As text, with icon outside.
+```html
+<!-- Html --->
+<body>
+  <div>
+    <poe-passive
+      reference="Magnifier"
+      as-text
+      icon-outside
+      hide-sections="item-level"
+    ></poe-passive>
+  </div>
+</body>
+
+<!-- JavaScript --->
+<script>
+// Declaration of PoePassive object
+let passiveDataObject = {
+  name: "Magnifier",
+  type: "Notable",
+  description: [
+    "10% increased Area of Effect",
+    "10% increased Area Damage",
+    "+10% to Critical Strike Multiplier"
+  ]
+};
+
+// Declaration of PoeConfig object
+let helmConfig = {
+  reference: "Magnifier",
+  iconSrc: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
+  // Assignment of PoePassive to PoeConfig
+  dataObject: passiveDataObject
+};
+
+// Loading config to <poe-passive reference="Magnifier"> component
+window.HoradricHelper.applyConfig(helmConfig);
+
+</script>
+```
+
+
 ## Item sections
 
 ## Packages

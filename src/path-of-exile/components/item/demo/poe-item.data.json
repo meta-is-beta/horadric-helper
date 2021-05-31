@@ -275,6 +275,31 @@
         "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
         "rawData": "Item Class: Gloves\nRarity: Magic\nFrosted Fishscale Gauntlets of Skill\n--------\nArmour: 9\nEnergy Rating: 9\n--------\nRequirements:\nLevel: 2\nStr: 4\nDex: 4\n--------\nItem Level: 5\n--------\nAdds 1 to 2 Cold Damage to Attacks\n6% Increased Attack Speed"
       }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "iconSize": "md",
+        "labelText": "Spell block amulet"
+      },
+      "config": {
+        "reference": "Stone of Lazhwar",
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
+        "dataObject": {
+          "rarity": "Unique",
+          "type": "Equipment",
+          "name": "Stone of Lazhwar",
+          "baseName": "Lapis Amulet",
+          "level": "57",
+          "requirements": ["Level 5"],
+          "implicits": ["+22 to Intelligence"],
+          "modifiers": [
+            "14% Chance to Block Spell Damage",
+            "12% increased Cast Speed",
+            "+45 to maximum Mana"
+          ]
+        }
+      }
     }
   ]
 }

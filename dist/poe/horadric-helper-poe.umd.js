@@ -1,5 +1,14 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["horadric-helper-poe"] = factory();
+	else
+		root["horadric-helper-poe"] = factory();
+})((typeof self !== 'undefined' ? self : this), function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -11626,30 +11635,6 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
-/***/ "7156":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("861d");
-var setPrototypeOf = __webpack_require__("d2bb");
-
-// makes subclassing work correct for wrapped built-ins
-module.exports = function ($this, dummy, Wrapper) {
-  var NewTarget, NewTargetPrototype;
-  if (
-    // it can work only with native `setPrototypeOf`
-    setPrototypeOf &&
-    // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
-    typeof (NewTarget = dummy.constructor) == 'function' &&
-    NewTarget !== Wrapper &&
-    isObject(NewTargetPrototype = NewTarget.prototype) &&
-    NewTargetPrototype !== Wrapper.prototype
-  ) setPrototypeOf($this, NewTargetPrototype);
-  return $this;
-};
-
-
-/***/ }),
-
 /***/ "72af":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13170,6 +13155,75 @@ module.exports = keysIn;
 
 /***/ }),
 
+/***/ "99af":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var fails = __webpack_require__("d039");
+var isArray = __webpack_require__("e8b5");
+var isObject = __webpack_require__("861d");
+var toObject = __webpack_require__("7b0b");
+var toLength = __webpack_require__("50c4");
+var createProperty = __webpack_require__("8418");
+var arraySpeciesCreate = __webpack_require__("65f0");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var wellKnownSymbol = __webpack_require__("b622");
+var V8_VERSION = __webpack_require__("2d00");
+
+var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
+
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT = V8_VERSION >= 51 || !fails(function () {
+  var array = [];
+  array[IS_CONCAT_SPREADABLE] = false;
+  return array.concat()[0] !== array;
+});
+
+var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
+
+var isConcatSpreadable = function (O) {
+  if (!isObject(O)) return false;
+  var spreadable = O[IS_CONCAT_SPREADABLE];
+  return spreadable !== undefined ? !!spreadable : isArray(O);
+};
+
+var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
+
+// `Array.prototype.concat` method
+// https://tc39.es/ecma262/#sec-array.prototype.concat
+// with adding support of @@isConcatSpreadable and @@species
+$({ target: 'Array', proto: true, forced: FORCED }, {
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
+  concat: function concat(arg) {
+    var O = toObject(this);
+    var A = arraySpeciesCreate(O, 0);
+    var n = 0;
+    var i, k, length, len, E;
+    for (i = -1, length = arguments.length; i < length; i++) {
+      E = i === -1 ? O : arguments[i];
+      if (isConcatSpreadable(E)) {
+        len = toLength(E.length);
+        if (n + len > MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
+      } else {
+        if (n >= MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        createProperty(A, n++, E);
+      }
+    }
+    A.length = n;
+    return A;
+  }
+});
+
+
+/***/ }),
+
 /***/ "99cd":
 /***/ (function(module, exports) {
 
@@ -13374,6 +13428,32 @@ exports.BROKEN_CARET = fails(function () {
   var re = RE('^r', 'gy');
   re.lastIndex = 2;
   return re.exec('str') != null;
+});
+
+
+/***/ }),
+
+/***/ "a15b":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var IndexedObject = __webpack_require__("44ad");
+var toIndexedObject = __webpack_require__("fc6a");
+var arrayMethodIsStrict = __webpack_require__("a640");
+
+var nativeJoin = [].join;
+
+var ES3_STRINGS = IndexedObject != Object;
+var STRICT_METHOD = arrayMethodIsStrict('join', ',');
+
+// `Array.prototype.join` method
+// https://tc39.es/ecma262/#sec-array.prototype.join
+$({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
+  join: function join(separator) {
+    return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
+  }
 });
 
 
@@ -13969,94 +14049,6 @@ function getAllKeys(object) {
 }
 
 module.exports = getAllKeys;
-
-
-/***/ }),
-
-/***/ "a9e3":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var global = __webpack_require__("da84");
-var isForced = __webpack_require__("94ca");
-var redefine = __webpack_require__("6eeb");
-var has = __webpack_require__("5135");
-var classof = __webpack_require__("c6b6");
-var inheritIfRequired = __webpack_require__("7156");
-var toPrimitive = __webpack_require__("c04e");
-var fails = __webpack_require__("d039");
-var create = __webpack_require__("7c73");
-var getOwnPropertyNames = __webpack_require__("241c").f;
-var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
-var defineProperty = __webpack_require__("9bf2").f;
-var trim = __webpack_require__("58a8").trim;
-
-var NUMBER = 'Number';
-var NativeNumber = global[NUMBER];
-var NumberPrototype = NativeNumber.prototype;
-
-// Opera ~12 has broken Object#toString
-var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
-
-// `ToNumber` abstract operation
-// https://tc39.es/ecma262/#sec-tonumber
-var toNumber = function (argument) {
-  var it = toPrimitive(argument, false);
-  var first, third, radix, maxCode, digits, length, index, code;
-  if (typeof it == 'string' && it.length > 2) {
-    it = trim(it);
-    first = it.charCodeAt(0);
-    if (first === 43 || first === 45) {
-      third = it.charCodeAt(2);
-      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
-    } else if (first === 48) {
-      switch (it.charCodeAt(1)) {
-        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal of /^0b[01]+$/i
-        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal of /^0o[0-7]+$/i
-        default: return +it;
-      }
-      digits = it.slice(2);
-      length = digits.length;
-      for (index = 0; index < length; index++) {
-        code = digits.charCodeAt(index);
-        // parseInt parses a string to a first unavailable symbol
-        // but ToNumber should return NaN if a string contains unavailable symbols
-        if (code < 48 || code > maxCode) return NaN;
-      } return parseInt(digits, radix);
-    }
-  } return +it;
-};
-
-// `Number` constructor
-// https://tc39.es/ecma262/#sec-number-constructor
-if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
-  var NumberWrapper = function Number(value) {
-    var it = arguments.length < 1 ? 0 : value;
-    var dummy = this;
-    return dummy instanceof NumberWrapper
-      // check on 1..constructor(foo) case
-      && (BROKEN_CLASSOF ? fails(function () { NumberPrototype.valueOf.call(dummy); }) : classof(dummy) != NUMBER)
-        ? inheritIfRequired(new NativeNumber(toNumber(it)), dummy, NumberWrapper) : toNumber(it);
-  };
-  for (var keys = DESCRIPTORS ? getOwnPropertyNames(NativeNumber) : (
-    // ES3:
-    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
-    // ES2015 (in case, if modules with ES2015 Number statics required before):
-    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
-    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger,' +
-    // ESNext
-    'fromString,range'
-  ).split(','), j = 0, key; keys.length > j; j++) {
-    if (has(NativeNumber, key = keys[j]) && !has(NumberWrapper, key)) {
-      defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
-    }
-  }
-  NumberWrapper.prototype = NumberPrototype;
-  NumberPrototype.constructor = NumberWrapper;
-  redefine(global, NUMBER, NumberWrapper);
-}
 
 
 /***/ }),
@@ -21056,25 +21048,22 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"45def7c3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=096a758b&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconSrc,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"iconSize":_vm.computedIconSize,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections}})],1):_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('v-popover',{attrs:{"trigger":"hover click","placement":"auto","offset":20,"hideOnTargetClick":"","popoverClass":_vm.popoverClassesComputed,"popoverWrapperClass":_vm.popoverWrapperClasses,"popoverBaseClass":_vm.popoverBaseClasses,"popoverInnerClass":_vm.popoverInnerClasses,"popoverArrowClass":_vm.popoverArrowClasses}},[_c('template',{slot:"popover"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconSrc,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"iconSize":_vm.computedIconSize,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections}})],1),(_vm.displayMode === "icon")?_c('div',[_c('img',{attrs:{"width":_vm.computedIconSize,"src":_vm.iconSrc}}),_c('div',{staticClass:"poe-showcase-label"},[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])]):_c('div',{class:_vm.linkClassesComputed},[_vm._v(_vm._s(_vm.labelTextComputed))])],2)],1)]):_vm._e()}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e0b4530-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=d7c58306&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconSrc,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections}})],1):_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('v-popover',{attrs:{"trigger":"hover click","placement":"auto","offset":20,"hideOnTargetClick":"","popoverClass":_vm.popoverClassesComputed,"popoverWrapperClass":_vm.popoverWrapperClasses,"popoverBaseClass":_vm.popoverBaseClasses,"popoverInnerClass":_vm.popoverInnerClasses,"popoverArrowClass":_vm.popoverArrowClasses}},[_c('template',{slot:"popover"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconSrc,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections}})],1),(_vm.displayMode === "icon")?_c('div',[_c('poe-item-image',{attrs:{"iconSize":_vm.iconSize,"iconUrl":_vm.iconSrc,"type":_vm.item.type}}),_c('div',{staticClass:"poe-showcase-label"},[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])],1):_c('div',{class:_vm.linkClassesComputed},[_vm._v(_vm._s(_vm.labelTextComputed))])],2)],1)]):_vm._e()}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=096a758b&
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=d7c58306&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"45def7c3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=5e2a5c9d&
-var poe_item_showcasevue_type_template_id_5e2a5c9d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('img',{staticClass:"poe-item-icon poe-item-icon-beside-showcase",attrs:{"src":_vm.iconUrl,"width":_vm.iconSize,"height":"auto"}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(_vm.item.name != _vm.item.baseName)?_c('div',[_vm._v(_vm._s(_vm.item.baseName))]):_vm._e()]),_c('div',{class:_vm.rightHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()])]),_c('div',{staticClass:"poe-item-stats"},[(_vm.shouldShowItemProperties)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',_vm._l((_vm.itemProperties),function(property,index){return _c('div',{key:(index + "-property"),class:_vm.getPropertyClasses(index),domProps:{"innerHTML":_vm._s(property)}})}),0):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{class:_vm.getItemLevelClasses()},[_vm._v(" Item Level: "),(_vm.item.level)?_c('span',{staticClass:"poe-item-level-value"},[_vm._v(" "+_vm._s(_vm.item.level)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',_vm._l((_vm.itemEnchants),function(enchant,index){return _c('div',{key:(index + "-enchant"),class:_vm.getEnchantsClasses(index)},[_vm._v(" "+_vm._s(enchant)+" ")])}),0):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',_vm._l((_vm.itemImplicits),function(implicit,index){return _c('div',{key:(index + "-implicit"),class:_vm.getImplicitClasses(index)},[_vm._v(" "+_vm._s(implicit)+" ")])}),0):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',_vm._l((_vm.item.gemDescription),function(desciptionLine,index){return _c('div',{key:(index + "-gem-desc"),class:_vm.getGemDescriptionClasses(index)},[_vm._v(" "+_vm._s(desciptionLine)+" ")])}),0):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',_vm._l((_vm.itemModifiers),function(modifier,index){return _c('div',{key:(index + "-modifier"),class:_vm.getModifierClasses(modifier, index)},[_vm._v(" "+_vm._s(modifier.text)+" ")])}),0):_vm._e(),(_vm.shouldShowStatuses)?_c('div',[(_vm.itemIsCorrupted)?_c('div',{staticClass:"poe-item-corrupted"},[_vm._v("Corrupted")]):_vm._e(),(_vm.itemIsMirrored)?_c('div',{staticClass:"poe-item-mirrored"},[_vm._v("Mirrored")]):_vm._e(),(_vm.itemIsSplit)?_c('div',{staticClass:"poe-item-split"},[_vm._v("Split")]):_vm._e()]):_vm._e(),(_vm.shouldShowIconInside)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowIconInside)?_c('img',{staticClass:"poe-item-icon",attrs:{"src":_vm.iconUrl,"width":_vm.iconSize}}):_vm._e()])])])}
-var poe_item_showcasevue_type_template_id_5e2a5c9d_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e0b4530-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=1f30b960&
+var poe_item_showcasevue_type_template_id_1f30b960_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon poe-item-icon-beside-showcase","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(_vm.item.name != _vm.item.baseName)?_c('div',[_vm._v(_vm._s(_vm.item.baseName))]):_vm._e()]),_c('div',{class:_vm.rightHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()])]),_c('div',{staticClass:"poe-item-stats"},[(_vm.shouldShowItemProperties)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',_vm._l((_vm.itemProperties),function(property,index){return _c('div',{key:(index + "-property"),class:_vm.getPropertyClasses(index),domProps:{"innerHTML":_vm._s(property)}})}),0):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{class:_vm.getItemLevelClasses()},[_vm._v(" Item Level: "),(_vm.item.level)?_c('span',{staticClass:"poe-item-level-value"},[_vm._v(" "+_vm._s(_vm.item.level)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowItemRequirements && !_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemRequirements)?_c('div',{class:_vm.getRequirementsClasses()},[_c('div',{domProps:{"innerHTML":_vm._s(_vm.itemRequirements)}})]):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',_vm._l((_vm.itemEnchants),function(enchant,index){return _c('div',{key:(index + "-enchant"),class:_vm.getEnchantsClasses(index)},[_vm._v(" "+_vm._s(enchant)+" ")])}),0):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',_vm._l((_vm.itemImplicits),function(implicit,index){return _c('div',{key:(index + "-implicit"),class:_vm.getImplicitClasses(index)},[_vm._v(" "+_vm._s(implicit)+" ")])}),0):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',_vm._l((_vm.item.gemDescription),function(desciptionLine,index){return _c('div',{key:(index + "-gem-desc"),class:_vm.getGemDescriptionClasses(index)},[_vm._v(" "+_vm._s(desciptionLine)+" ")])}),0):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',_vm._l((_vm.itemModifiers),function(modifier,index){return _c('div',{key:(index + "-modifier"),class:_vm.getModifierClasses(modifier, index)},[_vm._v(" "+_vm._s(modifier.text)+" ")])}),0):_vm._e(),(_vm.shouldShowStatuses)?_c('div',[(_vm.itemIsCorrupted)?_c('div',{staticClass:"poe-item-corrupted"},[_vm._v("Corrupted")]):_vm._e(),(_vm.itemIsMirrored)?_c('div',{staticClass:"poe-item-mirrored"},[_vm._v("Mirrored")]):_vm._e(),(_vm.itemIsSplit)?_c('div',{staticClass:"poe-item-split"},[_vm._v("Split")]):_vm._e()]):_vm._e(),(_vm.shouldShowIconInside)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowIconInside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e()],1)])],1)}
+var poe_item_showcasevue_type_template_id_1f30b960_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=5e2a5c9d&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
-var es_number_constructor = __webpack_require__("a9e3");
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=1f30b960&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
@@ -21082,12 +21071,212 @@ var es_array_map = __webpack_require__("d81d");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
 var es_string_trim = __webpack_require__("498a");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
+var es_array_join = __webpack_require__("a15b");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
 var es_array_includes = __webpack_require__("caad");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__("2532");
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e0b4530-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-image.vue?vue&type=template&id=01b4129a&
+var poe_item_imagevue_type_template_id_01b4129a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('img',{class:_vm.classes,attrs:{"width":_vm.computedIconSize,"height":"auto","src":this.iconUrl}})}
+var poe_item_imagevue_type_template_id_01b4129a_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-image.vue?vue&type=template&id=01b4129a&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-image.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var poe_item_imagevue_type_script_lang_js_ = ({
+  name: "PoeItemImage",
+  props: {
+    type: {
+      type: String,
+      required: false
+    },
+    iconUrl: {
+      type: String,
+      required: true
+    },
+    iconSize: {
+      type: String,
+      default: "auto"
+    },
+    classes: {
+      type: String,
+      default: ""
+    }
+  },
+  methods: {
+    getIconSize: function getIconSize(size) {
+      if (size === "auto") {
+        switch (this.type) {
+          case "Equipment":
+            return 100;
+
+          case "Flask":
+            return 50;
+
+          case "Gem":
+          default:
+            return 50;
+        }
+      } else {
+        switch (size) {
+          case "sm":
+            return 30;
+
+          case "md":
+          default:
+            return 50;
+
+          case "lg":
+            return 80;
+
+          case "xlg":
+            return 100;
+        }
+      }
+    }
+  },
+  computed: {
+    computedIconSize: function computedIconSize() {
+      return this.getIconSize(this.iconSize);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-image.vue?vue&type=script&lang=js&
+ /* harmony default export */ var item_poe_item_imagevue_type_script_lang_js_ = (poe_item_imagevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-image.vue
+
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  item_poe_item_imagevue_type_script_lang_js_,
+  poe_item_imagevue_type_template_id_01b4129a_render,
+  poe_item_imagevue_type_template_id_01b4129a_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var poe_item_image = (component.exports);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
 
@@ -21104,6 +21293,10 @@ var es_regexp_to_string = __webpack_require__("25f0");
     iconUrl: {
       type: String,
       default: ""
+    },
+    iconSize: {
+      type: String,
+      default: "auto"
     },
     showIconInside: {
       type: Boolean,
@@ -21132,6 +21325,10 @@ var es_regexp_to_string = __webpack_require__("25f0");
   },
   methods: {
     addDimedClass: function addDimedClass(sectionName, index, classes) {
+      if (sectionName === "requirements" && this.dimedSections["requirements"]) {
+        debugger;
+      }
+
       if (this.dimedSections[sectionName] && (this.dimedSections[sectionName].includes("all") || this.dimedSections[sectionName].includes((index + 1).toString()))) {
         classes += " dimed-line";
       }
@@ -21266,23 +21463,38 @@ var es_regexp_to_string = __webpack_require__("25f0");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ var poe_item_showcasevue_type_script_lang_js_ = ({
   name: "PoeItemShowcase",
+  components: {
+    PoeItemImage: poe_item_image
+  },
   props: {
     item: {
       type: Object,
       default: function _default() {}
-    },
-    iconSize: {
-      type: Number,
-      default: 50
     }
   },
   mixins: [showcase_mixin],
   methods: {
     getItemLevelClasses: function getItemLevelClasses() {
-      return this.addDimedClass("item-level", 1, "poe-item-level");
+      return this.addDimedClass("item-level", 0, "poe-item-level");
+    },
+    getRequirementsClasses: function getRequirementsClasses() {
+      return this.addDimedClass("requirements", 0, "");
     },
     getPropertyClasses: function getPropertyClasses(index) {
       var classes = this.addDimedClass("properties", index, "");
@@ -21323,6 +21535,9 @@ var es_regexp_to_string = __webpack_require__("25f0");
     shouldShowItemLevel: function shouldShowItemLevel() {
       return this.item.level && !this.sectionShouldBeFullyHidden("item-level");
     },
+    shouldShowItemRequirements: function shouldShowItemRequirements() {
+      return this.item.requirements && !this.sectionShouldBeFullyHidden("requirements");
+    },
     shouldShowItemProperties: function shouldShowItemProperties() {
       return this.itemProperties.length > 0 && !this.sectionShouldBeFullyHidden("properties");
     },
@@ -21333,7 +21548,7 @@ var es_regexp_to_string = __webpack_require__("25f0");
       return this.itemImplicits.length > 0 && !this.sectionShouldBeFullyHidden("implicits");
     },
     shouldShowGemDescription: function shouldShowGemDescription() {
-      return this.item.gemDescription && !this.sectionShouldBeFullyHidden("description");
+      return this.item.type && this.item.type.toLowerCase() === "gem" && this.item.gemDescription && !this.sectionShouldBeFullyHidden("description");
     },
     shouldShowItemModifiers: function shouldShowItemModifiers() {
       return this.item.modifiers && !this.sectionShouldBeFullyHidden("modifiers");
@@ -21345,6 +21560,11 @@ var es_regexp_to_string = __webpack_require__("25f0");
       return this.item.properties ? this.item.properties.map(function (line) {
         return line.replaceAll("(augmented)", "").trim().replaceAll(/(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi, "<span class='poe-item-property-value'>$1</span>");
       }) : [];
+    },
+    itemRequirements: function itemRequirements() {
+      return this.item.requirements ? "Requires " + this.item.requirements.map(function (line) {
+        return line.trim().replaceAll(/([0-9]+)/gi, "<span class='poe-item-requirement-value'>$1</span>");
+      }).join(", ") : "";
     },
     itemEnchants: function itemEnchants() {
       return this.item.enchants ? this.item.enchants.map(function (x) {
@@ -21365,10 +21585,14 @@ var es_regexp_to_string = __webpack_require__("25f0");
       }) : [];
     },
     itemInfluences: function itemInfluences() {
-      return this.item.influences ? this.item.influences : [];
+      return this.item.influences ? this.item.influences.map(function (i) {
+        return i.toLowerCase();
+      }) : [];
     },
     itemStatuses: function itemStatuses() {
-      return this.item.statuses ? this.item.statuses : [];
+      return this.item.statuses ? this.item.statuses.map(function (s) {
+        return s.toLowerCase();
+      }) : [];
     },
     itemIsCorrupted: function itemIsCorrupted() {
       return !!this.itemStatuses.some(function (s) {
@@ -21397,7 +21621,7 @@ var es_regexp_to_string = __webpack_require__("25f0");
     headerClasses: function headerClasses() {
       var classes = "poe-item-header";
 
-      if (this.item.rarity === "Rare" || this.item.rarity === "Unique") {
+      if (this.item.rarity.toLowerCase() === "rare" || this.item.rarity.toLowerCase() === "unique") {
         classes += " poe-item-header-double";
       } else {
         classes += " poe-item-header-single";
@@ -21440,106 +21664,6 @@ var es_regexp_to_string = __webpack_require__("25f0");
 // EXTERNAL MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=style&index=0&lang=scss&
 var poe_item_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__("4482");
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
 // CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue
 
 
@@ -21549,10 +21673,10 @@ function normalizeComponent (
 
 /* normalize component */
 
-var component = normalizeComponent(
+var poe_item_showcase_component = normalizeComponent(
   item_poe_item_showcasevue_type_script_lang_js_,
-  poe_item_showcasevue_type_template_id_5e2a5c9d_render,
-  poe_item_showcasevue_type_template_id_5e2a5c9d_staticRenderFns,
+  poe_item_showcasevue_type_template_id_1f30b960_render,
+  poe_item_showcasevue_type_template_id_1f30b960_staticRenderFns,
   false,
   null,
   null,
@@ -21560,7 +21684,7 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var poe_item_showcase = (component.exports);
+/* harmony default export */ var poe_item_showcase = (poe_item_showcase_component.exports);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
 var es_array_find = __webpack_require__("7db0");
 
@@ -21801,6 +21925,7 @@ var removeUnknownSections = function removeUnknownSections(sections) {
 
 
 
+
 /* harmony default export */ var item_data_processor = (function (rawData) {
   var sections = sections_mapper(rawData);
   var headerSection = getHeaderSection(sections);
@@ -21934,7 +22059,9 @@ var getRequirements = function getRequirements(sections) {
 
   return (_sections$find = sections.find(function (x) {
     return x.name === "Requirements";
-  })) === null || _sections$find === void 0 ? void 0 : _sections$find.lines;
+  })) === null || _sections$find === void 0 ? void 0 : _sections$find.lines.filter(function (x) {
+    return x !== "Requirements:";
+  });
 };
 
 var getEnchants = function getEnchants(sections) {
@@ -22083,6 +22210,10 @@ var es_array_splice = __webpack_require__("a434");
       type: String,
       default: ""
     },
+    iconSize: {
+      type: String,
+      default: "auto"
+    },
     asIcon: {
       type: Boolean,
       default: false
@@ -22221,10 +22352,6 @@ var es_array_splice = __webpack_require__("a434");
 });
 
 var getSelectedSections = function getSelectedSections(sectionsString) {
-  if (!sectionsString || sectionsString.length === 0) {
-    return {};
-  }
-
   try {
     var sections = {};
     var sectionDirectives = sectionsString.split(";");
@@ -22358,53 +22485,21 @@ var applyConfigFromObject = function applyConfigFromObject(_ref) {
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ var poe_itemvue_type_script_lang_js_ = ({
   name: "PoeItem",
   components: {
-    PoeItemShowcase: poe_item_showcase
-  },
-  props: {
-    iconSize: {
-      type: String,
-      default: "auto"
-    }
+    PoeItemShowcase: poe_item_showcase,
+    PoeItemImage: poe_item_image
   },
   mixins: [main_mixin],
-  methods: {
-    getIconSize: function getIconSize(size) {
-      if (size === "auto") {
-        switch (this.item.type) {
-          case "Equipment":
-            return 100;
-
-          case "Flask":
-            return 50;
-
-          case "Gem":
-          default:
-            return 50;
-        }
-      } else {
-        switch (size) {
-          case "sm":
-            return 30;
-
-          case "md":
-          default:
-            return 50;
-
-          case "lg":
-            return 80;
-
-          case "xlg":
-            return 100;
-        }
-      }
-    }
-  },
   computed: {
     item: function item() {
       return this.showcaseData;
@@ -22443,9 +22538,6 @@ var applyConfigFromObject = function applyConfigFromObject(_ref) {
       }
 
       return classes;
-    },
-    computedIconSize: function computedIconSize() {
-      return this.getIconSize(this.iconSize);
     }
   },
   showcaseMetadata: {
@@ -22479,31 +22571,35 @@ var poe_item_component = normalizeComponent(
 )
 
 /* harmony default export */ var poe_item = (poe_item_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"45def7c3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=3ab6c138&
-var poe_passivevue_type_template_id_3ab6c138_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconSrc,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections}})],1):_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('v-popover',{attrs:{"trigger":"hover click","placement":"auto","offset":20,"hideOnTargetClick":"","popoverClass":_vm.popoverClassesComputed,"popoverWrapperClass":_vm.popoverWrapperClasses,"popoverBaseClass":_vm.popoverBaseClasses,"popoverInnerClass":_vm.popoverInnerClasses,"popoverArrowClass":_vm.popoverArrowClasses}},[_c('template',{slot:"popover"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconSrc,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections}})],1),(_vm.displayMode === "icon")?_c('div',[_c('poe-passive-image',{attrs:{"type":_vm.passive.type,"iconUrl":_vm.iconSrc}}),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-showcase-label"},[_c('div',[_vm._v(_vm._s(_vm.passive.name))]),_c('div',{staticClass:"poe-passive-showcase-passive-name"},[_vm._v(" "+_vm._s(_vm.passive.type)+" ")])]):_c('div',{staticClass:"poe-showcase-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{staticClass:"poe-passive-link"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))])])],2)],1)]):_vm._e()}
-var poe_passivevue_type_template_id_3ab6c138_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e0b4530-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=61ff7291&
+var poe_passivevue_type_template_id_61ff7291_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconSrc,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections}})],1):_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('v-popover',{attrs:{"trigger":"hover click","placement":"auto","offset":20,"hideOnTargetClick":"","popoverClass":_vm.popoverClassesComputed,"popoverWrapperClass":_vm.popoverWrapperClasses,"popoverBaseClass":_vm.popoverBaseClasses,"popoverInnerClass":_vm.popoverInnerClasses,"popoverArrowClass":_vm.popoverArrowClasses}},[_c('template',{slot:"popover"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconSrc,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections}})],1),(_vm.displayMode === "icon")?_c('div',[_c('poe-passive-image',{attrs:{"type":_vm.passive.type,"iconUrl":_vm.iconSrc,"iconSize":_vm.iconSize}}),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-showcase-label"},[_c('div',[_vm._v(_vm._s(_vm.passive.name))]),_c('div',{staticClass:"poe-passive-showcase-passive-name"},[_vm._v(" "+_vm._s(_vm.passive.type)+" ")])]):_c('div',{staticClass:"poe-showcase-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{staticClass:"poe-passive-link"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))])])],2)],1)]):_vm._e()}
+var poe_passivevue_type_template_id_61ff7291_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=3ab6c138&
+// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=61ff7291&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"45def7c3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=template&id=897b469a&
-var poe_passive_showcasevue_type_template_id_897b469a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-passive-image',{staticClass:"poe-passive-icon-beside-showcase",attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{staticClass:"poe-passive-header"},[_c('div',{staticClass:"poe-passive-header-left-panel"}),_c('div',{staticClass:"poe-passive-header-center-panel"},[_vm._v(" "+_vm._s(_vm.passiveName)+" ")]),_c('div',{staticClass:"poe-passive-header-right-panel"})]),_c('div',{staticClass:"poe-passive-description"},_vm._l((_vm.passiveDescription),function(descLine,index){return _c('div',{key:(index + "-desc-line"),class:_vm.getDescriptionClasses(index)},[_vm._v(" "+_vm._s(descLine)+" ")])}),0),(_vm.shouldShowIconInside)?_c('poe-passive-image',{attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl}}):_vm._e()],1)],1)}
-var poe_passive_showcasevue_type_template_id_897b469a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e0b4530-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=template&id=6199d609&
+var poe_passive_showcasevue_type_template_id_6199d609_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-passive-image',{staticClass:"poe-passive-icon-beside-showcase",attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{staticClass:"poe-passive-header"},[_c('div',{staticClass:"poe-passive-header-left-panel"}),_c('div',{staticClass:"poe-passive-header-center-panel"},[_vm._v(" "+_vm._s(_vm.passiveName)+" ")]),_c('div',{staticClass:"poe-passive-header-right-panel"})]),_c('div',{staticClass:"poe-passive-description"},_vm._l((_vm.passiveDescription),function(descLine,index){return _c('div',{key:(index + "-desc-line"),class:_vm.getDescriptionClasses(index)},[_vm._v(" "+_vm._s(descLine)+" ")])}),0),(_vm.shouldShowIconInside)?_c('poe-passive-image',{attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e()],1)],1)}
+var poe_passive_showcasevue_type_template_id_6199d609_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=template&id=897b469a&
+// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=template&id=6199d609&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"45def7c3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=template&id=6910a068&
-var poe_passive_imagevue_type_template_id_6910a068_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.passiveWrapperClasses},[_c('div'),_c('img',{attrs:{"src":this.iconUrl}})])}
-var poe_passive_imagevue_type_template_id_6910a068_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e0b4530-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=template&id=c7936e00&
+var poe_passive_imagevue_type_template_id_c7936e00_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.passiveWrapperClasses},[_c('div'),_c('img',{attrs:{"src":this.iconUrl}})])}
+var poe_passive_imagevue_type_template_id_c7936e00_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=template&id=6910a068&
+// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=template&id=c7936e00&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__("99af");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=script&lang=js&
+
 
 
 //
@@ -22523,14 +22619,16 @@ var poe_passive_imagevue_type_template_id_6910a068_staticRenderFns = []
     iconUrl: {
       type: String,
       required: true
+    },
+    iconSize: {
+      type: String,
+      default: "auto"
     }
   },
   computed: {
-    passiveIconClasses: function passiveIconClasses() {
-      return "poe-passive-icon poe-".concat(this.type.replace(" ", "-").toLowerCase(), "-passive-icon");
-    },
     passiveWrapperClasses: function passiveWrapperClasses() {
-      return "poe-passive-image-wrapper poe-".concat(this.type.replace(" ", "-").toLowerCase(), "-passive-icon-wrapper");
+      var passiveType = this.type.replace(" ", "-").toLowerCase();
+      return "\n      poe-passive-image-wrapper\n      poe-".concat(passiveType, "-passive-icon-wrapper\n      poe-passive-image-wrapper-size-").concat(this.iconSize, "\n      ");
     }
   }
 });
@@ -22550,8 +22648,8 @@ var poe_passive_imagevue_type_style_index_0_lang_scss_ = __webpack_require__("56
 
 var poe_passive_image_component = normalizeComponent(
   passive_poe_passive_imagevue_type_script_lang_js_,
-  poe_passive_imagevue_type_template_id_6910a068_render,
-  poe_passive_imagevue_type_template_id_6910a068_staticRenderFns,
+  poe_passive_imagevue_type_template_id_c7936e00_render,
+  poe_passive_imagevue_type_template_id_c7936e00_staticRenderFns,
   false,
   null,
   null,
@@ -22566,6 +22664,8 @@ var poe_passive_image_component = normalizeComponent(
 
 
 
+//
+//
 //
 //
 //
@@ -22661,8 +22761,8 @@ var poe_passive_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__(
 
 var poe_passive_showcase_component = normalizeComponent(
   passive_poe_passive_showcasevue_type_script_lang_js_,
-  poe_passive_showcasevue_type_template_id_897b469a_render,
-  poe_passive_showcasevue_type_template_id_897b469a_staticRenderFns,
+  poe_passive_showcasevue_type_template_id_6199d609_render,
+  poe_passive_showcasevue_type_template_id_6199d609_staticRenderFns,
   false,
   null,
   null,
@@ -22673,6 +22773,12 @@ var poe_passive_showcase_component = normalizeComponent(
 /* harmony default export */ var poe_passive_showcase = (poe_passive_showcase_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22794,8 +22900,8 @@ var poe_passivevue_type_style_index_0_lang_scss_ = __webpack_require__("3da2");
 
 var poe_passive_component = normalizeComponent(
   passive_poe_passivevue_type_script_lang_js_,
-  poe_passivevue_type_template_id_3ab6c138_render,
-  poe_passivevue_type_template_id_3ab6c138_staticRenderFns,
+  poe_passivevue_type_template_id_61ff7291_render,
+  poe_passivevue_type_template_id_61ff7291_staticRenderFns,
   false,
   null,
   null,
@@ -23477,4 +23583,5 @@ module.exports = NATIVE_SYMBOL
 /***/ })
 
 /******/ });
-//# sourceMappingURL=poe-showcase.common.js.map
+});
+//# sourceMappingURL=horadric-helper-poe.umd.js.map

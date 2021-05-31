@@ -8,7 +8,7 @@ type PoeConfig = {
 type PoeItem = {
   rarity: "normal" | "rare" | "magic" | "unique" | "gem" | "";
   class: String | undefined;
-  type: String | undefined;
+  type: "equipment" | "gem" | "jewel" | "flask" | "currency" | "map" | "";
   name: String | undefined;
   baseName: String | undefined;
   influences: (
