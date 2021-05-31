@@ -77,6 +77,7 @@ https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadri
 https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.css
 ```
 **OR**
+
 You can get them from this repo's `/dist/poe` folder.
 
 **Notes**
@@ -270,7 +271,7 @@ As icon, with modified label text.
 <!-- JavaScript --->
 <script>
 // Declaration of PoeItem object
-let lapisDataObject = {
+let amuletDataObject = {
   rarity: "Unique",
   type: "Equipment",
   name: "Stone of Lazhwar",
@@ -290,7 +291,7 @@ let amuletConfig = {
   reference: "Stone of Lazhwar",
   iconSrc: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
   // Assignment of PoeItem to PoeConfig
-  dataObject: lapisDataObject
+  dataObject: amuletDataObject
 };
 
 // Loading config to <poe-item reference="Stone of Lazhwar"> component
@@ -366,7 +367,7 @@ As text, with icon outside.
 <!-- JavaScript --->
 <script>
 // Declaration of PoePassive object
-let passiveDataObject = {
+let magnifierDataObject = {
   name: "Magnifier",
   type: "Notable",
   description: [
@@ -381,7 +382,7 @@ let helmConfig = {
   reference: "Magnifier",
   iconSrc: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
   // Assignment of PoePassive to PoeConfig
-  dataObject: passiveDataObject
+  dataObject: magnifierDataObject
 };
 
 // Loading config to <poe-passive reference="Magnifier"> component
