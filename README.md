@@ -81,7 +81,8 @@ https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadri
 You can get them from this repo's `/dist/poe` folder.
 
 **Notes**
-- There is also unminified version of JS available under `horadric-helper-poe.umd.js` name.
+- This library supports only newer browsers such as Chrome, Firefox or Opera. IE11 is **not** supported.
+- There is also unminified version of JS available under `horadric-helper-poe.umd.js`.
 - There are source-map files for both minified and normal versions.
 
 ## HTML Components
@@ -91,11 +92,15 @@ Package `horadric-helper-poe` contains 2 components:
 
 To activate components you need to assign `reference` prop to them.
 This will allow you to later load configuration object for that reference.
-*(More about this in **Configuration** section)*
+*(More about this in [Configuration](#configuration-object) section.)*
 ```html
 <poe-item reference="Headhunter">
 ```
-*Multiple components with the same reference can exist - any config applied to that reference will work for all of them.*
+
+**Notes**
+ - Multiple components with the same reference can exist - any config applied to that reference will work for all of them.
+ - Components can be used as any other HTML element - this is thanks to [Web Components
+](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard.
 
 ## HTML Component Props
 
