@@ -259,9 +259,9 @@ type PoePassive = {
 };
 ```
 
-#### Examples of loading configs:
+### Examples of loading configs
 
-**1. Item loaded from dataObject**
+#### 1. Item loaded from dataObject
 As icon, with modified label text.
 ```html
 <!-- Html --->
@@ -307,7 +307,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </script>
 ```
 
-**2. Item loaded from rawData**
+#### 2. Item loaded from rawData
 As showcase, with icon inside and with item level hidden.
 ```html
 <!-- Html --->
@@ -356,7 +356,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 </script>
 ```
 
-**3. Passive loaded from dataObject**
+#### 3. Passive loaded from dataObject
 As text, with icon outside.
 ```html
 <!-- Html --->
