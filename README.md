@@ -73,7 +73,7 @@ More about diffrent package types, self-hosting and versions in "Packages" secti
 You can apply props to change behaviour for individual components.
 | Prop | Type | Description | PoE Items | PoE Passives |
 |:-------:|:----------:|:------|:-----:|:-----:|
-| `reference` | `String` | Name used to target component when loading configs. See **Item config** section for details. | :heavy_check_mark: | :heavy_check_mark: |
+| `reference` | `String` | Name used to target components with the same reference when loading configs. See **Item config** section for details. | :heavy_check_mark: | :heavy_check_mark: |
 | `classes` | `String` | Additional classes that will be applied to component.| :heavy_check_mark: | :heavy_check_mark: |
 | `popover-classes` | `String` | Additional classes that will be applied to popover. | :heavy_check_mark: | :heavy_check_mark: |
 | `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop. | :heavy_check_mark: | :heavy_check_mark: |
@@ -216,7 +216,7 @@ type PoePassive = {
   type: "basic" | "notable" | "keystone";
 
   // Required
-  // Passives's description
+  // List of passives's requirement text lines
   // Eg. for "Arcane Blessing":
   // [
   //   "50% increased Effect of Arcane Surge on you"
