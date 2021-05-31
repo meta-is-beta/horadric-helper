@@ -111,16 +111,16 @@ You can apply props to set or change behaviour for individual components.
 |:-------:|:----------:|:------|
 | `reference` | `String` | Name used to target components with the same reference when loading configs. See **Item config** section for details. |
 | `classes` | `String` | Additional classes that will be applied to root component.|
-| `popover-classes` | `String` | Additional classes that will be applied to popover. |
-| `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
-| `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) |
-| `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
-| `as-showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. |
-| `icon-inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) |
-| `icon-outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) |
-| `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
-| `dim-sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. |
-| `hide-sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. |
+| `popover‑classes` | `String` | Additional classes that will be applied to popover. |
+| `label‑text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
+| `as‑text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) |
+| `as‑icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
+| `as‑showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. |
+| `icon‑inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) |
+| `icon‑outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) |
+| `icon‑size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
+| `dim‑sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. |
+| `hide‑sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. |
 
 #### Examples
 Headhunter as small icon, with `properties` section hidden.
