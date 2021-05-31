@@ -40,6 +40,11 @@ type PoeItemDataSection = {
 
 type PoePassive = {
   name: String;
-  type: "basic" | "notable" | "keystone";
+  type:
+    | "basic"
+    | "notable"
+    | "keystone"
+    | "ascendancy basic"
+    | "ascendancy notable";
   description: String[];
 };

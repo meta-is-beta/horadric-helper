@@ -213,7 +213,7 @@ type PoePassive = {
 
   // Required
   // Passives's type
-  type: "basic" | "notable" | "keystone";
+    type: "basic" | "notable" | "keystone" | "ascendancy basic" | "ascendancy notable";
 
   // Required
   // List of passives's requirement text lines
