@@ -301,7 +301,7 @@ let amuletConfig = {
   dataObject: amuletDataObject
 };
 
-// Loading config to <poe-item reference="Stone of Lazhwar"> component
+// Loading config for <poe-item reference="Stone of Lazhwar"> component
 window.HoradricHelper.applyConfig(amuletConfig);
 
 </script>
@@ -350,7 +350,7 @@ let helmConfig = {
   `
 };
 
-// Loading config to <poe-item reference="Goldrim"> component
+// Loading config for <poe-item reference="Goldrim"> component
 window.HoradricHelper.applyConfig(helmConfig);
 
 </script>
@@ -392,7 +392,7 @@ let helmConfig = {
   dataObject: magnifierDataObject
 };
 
-// Loading config to <poe-passive reference="Magnifier"> component
+// Loading config for <poe-passive reference="Magnifier"> component
 window.HoradricHelper.applyConfig(helmConfig);
 
 </script>
