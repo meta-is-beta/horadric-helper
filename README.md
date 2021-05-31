@@ -2,7 +2,7 @@
 
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
-A JavaScript WebComponents library that allows you to display tooltips from ARPG games\* on you webstie using HTML tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
+A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you webstie using Html tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
 
 **Currently supported games** (Version 0.6 Beta)
 - Path of Exile
@@ -10,8 +10,8 @@ A JavaScript WebComponents library that allows you to display tooltips from ARPG
 ## Table of Content
 - [How-to TLDR](#how-to-tldr)
 - [Installation](#installation)
-- [HTML Components](#html-components)
-- [HTML Component Props](#html-component-props)
+- [Html Components](#html-components)
+- [Html Component Props](#html-component-props)
 - [Configuration object](#configuration-object)
 
 ## How-to TLDR
@@ -25,7 +25,7 @@ More complex examples with explanations can be found in the rest of the document
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.css" />
 ```
 
-#### 2. Add component to your HTML.
+#### 2. Add component to your website's Html.
 
 ```html
 <p>
@@ -37,7 +37,7 @@ More complex examples with explanations can be found in the rest of the document
 
 ```html
 <script>
-  window.HoradricHelper.applyConfig({
+  let itemConfig = {
     reference: "Frosted Fishscale Gauntlets of Skill",
     iconSrc:
       "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
@@ -59,7 +59,9 @@ More complex examples with explanations can be found in the rest of the document
       Adds 1 to 2 Cold Damage to Attacks
       6% Increased Attack Speed
     `,
-  });
+  };
+
+  window.HoradricHelper.applyConfig(itemConfig);
 </script>
 ```
 
@@ -85,7 +87,7 @@ You can get them from this repo's `/dist/poe` folder.
 - There is also unminified version of JS available under `horadric-helper-poe.umd.js`.
 - There are source-map files for both minified and normal versions.
 
-## HTML Components
+## Html Components
 Package `horadric-helper-poe` contains 2 components:
 - `<poe-item>` - Can render equipment, gems, jewels, flasks, currency and maps
 - `<poe-passive>` - Can render passives, including ascendancy nodes
@@ -99,10 +101,10 @@ This will allow you to later load configuration object for that reference.
 
 **Notes**
  - Multiple components with the same reference can exist - any config applied to that reference will work for all of them.
- - Components can be used as any other HTML element - this is thanks to [Web Components
+ - Components can be used as any other Html element - this is thanks to [Web Components
 ](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard.
 
-## HTML Component Props
+## Html Component Props
 
 You can apply props to set or change behaviour for individual components.
 | Prop | Type | Description |
