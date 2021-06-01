@@ -406,15 +406,13 @@ window.HoradricHelper.applyConfig(helmConfig);
 ```
 
 ## Showcase sections
-Showcases are split into sections such as `modifiers`, `implicits`, etc.
-
-You can chose which sections you want to load if you are using `dataObject` as data source.
-
-You can also grey-out or hide specific lines or entire sections using `dim-sections` and `hide-sections` props.
+- Showcases are split into sections such as `modifiers`, `implicits`, etc.
+- You can chose which sections you want to load if you are using `dataObject` as data source.
+- You can also grey-out or hide specific lines or entire sections using `dim-sections` and `hide-sections` props.
 
 #### `PoeItem` sections
 | Name    | Type     | Description |
-|---------|:--------:|:------------|
+|:-------:|:--------:|:------------|
 | `level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
 | `requirements` | `String[]` | List of item's requirement text lines.  |
 | `enchants` | `String[]` | List of item's enchants text lines. ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)) |
@@ -425,5 +423,5 @@ You can also grey-out or hide specific lines or entire sections using `dim-secti
 
 #### `PoePassive` sections
 | Name    | Type     | Description |
-|---------|:--------:|:------------|
+|:-------:|:--------:|:------------|
 | `description` | `String[]` | List of passive's description text lines. |
