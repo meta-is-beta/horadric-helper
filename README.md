@@ -430,8 +430,8 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 |:-------:|:--------:|:------------|
 | `itemLevel` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
 | `requirements` | `String[]` | List of item's requirement text lines.  |
-| `enchants` | `String[]` | List of item's enchants text lines. ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)) |
-| `implicits` | `String[]` | List of item's implicits text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)) |
+| `enchants` | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)). |
+| `implicits` | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)). |
 | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 | `gemDescription` | `String[]` | List of item's gem description text lines. |
 | `statuses` | `String[]` | Avalible statuses: `corrupted, mirrored, split`.  |
