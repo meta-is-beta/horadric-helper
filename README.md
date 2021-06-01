@@ -451,8 +451,8 @@ hide-sections="section1:all;section2:all;section3:all"
 
 **Example**
 ```html
-<!-- Hiding all implicits and item level -->
-<poe-item reference="Headhunter" hide-sections="implicits;item-level"></poe-item>
+<!-- Hiding all implicits and requirements -->
+<poe-item reference="Headhunter" hide-sections="implicits;requirements"></poe-item>
 
 <!-- Dimming entire description -->
 <poe-passive reference="Beef" dim-sections="description"></poe-passive>

@@ -307,7 +307,8 @@
     },
     {
       "props": {
-        "asIcon": true
+        "asIcon": true,
+        "hide-sections": "implicits;requirements;"
       },
       "config": {
         "reference": "Headhunter",
@@ -317,7 +318,6 @@
           "type": "Equipment",
           "name": "Headhunter",
           "baseName": "Leather Belt",
-          "influences": ["elder"],
           "sections": {
             "requirements": ["Level 40"],
             "implicits": ["+40 to maximum Life"],
