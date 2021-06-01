@@ -399,7 +399,7 @@ let magnifierDataObject = {
 };
 
 // Declaration of PoeConfig object
-let helmConfig = {
+let magnifierConfig = {
   reference: "Magnifier",
   iconSrc: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
   // Assignment of PoePassive to PoeConfig
@@ -407,7 +407,7 @@ let helmConfig = {
 };
 
 // Loading config for <poe-passive reference="Magnifier"> component
-window.HoradricHelper.applyConfig(helmConfig);
+window.HoradricHelper.applyConfig(magnifierConfig);
 
 </script>
 ```
