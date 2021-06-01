@@ -20,12 +20,6 @@ export default {
   methods: {
     addDimedClass(sectionName, index, classes) {
       if (
-        sectionName === "requirements" &&
-        this.dimedSections["requirements"]
-      ) {
-        debugger;
-      }
-      if (
         this.dimedSections[sectionName] &&
         (this.dimedSections[sectionName].includes("all") ||
           this.dimedSections[sectionName].includes((index + 1).toString()))
