@@ -411,8 +411,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 
 </script>
 ```
-<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Magnifier.png
-" width="400px" />
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Magnifier.png" width="400px" />
 
 ## Showcase sections
 - Showcases are split into sections such as `modifiers`, `implicits`, etc.
