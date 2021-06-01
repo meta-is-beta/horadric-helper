@@ -1,10 +1,10 @@
-# Horadric Helper 💀
+# 💀 Horadric Helper
 
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
 A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you webstie using Html tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
 
-**Currently supported games** (Version 0.6 Beta)
+**Currently supported games** (as of version 0.6 Beta)
 - Path of Exile
 
 ## Table of Content
@@ -112,7 +112,7 @@ This will allow you to later load configuration object for that reference.
 You can apply props to set or change behaviour for individual components.
 | Prop | Type | Description |
 |:-------:|:----------:|:------|
-| `reference` | `String` | Name used to target components with the same reference when loading configs. See [Configuration](#configuration-object) section for details. |
+| `reference` | `String` | **Required**. Name used to target components with the same reference when loading configs. See [Configuration](#configuration-object) section for details. |
 | `classes` | `String` | Additional classes that will be applied to root component.|
 | `popover‑classes` | `String` | Additional classes that will be applied to popover. |
 | `label‑text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
@@ -434,7 +434,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 | `implicits` | `String[]` | List of item's implicits text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)) |
 | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 | `gemDescription` | `String[]` | List of item's gem description text lines. |
-| `statuses` | `String[]` | Avalible statuses: `corrupted \| mirrored \| split`.  |
+| `statuses` | `String[]` | Avalible statuses: `corrupted, mirrored, split`.  |
 
 ### `PoePassive` sections
 | Name    | Type     | Description |
