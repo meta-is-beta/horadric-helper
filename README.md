@@ -14,7 +14,7 @@ A JavaScript WebComponents library that allows you to display tooltips from ARPG
 - [Html Component Props](#html-component-props)
 - [Configuration object](#configuration-object)
 - [Showcase sections](#showcase-sections)
-- [Passives data and skills data](#passives-data-and-skills-data)
+- [Skills and Passives data](#skills-and-passives-data)
 - [Contribution](#contribution)
 
 ## How-to TLDR
@@ -73,7 +73,7 @@ More complex examples with explanations can be found in the rest of the document
 ![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
 
 ## Installation
-To enable Horadric Helper you simply need to include JavaScript and CSS files on your website (same as other js libraries).
+To enable Horadric Helper you simply need to include JavaScript and CSS files on your website (same as any other js library).
 
 You can get both `js` and `css` files from jsDelivr CND:
 
@@ -112,7 +112,7 @@ This will allow you to later load configuration object for that reference.
 You can apply props to set or change behaviour for individual components.
 | Prop | Type | Description |
 |:-------:|:----------:|:------|
-| `reference` | `String` | Name used to target components with the same reference when loading configs. See **Item config** section for details. |
+| `reference` | `String` | Name used to target components with the same reference when loading configs. See [Configuration](#configuration-object) section for details. |
 | `classes` | `String` | Additional classes that will be applied to root component.|
 | `popover‑classes` | `String` | Additional classes that will be applied to popover. |
 | `label‑text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
@@ -122,8 +122,8 @@ You can apply props to set or change behaviour for individual components.
 | `icon‑inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) |
 | `icon‑outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) |
 | `icon‑size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
-| `dim‑sections` | `String` | List of sections to be greyed-out. More about this in **Item sections** section. |
-| `hide‑sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. |
+| `dim‑sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
+| `hide‑sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
 
 #### Examples
 `Headhunter` as small icon, with `properties` section hidden.
@@ -490,9 +490,11 @@ hide-sections="section1:1,2;section2:4,5,6;section3:1"
   <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/HideLines2.png" />
 </p>
 
-## Passives data and skills data
+## Skills and Passives data
+You can create any item or passive config yourself, but I have also created premade configs for skill gems and passives for you to use.
+
 - In `/src/path-of-exile/tools/data` you will find two json files:
-  - `gem-data.json` - This file holds premade configs for all gems in the game as of patch 3.14
+  - `gem-data.json` - This file holds premade configs for all skill gems in the game as of patch 3.14
   - `passive-node-data.json` - This file holds premade configs for all passives in the game as of patch 3.14
 - In `/src/path-of-exile/tools/` you will find two script files:
   - `get-poe-gems-data.js` - This script can pull newest config data for all gems. It will produce a file simillar to `gem-data.json`
