@@ -11,7 +11,7 @@
       },
       "config": {
         "reference": "Ancestral Bond",
-        "dataObject": {
+        "data": {
           "name": "Ancestral Bond",
           "type": "keystone",
           "sections": {
@@ -21,7 +21,7 @@
             ]
           }
         },
-        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/totemmax.png"
+        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/totemmax.png"
       }
     },
     {
@@ -33,7 +33,7 @@
       },
       "config": {
         "reference": "Acrobatics",
-        "dataObject": {
+        "data": {
           "name": "Acrobatics",
           "type": "Keystone",
           "sections": {
@@ -43,7 +43,7 @@
             ]
           }
         },
-        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/1/1a/KeystoneAcrobatics_passive_skill_icon.png"
+        "iconUrl": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/1/1a/KeystoneAcrobatics_passive_skill_icon.png"
       }
     },
     {
@@ -56,7 +56,7 @@
       },
       "config": {
         "reference": "Magnifier",
-        "dataObject": {
+        "data": {
           "name": "Magnifier",
           "type": "Notable",
           "sections": {
@@ -67,7 +67,7 @@
             ]
           }
         },
-        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png"
+        "iconUrl": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png"
       }
     },
     {
@@ -81,7 +81,7 @@
       },
       "config": {
         "reference": "Cold damage",
-        "dataObject": {
+        "data": {
           "name": "Cold damage",
           "type": "basic",
           "sections": {
@@ -91,7 +91,7 @@
             ]
           }
         },
-        "iconSrc": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/a1/ColdDamagenode_passive_skill_icon.png"
+        "iconUrl": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/a1/ColdDamagenode_passive_skill_icon.png"
       }
     },
     {
@@ -104,7 +104,7 @@
       },
       "config": {
         "reference": "Pursuit of Faith",
-        "dataObject": {
+        "data": {
           "name": "Pursuit of Faith",
           "type": "ascendancy Notable",
           "sections": {
@@ -115,7 +115,7 @@
             ]
           }
         },
-        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Hierophant/SpiritualEmpowerment.png"
+        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Hierophant/SpiritualEmpowerment.png"
       }
     },
     {
@@ -128,7 +128,7 @@
       },
       "config": {
         "reference": "Energy Shield, Power Charge Duration",
-        "dataObject": {
+        "data": {
           "name": "Energy Shield, Power Charge Duration",
           "type": "ascendancy basic",
           "sections": {
@@ -138,7 +138,7 @@
             ]
           }
         },
-        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Occultist/IncreasedEnergyShieldCriticalStrikeChance.png"
+        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Occultist/IncreasedEnergyShieldCriticalStrikeChance.png"
       }
     },
     {
@@ -149,14 +149,14 @@
       },
       "config": {
         "reference": "Beef",
-        "dataObject": {
+        "data": {
           "name": "Beef",
           "type": "Notable",
           "sections": {
             "description": ["+30 to Strength"]
           }
         },
-        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/oxblood.png"
+        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/oxblood.png"
       }
     },
     {
@@ -167,7 +167,7 @@
       },
       "config": {
         "reference": "Lethality",
-        "dataObject": {
+        "data": {
           "name": "Lethality",
           "sections": {
             "description": [
@@ -179,7 +179,7 @@
           },
           "type": "notable"
         },
-        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/heartpierce.png"
+        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/heartpierce.png"
       }
     }
   ]

@@ -4,7 +4,7 @@
       <!-- Showcase -->
       <poe-item-showcase
         :item="item"
-        :iconUrl="iconSrc"
+        :iconUrl="iconUrl"
         :iconSize="iconSize"
         :showIconInside="iconInside"
         :showIconOutside="iconOutside"
@@ -27,7 +27,7 @@
         <template slot="popover">
           <poe-item-showcase
             :item="item"
-            :iconUrl="iconSrc"
+            :iconUrl="iconUrl"
             :iconSize="iconSize"
             :showIconInside="iconInside"
             :showIconOutside="iconOutside"
@@ -39,7 +39,7 @@
         <div v-if="displayMode === `icon`">
           <poe-item-image
             :iconSize="iconSize"
-            :iconUrl="iconSrc"
+            :iconUrl="iconUrl"
             :type="item.type"
           />
           <div class="poe-showcase-label">
@@ -56,7 +56,7 @@
 <script>
 import PoeItemShowcase from "./poe-item-showcase.vue";
 import PoeItemImage from "./poe-item-image.vue";
-import processRawData from "./item-data-processor/item-data-processor.ts";
+import processStringData from "./item-data-processor/item-data-processor.ts";
 import mainMixin from "@/shared/mixins/main.mixin";
 
 export default {
@@ -102,9 +102,9 @@ export default {
       return classes;
     },
   },
-  showcaseMetadata: {
+  metadata: {
     type: "poe-item",
-    processRawData,
+    processStringData,
   },
 };
 </script>

@@ -4,7 +4,7 @@
       <!-- Showcase -->
       <poe-passive-showcase
         :passive="passive"
-        :iconUrl="iconSrc"
+        :iconUrl="iconUrl"
         :iconSize="iconSize"
         :showIconInside="iconInside"
         :showIconOutside="iconOutside"
@@ -26,7 +26,7 @@
         <template slot="popover">
           <poe-passive-showcase
             :passive="passive"
-            :iconUrl="iconSrc"
+            :iconUrl="iconUrl"
             :iconSize="iconSize"
             :showIconInside="iconInside"
             :showIconOutside="iconOutside"
@@ -37,7 +37,7 @@
         <div v-if="displayMode === `icon`">
           <poe-passive-image
             :type="passive.type"
-            :iconUrl="iconSrc"
+            :iconUrl="iconUrl"
             :iconSize="iconSize"
           />
           <div class="poe-showcase-label" v-if="!showCustomLabel">
@@ -106,7 +106,7 @@ export default {
         : "";
     },
   },
-  showcaseMetadata: {
+  metadata: {
     type: "poe-passive",
   },
 };

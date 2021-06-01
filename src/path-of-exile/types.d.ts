@@ -2,7 +2,7 @@ type PoeConfig = {
   reference: string;
   dataObject: PoeItem | PoePassive | null;
   rawData: string | null;
-  iconSrc: string | null;
+  iconUrl: string | null;
 };
 
 type PoeItem = {

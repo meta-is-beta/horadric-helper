@@ -46,7 +46,7 @@ def generate_node_mapping() -> Dict[str, str]:
                     "name": node["name"],
                     "description": node["stats"]
                 },
-                "iconSrc": "https://web.poecdn.com/image/" + node["icon"]
+                "iconUrl": "https://web.poecdn.com/image/" + node["icon"]
             }
 
             nodeType = ""

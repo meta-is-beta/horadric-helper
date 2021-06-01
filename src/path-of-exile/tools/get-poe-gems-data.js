@@ -72,7 +72,7 @@ const mapData = (rawData) => {
             ),
           ].filter((p) => p != ""),
         },
-        iconSrc: ((skillId) => {
+        iconUrl: ((skillId) => {
           if (!skillId) return "";
 
           if (skillId.includes("Support")) {

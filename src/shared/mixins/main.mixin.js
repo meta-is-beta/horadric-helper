@@ -22,7 +22,7 @@ export default {
     return {
       show: false,
       showcaseData: {},
-      iconSrc: "",
+      iconUrl: "",
       popoverWrapperClasses: "horadric-helper-wrapper",
       popoverArrowClasses:
         "horadric-helper-tooltip-arrow horadric-helper-popover-arrow",
@@ -80,15 +80,15 @@ export default {
 
         this.applyConfig(
           hhObject.showcases[reference].showcaseData,
-          hhObject.showcases[reference].iconSrc
+          hhObject.showcases[reference].iconUrl
         );
       },
     },
   },
   methods: {
-    applyConfig(showcaseData, iconSrc) {
+    applyConfig(showcaseData, iconUrl) {
       this.showcaseData = showcaseData;
-      this.iconSrc = iconSrc;
+      this.iconUrl = iconUrl;
       this.show = true;
     },
     registerShowcase() {
@@ -102,7 +102,7 @@ export default {
         showcases[reference] = {
           showcaseData: {},
           applyConfigCallbacks: [this.applyConfig],
-          ...this.$options.showcaseMetadata,
+          ...this.$options.metadata,
         };
       }
     },
@@ -176,7 +176,7 @@ const applyConfigFromArray = (configArray) => {
   configArray.forEach((configObject) => applyConfigFromObject(configObject));
 };
 
-const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
+const applyConfigFromObject = ({ reference, data, iconUrl }) => {
   reference = reference.replaceAll(" ", "-");
   const referencedShowcase = window.HoradricHelper.showcases[reference];
 
@@ -184,34 +184,34 @@ const applyConfigFromObject = ({ reference, rawData, dataObject, iconSrc }) => {
     return;
   }
 
-  if (rawData) {
-    if (!referencedShowcase.processRawData) {
+  if (typeof data === "string") {
+    if (!referencedShowcase.processStringData) {
       throw new Error(
-        `Raw data processor is not plemented for showcase of type "${referencedShowcase.type}"`
+        `String data processor is not plemented for showcase of type "${referencedShowcase.type}"`
       );
     }
-    referencedShowcase.showcaseData = referencedShowcase.processRawData(
-      rawData
+    referencedShowcase.showcaseData = referencedShowcase.processStringData(
+      data
     );
-  } else if (dataObject) {
+  } else if (typeof data === "object") {
     if (!referencedShowcase.processDataObject) {
       referencedShowcase.processDataObject = (data) => data;
     }
     referencedShowcase.showcaseData = referencedShowcase.processDataObject(
-      dataObject
+      data
     );
   } else {
     throw new Error("Showcase data not provided");
   }
 
-  referencedShowcase.iconSrc = iconSrc;
+  referencedShowcase.iconUrl = iconUrl;
 
   referencedShowcase.applyConfigCallbacks.forEach((callback) => {
     if (!callback || typeof callback !== "function") {
       return;
     }
     try {
-      callback(referencedShowcase.showcaseData, iconSrc);
+      callback(referencedShowcase.showcaseData, iconUrl);
     } catch {
       // no-op
     }

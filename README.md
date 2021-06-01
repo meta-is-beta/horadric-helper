@@ -42,7 +42,7 @@ More complex examples with explanations can be found in the rest of the document
 <script>
   let itemConfig = {
     reference: "Frosted Fishscale Gauntlets of Skill",
-    iconSrc:
+    iconUrl:
       "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
     rawData: `
       Item Class: Gloves
@@ -119,8 +119,8 @@ You can apply props to set or change behaviour for individual components.
 | `as‑text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) |
 | `as‑icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
 | `as‑showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. |
-| `icon‑inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconSrc` was provided in config*) |
-| `icon‑outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconSrc` was provided in config*) |
+| `icon‑inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconUrl` was provided in config*) |
+| `icon‑outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconUrl` was provided in config*) |
 | `icon‑size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
 | `dim‑sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
 | `hide‑sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
@@ -162,7 +162,7 @@ type PoeConfig = {
 
   // Optional
   // Url of icon that will be displayed if any of icon props are set.
-  iconSrc: String | null;
+  iconUrl: String | null;
 
   // Required (exclusive with 'rawData' - use only one of them)
   // Object which describes all properties of item or passive you want to display.
@@ -305,7 +305,7 @@ let amuletDataObject = {
 // Declaration of PoeConfig object
 let amuletConfig = {
   reference: "Stone of Lazhwar",
-  iconSrc: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
+  iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
   // Assignment of PoeItem to PoeConfig
   dataObject: amuletDataObject
 };
@@ -340,7 +340,7 @@ As showcase, with icon inside and with item level hidden.
 // Declaration of PoeConfig object
 let helmConfig = {
   reference: "Goldrim",
-  iconSrc: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
+  iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
   // Assignemnt of raw item data copied from the game
   rawData: `
     Item Class: Helmets
@@ -406,7 +406,7 @@ let magnifierDataObject = {
 // Declaration of PoeConfig object
 let magnifierConfig = {
   reference: "Magnifier",
-  iconSrc: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
+  iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
   // Assignment of PoePassive to PoeConfig
   dataObject: magnifierDataObject
 };
@@ -442,7 +442,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 | `description` | `String[]` | List of passive's description text lines. |
 
 ### Dimming and hiding sections
-You can dim or hide ether entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. (Section names are in `kebab-case`.)
+You can dim or hide ether entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. (Section names are in `kebab-case`)
 #### Targeting entire sections
 You can target entire sections by passing section names seprated by `;`.
 
