@@ -313,7 +313,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </script>
 ```
 
-<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar.png" width="800px" />
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar.png" width="400px" />
 
 #### 2. Item loaded from rawData
 As showcase, with icon inside and with item level hidden.
