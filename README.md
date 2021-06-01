@@ -84,13 +84,13 @@ You can get them from this repo's `/dist/poe` folder.
 
 **Notes**
 - This library supports only newer browsers such as Chrome, Firefox or Opera. IE11 is **not** supported.
-- There is also unminified version of JS available under `horadric-helper-poe.umd.js`.
-- There are source-map files for both minified and normal versions.
+- There is also non-minified version of JS available under `horadric-helper-poe.umd.js`.
+- There are source-map files for both minified and non-minified versions.
 
 ## Html Components
 Package `horadric-helper-poe` contains 2 components:
-- `<poe-item>` - Can render equipment, gems, jewels, flasks, currency and maps
-- `<poe-passive>` - Can render passives, including ascendancy nodes
+- `<poe-item>` - This component can render equipment, gems, jewels, flasks, currency and maps
+- `<poe-passive>` - This component can render passives, including ascendancy nodes
 
 To activate components you need to assign `reference` prop to them.
 This will allow you to later load configuration object for that reference.
@@ -100,7 +100,7 @@ This will allow you to later load configuration object for that reference.
 ```
 
 **Notes**
- - Multiple components with the same reference can exist - any config applied to that reference will work for all of them.
+ - Multiple components with the same reference can exist - any config applied to that reference will work for all matching components.
  - Components can be used as any other Html element - this is thanks to [Web Components
 ](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard.
 
