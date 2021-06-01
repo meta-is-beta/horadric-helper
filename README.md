@@ -197,14 +197,16 @@ type PoeItem = {
   // Eg: ["elder", "shaper"]
   influences: ("crusader" | "warlord" | "hunter" | "redeemer" | "elder" | "shaper" | "replica")[] | null;
 
-  // Optional
-  // List of item's properties text lines
-  // Eg: ["Armour: 9", "Energy Rating: 9"]
-  properties: String[] | null;
-
   // All sections are optional
   sections: {
+
+    // Optional
+    // List of item's properties text lines
+    // Eg: ["Armour: 9", "Energy Rating: 9"]
+    properties: String[] | null;
+
     // Item's level
+    // Eg: "42"
     level: String | null;
 
     // List of item's requirement text lines
@@ -225,7 +227,7 @@ type PoeItem = {
 
     // List of item's gem description text lines
     // Only applies to items with type "Gem"
-    // Eg (for Increased Duration Support): ["Supports any skill that has a duration."]
+    // Eg: ["Supports any skill that has a duration."]
     gemDescription: String[] | null;
 
     // List of item's statuses
@@ -240,10 +242,12 @@ type PoeItem = {
 type PoePassive = {
   // Required
   // Passives's name
+  // Eg: "Beef"
   name: String;
 
   // Required
   // Passives's type
+  // Eg: "notable"
   type: "basic" | "notable" | "keystone" | "ascendancy basic" | "ascendancy notable";
 
   // All sections are optional
@@ -310,6 +314,8 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </script>
 ```
 
+![Stone-of-Lazhwar](https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar.png | width=250)
+
 #### 2. Item loaded from rawData
 As showcase, with icon inside and with item level hidden.
 ```html
@@ -359,6 +365,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 
 </script>
 ```
+![Goldrim](https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim.png | width=250)
 
 #### 3. Passive loaded from dataObject
 As text, with icon outside.
