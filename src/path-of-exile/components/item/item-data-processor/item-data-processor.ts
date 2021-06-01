@@ -14,7 +14,7 @@ export default (rawData: String): PoeItem => {
     influences: getItemInfluences(sections),
     sockets: getSockets(sections),
     sections: {
-      level: getItemLevel(sections),
+      itemLevel: getItemLevel(sections),
       requirements: getRequirements(sections),
       properties: getProperties(sections),
       enchants: getEnchants(sections),

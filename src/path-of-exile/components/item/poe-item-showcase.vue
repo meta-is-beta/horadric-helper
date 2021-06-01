@@ -38,8 +38,8 @@
         <div class="poe-item-separator" v-if="shouldShowItemLevel"></div>
         <div :class="getItemLevelClasses()" v-if="shouldShowItemLevel">
           Item Level:
-          <span class="poe-item-level-value" v-if="item.sections.level">
-            {{ item.sections.level }}
+          <span class="poe-item-level-value" v-if="item.sections.itemLevel">
+            {{ item.sections.itemLevel }}
           </span>
         </div>
         <!-- Requirements -->
@@ -182,7 +182,7 @@ export default {
   computed: {
     shouldShowItemLevel() {
       return (
-        this.item.sections.level &&
+        this.item.sections.itemLevel &&
         !this.sectionShouldBeFullyHidden("item-level")
       );
     },

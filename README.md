@@ -410,7 +410,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 - You can chose which sections you want to load if you are using `dataObject` as data source.
 - You can also grey-out or hide specific lines or entire sections using `dim-sections` and `hide-sections` props.
 
-#### `PoeItem` sections
+### `PoeItem` sections
 | Name    | Type     | Description |
 |:-------:|:--------:|:------------|
 | `level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
@@ -421,7 +421,42 @@ window.HoradricHelper.applyConfig(helmConfig);
 | `gemDescription` | `String[]` | List of item's gem description text lines. |
 | `statuses` | `String[]` | Avalible statuses: `corrupted \| mirrored \| split`.  |
 
-#### `PoePassive` sections
+### `PoePassive` sections
 | Name    | Type     | Description |
 |:-------:|:--------:|:------------|
 | `description` | `String[]` | List of passive's description text lines. |
+
+### Dimming and hiding sections
+You can dim or hide ether specific lines or entire sections of showcase using `dim-sections` and `hide-sections` props.
+#### Targeting entire sections
+You can target entire section by passing section names seprated by `;` to props.
+
+Format: `hide-sections="section_1_name;section_2_name;.."`
+
+or
+
+Format: `hide-sections="section_1_name:all;section_2_name:all;.."`
+
+
+**Example**
+```html
+<!-- Hiding implicits and item level -->
+<poe-item reference="Headhunter" hide-sections="implicits;item-level"></poe-item>
+
+<!-- Hinding entire description -->
+<poe-passive reference="Beef" dim-sections="description"></poe-passive>
+```
+
+#### Targetting specific lines of sections
+To target specific lines you can pass numbers of lines separated by `,` after section's name.
+
+Format: `hide-sections="section_1_name:1,2,...;section_2_name:1,2,...;"`
+
+**Example**
+```html
+<!-- Hiding 1st and 2nd line of modifiers -->
+<poe-item reference="Headhunter" hide-sections="modifiers:1,2;properties:1"></poe-item>
+
+<!-- Hinding entire description -->
+<poe-passive reference="Beef" dim-sections="description"></poe-passive>
+```

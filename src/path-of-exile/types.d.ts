@@ -23,7 +23,7 @@ type PoeItem = {
   )[];
   sockets: String[] | undefined;
   sections: {
-    level: String | undefined;
+    itemLevel: String | undefined;
     requirements: String[] | undefined;
     properties: String[] | undefined;
     enchants: String[] | undefined;
