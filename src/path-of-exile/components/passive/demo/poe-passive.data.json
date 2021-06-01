@@ -144,9 +144,8 @@
     {
       "reference": "Beef",
       "props": {
-        "asIcon": true,
-        "asShowcase": false,
-        "iconInside": true
+        "as-icon": true,
+        "dim-sections": "description"
       },
       "config": {
         "reference": "Beef",
@@ -158,6 +157,29 @@
           }
         },
         "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/oxblood.png"
+      }
+    },
+    {
+      "reference": "Lethality",
+      "props": {
+        "as-icon": true,
+        "dim-sections": "description:3,4"
+      },
+      "config": {
+        "reference": "Lethality",
+        "dataObject": {
+          "name": "Lethality",
+          "sections": {
+            "description": [
+              "16% increased Damage with Bows",
+              "50% increased Critical Strike Chance with Bows",
+              "+30% to Critical Strike Multiplier with Bows",
+              "16% increased Damage Over Time with Bow Skills"
+            ]
+          },
+          "type": "notable"
+        },
+        "iconSrc": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/heartpierce.png"
       }
     }
   ]

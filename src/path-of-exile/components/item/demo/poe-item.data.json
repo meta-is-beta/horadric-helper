@@ -308,7 +308,7 @@
     {
       "props": {
         "asIcon": true,
-        "hide-sections": "implicits;requirements;"
+        "hide-sections": "modifiers:1,2;properties:1"
       },
       "config": {
         "reference": "Headhunter",

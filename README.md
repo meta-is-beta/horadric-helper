@@ -462,10 +462,14 @@ hide-sections="section1:all;section2:all;section3:all"
 <poe-passive reference="Beef" dim-sections="description"></poe-passive>
 ```
 
+<p align="center">
+  <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/HideSections2.png" />
+</p>
+
 #### Targetting specific lines
 To target specific lines you can pass numbers of lines separated by `,` after section's name.
 
-*Format*
+**Format**
 ```js
 hide-sections="section1:1,2;section2:4,5,6;section3:1"
 ```
@@ -478,3 +482,7 @@ hide-sections="section1:1,2;section2:4,5,6;section3:1"
 <!-- Dimming 3rd and 4th line of description -->
 <poe-passive reference="Lethality" dim-sections="description:3,4"></poe-passive>
 ```
+
+<p align="center">
+  <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/HideLines2.png" />
+</p>
