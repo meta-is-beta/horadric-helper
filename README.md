@@ -13,6 +13,7 @@ A JavaScript WebComponents library that allows you to display tooltips from ARPG
 - [Html Components](#html-components)
 - [Html Component Props](#html-component-props)
 - [Configuration object](#configuration-object)
+- [Showcase sections](#showcase-sections)
 
 ## How-to TLDR
 Short example of library usage.
@@ -123,7 +124,7 @@ You can apply props to set or change behaviour for individual components.
 | `hide‑sections` | `String` | List of sections to be hidden. More about this in **Item sections** section. |
 
 #### Examples
-Headhunter as small icon, with `properties` section hidden.
+`Headhunter` as small icon, with `properties` section hidden.
 ```html
 <poe-item
   reference="Headhunter"
@@ -133,7 +134,7 @@ Headhunter as small icon, with `properties` section hidden.
 ></poe-item>
 ```
 
-Beef passive as showcase, with icon displayed inside.
+`Beef` passive as showcase, with icon displayed inside.
 ```html
 <poe-passive
   reference="Beef"
@@ -201,40 +202,37 @@ type PoeItem = {
   // Eg: ["Armour: 9", "Energy Rating: 9"]
   properties: String[] | null;
 
-  // Optional
-  // Item's level
-  level: String | null;
+  // All sections are optional
+  sections: {
+    // Item's level
+    level: String | null;
 
-  // Optional
-  // List of item's requirement text lines
-  // Eg: ["Dex: 12", "Str: 12"]
-  requirements: String[] | null;
+    // List of item's requirement text lines
+    // Eg: ["Dex: 12", "Str: 12"]
+    requirements: String[] | null;
 
-  // Optional
-  // List of item's enchants text lines
-  // Eg: ["Allocates Beef"]
-  enchants: String[] | null;
+    // List of item's enchants text lines
+    // Eg: ["Allocates Beef"]
+    enchants: String[] | null;
 
-  // Optional
-  // List of item's implicits text lines
-  // Eg: ["Has 1 Socket"]
-  implicits: String[] | null;
+    // List of item's implicits text lines
+    // Eg: ["Has 1 Socket"]
+    implicits: String[] | null;
 
-  // Optional
-  // List of item's modifiers text lines
-  // Eg: ["Adds 1 to 2 Cold Damage to Attacks", "6% Increased Attack Speed"]
-  modifiers: String[] | null;
+    // List of item's modifiers text lines
+    // Eg: ["Adds 1 to 2 Cold Damage to Attacks", "6% Increased Attack Speed"]
+    modifiers: String[] | null;
 
-  // Optional
-  // List of item's gem description text lines
-  // Only applies to items with type "Gem"
-  // Eg (for Increased Duration Support): ["Supports any skill that has a duration."]
-  gemDescription: String[] | null;
+    // List of item's gem description text lines
+    // Only applies to items with type "Gem"
+    // Eg (for Increased Duration Support): ["Supports any skill that has a duration."]
+    gemDescription: String[] | null;
 
-  // Optional
-  // List of item's statuses
-  // Eg: ["corrupted", "split"]
-  statuses: ("corrupted" | "mirrored" | "split")[] | null;
+    // List of item's statuses
+    // Eg: ["corrupted", "split"]
+    statuses: ("corrupted" | "mirrored" | "split")[] | null;
+  }
+
 }
 ```
 ### `PoePassive` object
@@ -248,14 +246,16 @@ type PoePassive = {
   // Passives's type
   type: "basic" | "notable" | "keystone" | "ascendancy basic" | "ascendancy notable";
 
-  // Required
-  // List of passives's description text lines
-  // Eg. for "Arcane Blessing":
-  // [
-  //   "50% increased Effect of Arcane Surge on you"
-  //   "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell"
-  // ]
-  description: String[];
+  // All sections are optional
+  sections: {
+    // List of passives's description text lines
+    // Eg. for "Arcane Blessing":
+    // [
+    //   "50% increased Effect of Arcane Surge on you"
+    //   "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell"
+    // ]
+    description: String[];
+  }
 };
 ```
 
@@ -277,20 +277,23 @@ As icon, with modified label text.
 
 <!-- JavaScript --->
 <script>
+
 // Declaration of PoeItem object
 let amuletDataObject = {
   rarity: "Unique",
   type: "Equipment",
   name: "Stone of Lazhwar",
   baseName: "Lapis Amulet",
-  level: "57",
-  requirements: ["Level 5"],
-  implicits: ["+22 to Intelligence"],
-  modifiers: [
-    "14% Chance to Block Spell Damage",
-    "12% increased Cast Speed",
-    "+45 to maximum Mana"
-  ]
+  sections: {
+    level: "57",
+    requirements: ["Level 5"],
+    implicits: ["+22 to Intelligence"],
+    modifiers: [
+      "14% Chance to Block Spell Damage",
+      "12% increased Cast Speed",
+      "+45 to maximum Mana"
+    ]
+  }
 };
 
 // Declaration of PoeConfig object
@@ -324,6 +327,7 @@ As showcase, with icon inside and with item level hidden.
 
 <!-- JavaScript --->
 <script>
+
 // Declaration of PoeConfig object
 let helmConfig = {
   reference: "Goldrim",
@@ -373,15 +377,18 @@ As text, with icon outside.
 
 <!-- JavaScript --->
 <script>
+
 // Declaration of PoePassive object
 let magnifierDataObject = {
   name: "Magnifier",
   type: "Notable",
-  description: [
-    "10% increased Area of Effect",
-    "10% increased Area Damage",
-    "+10% to Critical Strike Multiplier"
-  ]
+  sections: {
+    description: [
+      "10% increased Area of Effect",
+      "10% increased Area Damage",
+      "+10% to Critical Strike Multiplier"
+    ]
+  }
 };
 
 // Declaration of PoeConfig object
@@ -398,6 +405,18 @@ window.HoradricHelper.applyConfig(helmConfig);
 </script>
 ```
 
+## Showcase sections
+Showcases are split into sections such as `modifiers`, `implicits`, etc.
+You can chose which sections you want to load if you are using `dataObject` as data source.
+You can also grey-out or hide specific lines or entire sections using `dim-sections` and `hide-sections` props.
 
-## Item sections
-tba
+#### `PoeItem` sections
+| Name    | Type     | Description |
+|---------|:--------:|:------------|
+| `level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
+| `requirements` | `String[]` | List of item's requirement text lines.  |
+| `enchants` | `String[]` | List of item's enchants text lines. ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)) |
+| `implicits` | `String[]` | List of item's implicits text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)) |
+| `modifiers` | `String[]` | List of item's modifiers text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) |
+| `gemDescription` | `String[]` | List of item's gem description text lines. |
+| `statuses` | `String[]` | Avalible statuses: `corrupted \| mirrored \| split`.  |

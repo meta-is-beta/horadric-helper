@@ -183,30 +183,31 @@
           "name": "Winter Orb",
           "baseName": "Winter Orb",
           "rarity": "Gem",
-          "class": "Skill Gems",
-          "gemDescription": [
-            "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration."
-          ],
-          "modifiers": [
-            "Base duration is 1.6 seconds",
-            "Deals (30-232) to (37-291) Cold Damage",
-            "Maximum 10 Stages",
-            "Fires projectiles every 1.6 seconds",
-            "25% increased Duration per Stage",
-            "15% increased Projectile Frequency per Stage",
-            "100% more Projectile Frequency while Channelling",
-            "Increases and Reductions to Cast Speed also apply to Projectile Frequency"
-          ],
-          "properties": [
-            "Cold, Spell, Channelling, AoE, Duration, Projectile, Orb",
-            "Cast Time: 0.25s",
-            "Critical Strike Chance: 6%",
-            "Mana Cost: (2-4)",
-            "Attack Speed: 100%",
-            "Effectiveness of Added Damage: 50%",
-            "Damage Multiplier: 100%",
-            "Base duration: 1.6s"
-          ]
+          "sections": {
+            "gemDescription": [
+              "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration."
+            ],
+            "modifiers": [
+              "Base duration is 1.6 seconds",
+              "Deals (30-232) to (37-291) Cold Damage",
+              "Maximum 10 Stages",
+              "Fires projectiles every 1.6 seconds",
+              "25% increased Duration per Stage",
+              "15% increased Projectile Frequency per Stage",
+              "100% more Projectile Frequency while Channelling",
+              "Increases and Reductions to Cast Speed also apply to Projectile Frequency"
+            ],
+            "properties": [
+              "Cold, Spell, Channelling, AoE, Duration, Projectile, Orb",
+              "Cast Time: 0.25s",
+              "Critical Strike Chance: 6%",
+              "Mana Cost: (2-4)",
+              "Attack Speed: 100%",
+              "Effectiveness of Added Damage: 50%",
+              "Damage Multiplier: 100%",
+              "Base duration: 1.6s"
+            ]
+          }
         },
         "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostFury.png"
       }
@@ -224,30 +225,31 @@
           "name": "Frostblink",
           "baseName": "Frostblink",
           "rarity": "Gem",
-          "class": "Skill Gems",
-          "gemDescription": [
-            "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills."
-          ],
-          "modifiers": [
-            "Base duration is 3 seconds",
-            "(15-19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area",
-            "(80-99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
-            "Deals (9-832) to (14-1248) Cold Damage",
-            "(0-38)% increased maximum travel distance",
-            "+(0-3) to radius"
-          ],
-          "properties": [
-            "Spell, Movement, Duration, Cold, Travel, Blink, AoE",
-            "Cast Time: 0s",
-            "Critical Strike Chance: 5%",
-            "Mana Cost: (12-22)",
-            "Attack Speed: 100%",
-            "Effectiveness of Added Damage: 140%",
-            "Stored Uses: 1",
-            "Cooldown: (3s-2.6s)",
-            "Damage Multiplier: 100%",
-            "Base duration: 3s"
-          ]
+          "sections": {
+            "gemDescription": [
+              "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills."
+            ],
+            "modifiers": [
+              "Base duration is 3 seconds",
+              "(15-19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area",
+              "(80-99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
+              "Deals (9-832) to (14-1248) Cold Damage",
+              "(0-38)% increased maximum travel distance",
+              "+(0-3) to radius"
+            ],
+            "properties": [
+              "Spell, Movement, Duration, Cold, Travel, Blink, AoE",
+              "Cast Time: 0s",
+              "Critical Strike Chance: 5%",
+              "Mana Cost: (12-22)",
+              "Attack Speed: 100%",
+              "Effectiveness of Added Damage: 140%",
+              "Stored Uses: 1",
+              "Cooldown: (3s-2.6s)",
+              "Damage Multiplier: 100%",
+              "Base duration: 3s"
+            ]
+          }
         },
         "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Gems/FrostblinkSkillGem.png"
       }
@@ -290,15 +292,56 @@
           "type": "Equipment",
           "name": "Stone of Lazhwar",
           "baseName": "Lapis Amulet",
-          "level": "57",
-          "requirements": ["Level 5"],
-          "implicits": ["+22 to Intelligence"],
-          "modifiers": [
-            "14% Chance to Block Spell Damage",
-            "12% increased Cast Speed",
-            "+45 to maximum Mana"
-          ]
+          "sections": {
+            "level": "57",
+            "requirements": ["Level 5"],
+            "implicits": ["+22 to Intelligence"],
+            "modifiers": [
+              "14% Chance to Block Spell Damage",
+              "12% increased Cast Speed",
+              "+45 to maximum Mana"
+            ]
+          }
         }
+      }
+    },
+    {
+      "props": {
+        "asIcon": true
+      },
+      "config": {
+        "reference": "Headhunter",
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Belts/Headhunter.png",
+        "dataObject": {
+          "rarity": "Unique",
+          "type": "Equipment",
+          "name": "Headhunter",
+          "baseName": "Leather Belt",
+          "influences": ["elder"],
+          "sections": {
+            "requirements": ["Level 40"],
+            "implicits": ["+40 to maximum Life"],
+            "modifiers": [
+              "+55 to Strength",
+              "+55 to Dexterity",
+              "+60 to maximum Life",
+              "30% increased Damage with Hits against Rare monsters",
+              "When you Kill a Rare monster, you gain its Modifiers for 20 seconds"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "props": {
+        "as-showcase": true,
+        "icon-inside": true,
+        "hide-sections": "item-level"
+      },
+      "config": {
+        "reference": "Goldrim",
+        "iconSrc": "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
+        "rawData": "Item Class: Helmets\nRarity: Unique\nGoldrim\nLeather Cap\n--------\nEvasion Rating: 54 (augmented)\n--------\nSockets: G-G-B-G\n--------\nItem Level: 60\n--------\n+35 to Evasion Rating\n10% increased Rarity of Items found\n+36% to all Elemental Resistances\nReflects 4 Physical Damage to Melee Attackers\n--------\nNo metal slips as easily through the fingers as gold."
       }
     }
   ]

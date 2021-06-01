@@ -12,15 +12,17 @@ export default (rawData: String): PoeItem => {
     name: getItemName(headerSection),
     baseName: getItemBaseName(headerSection),
     influences: getItemInfluences(sections),
-    level: getItemLevel(sections),
-    requirements: getRequirements(sections),
     sockets: getSockets(sections),
-    properties: getProperties(sections),
-    enchants: getEnchants(sections),
-    implicits: getImplicits(sections),
-    modifiers: getModifiers(sections),
-    gemDescription: getGemDescription(sections),
-    statuses: getItemStatuses(sections),
+    sections: {
+      level: getItemLevel(sections),
+      requirements: getRequirements(sections),
+      properties: getProperties(sections),
+      enchants: getEnchants(sections),
+      implicits: getImplicits(sections),
+      modifiers: getModifiers(sections),
+      gemDescription: getGemDescription(sections),
+      statuses: getItemStatuses(sections),
+    },
   };
 };
 

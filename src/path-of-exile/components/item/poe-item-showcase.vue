@@ -38,8 +38,8 @@
         <div class="poe-item-separator" v-if="shouldShowItemLevel"></div>
         <div :class="getItemLevelClasses()" v-if="shouldShowItemLevel">
           Item Level:
-          <span class="poe-item-level-value" v-if="item.level">
-            {{ item.level }}
+          <span class="poe-item-level-value" v-if="item.sections.level">
+            {{ item.sections.level }}
           </span>
         </div>
         <!-- Requirements -->
@@ -79,7 +79,7 @@
         <div class="poe-item-separator" v-if="shouldShowGemDescription"></div>
         <div v-if="shouldShowGemDescription">
           <div
-            v-for="(desciptionLine, index) in item.gemDescription"
+            v-for="(desciptionLine, index) in item.sections.gemDescription"
             :key="`${index}-gem-desc`"
             :class="getGemDescriptionClasses(index)"
           >
@@ -181,11 +181,14 @@ export default {
   },
   computed: {
     shouldShowItemLevel() {
-      return this.item.level && !this.sectionShouldBeFullyHidden("item-level");
+      return (
+        this.item.sections.level &&
+        !this.sectionShouldBeFullyHidden("item-level")
+      );
     },
     shouldShowItemRequirements() {
       return (
-        this.item.requirements &&
+        this.item.sections.requirements &&
         !this.sectionShouldBeFullyHidden("requirements")
       );
     },
@@ -211,21 +214,22 @@ export default {
       return (
         this.item.type &&
         this.item.type.toLowerCase() === "gem" &&
-        this.item.gemDescription &&
+        this.item.sections.gemDescription &&
         !this.sectionShouldBeFullyHidden("description")
       );
     },
     shouldShowItemModifiers() {
       return (
-        this.item.modifiers && !this.sectionShouldBeFullyHidden("modifiers")
+        this.item.sections.modifiers &&
+        !this.sectionShouldBeFullyHidden("modifiers")
       );
     },
     shouldShowStatuses() {
       return !this.sectionShouldBeFullyHidden("statuses");
     },
     itemProperties() {
-      return this.item.properties
-        ? this.item.properties.map((line) => {
+      return this.item.sections.properties
+        ? this.item.sections.properties.map((line) => {
             return line
               .replaceAll("(augmented)", "")
               .trim()
@@ -237,9 +241,9 @@ export default {
         : [];
     },
     itemRequirements() {
-      return this.item.requirements
+      return this.item.sections.requirements
         ? "Requires " +
-            this.item.requirements
+            this.item.sections.requirements
               .map((line) => {
                 return line
                   .trim()
@@ -252,31 +256,35 @@ export default {
         : "";
     },
     itemEnchants() {
-      return this.item.enchants
-        ? this.item.enchants.map((x) => x.replaceAll("(enchant)", "").trim())
+      return this.item.sections.enchants
+        ? this.item.sections.enchants.map((x) =>
+            x.replaceAll("(enchant)", "").trim()
+          )
         : [];
     },
     itemImplicits() {
-      return this.item.implicits
-        ? this.item.implicits.map((x) => x.replaceAll("(implicit)", "").trim())
+      return this.item.sections.implicits
+        ? this.item.sections.implicits.map((x) =>
+            x.replaceAll("(implicit)", "").trim()
+          )
         : [];
     },
     itemModifiers() {
-      return this.item.modifiers
-        ? this.item.modifiers.map((x) => ({
+      return this.item.sections.modifiers
+        ? this.item.sections.modifiers.map((x) => ({
             text: x.replaceAll("(crafted)", "").trim(),
             isCrafter: x.includes("(crafted)"),
           }))
         : [];
     },
+    itemStatuses() {
+      return this.item.sections.statuses
+        ? this.item.sections.statuses.map((s) => s.toLowerCase())
+        : [];
+    },
     itemInfluences() {
       return this.item.influences
         ? this.item.influences.map((i) => i.toLowerCase())
-        : [];
-    },
-    itemStatuses() {
-      return this.item.statuses
-        ? this.item.statuses.map((s) => s.toLowerCase())
         : [];
     },
     itemIsCorrupted() {

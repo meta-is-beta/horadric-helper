@@ -8,7 +8,7 @@ type PoeConfig = {
 type PoeItem = {
   rarity: "normal" | "rare" | "magic" | "unique" | "gem" | "";
   class: String | undefined;
-  type: "equipment" | "gem" | "jewel" | "flask" | "currency" | "map" | "";
+  type: "Equipment" | "Gem" | "Jewel" | "Flask" | "Currency" | "Map" | "";
   name: String | undefined;
   baseName: String | undefined;
   influences: (
@@ -21,15 +21,17 @@ type PoeItem = {
     | "replica"
     | ""
   )[];
-  level: String | undefined;
-  requirements: String[] | undefined;
   sockets: String[] | undefined;
-  properties: String[] | undefined;
-  enchants: String[] | undefined;
-  implicits: String[] | undefined;
-  modifiers: String[] | undefined;
-  gemDescription: String[] | undefined;
-  statuses: ("corrupted" | "mirrored" | "split")[];
+  sections: {
+    level: String | undefined;
+    requirements: String[] | undefined;
+    properties: String[] | undefined;
+    enchants: String[] | undefined;
+    implicits: String[] | undefined;
+    modifiers: String[] | undefined;
+    gemDescription: String[] | undefined;
+    statuses: ("corrupted" | "mirrored" | "split")[];
+  };
 };
 
 type PoeItemDataSection = {

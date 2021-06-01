@@ -60,13 +60,13 @@ export default {
   },
   computed: {
     passiveName() {
-      return this.passive ? this.passive.name : "";
+      return this.passive.name ? this.passive.name : "";
     },
     passiveType() {
-      return this.passive ? this.passive.type : "";
+      return this.passive.type ? this.passive.type : "";
     },
     passiveDescription() {
-      return this.passive ? this.passive.description : [];
+      return this.passive.sections ? this.passive.sections.description : [];
     },
     wrapperClasses() {
       let classes = `poe-passive-wrapper`;
