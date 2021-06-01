@@ -1,4 +1,4 @@
-# 💀 Horadric Helper
+# 💀 Horadric Helper 💀
 
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
