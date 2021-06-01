@@ -67,9 +67,8 @@ More complex examples with explanations can be found in the rest of the document
 ```
 
 #### 4. Item should be displayed on the page.
-<kbd>
+
 ![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
-</kbd>
 
 ## Installation
 To enable Horadric Helper you simply need to include JavaScript and CSS files on your website (same as other js libraries).
