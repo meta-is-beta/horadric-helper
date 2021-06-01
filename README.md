@@ -400,7 +400,4 @@ window.HoradricHelper.applyConfig(helmConfig);
 
 
 ## Item sections
-
-## Packages
-
-## Nerd stuff
+tba
