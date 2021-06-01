@@ -289,7 +289,6 @@ let amuletDataObject = {
   name: "Stone of Lazhwar",
   baseName: "Lapis Amulet",
   sections: {
-    level: "57",
     requirements: ["Level 5"],
     implicits: ["+22 to Intelligence"],
     modifiers: [
@@ -314,7 +313,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </script>
 ```
 
-![Stone-of-Lazhwar](https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar.png | width=250)
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar.png" width="800px" />
 
 #### 2. Item loaded from rawData
 As showcase, with icon inside and with item level hidden.
@@ -365,7 +364,8 @@ window.HoradricHelper.applyConfig(helmConfig);
 
 </script>
 ```
-![Goldrim](https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim.png | width=250)
+
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim.png"      width="400px" />
 
 #### 3. Passive loaded from dataObject
 As text, with icon outside.
@@ -411,6 +411,8 @@ window.HoradricHelper.applyConfig(helmConfig);
 
 </script>
 ```
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Magnifier.png
+" width="400px" />
 
 ## Showcase sections
 - Showcases are split into sections such as `modifiers`, `implicits`, etc.

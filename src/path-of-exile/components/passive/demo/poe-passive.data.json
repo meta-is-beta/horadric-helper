@@ -52,8 +52,7 @@
         "asIcon": false,
         "asShowcase": false,
         "labelText": "",
-        "iconInside": true,
-        "dimSections": "description:3"
+        "iconOutside": true
       },
       "config": {
         "reference": "Magnifier",
