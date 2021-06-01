@@ -434,7 +434,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 | `implicits` | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)). |
 | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 | `gemDescription` | `String[]` | List of item's gem description text lines. |
-| `statuses` | `String[]` | Avalible statuses: `corrupted, mirrored, split`.  |
+| `statuses` | `String[]` | Avalible statuses: `corrupted`, `mirrored`, `split`.  |
 
 ### `PoePassive` sections
 | Name    | Type     | Description |
