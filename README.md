@@ -313,7 +313,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </script>
 ```
 
-<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar2.png" />
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar2.png" width="800px"/>
 
 #### 2. Item loaded from rawData
 As showcase, with icon inside and with item level hidden.
@@ -365,7 +365,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 </script>
 ```
 
-<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim2.png" />
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim2.png" width="600px"/>
 
 #### 3. Passive loaded from dataObject
 As text, with icon outside.
@@ -411,7 +411,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 
 </script>
 ```
-<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Magnifier2.png" />
+<img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Magnifier2.png" width="600px"/>
 
 ## Showcase sections
 - Showcases are split into sections such as `modifiers`, `implicits`, etc.
