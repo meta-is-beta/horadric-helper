@@ -413,7 +413,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 ### `PoeItem` sections
 | Name    | Type     | Description |
 |:-------:|:--------:|:------------|
-| `level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
+| `itemLevel` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
 | `requirements` | `String[]` | List of item's requirement text lines.  |
 | `enchants` | `String[]` | List of item's enchants text lines. ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)) |
 | `implicits` | `String[]` | List of item's implicits text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)) |
@@ -427,36 +427,42 @@ window.HoradricHelper.applyConfig(helmConfig);
 | `description` | `String[]` | List of passive's description text lines. |
 
 ### Dimming and hiding sections
-You can dim or hide ether specific lines or entire sections of showcase using `dim-sections` and `hide-sections` props.
+You can dim or hide ether entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. (Section names are in `kebab-case`.)
 #### Targeting entire sections
-You can target entire section by passing section names seprated by `;` to props.
+You can target entire sections by passing section names seprated by `;`.
 
-Format: `hide-sections="section_1_name;section_2_name;.."`
-
+**Format**
+```js
+hide-sections="section1;section2;section3"
+```
 or
-
-Format: `hide-sections="section_1_name:all;section_2_name:all;.."`
+```js
+hide-sections="section1:all;section2:all;section3:all"
+```
 
 
 **Example**
 ```html
-<!-- Hiding implicits and item level -->
+<!-- Hiding all implicits and item level -->
 <poe-item reference="Headhunter" hide-sections="implicits;item-level"></poe-item>
 
-<!-- Hinding entire description -->
+<!-- Dimming entire description -->
 <poe-passive reference="Beef" dim-sections="description"></poe-passive>
 ```
 
-#### Targetting specific lines of sections
+#### Targetting specific lines
 To target specific lines you can pass numbers of lines separated by `,` after section's name.
 
-Format: `hide-sections="section_1_name:1,2,...;section_2_name:1,2,...;"`
+*Format*
+```js
+hide-sections="section1:1,2;section2:4,5,6;section3:1"
+```
 
 **Example**
 ```html
-<!-- Hiding 1st and 2nd line of modifiers -->
+<!-- Hiding 1st and 2nd line of modifiers and 1st line of properties -->
 <poe-item reference="Headhunter" hide-sections="modifiers:1,2;properties:1"></poe-item>
 
-<!-- Hinding entire description -->
-<poe-passive reference="Beef" dim-sections="description"></poe-passive>
+<!-- Dimming 3rd and 4th line of description -->
+<poe-passive reference="Lethality" dim-sections="description:3,4"></poe-passive>
 ```
