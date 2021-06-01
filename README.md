@@ -14,6 +14,8 @@ A JavaScript WebComponents library that allows you to display tooltips from ARPG
 - [Html Component Props](#html-component-props)
 - [Configuration object](#configuration-object)
 - [Showcase sections](#showcase-sections)
+- [Passives data and skills data](#passives-data-and-skills-data)
+- [Contribution](#contribution)
 
 ## How-to TLDR
 Short example of library usage.
@@ -154,7 +156,8 @@ You can use `HoradricHelper.applyConfig` method to load either single `PoeConfig
 type PoeConfig = {
   // Required
   // Reference name of components to which this config should apply to.
-  // Eg: If you set this value to "Headhunter", this config will be applied to all components with <poe-item reference="Headhunter">.
+  // Eg: If you set this value to "Headhunter" this config will be
+  // applied to all components with <poe-item reference="Headhunter">.
   reference: String;
 
   // Optional
@@ -486,3 +489,44 @@ hide-sections="section1:1,2;section2:4,5,6;section3:1"
 <p align="center">
   <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/HideLines2.png" />
 </p>
+
+## Passives data and skills data
+- In `/src/path-of-exile/tools/data` you will find two json files:
+  - `gem-data.json` - This file holds premade configs for all gems in the game as of patch 3.14
+  - `passive-node-data.json` - This file holds premade configs for all passives in the game as of patch 3.14
+- In `/src/path-of-exile/tools/` you will find two script files:
+  - `get-poe-gems-data.js` - This script can pull newest config data for all gems. It will produce a file simillar to `gem-data.json`
+  - `get_poe_passive_node_data.py` - This script can pull newest passives data. It will produce a file simillar to `passive-node-data.json`
+
+
+## Contribution
+- Please file bug reports here, on github
+- If you have any questions or suggestions feel free to message me at meta.is.beta@gmail.com
+
+#### Local development
+
+Installing depencencies
+```sh
+npm install
+```
+
+Running demo
+```sh
+npm run serve
+```
+
+Building production libraries to `/dist/`
+```sh
+npm run build
+```
+
+Running linter
+```sh
+npm run lint
+npm run lint:fix
+```
+
+Running tests
+```sh
+npm run test:unit
+```
