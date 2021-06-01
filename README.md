@@ -407,7 +407,9 @@ window.HoradricHelper.applyConfig(helmConfig);
 
 ## Showcase sections
 Showcases are split into sections such as `modifiers`, `implicits`, etc.
+
 You can chose which sections you want to load if you are using `dataObject` as data source.
+
 You can also grey-out or hide specific lines or entire sections using `dim-sections` and `hide-sections` props.
 
 #### `PoeItem` sections
@@ -417,6 +419,11 @@ You can also grey-out or hide specific lines or entire sections using `dim-secti
 | `requirements` | `String[]` | List of item's requirement text lines.  |
 | `enchants` | `String[]` | List of item's enchants text lines. ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)) |
 | `implicits` | `String[]` | List of item's implicits text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)) |
-| `modifiers` | `String[]` | List of item's modifiers text lines.([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) |
+| `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 | `gemDescription` | `String[]` | List of item's gem description text lines. |
 | `statuses` | `String[]` | Avalible statuses: `corrupted \| mirrored \| split`.  |
+
+#### `PoePassive` sections
+| Name    | Type     | Description |
+|---------|:--------:|:------------|
+| `description` | `String[]` | List of passive's description text lines. |
