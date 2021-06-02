@@ -505,7 +505,7 @@ You can create any item or passive config yourself, but I have also created prem
 - Please file bug reports here, on github
 - If you have any questions or suggestions feel free to message me at meta.is.beta@gmail.com
 
-#### Local development
+### Local development
 
 Installing depencencies
 ```sh
