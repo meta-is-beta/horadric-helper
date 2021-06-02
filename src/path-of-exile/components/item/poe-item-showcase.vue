@@ -246,6 +246,7 @@ export default {
             this.item.sections.requirements
               .map((line) => {
                 return line
+                  .replaceAll("(unmet)", "")
                   .trim()
                   .replaceAll(
                     /([0-9]+)/gi,
