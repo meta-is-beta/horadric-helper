@@ -15,12 +15,11 @@
 
 <script>
 /* eslint-disable vue/no-unused-components */
-
-import PoeItemDemo from "./path-of-exile/components/item/demo/poe-item.demo.vue";
-import PoePassiveDemo from "./path-of-exile/components/passive/demo/poe-passive.demo.vue";
+import PoeItemDemo from "../path-of-exile/components/item/demo/poe-item.demo.vue";
+import PoePassiveDemo from "../path-of-exile/components/passive/demo/poe-passive.demo.vue";
 
 export default {
-  name: "App",
+  name: "Demo",
   components: { PoeItemDemo, PoePassiveDemo },
 };
 </script>

@@ -179,6 +179,7 @@ type PoeConfig = {
 ### `PoeItem` object
 ```typescript
 type PoeItem = {
+
   // Required
   // Item's rarity
   rarity: "normal" | "rare" | "magic" | "unique" | "gem";
@@ -203,7 +204,6 @@ type PoeItem = {
   // All sections are optional
   sections: {
 
-    // Optional
     // List of item's properties text lines
     // Eg: ["Armour: 9", "Energy Rating: 9"]
     properties: String[] | null;
@@ -243,6 +243,7 @@ type PoeItem = {
 ### `PoePassive` object
 ```typescript
 type PoePassive = {
+
   // Required
   // Passives's name
   // Eg: "Beef"
@@ -255,6 +256,7 @@ type PoePassive = {
 
   // All sections are optional
   sections: {
+
     // List of passives's description text lines
     // Eg. for "Arcane Blessing":
     // [
@@ -286,7 +288,7 @@ As icon, with modified label text.
 <script>
 
 // Declaration of PoeItem object
-let amuletdata = {
+let amuletData = {
   rarity: "Unique",
   type: "Equipment",
   name: "Stone of Lazhwar",
@@ -307,7 +309,7 @@ let amuletConfig = {
   reference: "Stone of Lazhwar",
   iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
   // Assignment of PoeItem to PoeConfig
-  data: amuletdata
+  data: amuletData
 };
 
 // Loading config for <poe-item reference="Stone of Lazhwar"> component
@@ -382,7 +384,6 @@ As text, with icon outside.
       reference="Magnifier"
       as-text
       icon-outside
-      hide-sections="item-level"
     ></poe-passive>
   </div>
 </body>
@@ -391,7 +392,7 @@ As text, with icon outside.
 <script>
 
 // Declaration of PoePassive object
-let magnifierdata = {
+let magnifierData = {
   name: "Magnifier",
   type: "Notable",
   sections: {
@@ -408,7 +409,7 @@ let magnifierConfig = {
   reference: "Magnifier",
   iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
   // Assignment of PoePassive to PoeConfig
-  data: magnifierdata
+  data: magnifierData
 };
 
 // Loading config for <poe-passive reference="Magnifier"> component
@@ -442,7 +443,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 | `description` | `String[]` | List of passive's description text lines. |
 
 ### Dimming and hiding sections
-You can dim or hide either entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. (Section names are in `kebab-case`)
+You can dim or hide either entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. _(Section names are in `kebab-case`)_
 #### Targeting entire sections
 You can target entire sections by passing section names seprated by `;`.
 
@@ -491,7 +492,7 @@ hide-sections="section1:1,2;section2:4,5,6;section3:1"
 </p>
 
 ## Skills and Passives data
-You can create any item or passive config yourself, but I have also created premade configs for skill gems and passives for you to use.
+There are premade configs for skill gems and passive that you can use.
 
 - In `/src/path-of-exile/tools/data` you will find two json files:
   - `gem-data.json` - This file holds premade configs for all skill gems in the game as of patch 3.14
@@ -503,7 +504,17 @@ You can create any item or passive config yourself, but I have also created prem
 
 ## Contribution
 - Please file bug reports here, on github
-- If you have any questions or suggestions feel free to message me at meta.is.beta@gmail.com
+- If you have any questions or suggestions feel free to message me at meta.is.beta@gmail.com or on reddit at `/u/Meta_Is_Beta`.
+
+### About library setup
+- This library is built using Vue v2.
+- WebComponents implementation done using [vue-custom-element](https://github.com/karol-f/vue-custom-element).
+- Popover handling is done using [v-tooltip](https://www.npmjs.com/package/v-tooltip) (Vue implementation of [popper.js](https://popper.js.org/)).
+- Typescript support is enabled, but only few files are in typerscript (where I decided that strong typing will be most usefull).
+- `/src` is split into diffrent folders for each target:
+  - Each game has it's own folder.
+  - `demo` folder holds entry point for demo.
+  - `shared` folder holds all modules common to all games.
 
 ### Local development
 
