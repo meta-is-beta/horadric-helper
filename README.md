@@ -4,7 +4,7 @@
 
 A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you webstie using Html tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
 
-**Currently supported games** (as of version 0.5 Beta)
+**Currently supported games** (as of version v0.5 Beta)
 - Path of Exile
 
 ## Table of Content
@@ -24,8 +24,8 @@ More complex examples with explanations can be found in the rest of the document
 #### 1. Include `js` and `css` files on your site.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.css" />
+<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.5/dist/poe/horadric-helper-poe.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.5/dist/poe/horadric-helper-poe.css" />
 ```
 
 #### 2. Add component to your website's Html.
@@ -79,10 +79,10 @@ To enable Horadric Helper you simply need to include JavaScript and CSS files on
 You can get both `js` and `css` files from jsDelivr CND:
 
 ```url
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.umd.min.js
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.css
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.5/dist/poe/horadric-helper-poe.umd.min.js
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.5/dist/poe/horadric-helper-poe.css
 ```
-_You can specify version of the library by changing `@0.5` to desired version. You can also set it to `latest` to always get newest version._
+_You can specify version of the library by changing `@v0.5` to desired version. You can also set it to `latest` to always get newest version._
 
 **OR**
 
