@@ -75,12 +75,15 @@ More complex examples with explanations can be found in the rest of the document
 ## Installation
 To enable Horadric Helper you simply need to include JavaScript and CSS files on your website (same as any other js library).
 
+
 You can get both `js` and `css` files from jsDelivr CND:
 
 ```url
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.umd.min.js
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.css
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.umd.min.js
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.css
 ```
+_You can specify version of the library by changing `@0.5` to desired version. You can also set it to `latest` to always get newest version._
+
 **OR**
 
 You can get them from this repo's `/dist/poe` folder.
