@@ -21316,10 +21316,6 @@ var es_regexp_to_string = __webpack_require__("25f0");
   },
   methods: {
     addDimedClass: function addDimedClass(sectionName, index, classes) {
-      if (sectionName === "requirements" && this.dimedSections["requirements"]) {
-        debugger;
-      }
-
       if (this.dimedSections[sectionName] && (this.dimedSections[sectionName].includes("all") || this.dimedSections[sectionName].includes((index + 1).toString()))) {
         classes += " dimed-line";
       }
