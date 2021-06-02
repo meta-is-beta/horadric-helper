@@ -44,7 +44,7 @@ More complex examples with explanations can be found in the rest of the document
     reference: "Frosted Fishscale Gauntlets of Skill",
     iconUrl:
       "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
-    rawData: `
+    data: `
       Item Class: Gloves
       Rarity: Magic
       Frosted Fishscale Gauntlets of Skill
@@ -164,16 +164,12 @@ type PoeConfig = {
   // Url of icon that will be displayed if any of icon props are set.
   iconUrl: String | null;
 
-  // Required (exclusive with 'rawData' - use only one of them)
+  // Required
   // Object which describes all properties of item or passive you want to display.
   // Exact structure of that object is described in 'PoeItem' and 'PoePassive' sections.
-  dataObject: PoeItem | PoePassive | null;
-
-  // Required (exclusive with 'dataObject' - use only one of them)
-  // Raw item data pulled from the game.
-  // So far this only works for items from Path of Exile.
-  // (To copy item's data press crl+c while hovering over an item in-game)
-  rawData: String | null;
+  // You can also use raw item string data copied from the game.
+  // (To copy item's data to clipboard press Ctrl+C while hovering over an item in-game)
+  data: PoeItem | PoePassive | String | null;
 };
 ```
 ### `PoeItem` object
@@ -268,7 +264,7 @@ type PoePassive = {
 
 ### Examples of loading configs
 
-#### 1. Item loaded from dataObject
+#### 1. Item loaded from data object
 As icon, with modified label text.
 ```html
 <!-- Html --->
@@ -286,7 +282,7 @@ As icon, with modified label text.
 <script>
 
 // Declaration of PoeItem object
-let amuletDataObject = {
+let amuletdata = {
   rarity: "Unique",
   type: "Equipment",
   name: "Stone of Lazhwar",
@@ -307,7 +303,7 @@ let amuletConfig = {
   reference: "Stone of Lazhwar",
   iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
   // Assignment of PoeItem to PoeConfig
-  dataObject: amuletDataObject
+  data: amuletdata
 };
 
 // Loading config for <poe-item reference="Stone of Lazhwar"> component
@@ -319,7 +315,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
   <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar2.png" width="800px"/>
 </p>
 
-#### 2. Item loaded from rawData
+#### 2. Item loaded from data string
 As showcase, with icon inside and with item level hidden.
 ```html
 <!-- Html --->
@@ -342,7 +338,7 @@ let helmConfig = {
   reference: "Goldrim",
   iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
   // Assignemnt of raw item data copied from the game
-  rawData: `
+  data: `
     Item Class: Helmets
     Rarity: Unique
     Goldrim
@@ -372,7 +368,7 @@ window.HoradricHelper.applyConfig(helmConfig);
   <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim2.png" width="600px"/>
 </p>
 
-#### 3. Passive loaded from dataObject
+#### 3. Passive loaded from data
 As text, with icon outside.
 ```html
 <!-- Html --->
@@ -391,7 +387,7 @@ As text, with icon outside.
 <script>
 
 // Declaration of PoePassive object
-let magnifierDataObject = {
+let magnifierdata = {
   name: "Magnifier",
   type: "Notable",
   sections: {
@@ -408,7 +404,7 @@ let magnifierConfig = {
   reference: "Magnifier",
   iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
   // Assignment of PoePassive to PoeConfig
-  dataObject: magnifierDataObject
+  data: magnifierdata
 };
 
 // Loading config for <poe-passive reference="Magnifier"> component
@@ -422,7 +418,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 
 ## Showcase sections
 - Showcases are split into sections such as `modifiers`, `implicits`, etc.
-- You can chose which sections you want to load if you are using `dataObject` as data source.
+- You can chose which sections you want to load if you are using `data` as data source.
 - You can also grey-out or hide specific lines or entire sections using `dim-sections` and `hide-sections` props.
 
 ### `PoeItem` sections
