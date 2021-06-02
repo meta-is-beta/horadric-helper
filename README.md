@@ -24,8 +24,8 @@ More complex examples with explanations can be found in the rest of the document
 #### 1. Include `js` and `css` files on your site.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@latest/dist/poe/horadric-helper-poe.css" />
+<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@0.5/dist/poe/horadric-helper-poe.css" />
 ```
 
 #### 2. Add component to your website's Html.
