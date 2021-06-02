@@ -442,7 +442,7 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 | `description` | `String[]` | List of passive's description text lines. |
 
 ### Dimming and hiding sections
-You can dim or hide ether entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. (Section names are in `kebab-case`)
+You can dim or hide either entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. (Section names are in `kebab-case`)
 #### Targeting entire sections
 You can target entire sections by passing section names seprated by `;`.
 
