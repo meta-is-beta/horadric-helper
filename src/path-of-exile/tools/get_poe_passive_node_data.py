@@ -42,9 +42,11 @@ def generate_node_mapping() -> Dict[str, str]:
         if "name" in node and "stats" in node and "icon" in node:
             node_mapping = {
                 "reference": node["name"],
-                "dataObject": {
-                    "name": node["name"],
-                    "description": node["stats"]
+                "data": {
+                    "sections": {
+                        "name": node["name"],
+                        "description": node["stats"]
+                    }
                 },
                 "iconUrl": "https://web.poecdn.com/image/" + node["icon"]
             }
@@ -59,7 +61,7 @@ def generate_node_mapping() -> Dict[str, str]:
             else:
                 nodeType += "basic"
 
-            node_mapping["dataObject"]["type"] = nodeType
+            node_mapping["data"]["type"] = nodeType
 
             nodes.append(node_mapping)
 

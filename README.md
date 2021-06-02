@@ -4,7 +4,7 @@
 
 A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you webstie using Html tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
 
-**Currently supported games** (as of version 0.6 Beta)
+**Currently supported games** (as of version 0.5 Beta)
 - Path of Exile
 
 ## Table of Content

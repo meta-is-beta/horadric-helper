@@ -54,23 +54,26 @@ const mapData = (rawData) => {
       );
       const mappedEntry = {
         reference: name,
-        dataObject: {
+        data: {
           name: name,
           baseName: name,
           rarity: "Gem",
           class: "Skill Gems",
-          gemDescription: ($(".tc.-gemdesc").html() || "").split("<br>"),
-          modifiers: ($(".tc.-mod").html() || "")
-            .split("<br>")
-            .filter((p) => p != ""),
-          properties: [
-            gemData["gem tags"].split(",").join(", "),
-            ...Array.from(
-              propSections.map(
-                (_, e) => `${$(e).find("th").text()}: ${$(e).find("td").text()}`
-              )
-            ),
-          ].filter((p) => p != ""),
+          sections: {
+            gemDescription: ($(".tc.-gemdesc").html() || "").split("<br>"),
+            modifiers: ($(".tc.-mod").html() || "")
+              .split("<br>")
+              .filter((p) => p != ""),
+            properties: [
+              gemData["gem tags"].split(",").join(", "),
+              ...Array.from(
+                propSections.map(
+                  (_, e) =>
+                    `${$(e).find("th").text()}: ${$(e).find("td").text()}`
+                )
+              ),
+            ].filter((p) => p != ""),
+          },
         },
         iconUrl: ((skillId) => {
           if (!skillId) return "";
