@@ -20,6 +20,7 @@ A JavaScript WebComponents library that allows you to display tooltips from ARPG
 ## How-to TLDR
 Short example of library usage.
 More complex examples with explanations can be found in the rest of the documentation.
+You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/mdWXzBY).
 
 #### 1. Include `js` and `css` files on your site.
 
@@ -71,6 +72,8 @@ More complex examples with explanations can be found in the rest of the document
 #### 4. Item should be displayed on the page.
 
 ![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
+
+
 
 ## Installation
 To enable Horadric Helper you simply need to include JavaScript and CSS files on your website (same as any other js library).
@@ -271,7 +274,7 @@ type PoePassive = {
 ### Examples of loading configs
 
 #### 1. Item loaded from data object
-As icon, with modified label text.
+As icon, with modified label text and medium icon. (Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))
 ```html
 <!-- Html --->
 <body>
@@ -279,6 +282,7 @@ As icon, with modified label text.
     <poe-item
       reference="Stone of Lazhwar"
       as-icon
+      icon-size="md"
       label-text="Spell block amulet"
     ></poe-item>
   </div>
@@ -322,7 +326,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </p>
 
 #### 2. Item loaded from data string
-As showcase, with icon inside and with item level hidden.
+As showcase, with icon inside and with item level hidden. (Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))
 ```html
 <!-- Html --->
 <body>
@@ -375,7 +379,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 </p>
 
 #### 3. Passive loaded from data
-As text, with icon outside.
+As text, with icon outside. (Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))
 ```html
 <!-- Html --->
 <body>
