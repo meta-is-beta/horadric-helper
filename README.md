@@ -161,6 +161,7 @@ You can use `HoradricHelper.applyConfig` method to load either single `PoeConfig
 
 ```typescript
 type PoeConfig = {
+
   // Required
   // Reference name of components to which this config should apply to.
   // Eg: If you set this value to "Headhunter" this config will be
