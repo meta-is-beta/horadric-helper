@@ -274,7 +274,7 @@ type PoePassive = {
 ### Examples of loading configs
 
 #### 1. Item loaded from data object
-As icon, with modified label text and medium icon. (Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))
+As icon, with modified label text and medium icon. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
 ```html
 <!-- Html --->
 <body>
@@ -326,7 +326,7 @@ window.HoradricHelper.applyConfig(amuletConfig);
 </p>
 
 #### 2. Item loaded from data string
-As showcase, with icon inside and with item level hidden. (Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))
+As showcase, with icon inside and with item level hidden. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
 ```html
 <!-- Html --->
 <body>
@@ -379,7 +379,7 @@ window.HoradricHelper.applyConfig(helmConfig);
 </p>
 
 #### 3. Passive loaded from data
-As text, with icon outside. (Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))
+As text, with icon outside. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 ```html
 <!-- Html --->
 <body>
