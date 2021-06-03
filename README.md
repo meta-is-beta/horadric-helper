@@ -379,7 +379,7 @@ window.HoradricHelper.applyConfig(helmConfig);
   <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim2.png" width="600px"/>
 </p>
 
-#### 3. Passive loaded from data
+#### 3. Passive loaded from data object
 As text, with icon outside. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 ```html
 <!-- Html --->
