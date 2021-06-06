@@ -343,6 +343,18 @@
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
         "data": "Item Class: Helmets\nRarity: Unique\nGoldrim\nLeather Cap\n--------\nEvasion Rating: 54 (augmented)\n--------\nSockets: G-G-B-G\n--------\nItem Level: 60\n--------\n+35 to Evasion Rating\n10% increased Rarity of Items found\n+36% to all Elemental Resistances\nReflects 4 Physical Damage to Melee Attackers\n--------\nNo metal slips as easily through the fingers as gold."
       }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Hate Spur",
+        "iconUrl":
+          "https://web.poecdn.com/image/Art/2DItems/Armours/Boots/TwoTonedBoots3B.png",
+        "data": "Item Class: Boots\nRarity: Rare\nHate Spur\nTwo-Toned Boots\n--------\nQuality: +28% (augmented)\nArmour: 209 (augmented)\nEnergy Shield: 54 (augmented)\n--------\nRequirements:\nLevel: 70\nStr: 50 (augmented)\nDex: 58\nInt: 50 (augmented)\n--------\nSockets: W-G-W-B \n--------\nItem Level: 83\n--------\n+8% to Fire and Lightning Resistances (implicit)\n--------\nSocketed Gems are Supported by Level 15 Increased Duration\n18% reduced Attribute Requirements\n+37 to Armour\n+18 to maximum Energy Shield\n+84 to maximum Life\n30% increased Movement Speed\n25% chance to Avoid being Stunned\n13% increased Skill Effect Duration\n--------\nElder Item"
+      }
     }
   ]
 }

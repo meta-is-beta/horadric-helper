@@ -58,7 +58,7 @@ const getSectionName = (section: String[]): String => {
     return "Header";
   }
 
-  if (section.some((x) => x.includes("Requirements"))) {
+  if (section.some((x) => x.includes("Requirements:"))) {
     return "Requirements";
   }
 

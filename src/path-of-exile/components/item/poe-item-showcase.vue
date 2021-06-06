@@ -247,6 +247,7 @@ export default {
               .map((line) => {
                 return line
                   .replaceAll("(unmet)", "")
+                  .replaceAll("(augmented)", "")
                   .trim()
                   .replaceAll(
                     /([0-9]+)/gi,
