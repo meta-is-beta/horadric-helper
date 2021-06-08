@@ -38,7 +38,7 @@
         <div class="poe-item-separator" v-if="shouldShowItemLevel"></div>
         <div :class="getItemLevelClasses()" v-if="shouldShowItemLevel">
           Item Level:
-          <span class="poe-item-talisman-tier" v-if="item.sections.itemLevel">
+          <span class="poe-item-level-value" v-if="item.sections.itemLevel">
             {{ item.sections.itemLevel }}
           </span>
         </div>
@@ -49,7 +49,10 @@
         ></div>
         <div :class="getTalismanTierClasses()" v-if="shouldShowTalismanTier">
           Talisman Tier:
-          <span class="poe-item-level-value" v-if="item.sections.talismanTier">
+          <span
+            class="poe-item-talisman-tier"
+            v-if="item.sections.talismanTier"
+          >
             {{ item.sections.talismanTier }}
           </span>
         </div>
@@ -518,7 +521,7 @@ export default {
 
   .poe-item-stats {
     padding: 16px;
-    padding-top: 10px;
+    padding-top: 8px;
     padding-bottom: 10px;
     display: inline-block;
     min-width: 360px;

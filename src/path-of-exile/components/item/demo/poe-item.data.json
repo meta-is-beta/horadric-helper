@@ -278,12 +278,13 @@
     },
     {
       "props": {
-        "asIcon": true
+        "asIcon": true,
+        "asShowcase": true
       },
       "config": {
         "reference": "Frosted Fishscale Gauntlets of Skill",
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
-        "data": "Item Class: Gloves\nRarity: Magic\nFrosted Fishscale Gauntlets of Skill\n--------\nArmour: 9\nEnergy Rating: 9\n--------\nRequirements:\nLevel: 2\nStr: 4\nDex: 4\n--------\nItem Level: 5\n--------\nAdds 1 to 2 Cold Damage to Attacks\n6% Increased Attack Speed"
+        "data": "Item Class: Gloves\nRarity: Magic\nFrosted Fishscale Gauntlets of Skill\n--------\nArmour: 9\nEvasion Rating: 9\n--------\nSockets: B \n--------\nItem Level: 9\n--------\nAdds 1 to 2 Cold Damage to Attacks\n6% increased Attack Speed"
       }
     },
     {
