@@ -84,13 +84,21 @@
     {
       "props": {
         "asIcon": true,
+        "asShowcase": true,
         "labelText": "",
         "iconInside": true
       },
       "config": {
         "reference": "Crimson Jewel",
         "iconUrl": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/a/aa/Crimson_Jewel_inventory_icon.png",
-        "data": "Item Class: Jewel\nRarity: Normal\nCrimson Jewel\n--------\nItem Level: 49"
+        "data": {
+          "name": "Crimson Jewel",
+          "baseName": "Crimson Jewel",
+          "rarity": "Rare",
+          "sectionss": {
+            "itemLevel": "49"
+          }
+        }
       }
     },
     {
@@ -123,7 +131,7 @@
       "props": {
         "asText": false,
         "asIcon": true,
-        "asShowcase": false,
+        "asShowcase": true,
         "labelText": "",
         "iconOutside": false
       },
@@ -276,6 +284,16 @@
         "reference": "Frosted Fishscale Gauntlets of Skill",
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
         "data": "Item Class: Gloves\nRarity: Magic\nFrosted Fishscale Gauntlets of Skill\n--------\nArmour: 9\nEnergy Rating: 9\n--------\nRequirements:\nLevel: 2\nStr: 4\nDex: 4\n--------\nItem Level: 5\n--------\nAdds 1 to 2 Cold Damage to Attacks\n6% Increased Attack Speed"
+      }
+    },
+    {
+      "props": {
+        "asShowcase": true
+      },
+      "config": {
+        "reference": "Loath Pendant",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Amulets/TalismanWhite4.png",
+        "data": "Item Class: Amulets\nRarity: Rare\nLoath Pendant\nDeadhand Talisman\n--------\nRequirements:\nLevel: 57\n--------\nItem Level: 76\n--------\nTalisman Tier: 1\n--------\nAllocates Smashing Strikes (enchant)\n--------\n30% increased Chaos Damage (implicit)\n--------\n8% increased Armour\n19% increased Evasion Rating\n+70 to maximum Life\n+44% to Fire Resistance\n+37% to Lightning Resistance\n--------\nThe Empire poisons our blood with sweet wine.\nPoisons our flesh with silk.\nPoisons our minds with civil lies.\nPoisons our children with servitude.\n- The Wolven King \n--------\nCorrupted"
       }
     },
     {

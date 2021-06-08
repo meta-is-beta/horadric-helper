@@ -11,10 +11,10 @@ export default {
   },
   computed: {
     shouldShowIconInside() {
-      return this.showIconInside && this.iconUrl;
+      return this.showIconInside && !!this.iconUrl;
     },
     shouldShowIconOutside() {
-      return this.showIconOutside && this.iconUrl;
+      return this.showIconOutside && !!this.iconUrl;
     },
   },
   methods: {

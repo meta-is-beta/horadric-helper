@@ -56,8 +56,9 @@
 <script>
 import PoeItemShowcase from "./poe-item-showcase.vue";
 import PoeItemImage from "./poe-item-image.vue";
-import processStringData from "./item-data-processor/item-data-processor.ts";
 import mainMixin from "@/shared/mixins/main.mixin";
+import processStringData from "../data-processors/string-item-data-processor";
+import processDataObject from "../data-processors/data-object-data-processor";
 
 export default {
   name: "PoeItem",
@@ -105,6 +106,7 @@ export default {
   metadata: {
     type: "poe-item",
     processStringData,
+    processDataObject,
   },
 };
 </script>

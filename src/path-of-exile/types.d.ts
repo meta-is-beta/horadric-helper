@@ -22,16 +22,18 @@ type PoeItem = {
     | ""
   )[];
   sockets: String[] | undefined;
-  sections: {
-    itemLevel: String | undefined;
-    requirements: String[] | undefined;
-    properties: String[] | undefined;
-    enchants: String[] | undefined;
-    implicits: String[] | undefined;
-    modifiers: String[] | undefined;
-    gemDescription: String[] | undefined;
-    statuses: ("corrupted" | "mirrored" | "split")[];
-  };
+  sections:
+    | {
+        itemLevel: String | undefined;
+        requirements: String[] | undefined;
+        properties: String[] | undefined;
+        enchants: String[] | undefined;
+        implicits: String[] | undefined;
+        modifiers: String[] | undefined;
+        gemDescription: String[] | undefined;
+        statuses: ("corrupted" | "mirrored" | "split")[];
+      }
+    | {};
 };
 
 type PoeItemDataSection = {
@@ -48,5 +50,9 @@ type PoePassive = {
     | "keystone"
     | "ascendancy basic"
     | "ascendancy notable";
-  description: String[];
+  sections:
+    | {
+        description: String[];
+      }
+    | {};
 };

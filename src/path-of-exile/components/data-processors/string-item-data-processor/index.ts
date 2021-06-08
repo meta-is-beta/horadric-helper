@@ -15,6 +15,7 @@ export default (rawData: String): PoeItem => {
     sockets: getSockets(sections),
     sections: {
       itemLevel: getItemLevel(sections),
+      talismanTier: getTalismanTier(sections),
       requirements: getRequirements(sections),
       properties: getProperties(sections),
       enchants: getEnchants(sections),
@@ -93,6 +94,7 @@ const getItemInfluences = (sections: PoeItemDataSection[]) => {
 
 const getItemLevel = (sections: PoeItemDataSection[]) => {
   const itemLevelSection = sections.find((x) => x.name === "Item level");
+
   if (!itemLevelSection || itemLevelSection.lines.length < 1) {
     return "";
   }
@@ -103,6 +105,24 @@ const getItemLevel = (sections: PoeItemDataSection[]) => {
 
   if (itemLevelMatch && itemLevelMatch.length > 0) {
     return itemLevelMatch[1].trim();
+  }
+
+  return "";
+};
+
+const getTalismanTier = (sections: PoeItemDataSection[]) => {
+  const talismanTierSection = sections.find((x) => x.name === "Talisman tier");
+
+  if (!talismanTierSection || talismanTierSection.lines.length < 1) {
+    return "";
+  }
+
+  const talismanTierMatch = talismanTierSection.lines[0].match(
+    /Talisman Tier: ([0-9]+)/
+  );
+
+  if (talismanTierMatch && talismanTierMatch.length > 0) {
+    return talismanTierMatch[1].trim();
   }
 
   return "";

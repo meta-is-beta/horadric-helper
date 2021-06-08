@@ -38,8 +38,19 @@
         <div class="poe-item-separator" v-if="shouldShowItemLevel"></div>
         <div :class="getItemLevelClasses()" v-if="shouldShowItemLevel">
           Item Level:
-          <span class="poe-item-level-value" v-if="item.sections.itemLevel">
+          <span class="poe-item-talisman-tier" v-if="item.sections.itemLevel">
             {{ item.sections.itemLevel }}
+          </span>
+        </div>
+        <!-- Talisman tier -->
+        <div
+          class="poe-item-separator"
+          v-if="shouldShowTalismanTier && !shouldShowItemLevel"
+        ></div>
+        <div :class="getTalismanTierClasses()" v-if="shouldShowTalismanTier">
+          Talisman Tier:
+          <span class="poe-item-level-value" v-if="item.sections.talismanTier">
+            {{ item.sections.talismanTier }}
           </span>
         </div>
         <!-- Requirements -->
@@ -137,6 +148,9 @@ export default {
     getItemLevelClasses() {
       return this.addDimedClass("item-level", 0, "poe-item-level");
     },
+    getTalismanTierClasses() {
+      return this.addDimedClass("talisman-tier", 0, "poe-item-level");
+    },
     getRequirementsClasses() {
       return this.addDimedClass("requirements", 0, "");
     },
@@ -186,6 +200,12 @@ export default {
         !this.sectionShouldBeFullyHidden("item-level")
       );
     },
+    shouldShowTalismanTier() {
+      return (
+        this.item.sections.talismanTier &&
+        !this.sectionShouldBeFullyHidden("talisman-tier")
+      );
+    },
     shouldShowItemRequirements() {
       return (
         this.item.sections.requirements &&
@@ -212,8 +232,6 @@ export default {
     },
     shouldShowGemDescription() {
       return (
-        this.item.type &&
-        this.item.type.toLowerCase() === "gem" &&
         this.item.sections.gemDescription &&
         !this.sectionShouldBeFullyHidden("description")
       );
@@ -225,7 +243,10 @@ export default {
       );
     },
     shouldShowStatuses() {
-      return !this.sectionShouldBeFullyHidden("statuses");
+      return (
+        this.item.sections.statuses &&
+        !this.sectionShouldBeFullyHidden("statuses")
+      );
     },
     itemProperties() {
       return this.item.sections.properties
@@ -436,7 +457,12 @@ export default {
       }
 
       & .poe-item-header-center-panel {
-        line-height: 25px;
+        line-height: 24px;
+        margin-bottom: 1px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         & div {
           display: block;
@@ -462,7 +488,8 @@ export default {
 
   .poe-item-property-value,
   .poe-item-requirement-value,
-  .poe-item-level-value {
+  .poe-item-level-value,
+  .poe-item-talisman-tier {
     color: white;
   }
 
@@ -485,13 +512,13 @@ export default {
   .poe-item-corrupted,
   .poe-item-mirrored,
   .poe-item-split {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .poe-item-stats {
     padding: 16px;
-    padding-top: 4px;
+    padding-top: 10px;
     padding-bottom: 10px;
     display: inline-block;
     min-width: 360px;

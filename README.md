@@ -121,16 +121,16 @@ You can apply props to set or change behaviour for individual components.
 |:-------:|:----------:|:------|
 | `reference` | `String` | **Required**. Name used to target components with the same reference when loading configs. See [Configuration](#configuration-object) section for details. |
 | `classes` | `String` | Additional classes that will be applied to root component.|
-| `popover‑classes` | `String` | Additional classes that will be applied to popover. |
-| `label‑text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
-| `as‑text` | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) |
-| `as‑icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
-| `as‑showcase` | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. |
-| `icon‑inside` | `Bool` | Show icon inside of showcase. (*Only works if `iconUrl` was provided in config*) |
-| `icon‑outside` | `Bool` | Show icon outside of showcase. (*Only works if `iconUrl` was provided in config*) |
-| `icon‑size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
-| `dim‑sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
-| `hide‑sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
+| <nobr>`popover-classes`</nobr> | `String` | Additional classes that will be applied to popover. |
+| <nobr>`label-text`</nobr> | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
+| <nobr>`as-text`</nobr> | `Bool` | Display item as text. Showcase popover will appear on hover. (*This is the default settings*) |
+| <nobr>`as-icon`</nobr> | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
+| <nobr>`as-showcase`</nobr> | `Bool` | Displays item as showcase. Showcase popover will **not** appear on hover. |
+| <nobr>`icon-inside`</nobr> | `Bool` | Show icon inside of showcase. (*Only works if `iconUrl` was provided in config*) |
+| <nobr>`icon-outside`</nobr> | `Bool` | Show icon outside of showcase. (*Only works if `iconUrl` was provided in config*) |
+| <nobr>`icon-size`</nobr> | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set size of icon. Default is `auto`. |
+| <nobr>`dim-sections`</nobr> | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
+| <nobr>`hide-sections`</nobr> | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
 
 #### Examples
 `Headhunter` as small icon, with `properties` section hidden.
@@ -232,14 +232,17 @@ type PoeItem = {
     // Eg: ["Adds 1 to 2 Cold Damage to Attacks", "6% Increased Attack Speed"]
     modifiers: String[] | null;
 
-    // List of item's gem description text lines
-    // Only applies to items with type "Gem"
-    // Eg: ["Supports any skill that has a duration."]
-    gemDescription: String[] | null;
-
     // List of item's statuses
     // Eg: ["corrupted", "split"]
     statuses: ("corrupted" | "mirrored" | "split")[] | null;
+
+    // List of item's gem description text lines
+    // Eg: ["Supports any skill that has a duration."]
+    gemDescription: String[] | null;
+
+    // Numerical value of talisman tier.
+    // Eg: "1"
+    talismanTier: String | null;
   }
 
 }
@@ -348,6 +351,7 @@ As showcase, with icon inside and with item level hidden. _(Check it out live on
 let helmConfig = {
   reference: "Goldrim",
   iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
+
   // Assignemnt of raw item data copied from the game
   data: `
     Item Class: Helmets
@@ -413,6 +417,7 @@ let magnifierData = {
 let magnifierConfig = {
   reference: "Magnifier",
   iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
+
   // Assignment of PoePassive to PoeConfig
   data: magnifierData
 };
@@ -439,8 +444,9 @@ window.HoradricHelper.applyConfig(magnifierConfig);
 | `enchants` | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)). |
 | `implicits` | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)). |
 | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
-| `gemDescription` | `String[]` | List of item's gem description text lines. |
 | `statuses` | `String[]` | Avalible statuses: `corrupted`, `mirrored`, `split`.  |
+| `gemDescription` | `String[]` | List of item's gem description text lines. |
+| `talismanTier` | `String` | Numerical value of talisman tier. |
 
 ### `PoePassive` sections
 | Name    | Type     | Description |
