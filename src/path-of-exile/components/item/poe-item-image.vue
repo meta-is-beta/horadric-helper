@@ -1,5 +1,6 @@
 <template>
   <img
+    loading="lazy"
     :class="classes"
     :width="computedIconSize"
     height="auto"

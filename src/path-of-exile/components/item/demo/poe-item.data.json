@@ -370,9 +370,19 @@
       },
       "config": {
         "reference": "Hate Spur",
-        "iconUrl":
-          "https://web.poecdn.com/image/Art/2DItems/Armours/Boots/TwoTonedBoots3B.png",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/Boots/TwoTonedBoots3B.png",
         "data": "Item Class: Boots\nRarity: Rare\nHate Spur\nTwo-Toned Boots\n--------\nQuality: +28% (augmented)\nArmour: 209 (augmented)\nEnergy Shield: 54 (augmented)\n--------\nRequirements:\nLevel: 70\nStr: 50 (augmented)\nDex: 58\nInt: 50 (augmented)\n--------\nSockets: W-G-W-B \n--------\nItem Level: 83\n--------\n+8% to Fire and Lightning Resistances (implicit)\n--------\nSocketed Gems are Supported by Level 15 Increased Duration\n18% reduced Attribute Requirements\n+37 to Armour\n+18 to maximum Energy Shield\n+84 to maximum Life\n30% increased Movement Speed\n25% chance to Avoid being Stunned\n13% increased Skill Effect Duration\n--------\nElder Item"
+      }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Sol Sliver",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Jewels/NewGemBase2.png",
+        "data": "Item Class: Jewel\nRarity: Rare\nSol Sliver\nMedium Cluster Jewel\n--------\nRequirements:\nLevel: 54\n--------\nItem Level: 78\n--------\nAdds 4 Passive Skills (enchant)\n1 Added Passive Skill is a Jewel Socket (enchant)\nAdded Small Passive Skills grant: 12% increased Totem Damage (enchant)\n--------\nAdded Small Passive Skills also grant: 2% increased Damage\nAdded Small Passive Skills also grant: +2 to Intelligence\nAdded Small Passive Skills also grant: +5% to Lightning Resistance\n1 Added Passive Skill is Ancestral Might"
       }
     }
   ]
