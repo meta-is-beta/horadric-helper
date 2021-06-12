@@ -43,8 +43,8 @@ def generate_node_mapping() -> Dict[str, str]:
             node_mapping = {
                 "reference": node["name"],
                 "data": {
+                    "name": node["name"],
                     "sections": {
-                        "name": node["name"],
                         "description": node["stats"]
                     }
                 },
