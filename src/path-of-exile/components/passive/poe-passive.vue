@@ -40,13 +40,13 @@
             :iconUrl="iconUrl"
             :iconSize="iconSize"
           />
-          <div class="poe-showcase-label" v-if="!showCustomLabel">
+          <div class="poe-icon-label" v-if="!showCustomLabel">
             <div>{{ passive.name }}</div>
-            <div class="poe-passive-showcase-passive-name">
+            <div class="poe-icon-sublabel">
               {{ passive.type }}
             </div>
           </div>
-          <div class="poe-showcase-label" v-else>
+          <div class="poe-icon-label" v-else>
             <div>
               {{ labelTextComputed }}
             </div>
@@ -97,16 +97,6 @@ export default {
     popoverClassesComputed() {
       return `poe-passive-showcase-popover ${this.popoverClasses}`;
     },
-    showCustomLabel() {
-      return this.labelText.length > 0;
-    },
-    labelTextComputed() {
-      return this.labelText
-        ? this.labelText
-        : this.passive
-        ? this.passive.name
-        : "";
-    },
   },
   metadata: {
     type: "poe-passive",
@@ -132,10 +122,6 @@ export default {
   @include styles.font;
   @include styles.colors;
 
-  .poe-passive-showcase-passive-name {
-    line-height: 12px;
-    font-size: 12px;
-  }
   .poe-passive-link {
     color: var(--poe-color-passive-title);
   }

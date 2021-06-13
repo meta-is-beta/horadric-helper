@@ -94,7 +94,7 @@
   --poe-color-passive-label: rgb(238, 228, 146);
 }
 
-.poe-showcase-label {
+.poe-icon-label {
   margin-top: 5px;
   padding: 3px;
   padding-left: 6px;
@@ -105,12 +105,19 @@
   justify-content: center;
   line-height: 18px;
   white-space: nowrap;
+
   & div:nth-child(1) {
     padding-top: 0px;
     line-height: 20px;
   }
   & div:nth-child(2) {
-    padding-bottom: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  & .poe-icon-sublabel {
+    line-height: 12px;
+    font-size: 12px;
   }
 }
 
