@@ -42,12 +42,22 @@
             :iconUrl="iconUrl"
             :type="item.type"
           />
-          <div class="poe-showcase-label">
-            {{ labelTextComputed }}
+          <div class="poe-icon-label" v-if="!showCustomLabel">
+            <div>{{ item.name }}</div>
+            <div class="poe-icon-sublabel" v-if="shouldShowBaseName">
+              {{ item.baseName }}
+            </div>
+          </div>
+          <div class="poe-icon-label" v-else>
+            <div>
+              {{ labelTextComputed }}
+            </div>
           </div>
         </div>
         <!-- Text -->
-        <div v-else :class="linkClassesComputed">{{ labelTextComputed }}</div>
+        <div v-else :class="linkClassesComputed">
+          {{ labelTextComputed }}
+        </div>
       </v-popover>
     </div>
   </div>
@@ -101,6 +111,9 @@ export default {
         classes += ` poe-item-link-${this.item.rarity.toLowerCase()}`;
       }
       return classes;
+    },
+    shouldShowBaseName() {
+      return this.item.baseName && this.item.baseName != this.item.name;
     },
   },
   metadata: {

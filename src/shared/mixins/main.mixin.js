@@ -50,6 +50,16 @@ export default {
     hiddenSections() {
       return getSelectedSections(this.hideSections);
     },
+    showCustomLabel() {
+      return this.labelText.length > 0;
+    },
+    labelTextComputed() {
+      return this.labelText
+        ? this.labelText
+        : this.showcaseData
+        ? this.showcaseData.name
+        : "";
+    },
   },
   mounted() {
     this.registerShowcase();
