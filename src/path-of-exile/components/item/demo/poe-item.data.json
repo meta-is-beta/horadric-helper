@@ -384,6 +384,17 @@
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Jewels/NewGemBase2.png",
         "data": "Item Class: Jewel\nRarity: Rare\nSol Sliver\nMedium Cluster Jewel\n--------\nRequirements:\nLevel: 54\n--------\nItem Level: 78\n--------\nAdds 4 Passive Skills (enchant)\n1 Added Passive Skill is a Jewel Socket (enchant)\nAdded Small Passive Skills grant: 12% increased Totem Damage (enchant)\n--------\nAdded Small Passive Skills also grant: 2% increased Damage\nAdded Small Passive Skills also grant: +2 to Intelligence\nAdded Small Passive Skills also grant: +5% to Lightning Resistance\n1 Added Passive Skill is Ancestral Might"
       }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Agnerod South",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Weapons/TwoHandWeapons/Staves/Staff6unique.png",
+        "data": "Agnerod South\nImperial Staff\nVariant: Pre 2.6.0\nVariant: Current\nSelected Variant: 2\nImperial Staff\nQuality: 20\nSockets: B-B-B-B-B-B\nLevelReq: 66\nImplicits: 2\n{variant:1}12% Chance to Block Attack Damage while wielding a Staff\n{variant:2}18% Chance to Block Attack Damage while wielding a Staff\n{variant:1}+1 to Level of all Lightning Spell Skill Gems\n{variant:2}+2 to Level of all Lightning Spell Skill Gems\n{range:0.5}+(80-120) to Intelligence\n{range:0.5}(30-50)% increased Lightning Damage\n+5% to Maximum Lightning Resistance\n40% increased Strength Requirement\nDamage Penetrates 20% Lightning Resistance"
+      }
     }
   ]
 }
