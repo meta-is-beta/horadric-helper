@@ -391,9 +391,64 @@
         "as-icon": true
       },
       "config": {
-        "reference": "Agnerod South",
-        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Weapons/TwoHandWeapons/Staves/Staff6unique.png",
-        "data": "Agnerod South\nImperial Staff\nVariant: Pre 2.6.0\nVariant: Current\nSelected Variant: 2\nImperial Staff\nQuality: 20\nSockets: B-B-B-B-B-B\nLevelReq: 66\nImplicits: 2\n{variant:1}12% Chance to Block Attack Damage while wielding a Staff\n{variant:2}18% Chance to Block Attack Damage while wielding a Staff\n{variant:1}+1 to Level of all Lightning Spell Skill Gems\n{variant:2}+2 to Level of all Lightning Spell Skill Gems\n{range:0.5}+(80-120) to Intelligence\n{range:0.5}(30-50)% increased Lightning Damage\n+5% to Maximum Lightning Resistance\n40% increased Strength Requirement\nDamage Penetrates 20% Lightning Resistance"
+        "reference": "Advancing Fortress",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Weapons/OneHandWeapons/Claws/Clawshield3.png",
+        "data": "Rarity: UNIQUE\nAdvancing Fortress\nGut Ripper\nVariant: Pre 2.6.0\nVariant: Current\nSelected Variant: 2\nGut Ripper\nQuality: 20\nSockets: G-G-G\nLevelReq: 46\nImplicits: 2\n{variant:1}+21 Life gained for each Enemy hit by Attacks\n{variant:2}+44 Life gained for each Enemy hit by Attacks\nSocketed Gems are Supported by level 12 Fortify\n{range:0.5}(100-120)% increased Physical Damage\n+110 to Evasion Rating\n{range:0.5}+(30-50) to maximum Life\n+35 to maximum Energy Shield\n{range:0.5}Reflects (71-90) Physical Damage to Melee Attackers\n15% Chance to Block"
+      }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "New Glorious Plate",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
+        "data": "Rarity: RARE\nNew Glorious Plate\nGlorious Plate\nShaper Item\nElder Item\nCrafted: true\nPrefix: {range:0.972}LocalIncreasedPhysicalDamageReductionRatingPercent6\nPrefix: {range:0.746}LocalBaseArmourAndLife3\nPrefix: {range:1}DelveBodyArmourAvoidFire1_\nSuffix: {range:0.5}DelveBodyArmourSocketedSkillsSupportedByArcaneSurge1_\nSuffix: {range:0.5}DelveStrengthGemLevel1\nSuffix: {range:0.113}DelveArmourPhysDamageTakenv2_3\nQuality: 20\nSockets: R-R-R-R-R-R\nLevelReq: 68\nImplicits: 2\n{tags:damage}{range:0.5}(40-50)% increased Damage\n{tags:resistance}+1% to all maximum Resistances\n+1 to Level of Socketed Strength Gems\nSocketed Gems are Supported by Level 1 Arcane Surge\n+82 to Armour\n91% increased Armour\n+32 to maximum Life\n-72 Physical Damage taken from Hits\n10% chance to Avoid Fire Damage from Hits\nCorrupted"
+      }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "New Large Cluster Jewel",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Jewels/NewGemBase3.png",
+        "data": "Rarity: RARE\nNew Large Cluster Jewel\nLarge Cluster Jewel\nCrafted: true\nPrefix: {range:0.5}AfflictionJewelSmallPassivesGrantDamage2_\nPrefix: {range:0.5}AfflictionNotableCalamitous\nSuffix: {range:0.5}AfflictionJewelSmallPassivesGrantChaosRes3\nSuffix: {range:0.5}AfflictionNotableHeavyHitter\nCluster Jewel Skill: affliction_attack_damage_\nCluster Jewel Node Count: 12\nQuality: 0\nLevelReq: 67\nImplicits: 3\n{crafted}Adds 12 Passive Skills\n{crafted}2 Added Passive Skills are Jewel Sockets\n{crafted}Added Small Passive Skills grant: 10% increased Attack Damage\nAdded Small Passive Skills also grant: +5% to Chaos Resistance\nAdded Small Passive Skills also grant: 3% increased Damage\n1 Added Passive Skill is Calamitous\n1 Added Passive Skill is Heavy Hitter"
+      }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Golden Bracers",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/DemigodsTouch.png",
+        "data": "Rarity: NORMAL\nGolden Bracers\nQuality: 20\nSockets: G-G-G-G\nLevelReq: 12\nImplicits: 1\n{tags:resource,life}{range:0.5}+(20-30) to maximum Life"
+      }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Chemist's Colossal Hybrid Flask of Bloodletting",
+        "iconUrl": "https://web.poecdn.com/gen/image/WzksMTQseyJmIjoiMkRJdGVtc1wvRmxhc2tzXC9oeWJyaWRmbGFzazEiLCJ3IjoxLCJoIjoyLCJzY2FsZSI6dHJ1ZSwibGV2ZWwiOjF9XQ/a8a14f4bf4/Item.png",
+        "data": "Rarity: MAGIC\nChemist's Colossal Hybrid Flask of Bloodletting\nCrafted: true\nPrefix: {range:0.5}FlaskChargesUsed1\nSuffix: {range:0.5}FlaskBuffAttackLifeLeechWhileHealing1\nQuality: 20\nLevelReq: 40\nImplicits: 0\n23% reduced Charges used\n0.4% of Attack Damage Leeched as Life during Flask effect"
+      }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Beef Amulet",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Amulets/HeistAmulet2.png",
+        "data": "Rarity: RARE\nBeef Amulet\nSimplex Amulet\nCrusader Item\nRedeemer Item\nCrafted: true\nPrefix: {range:0.137}SpellDamage5\nPrefix: {range:0.863}AddedPhysicalDamage6\nPrefix: None\nSuffix: {range:0.5}FireDamagePercent3\nSuffix: {range:0.415}CriticalStrikeChance5\nSuffix: None\nCatalyst: Imbued\nCatalystQuality: 20\nQuality: 0\nLevelReq: 60\nImplicits: 5\n{crafted}Allocates Beef\n-1 Prefix Modifier allowed\n-1 Suffix Modifier allowed\nImplicit Modifiers Cannot Be Changed\n25% increased Explicit Modifier magnitudes\n27% increased Spell Damage\nAdds 9 to 15 Physical Damage to Attacks\n15% increased Fire Damage\n32% increased Global Critical Strike Chance"
       }
     }
   ]

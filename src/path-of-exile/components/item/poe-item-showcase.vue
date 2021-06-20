@@ -198,51 +198,59 @@ export default {
   },
   computed: {
     shouldShowItemLevel() {
-      return (
-        this.item.sections.itemLevel &&
-        !this.sectionShouldBeFullyHidden("item-level")
+      return !(
+        !this.item.sections.itemLevel ||
+        !this.item.sections.itemLevel ||
+        this.sectionShouldBeFullyHidden("item-level")
       );
     },
     shouldShowTalismanTier() {
-      return (
-        this.item.sections.talismanTier &&
-        !this.sectionShouldBeFullyHidden("talisman-tier")
+      return !(
+        !this.item.sections.talismanTier ||
+        !this.item.sections.talismanTier ||
+        this.sectionShouldBeFullyHidden("talisman-tier")
       );
     },
     shouldShowItemRequirements() {
-      return (
-        this.item.sections.requirements &&
-        !this.sectionShouldBeFullyHidden("requirements")
+      return !(
+        !this.item.sections.requirements ||
+        !this.item.sections.requirements.length > 0 ||
+        this.sectionShouldBeFullyHidden("requirements")
       );
     },
     shouldShowItemProperties() {
-      return (
-        this.itemProperties.length > 0 &&
-        !this.sectionShouldBeFullyHidden("properties")
+      return !(
+        !this.itemProperties ||
+        !this.itemProperties.length > 0 ||
+        this.sectionShouldBeFullyHidden("properties")
       );
     },
     shouldShowItemEnchants() {
-      return (
-        this.itemEnchants.length > 0 &&
-        !this.sectionShouldBeFullyHidden("enchants")
+      return !(
+        !this.itemEnchants ||
+        !this.itemEnchants.length > 0 ||
+        this.sectionShouldBeFullyHidden("enchants")
       );
     },
     shouldShowItemImplicits() {
-      return (
-        this.itemImplicits.length > 0 &&
-        !this.sectionShouldBeFullyHidden("implicits")
+      return !(
+        !this.itemImplicits ||
+        !this.itemImplicits.length > 0 ||
+        this.sectionShouldBeFullyHidden("implicits")
       );
     },
     shouldShowGemDescription() {
-      return (
-        this.item.sections.gemDescription &&
-        !this.sectionShouldBeFullyHidden("description")
+      return !(
+        !this.item.sections.gemDescription ||
+        !this.item.sections.gemDescription.length > 0 ||
+        this.sectionShouldBeFullyHidden("description")
       );
     },
     shouldShowItemModifiers() {
-      return (
-        this.item.sections.modifiers &&
-        !this.sectionShouldBeFullyHidden("modifiers")
+      return !(
+        !this.item.sections.modifiers ||
+        !this.item.sections.modifiers.length > 0 ||
+        this.sectionShouldBeFullyHidden("modifiers")
       );
     },
     shouldShowStatuses() {
@@ -255,7 +263,6 @@ export default {
       return this.item.sections.properties
         ? this.item.sections.properties.map((line) => {
             return line
-              .replaceAll("(augmented)", "")
               .trim()
               .replaceAll(
                 /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi,
@@ -270,8 +277,6 @@ export default {
             this.item.sections.requirements
               .map((line) => {
                 return line
-                  .replaceAll("(unmet)", "")
-                  .replaceAll("(augmented)", "")
                   .trim()
                   .replaceAll(
                     /([0-9]+)/gi,
@@ -282,18 +287,10 @@ export default {
         : "";
     },
     itemEnchants() {
-      return this.item.sections.enchants
-        ? this.item.sections.enchants.map((x) =>
-            x.replaceAll("(enchant)", "").trim()
-          )
-        : [];
+      return this.item.sections.enchants;
     },
     itemImplicits() {
-      return this.item.sections.implicits
-        ? this.item.sections.implicits.map((x) =>
-            x.replaceAll("(implicit)", "").trim()
-          )
-        : [];
+      return this.item.sections.implicits;
     },
     itemModifiers() {
       return this.item.sections.modifiers
@@ -521,7 +518,7 @@ export default {
 
   .poe-item-stats {
     padding: 16px;
-    padding-top: 8px;
+    padding-top: 6px;
     padding-bottom: 10px;
     display: inline-block;
     min-width: 360px;

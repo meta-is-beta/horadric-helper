@@ -147,15 +147,22 @@ const getItemStatuses = (sections: PoeItemDataSection[]) => {
 const getRequirements = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Requirements")
-    ?.lines.filter((x) => x !== "Requirements:");
+    ?.lines.filter((l) => l !== "Requirements:")
+    .map((l) => l.replaceAll("(unmet)", "").replaceAll("(augmented)", ""));
 const getEnchants = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Enchants")?.lines;
+  sections
+    .find((x) => x.name === "Enchants")
+    ?.lines.map((l) => l.replaceAll("(enchant)", "").trim());
 const getImplicits = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Implicits")?.lines;
+  sections
+    .find((x) => x.name === "Implicits")
+    ?.lines.map((l) => l.replaceAll("(implicit)", "").trim());
 const getSockets = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Sockets")?.lines;
 const getProperties = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Properties")?.lines;
+  sections
+    .find((x) => x.name === "Properties")
+    ?.lines.map((l) => l.replaceAll("(augmented)", ""));
 const getModifiers = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Modifiers")?.lines;
 const getGemDescription = (sections: PoeItemDataSection[]) =>
