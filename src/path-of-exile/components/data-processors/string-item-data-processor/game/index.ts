@@ -4,6 +4,7 @@ export default (rawData: String): PoeItem => {
   const sections = mapSections(rawData);
   const headerSection = getHeaderSection(sections);
   const itemClass = getItemClass(headerSection);
+  const properties = getProperties(sections);
 
   return {
     class: itemClass,
@@ -13,11 +14,12 @@ export default (rawData: String): PoeItem => {
     baseName: getItemBaseName(headerSection),
     influences: getItemInfluences(sections),
     sockets: getSockets(sections),
+    stacks: getStacks(properties),
     sections: {
       itemLevel: getItemLevel(sections),
       talismanTier: getTalismanTier(sections),
       requirements: getRequirements(sections),
-      properties: getProperties(sections),
+      properties,
       enchants: getEnchants(sections),
       implicits: getImplicits(sections),
       modifiers: getModifiers(sections),
@@ -56,14 +58,14 @@ const getItemRarity = (headerSection: PoeItemDataSection) => {
 const getItemName = (headerSection: PoeItemDataSection) =>
   headerSection.lines[2].trim();
 
-const getItemType = (itemClass: String) => {
-  if (itemClass.includes("Jewel")) return "Jewel";
-  if (itemClass.includes("Flask")) return "Flask";
-  if (itemClass.includes("Gem")) return "Gem";
-  if (itemClass.includes("Currency")) return "Currency";
-  if (itemClass.includes("Maps")) return "Map";
+const getItemType = (itemClass: String): PoeItemType => {
+  if (itemClass.includes("Jewel")) return "jewel";
+  if (itemClass.includes("Flask")) return "flask";
+  if (itemClass.includes("Gem")) return "gem";
+  if (itemClass.includes("Currency")) return "currency";
+  if (itemClass.includes("Maps")) return "map";
 
-  return "Equipment";
+  return "equipment";
 };
 
 const getItemBaseName = (headerSection: PoeItemDataSection) =>
@@ -167,3 +169,23 @@ const getModifiers = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Modifiers")?.lines;
 const getGemDescription = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Gem description")?.lines;
+const getStacks = (
+  itemProperties: String[] | undefined
+): Number | undefined => {
+  if (!itemProperties) {
+    return undefined;
+  }
+  const itemStacksLine = itemProperties.find((prop) =>
+    prop.startsWith("Stack ")
+  );
+  if (!itemStacksLine) {
+    return undefined;
+  }
+
+  const itemStacksMatch = itemStacksLine.match(/: ([0-9]+)/);
+  if (!itemStacksMatch) {
+    return undefined;
+  }
+
+  return parseInt(itemStacksMatch[1]);
+};

@@ -17,6 +17,9 @@ export default {
 
     dimSections: { type: String, default: "" },
     hideSections: { type: String, default: "" },
+
+    stacksOnIcon: { type: Boolean, default: false },
+    stacksInLabel: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -54,11 +57,20 @@ export default {
       return this.labelText.length > 0;
     },
     labelTextComputed() {
-      return this.labelText
+      let labelText = this.labelText
         ? this.labelText
         : this.showcaseData
         ? this.showcaseData.name
         : "";
+
+      if (this.stacksInLabel && this.showcaseData.stacks) {
+        labelText = `(${this.showcaseData.stacks}x) ${labelText}`;
+      }
+
+      return labelText;
+    },
+    shouldShowStacksOnIcon() {
+      return this.showcaseData.stacks && this.stacksOnIcon;
     },
   },
   mounted() {

@@ -35,13 +35,16 @@
         </template>
         <!-- Icon -->
         <div v-if="displayMode === `icon`">
+          <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
+            <text y="18">{{ passive.stacks }}</text>
+          </svg>
           <poe-passive-image
             :type="passive.type"
             :iconUrl="iconUrl"
             :iconSize="iconSize"
           />
           <div class="poe-icon-label" v-if="!showCustomLabel">
-            <div>{{ passive.name }}</div>
+            <div>{{ labelTextComputed }}</div>
             <div class="poe-icon-sublabel">
               {{ passive.type }}
             </div>
@@ -114,6 +117,12 @@ export default {
   .poe-passive-wrapper {
     background-color: black;
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.poe-passive-showcase {
+  .poe-item-stacks {
+    transform: translate(-36px, 0px);
   }
 }
 

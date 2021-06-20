@@ -37,13 +37,16 @@
         </template>
         <!-- Icon -->
         <div v-if="displayMode === `icon`">
+          <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
+            <text y="18">{{ item.stacks }}</text>
+          </svg>
           <poe-item-image
             :iconSize="iconSize"
             :iconUrl="iconUrl"
             :type="item.type"
           />
           <div class="poe-icon-label" v-if="!showCustomLabel">
-            <div>{{ item.name }}</div>
+            <div>{{ labelTextComputed }}</div>
             <div class="poe-icon-sublabel" v-if="shouldShowBaseName">
               {{ item.baseName }}
             </div>
@@ -101,9 +104,6 @@ export default {
     },
     popoverClassesComputed() {
       return `poe-item-showcase-popover ${this.popoverClasses}`;
-    },
-    labelTextComputed() {
-      return this.labelText ? this.labelText : this.item ? this.item.name : "";
     },
     linkClassesComputed() {
       let classes = `poe-item-link`;

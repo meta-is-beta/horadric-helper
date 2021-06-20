@@ -163,12 +163,15 @@
       "reference": "Lethality",
       "props": {
         "as-icon": true,
-        "dim-sections": "description:3,4"
+        "dim-sections": "description:3,4",
+        "stacksOnIcon": true,
+        "stacksInLabel": true
       },
       "config": {
         "reference": "Lethality",
         "data": {
           "name": "Lethality",
+          "stacks": 6,
           "sections": {
             "description": [
               "16% increased Damage with Bows",
@@ -177,7 +180,7 @@
               "16% increased Damage Over Time with Bow Skills"
             ]
           },
-          "type": "notable"
+          "type": "basic"
         },
         "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/heartpierce.png"
       }
