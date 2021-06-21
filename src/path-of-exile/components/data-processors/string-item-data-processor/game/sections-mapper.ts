@@ -35,7 +35,7 @@ const splitLinesIntoSections = (descriptionLines: String[]): String[][] => {
   let section: String[] = [];
 
   descriptionLines.forEach((line, index) => {
-    if (line.includes("----")) {
+    if (line.startsWith("----")) {
       sections.push(section);
       section = [];
     } else if (index + 1 === descriptionLines.length) {
@@ -54,15 +54,15 @@ const cleanupRawSections = (rawSections: String[][]): String[][] =>
   rawSections.map((s) => s.map((l) => l.trim()).filter((l) => l.length > 0));
 
 const getSectionName = (section: String[]): String => {
-  if (section.some((x) => x.includes("Item Class:"))) {
+  if (section.some((x) => x.startsWith("Item Class:"))) {
     return "Header";
   }
 
-  if (section.some((x) => x.includes("Requirements:"))) {
+  if (section.some((x) => x.startsWith("Requirements:"))) {
     return "Requirements";
   }
 
-  if (section.some((x) => x.includes("Item Level:"))) {
+  if (section.some((x) => x.startsWith("Item Level:"))) {
     return "Item level";
   }
 
@@ -74,11 +74,11 @@ const getSectionName = (section: String[]): String => {
     return "Implicits";
   }
 
-  if (section.some((x) => x.includes("Quality"))) {
+  if (section.some((x) => x.startsWith("Quality"))) {
     return "Properties";
   }
 
-  if (section.some((x) => x.includes("Sockets:"))) {
+  if (section.some((x) => x.startsWith("Sockets:"))) {
     return "Sockets";
   }
 
@@ -98,7 +98,7 @@ const getSectionName = (section: String[]): String => {
     return "Mirrored status";
   }
 
-  if (section.some((x) => x.match(/Talisman Tier:/))) {
+  if (section.some((x) => x.match(/^Talisman Tier:/))) {
     return "Talisman tier";
   }
 

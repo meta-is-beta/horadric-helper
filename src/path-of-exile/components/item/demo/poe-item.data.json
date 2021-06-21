@@ -483,7 +483,8 @@
     {
       "props": {
         "icon-inside": true,
-        "as-icon": true
+        "as-icon": true,
+        "icon-size": "md"
       },
       "config": {
         "reference": "Beef Amulet",

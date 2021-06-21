@@ -33,7 +33,7 @@ const getHeaderSection = (sections: PoeItemDataSection[]): PoeItemDataSection =>
   sections.find((x) => x.name === "Header") as PoeItemDataSection;
 
 const getItemClass = (headerSection: PoeItemDataSection) => {
-  const classMatch = headerSection.lines[0].match(/Item Class:([A-z ]+)/);
+  const classMatch = headerSection.lines[0].match(/^Item Class: ([A-z ]+)$/);
   if (classMatch && classMatch.length > 0) {
     return classMatch[1].trim();
   }
@@ -41,7 +41,7 @@ const getItemClass = (headerSection: PoeItemDataSection) => {
   return "";
 };
 const getItemRarity = (headerSection: PoeItemDataSection) => {
-  const rarityMatch = headerSection.lines[1].match(/Rarity:([A-z ]+)/);
+  const rarityMatch = headerSection.lines[1].match(/^Rarity: ([A-z ]+)$/);
 
   if (rarityMatch && rarityMatch.length > 0) {
     return rarityMatch[1].trim() as
@@ -78,7 +78,7 @@ const getItemInfluences = (sections: PoeItemDataSection[]) => {
   }
 
   return influencesSection.lines.map((line) => {
-    const lineMatch = line.match(/([A-Z][a-z]+) Item$/);
+    const lineMatch = line.match(/^([A-Z][a-z]+) Item$/);
 
     if (lineMatch && lineMatch.length > 0) {
       return lineMatch[1].toLowerCase().trim() as
@@ -102,7 +102,7 @@ const getItemLevel = (sections: PoeItemDataSection[]) => {
   }
 
   const itemLevelMatch = itemLevelSection.lines[0].match(
-    /Item Level: ([0-9]+)/
+    /^Item Level: ([0-9]+)$/
   );
 
   if (itemLevelMatch && itemLevelMatch.length > 0) {
@@ -120,7 +120,7 @@ const getTalismanTier = (sections: PoeItemDataSection[]) => {
   }
 
   const talismanTierMatch = talismanTierSection.lines[0].match(
-    /Talisman Tier: ([0-9]+)/
+    /^Talisman Tier: ([0-9]+)$/
   );
 
   if (talismanTierMatch && talismanTierMatch.length > 0) {

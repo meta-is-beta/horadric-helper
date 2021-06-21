@@ -36,7 +36,7 @@
         <!-- Icon -->
         <div v-if="displayMode === `icon`">
           <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
-            <text y="18">{{ passive.stacks }}</text>
+            <text x="2" y="18">{{ passive.stacks }}</text>
           </svg>
           <poe-passive-image
             :type="passive.type"
