@@ -2,9 +2,9 @@ import processGameData from "./game";
 import processPobData from "./pob";
 
 export default (rawData: String): PoeItem => {
-  return rawDataIsFromGame(rawData)
-    ? processGameData(rawData)
-    : processPobData(rawData);
+  return rawDataIsFromPob(rawData)
+    ? processPobData(rawData)
+    : processGameData(rawData);
 };
 
-const rawDataIsFromGame = (rawData: String) => rawData.includes("---");
+const rawDataIsFromPob = (rawData: String) => rawData.startsWith("Rarity:");

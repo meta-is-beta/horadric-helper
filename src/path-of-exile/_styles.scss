@@ -133,8 +133,8 @@
   & text {
     fill: white;
     stroke: black;
-    stroke-width: 0.5px;
-    stroke-linejoin: round;
+    stroke-width: 2px;
+    paint-order: stroke;
   }
 }
 
