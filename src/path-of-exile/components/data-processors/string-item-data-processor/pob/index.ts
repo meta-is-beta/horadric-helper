@@ -37,8 +37,6 @@ export default (rawData: String): PoeItem => {
     statuses,
   };
 
-  console.log(item.sections);
-
   return item;
 };
 
@@ -89,12 +87,12 @@ const getItemProeprties = (sections: String[]): String[] => {
   return [`Quality: ${qualityValueMatch[1]}%`];
 };
 
-const getItemStatuses = (sections: String[]): [String[], number] => {
-  return getSectionsFromLine(
+const getItemStatuses = (sections: String[]): [PoeItemStatus[], number] => {
+  return (getSectionsFromLine(
     sections,
     sections.length - 1,
     /^(Corrupted|Mirrored|Split)$/
-  );
+  ) as unknown) as [PoeItemStatus[], number];
 };
 
 const getItemModifiers = (
@@ -196,13 +194,13 @@ const getItemSockets = (sections: String[]): String[] => {
 };
 
 const getItemType = (baseName: String): PoeItemType => {
-  if (baseName.includes("Jewel")) return "Jewel";
-  if (baseName.includes("Flask")) return "Flask";
-  if (baseName.includes("Gem")) return "Gem";
-  if (baseName.includes("Currency")) return "Currency";
-  if (baseName.includes("Maps")) return "Map";
+  if (baseName.includes("Jewel")) return "jewel";
+  if (baseName.includes("Flask")) return "flask";
+  if (baseName.includes("Gem")) return "gem";
+  if (baseName.includes("Currency")) return "currency";
+  if (baseName.includes("Maps")) return "map";
 
-  return "Equipment";
+  return "equipment";
 };
 
 const getItemInfluences = (

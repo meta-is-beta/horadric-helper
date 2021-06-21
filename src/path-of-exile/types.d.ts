@@ -1,18 +1,24 @@
 type PoeConfig = {
   reference: string;
-  dataObject: PoeItem | PoePassive | null;
-  rawData: string | null;
-  iconUrl: string | null;
+  data: PoeItem | PoePassive | string;
+  iconUrl?: string;
 };
 
-type PoeItemRarity = "normal" | "rare" | "magic" | "unique" | "gem" | "";
+type PoeItemRarity =
+  | "normal"
+  | "rare"
+  | "magic"
+  | "unique"
+  | "gem"
+  | "currency"
+  | "";
 type PoeItemType =
-  | "Equipment"
-  | "Gem"
-  | "Jewel"
-  | "Flask"
-  | "Currency"
-  | "Map"
+  | "equipment"
+  | "gem"
+  | "jewel"
+  | "flask"
+  | "currency"
+  | "map"
   | "";
 type PoeItemInfluence =
   | "crusader"
@@ -32,14 +38,15 @@ type PoePassiveType =
   | "ascendancy notable";
 
 type PoeItemSections = {
-  itemLevel: String | undefined;
-  requirements: String[] | undefined;
-  properties: String[] | undefined;
-  enchants: String[] | undefined;
-  implicits: String[] | undefined;
-  modifiers: String[] | undefined;
-  gemDescription: String[] | undefined;
-  statuses: PoeItemStatus[];
+  itemLevel?: String;
+  requirements?: String[];
+  properties?: String[];
+  enchants?: String[];
+  implicits?: String[];
+  modifiers?: String[];
+  gemDescription?: String[];
+  talismanTier?: String;
+  statuses?: PoeItemStatus[];
 };
 
 type PoePassiveSections = {
@@ -48,19 +55,20 @@ type PoePassiveSections = {
 
 type PoeItem = {
   rarity: PoeItemRarity;
-  class: String | undefined;
-  type: PoeItemType;
-  name: String | undefined;
-  baseName: String | undefined;
-  influences: PoeItemInfluence[];
-  sockets: String[] | undefined;
-  sections: PoeItemSections | {};
+  name: String;
+  class?: String;
+  type?: PoeItemType;
+  baseName?: String;
+  influences?: PoeItemInfluence[];
+  sockets?: String[];
+  sections?: PoeItemSections;
+  stacks?: Number;
 };
 
 type PoePassive = {
   name: String;
   type: PoePassiveType;
-  sections: PoePassiveSections | {};
+  sections?: PoePassiveSections;
 };
 
 type PoeItemDataSection = {

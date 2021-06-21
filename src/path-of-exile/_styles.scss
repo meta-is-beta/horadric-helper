@@ -121,6 +121,23 @@
   }
 }
 
+.poe-item-stacks {
+  position: absolute;
+  font-size: 20px;
+  z-index: 100;
+  width: 50px;
+  height: 25px;
+  font-family: sans-serif;
+  font-weight: bold;
+
+  & text {
+    fill: white;
+    stroke: black;
+    stroke-width: 0.5px;
+    stroke-linejoin: round;
+  }
+}
+
 .dimed-line,
 .dimed-line span {
   color: var(--poe-color-default-dimed) !important;
