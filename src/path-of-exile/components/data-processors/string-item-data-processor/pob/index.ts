@@ -178,19 +178,19 @@ const getItemRequirements = (sections: String[]): String[] => {
   return [`Level: ${matches[1]}`];
 };
 
-const getItemSockets = (sections: String[]): String[] => {
+const getItemSockets = (sections: String[]): String | undefined => {
   const socketsLine = sections.find((s) => s.includes("Sockets:"));
 
   if (!socketsLine) {
-    return [];
+    return undefined;
   }
 
   const matches = socketsLine.match(/^Sockets: (.+)$/);
   if (!matches) {
-    return [];
+    return undefined;
   }
 
-  return [matches[1]];
+  return matches[1];
 };
 
 const getItemType = (baseName: String): PoeItemType => {

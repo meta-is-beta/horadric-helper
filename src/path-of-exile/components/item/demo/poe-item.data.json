@@ -95,7 +95,7 @@
           "name": "Crimson Jewel",
           "baseName": "Crimson Jewel",
           "rarity": "Rare",
-          "sectionss": {
+          "sections": {
             "itemLevel": "49"
           }
         }
@@ -119,7 +119,8 @@
         "asIcon": true,
         "labelText": "",
         "iconInside": true,
-        "dimSections": "enchants:1;modifiers;properties:2"
+        "dimSections": "enchants:1;modifiers;properties:2",
+        "showSockets": true
       },
       "config": {
         "reference": "Woe Road",
@@ -133,12 +134,21 @@
         "asIcon": true,
         "asShowcase": true,
         "labelText": "",
-        "iconOutside": false
+        "showSockets": true,
+        "showSocketsInShowcase": true,
+        "socketReferences": {
+          "1": "Flammability",
+          "2": "Divergent Multiple Totems Support",
+          "3": "Flammability",
+          "4": "Divergent Multiple Totems Support",
+          "5": "Flammability",
+          "6": "Divergent Multiple Totems Support"
+        }
       },
       "config": {
         "reference": "Martyr of Innocence",
         "iconUrl": "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/9/97/Martyr_of_Innocence_inventory_icon.png",
-        "data": "Item Class: Staves\nRarity: Unique\nMartyr of Innocence\nHighborn Staff\n--------\nStaff\nQuality: +26% (augmented)\nPhysical Damage: 60-183 (augmented)\nElemental Damage: 338-524 (augmented)\nCritical Strike Chance: 6.50%\nAttacks per Second: 1.15\nWeapon Range: 13\n--------\nRequirements:\nLevel: 70\nStr: 89\nDex: 70\nInt: 155\n--------\nSockets: G-B-B-B-B \n--------\nItem Level: 75\n--------\n+18% Chance to Block Attack Damage while wielding a Staff (implicit)\n--------\nGrants Level 15 Vengeance Skill\n+14% Chance to Block Attack Damage while wielding a Staff\n100% increased Fire Damage\nAdds 338 to 524 Fire Damage\nDamage Penetrates 15% of Fire Resistance if you have Blocked Recently\nImmune to Freeze and Chill while Ignited\nBattlemage\n--------\nYou have been found guilty.\nLet the fires cleanse you of your sins.\n"
+        "data": "Item Class: Staves\nRarity: Unique\nMartyr of Innocence\nHighborn Staff\n--------\nStaff\nQuality: +26% (augmented)\nPhysical Damage: 60-183 (augmented)\nElemental Damage: 338-524 (augmented)\nCritical Strike Chance: 6.50%\nAttacks per Second: 1.15\nWeapon Range: 13\n--------\nRequirements:\nLevel: 70\nStr: 89\nDex: 70\nInt: 155\n--------\nSockets: R-G-B W-D-A \n--------\nItem Level: 75\n--------\n+18% Chance to Block Attack Damage while wielding a Staff (implicit)\n--------\nGrants Level 15 Vengeance Skill\n+14% Chance to Block Attack Damage while wielding a Staff\n100% increased Fire Damage\nAdds 338 to 524 Fire Damage\nDamage Penetrates 15% of Fire Resistance if you have Blocked Recently\nImmune to Freeze and Chill while Ignited\nBattlemage\n--------\nYou have been found guilty.\nLet the fires cleanse you of your sins.\n"
       }
     },
     {
@@ -146,7 +156,7 @@
         "asIcon": true,
         "labelText": "",
         "iconInside": true,
-        "stacksInLabel": true
+        "showStacksInLabel": true
       },
       "config": {
         "reference": "Exalted Orb",
@@ -159,7 +169,7 @@
         "asIcon": true,
         "labelText": "",
         "iconInside": true,
-        "stacksOnIcon": true
+        "showStacks": true
       },
       "config": {
         "reference": "Exalted Orb 2",
@@ -182,8 +192,8 @@
         "asShowcase": false,
         "labelText": "",
         "iconInside": true,
-        "stacksOnIcon": true,
-        "stacksInLabel": true
+        "showStacks": true,
+        "showStacksInLabel": true
       },
       "config": {
         "reference": "Deafening Essence of Woe",
@@ -197,8 +207,8 @@
         "asShowcase": false,
         "labelText": "",
         "iconInside": true,
-        "stacksOnIcon": true,
-        "stacksInLabel": true
+        "showStacks": true,
+        "showStacksInLabel": true
       },
       "config": {
         "reference": "Silver Oil",
@@ -439,7 +449,8 @@
     {
       "props": {
         "icon-inside": true,
-        "as-icon": true
+        "as-showcase": true,
+        "show-sockets-in-showcase": true
       },
       "config": {
         "reference": "New Glorious Plate",

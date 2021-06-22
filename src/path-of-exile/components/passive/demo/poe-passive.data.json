@@ -164,8 +164,8 @@
       "props": {
         "as-icon": true,
         "dim-sections": "description:3,4",
-        "stacksOnIcon": true,
-        "stacksInLabel": true
+        "showStacks": true,
+        "showStacksInLabel": true
       },
       "config": {
         "reference": "Lethality",

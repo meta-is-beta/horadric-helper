@@ -18,8 +18,8 @@ export default {
     dimSections: { type: String, default: "" },
     hideSections: { type: String, default: "" },
 
-    stacksOnIcon: { type: Boolean, default: false },
-    stacksInLabel: { type: Boolean, default: false },
+    showStacks: { type: Boolean, default: false },
+    showStacksInLabel: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -63,14 +63,14 @@ export default {
         ? this.showcaseData.name
         : "";
 
-      if (this.stacksInLabel && this.showcaseData.stacks) {
+      if (this.showStacksInLabel && this.showcaseData.stacks) {
         labelText = `(${this.showcaseData.stacks}x) ${labelText}`;
       }
 
       return labelText;
     },
     shouldShowStacksOnIcon() {
-      return this.showcaseData.stacks && this.stacksOnIcon;
+      return this.showcaseData.stacks && this.showStacks;
     },
   },
   mounted() {
@@ -88,7 +88,7 @@ export default {
         }
 
         const hhObject = window.HoradricHelper;
-        const reference = value.replaceAll(" ", "-");
+        const reference = value;
 
         if (
           !hhObject ||
@@ -116,7 +116,7 @@ export default {
     registerShowcase() {
       const hhObject = registerHoradricHelperGlobalObject();
       const showcases = hhObject.showcases;
-      const reference = this.reference.replaceAll(" ", "-");
+      const reference = this.reference;
 
       if (showcases[reference]) {
         showcases[reference].applyConfigCallbacks.push(this.applyConfig);
@@ -136,7 +136,7 @@ export default {
       }
 
       const showcases = hhObject.showcases;
-      const reference = this.reference.replaceAll(" ", "-");
+      const reference = this.reference;
 
       if (!showcases || !showcases[reference]) {
         return;
@@ -199,7 +199,6 @@ const applyConfigFromArray = (configArray) => {
 };
 
 const applyConfigFromObject = ({ reference, data, iconUrl }) => {
-  reference = reference.replaceAll(" ", "-");
   const referencedShowcase = window.HoradricHelper.showcases[reference];
 
   if (!referencedShowcase) {

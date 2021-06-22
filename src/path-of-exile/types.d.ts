@@ -60,7 +60,7 @@ type PoeItem = {
   type?: PoeItemType;
   baseName?: String;
   influences?: PoeItemInfluence[];
-  sockets?: String[];
+  sockets?: String;
   sections?: PoeItemSections;
   stacks?: Number;
 };

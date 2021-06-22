@@ -95,7 +95,7 @@
 }
 
 .poe-icon-label {
-  margin-top: 5px;
+  margin-top: 4px;
   padding: 3px;
   padding-left: 6px;
   padding-right: 6px;
@@ -105,6 +105,9 @@
   justify-content: center;
   line-height: 18px;
   white-space: nowrap;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
 
   & div:nth-child(1) {
     padding-top: 0px;

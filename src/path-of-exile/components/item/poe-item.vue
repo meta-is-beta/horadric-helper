@@ -10,6 +10,8 @@
         :showIconOutside="iconOutside"
         :dimedSections="dimedSections"
         :hiddenSections="hiddenSections"
+        :showSockets="showSocketsInShowcase"
+        :socketReferences="socketReferences"
       />
     </div>
     <div v-else class="poe-item-showcase-wrapper">
@@ -33,6 +35,8 @@
             :showIconOutside="iconOutside"
             :dimedSections="dimedSections"
             :hiddenSections="hiddenSections"
+            :showSockets="showSocketsInShowcase"
+            :socketReferences="socketReferences"
           />
         </template>
         <!-- Icon -->
@@ -44,6 +48,11 @@
             :iconSize="iconSize"
             :iconUrl="iconUrl"
             :type="item.type"
+          />
+          <poe-item-sockets
+            :sockets="item.sockets"
+            :socketReferences="socketReferences"
+            v-if="shouldShowSockets"
           />
           <div class="poe-icon-label" v-if="!showCustomLabel">
             <div>{{ labelTextComputed }}</div>
@@ -69,6 +78,7 @@
 <script>
 import PoeItemShowcase from "./poe-item-showcase.vue";
 import PoeItemImage from "./poe-item-image.vue";
+import PoeItemSockets from "./poe-item-sockets.vue";
 import mainMixin from "@/shared/mixins/main.mixin";
 import processStringData from "../data-processors/string-item-data-processor";
 import processDataObject from "../data-processors/data-object-data-processor";
@@ -78,8 +88,14 @@ export default {
   components: {
     PoeItemShowcase,
     PoeItemImage,
+    PoeItemSockets,
   },
   mixins: [mainMixin],
+  props: {
+    showSockets: { type: Boolean, default: false },
+    showSocketsInShowcase: { type: Boolean, default: false },
+    socketReferences: { type: Object, default: () => {} },
+  },
   computed: {
     item() {
       return this.showcaseData;
@@ -114,6 +130,9 @@ export default {
     },
     shouldShowBaseName() {
       return this.item.baseName && this.item.baseName != this.item.name;
+    },
+    shouldShowSockets() {
+      return this.showSockets && this.item.sockets;
     },
   },
   metadata: {
