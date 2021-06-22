@@ -51,8 +51,10 @@ export default {
         }
 
         this.socketedItemsPassiveStatus[r] =
-          referencedItem.showcaseData.class.startsWith("Support") ||
-          referencedItem.showcaseData.baseName.includes("Support");
+          (referencedItem.showcaseData.class &&
+            referencedItem.showcaseData.class.startsWith("Support")) ||
+          (referencedItem.showcaseData.baseName &&
+            referencedItem.showcaseData.baseName.includes("Support"));
       });
     }
   },

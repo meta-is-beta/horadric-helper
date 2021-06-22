@@ -995,12 +995,12 @@ var component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var poe_item_image = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=260188d9&
-var poe_item_socketsvue_type_template_id_260188d9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:"poe-sockets " + (_vm.showBackground ? "poe-icon-label" : "")},[_vm._l((_vm.socketsList),function(socket,index){return [(_vm.socketReferences && _vm.socketReferences[index + 1])?_c('div',[_c('poe-item',{key:(index + "-item"),ref:("poe-item-" + index),refInFor:true,attrs:{"reference":_vm.socketReferences[index + 1],"show-as-text":"","icon-inside":"","classes":("poe-socketed-item poe-socket poe-item-socket-" + socket),"label-text":"◉"}})],1):_vm._e(),_c('div',{key:(index + "-socket"),class:_vm.getSocketClasses(socket, index)}),(_vm.linksList[index])?_c('div',{key:(index + "-link"),staticClass:"socket-link"}):_vm._e()]})],2)}
-var poe_item_socketsvue_type_template_id_260188d9_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=9e8b11be&
+var poe_item_socketsvue_type_template_id_9e8b11be_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:"poe-sockets " + (_vm.showBackground ? "poe-icon-label" : "")},[_vm._l((_vm.socketsList),function(socket,index){return [(_vm.socketReferences && _vm.socketReferences[index + 1])?_c('div',[_c('poe-item',{key:(index + "-item"),ref:("poe-item-" + index),refInFor:true,attrs:{"reference":_vm.socketReferences[index + 1],"show-as-text":"","icon-inside":"","classes":("poe-socketed-item poe-socket poe-item-socket-" + socket),"label-text":"◉"}})],1):_vm._e(),_c('div',{key:(index + "-socket"),class:_vm.getSocketClasses(socket, index)}),(_vm.linksList[index])?_c('div',{key:(index + "-link"),staticClass:"socket-link"}):_vm._e()]})],2)}
+var poe_item_socketsvue_type_template_id_9e8b11be_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=260188d9&
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=9e8b11be&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
@@ -1115,7 +1115,7 @@ var es_array_filter = __webpack_require__("4de4");
           return;
         }
 
-        _this.socketedItemsPassiveStatus[r] = referencedItem.showcaseData.class.startsWith("Support") || referencedItem.showcaseData.baseName.includes("Support");
+        _this.socketedItemsPassiveStatus[r] = referencedItem.showcaseData.class && referencedItem.showcaseData.class.startsWith("Support") || referencedItem.showcaseData.baseName && referencedItem.showcaseData.baseName.includes("Support");
       });
     }
   },
@@ -1167,8 +1167,8 @@ var poe_item_socketsvue_type_style_index_0_lang_scss_ = __webpack_require__("53f
 
 var poe_item_sockets_component = Object(componentNormalizer["a" /* default */])(
   item_poe_item_socketsvue_type_script_lang_js_,
-  poe_item_socketsvue_type_template_id_260188d9_render,
-  poe_item_socketsvue_type_template_id_260188d9_staticRenderFns,
+  poe_item_socketsvue_type_template_id_9e8b11be_render,
+  poe_item_socketsvue_type_template_id_9e8b11be_staticRenderFns,
   false,
   null,
   null,
@@ -18268,6 +18268,8 @@ function _slicedToArray(arr, i) {
   var item = {};
   var dataLinesList = rawData.split("\n").map(function (l) {
     return l.trim();
+  }).filter(function (l) {
+    return l.length > 0;
   });
   var selectedVariant = getSelectedVariant(dataLinesList);
   var sections = cleanMetadata(dataLinesList);
@@ -18353,7 +18355,7 @@ var pob_getItemStatuses = function getItemStatuses(sections) {
 };
 
 var getItemModifiers = function getItemModifiers(sections, implicitsEndIndex, statusesStartIndex) {
-  return sections.slice(implicitsEndIndex, statusesStartIndex === sections.length - 1 ? sections.length : statusesStartIndex).map(function (line) {
+  return sections.slice(implicitsEndIndex, statusesStartIndex === sections.length ? sections.length : statusesStartIndex).map(function (line) {
     return cleanStatLine(processValuesInLine(line));
   });
 };
@@ -18516,7 +18518,7 @@ var getSectionsUpToLine = function getSectionsUpToLine(sections, startIndex, pat
     currentLine = sections[index];
   }
 
-  return [selectedSections, index];
+  return [selectedSections, index - 1];
 };
 
 var getSectionsFromLine = function getSectionsFromLine(sections, startIndex, pattern) {
@@ -18535,7 +18537,7 @@ var getSectionsFromLine = function getSectionsFromLine(sections, startIndex, pat
     currentLine = sections[index];
   }
 
-  return [selectedSections, index];
+  return [selectedSections, index + 1];
 };
 
 var cleanMetadata = function cleanMetadata(dataLinesList) {

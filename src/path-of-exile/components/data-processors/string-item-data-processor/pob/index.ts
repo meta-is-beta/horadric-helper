@@ -1,7 +1,10 @@
 export default (rawData: String): PoeItem => {
   const item: PoeItem = {} as PoeItem;
 
-  const dataLinesList = rawData.split("\n").map((l) => l.trim());
+  const dataLinesList = rawData
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.length > 0);
   const selectedVariant = getSelectedVariant(dataLinesList);
   const sections = cleanMetadata(dataLinesList);
 
@@ -103,7 +106,7 @@ const getItemModifiers = (
   return sections
     .slice(
       implicitsEndIndex,
-      statusesStartIndex === sections.length - 1
+      statusesStartIndex === sections.length
         ? sections.length
         : statusesStartIndex
     )
@@ -278,7 +281,7 @@ const getSectionsUpToLine = (
     currentLine = sections[index];
   }
 
-  return [selectedSections, index];
+  return [selectedSections, index - 1];
 };
 
 const getSectionsFromLine = (
@@ -301,7 +304,7 @@ const getSectionsFromLine = (
     currentLine = sections[index];
   }
 
-  return [selectedSections, index];
+  return [selectedSections, index + 1];
 };
 
 const cleanMetadata = (dataLinesList: string[]): string[] =>
