@@ -1,0 +1,15 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get-poe-gems-data.js",
+  "scripts": {
+    "get-gems": "node ./get-poe-gems-data.js",
+    "get-passives": "python ./get_poe_passive_node_data.py"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.9",
+    "node-fetch": "^2.6.1",
+    "decode-html": "^2.0.0"
+  }
+}
