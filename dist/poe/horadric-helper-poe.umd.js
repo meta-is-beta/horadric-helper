@@ -980,7 +980,7 @@ var poe_item_imagevue_type_template_id_2afffdd8_staticRenderFns = []
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-image.vue?vue&type=script&lang=js&
- /* harmony default export */ var item_poe_item_imagevue_type_script_lang_js_ = (poe_item_imagevue_type_script_lang_js_); 
+ /* harmony default export */ var item_poe_item_imagevue_type_script_lang_js_ = (poe_item_imagevue_type_script_lang_js_);
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__("2877");
 
@@ -1000,7 +1000,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_item_image = (component.exports);
@@ -1161,7 +1161,7 @@ var es_array_filter = __webpack_require__("4de4");
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=script&lang=js&
- /* harmony default export */ var item_poe_item_socketsvue_type_script_lang_js_ = (poe_item_socketsvue_type_script_lang_js_); 
+ /* harmony default export */ var item_poe_item_socketsvue_type_script_lang_js_ = (poe_item_socketsvue_type_script_lang_js_);
 // EXTERNAL MODULE: ./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=style&index=0&lang=scss&
 var poe_item_socketsvue_type_style_index_0_lang_scss_ = __webpack_require__("53fd");
 
@@ -1182,7 +1182,7 @@ var poe_item_sockets_component = Object(componentNormalizer["a" /* default */])(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_item_sockets = (poe_item_sockets_component.exports);
@@ -1539,7 +1539,7 @@ var showcase_mixin = __webpack_require__("d57b");
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=script&lang=js&
- /* harmony default export */ var item_poe_item_showcasevue_type_script_lang_js_ = (poe_item_showcasevue_type_script_lang_js_); 
+ /* harmony default export */ var item_poe_item_showcasevue_type_script_lang_js_ = (poe_item_showcasevue_type_script_lang_js_);
 // EXTERNAL MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=style&index=0&lang=scss&
 var poe_item_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__("4482");
 
@@ -1560,7 +1560,7 @@ var poe_item_showcase_component = Object(componentNormalizer["a" /* default */])
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_item_showcase = (poe_item_showcase_component.exports);
@@ -1730,7 +1730,7 @@ var data_object_data_processor = __webpack_require__("22d4");
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=script&lang=js&
- /* harmony default export */ var item_poe_itemvue_type_script_lang_js_ = (poe_itemvue_type_script_lang_js_); 
+ /* harmony default export */ var item_poe_itemvue_type_script_lang_js_ = (poe_itemvue_type_script_lang_js_);
 // EXTERNAL MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=style&index=0&lang=scss&
 var poe_itemvue_type_style_index_0_lang_scss_ = __webpack_require__("3ba5");
 
@@ -1751,7 +1751,7 @@ var poe_item_component = Object(componentNormalizer["a" /* default */])(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_item = __webpack_exports__["default"] = (poe_item_component.exports);
@@ -14069,7 +14069,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     if (descriptor && descriptor.get !== getCurrentScript && document.currentScript) {
       return document.currentScript
     }
-  
+
     // IE 8-10 support script readyState
     // IE 11+ & Firefox support stack trace
     try {
@@ -14087,24 +14087,24 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         inlineScriptSourceRegExp,
         inlineScriptSource,
         scripts = document.getElementsByTagName('script'); // Live NodeList collection
-  
+
       if (scriptLocation === currentLocation) {
         pageSource = document.documentElement.outerHTML;
         inlineScriptSourceRegExp = new RegExp('(?:[^\\n]+?\\n){0,' + (line - 2) + '}[^<]*<script>([\\d\\D]*?)<\\/script>[\\d\\D]*', 'i');
         inlineScriptSource = pageSource.replace(inlineScriptSourceRegExp, '$1').trim();
       }
-  
+
       for (var i = 0; i < scripts.length; i++) {
         // If ready state is interactive, return the script tag
         if (scripts[i].readyState === 'interactive') {
           return scripts[i];
         }
-  
+
         // If src matches, return the script tag
         if (scripts[i].src === scriptLocation) {
           return scripts[i];
         }
-  
+
         // If inline source matches, return the script tag
         if (
           scriptLocation === currentLocation &&
@@ -14114,7 +14114,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
           return scripts[i];
         }
       }
-  
+
       // If no match, return null
       return null;
     }
@@ -24649,7 +24649,7 @@ var es_array_concat = __webpack_require__("99af");
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=script&lang=js&
- /* harmony default export */ var passive_poe_passive_imagevue_type_script_lang_js_ = (poe_passive_imagevue_type_script_lang_js_); 
+ /* harmony default export */ var passive_poe_passive_imagevue_type_script_lang_js_ = (poe_passive_imagevue_type_script_lang_js_);
 // EXTERNAL MODULE: ./src/path-of-exile/components/passive/poe-passive-image.vue?vue&type=style&index=0&lang=scss&
 var poe_passive_imagevue_type_style_index_0_lang_scss_ = __webpack_require__("56fb");
 
@@ -24673,7 +24673,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_passive_image = (component.exports);
@@ -24768,7 +24768,7 @@ var showcase_mixin = __webpack_require__("d57b");
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=script&lang=js&
- /* harmony default export */ var passive_poe_passive_showcasevue_type_script_lang_js_ = (poe_passive_showcasevue_type_script_lang_js_); 
+ /* harmony default export */ var passive_poe_passive_showcasevue_type_script_lang_js_ = (poe_passive_showcasevue_type_script_lang_js_);
 // EXTERNAL MODULE: ./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=style&index=0&lang=scss&
 var poe_passive_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__("b90b");
 
@@ -24789,7 +24789,7 @@ var poe_passive_showcase_component = Object(componentNormalizer["a" /* default *
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_passive_showcase = (poe_passive_showcase_component.exports);
@@ -24916,7 +24916,7 @@ var data_object_data_processor = __webpack_require__("22d4");
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=script&lang=js&
- /* harmony default export */ var passive_poe_passivevue_type_script_lang_js_ = (poe_passivevue_type_script_lang_js_); 
+ /* harmony default export */ var passive_poe_passivevue_type_script_lang_js_ = (poe_passivevue_type_script_lang_js_);
 // EXTERNAL MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=style&index=0&lang=scss&
 var poe_passivevue_type_style_index_0_lang_scss_ = __webpack_require__("3da2");
 
@@ -24937,7 +24937,7 @@ var poe_passive_component = Object(componentNormalizer["a" /* default */])(
   null,
   null,
   null
-  
+
 )
 
 /* harmony default export */ var poe_passive = (poe_passive_component.exports);
