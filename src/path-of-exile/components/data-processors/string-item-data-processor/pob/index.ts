@@ -1,7 +1,7 @@
 export default (rawData: String): PoeItem => {
   const item: PoeItem = {} as PoeItem;
 
-  const dataLinesList = rawData.split("\n");
+  const dataLinesList = rawData.split("\n").map((l) => l.trim());
   const selectedVariant = getSelectedVariant(dataLinesList);
   const sections = cleanMetadata(dataLinesList);
 
