@@ -7,4 +7,5 @@ export default (rawData: String): PoeItem => {
     : processGameData(rawData);
 };
 
-const rawDataIsFromPob = (rawData: String) => rawData.startsWith("Rarity:");
+const rawDataIsFromPob = (rawData: String) =>
+  /$(\s*)Rarity:/.test(rawData as string);
