@@ -159,8 +159,19 @@ const getImplicits = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Implicits")
     ?.lines.map((l) => l.replaceAll("(implicit)", "").trim());
-const getSockets = (sections: PoeItemDataSection[]) =>
-  sections.find((x) => x.name === "Sockets")?.lines;
+const getSockets = (sections: PoeItemDataSection[]) => {
+  const socketLine = sections.find((x) => x.name === "Sockets")?.lines[0];
+  if (!socketLine) {
+    return undefined;
+  }
+
+  const socketsMatch = socketLine?.match(/^Sockets: ([A-Z- ]+)$/);
+  if (!socketsMatch) {
+    return undefined;
+  }
+
+  return socketsMatch[1];
+};
 const getProperties = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Properties")

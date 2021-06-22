@@ -24,6 +24,14 @@
       </div>
       <!-- Item stats -->
       <div class="poe-item-stats">
+        <!-- Sockets -->
+        <div class="poe-item-separator" v-if="shouldShowSockets"></div>
+        <poe-item-sockets
+          :sockets="item.sockets"
+          :showBackground="false"
+          :socketReferences="socketReferences"
+          v-if="shouldShowSockets"
+        />
         <!-- Properties -->
         <div class="poe-item-separator" v-if="shouldShowItemProperties"></div>
         <div v-if="shouldShowItemProperties">
@@ -136,15 +144,19 @@
 
 <script>
 import PoeItemImage from "./poe-item-image.vue";
+import PoeItemSockets from "./poe-item-sockets.vue";
 import showcaseMixin from "@/shared/mixins/showcase.mixin";
 
 export default {
   name: "PoeItemShowcase",
   components: {
     PoeItemImage,
+    PoeItemSockets,
   },
   props: {
     item: { type: Object, default: () => {} },
+    showSockets: { type: Boolean, default: false },
+    socketReferences: { type: Object, default: () => {} },
   },
   mixins: [showcaseMixin],
   methods: {
@@ -197,6 +209,9 @@ export default {
     },
   },
   computed: {
+    shouldShowSockets() {
+      return this.showSockets && this.item.sockets;
+    },
     shouldShowItemLevel() {
       return !(
         !this.item.sections.itemLevel ||
