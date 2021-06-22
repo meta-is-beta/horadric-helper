@@ -8,4 +8,4 @@ export default (rawData: String): PoeItem => {
 };
 
 const rawDataIsFromPob = (rawData: String) =>
-  /$(\s*)Rarity:/.test(rawData as string);
+  /^\s*Rarity:/g.test(rawData as string);
