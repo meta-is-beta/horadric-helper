@@ -77,7 +77,7 @@ export default {
   components: { PoePassiveShowcase, PoePassiveImage },
   computed: {
     passive() {
-      return this.showcaseData;
+      return this.data;
     },
     classesComputed() {
       let classes = `poe-passive-showcase ${this.classes}`;

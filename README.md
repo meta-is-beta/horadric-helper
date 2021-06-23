@@ -36,7 +36,10 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 
 ```html
 <p>
-  <poe-item as-icon reference="Frosted Fishscale Gauntlets of Skill"></poe-item>
+  <poe-item
+    as-icon
+    reference="example-item">
+  </poe-item>
 </p>
 ```
 
@@ -44,10 +47,9 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 
 ```html
 <script>
-  let itemConfig = {
-    reference: "Frosted Fishscale Gauntlets of Skill",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
+  window.HoradricHelper.applyConfig({
+    reference: "example-item",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
     data: `
       Item Class: Gloves
       Rarity: Magic
@@ -66,15 +68,13 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
       Adds 1 to 2 Cold Damage to Attacks
       6% Increased Attack Speed
     `,
-  };
-
-  window.HoradricHelper.applyConfig(itemConfig);
+  });
 </script>
 ```
 
 #### 4. Item should be displayed on the page.
 
-![DangYo2](https://meta-is-beta.com/wp-content/uploads/2021/05/de7b6ac2f1887243b844b831f4263347.gif)
+You can see how it works here: [Codepen](https://codepen.io/meta-is-beta/pen/mdWXzBY).
 
 ## Installation
 
@@ -307,14 +307,15 @@ type PoePassive = {
 
 #### 1. Item loaded from data object
 
-As icon, with modified label text and medium icon. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
+As icon, with modified label text and medium icon.
+_(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
 
 ```html
 <!-- Html --->
 <body>
   <div>
     <poe-item
-      reference="Stone of Lazhwar"
+      reference="custom-item"
       as-icon
       icon-size="md"
       label-text="Spell block amulet"
@@ -324,51 +325,39 @@ As icon, with modified label text and medium icon. _(Check it out live on [Codep
 
 <!-- JavaScript --->
 <script>
-  // Declaration of PoeItem object
-  let amuletData = {
-    rarity: "Unique",
-    type: "Equipment",
-    name: "Stone of Lazhwar",
-    baseName: "Lapis Amulet",
-    sections: {
-      requirements: ["Level 5"],
-      implicits: ["+22 to Intelligence"],
-      modifiers: [
-        "14% Chance to Block Spell Damage",
-        "12% increased Cast Speed",
-        "+45 to maximum Mana",
-      ],
-    },
-  };
-
-  // Declaration of PoeConfig object
-  let amuletConfig = {
-    reference: "Stone of Lazhwar",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
-    // Assignment of PoeItem to PoeConfig
-    data: amuletData,
-  };
-
-  // Loading config for <poe-item reference="Stone of Lazhwar"> component
-  window.HoradricHelper.applyConfig(amuletConfig);
+  window.HoradricHelper.applyConfig({
+    reference: "custom-item",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
+    data: {
+      rarity: "Unique",
+      type: "Equipment",
+      name: "Stone of Lazhwar",
+      baseName: "Lapis Amulet",
+      sections: {
+        requirements: ["Level 5"],
+        implicits: ["+22 to Intelligence"],
+        modifiers: [
+          "14% Chance to Block Spell Damage",
+          "12% increased Cast Speed",
+          "+45 to maximum Mana"
+        ]
+      }
+    }
+  });
 </script>
 ```
 
-<p align="center">
-  <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Stone-of-Lazhwar2.png" width="800px"/>
-</p>
+#### 2. Item loaded from raw data from the game
 
-#### 2. Item loaded from data string
-
-As a showcase, with icon inside and with item level hidden. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
+As a showcase, with icon inside and with item level hidden.
+_(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
 
 ```html
 <!-- Html --->
 <body>
   <div>
     <poe-item
-      reference="Goldrim"
+      reference="ingame-item"
       as-showcase
       icon-inside
       hide-sections="item-level"
@@ -378,88 +367,119 @@ As a showcase, with icon inside and with item level hidden. _(Check it out live 
 
 <!-- JavaScript --->
 <script>
-  // Declaration of PoeConfig object
-  let helmConfig = {
-    reference: "Goldrim",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
-
-    // Assignment of raw item data copied from the game
+  window.HoradricHelper.applyConfig({
+    reference: "ingame-item",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
     data: `
-    Item Class: Helmets
-    Rarity: Unique
-    Goldrim
-    Leather Cap
-    --------
-    Evasion Rating: 54 (augmented)
-    --------
-    Sockets: G-G-B-G
-    --------
-    Item Level: 60
-    --------
-    +35 to Evasion Rating
-    10% increased Rarity of Items found
-    +36% to all Elemental Resistances
-    Reflects 4 Physical Damage to Melee Attackers
-    --------
-    No metal slips as easily through the fingers as gold.
-  `,
-  };
-
-  // Loading config for <poe-item reference="Goldrim"> component
-  window.HoradricHelper.applyConfig(helmConfig);
+      Item Class: Helmets
+      Rarity: Unique
+      Goldrim
+      Leather Cap
+      --------
+      Evasion Rating: 54 (augmented)
+      --------
+      Sockets: G-G-B-G
+      --------
+      Item Level: 60
+      --------
+      +35 to Evasion Rating
+      10% increased Rarity of Items found
+      +36% to all Elemental Resistances
+      Reflects 4 Physical Damage to Melee Attackers
+      --------
+      No metal slips as easily through the fingers as gold.
+    `
+  });
 </script>
 ```
 
-<p align="center">
-  <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Goldrim2.png" width="600px"/>
-</p>
+#### 3. Item loaded from raw data from Path of Building
 
-#### 3. Passive loaded from data object
-
-As text, with an icon outside. _(Check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
+As a showcase, with icon outside and with sockets displayed.
+_(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
 
 ```html
 <!-- Html --->
 <body>
   <div>
-    <poe-passive reference="Magnifier" as-text icon-outside></poe-passive>
+    <poe-item
+      reference="pob-item"
+      show-sockets-in-showcase
+      as-showcase
+      icon-outside
+    ></poe-item>
   </div>
 </body>
 
 <!-- JavaScript --->
 <script>
-  // Declaration of PoePassive object
-  let magnifierData = {
-    name: "Magnifier",
-    type: "Notable",
-    sections: {
-      description: [
-        "10% increased Area of Effect",
-        "10% increased Area Damage",
-        "+10% to Critical Strike Multiplier",
-      ],
-    },
-  };
-
-  // Declaration of PoeConfig object
-  let magnifierConfig = {
-    reference: "Magnifier",
-    iconUrl:
-      "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
-
-    // Assignment of PoePassive to PoeConfig
-    data: magnifierData,
-  };
-
-  // Loading config for <poe-passive reference="Magnifier"> component
-  window.HoradricHelper.applyConfig(magnifierConfig);
+  window.HoradricHelper.applyConfig({
+    reference: "pob-item",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
+    data: `
+      Rarity: RARE
+      New Glorious Plate
+      Glorious Plate
+      Shaper Item
+      Elder Item
+      Crafted: true
+      Prefix: {range:0.972}LocalIncreasedPhysicalDamageReductionRatingPercent6
+      Prefix: {range:0.746}LocalBaseArmourAndLife3
+      Prefix: {range:1}DelveBodyArmourAvoidFire1_
+      Suffix: {range:0.5}DelveBodyArmourSocketedSkillsSupportedByArcaneSurge1_
+      Suffix: {range:0.5}DelveStrengthGemLevel1
+      Suffix: {range:0.113}DelveArmourPhysDamageTakenv2_3
+      Quality: 20
+      Sockets: R-R-R-R-R-R
+      LevelReq: 68
+      Implicits: 2
+      {tags:damage}{range:0.5}(40-50)% increased Damage
+      {tags:resistance}+1% to all maximum Resistances
+      +1 to Level of Socketed Strength Gems
+      Socketed Gems are Supported by Level 1 Arcane Surge
+      +82 to Armour
+      91% increased Armour
+      +32 to maximum Life
+      -72 Physical Damage taken from Hits
+      10% chance to Avoid Fire Damage from Hits
+      Corrupted
+    `
+  });
 </script>
 ```
 
-<p align="center">
-  <img src="https://meta-is-beta.com/wp-content/uploads/2021/06/Magnifier2.png" width="600px" />
-</p>
+#### 4. Passive loaded from data object
+
+As text, with an icon outside.
+_(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
+
+```html
+<!-- Html --->
+<body>
+  <div>
+    <poe-passive reference="magnifier-passive" as-text icon-outside></poe-passive>
+  </div>
+</body>
+
+<!-- JavaScript --->
+<script>
+  window.HoradricHelper.applyConfig({
+    reference: "magnifier-passive",
+    iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
+    data: {
+      name: "Magnifier",
+      type: "Notable",
+      sections: {
+        description: [
+          "10% increased Area of Effect",
+          "10% increased Area Damage",
+          "+10% to Critical Strike Multiplier"
+        ]
+      }
+    }
+  });
+</script>
+```
 
 ## Showcase sections
 

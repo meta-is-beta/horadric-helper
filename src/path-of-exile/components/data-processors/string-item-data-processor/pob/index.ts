@@ -1,10 +1,7 @@
 export default (rawData: String): PoeItem => {
   const item: PoeItem = {} as PoeItem;
 
-  const dataLinesList = rawData
-    .split("\n")
-    .map((l) => l.trim())
-    .filter((l) => l.length > 0);
+  const dataLinesList = getDataLinesList(rawData);
   const selectedVariant = getSelectedVariant(dataLinesList);
   const sections = cleanMetadata(dataLinesList);
 
@@ -42,6 +39,12 @@ export default (rawData: String): PoeItem => {
 
   return item;
 };
+
+const getDataLinesList = (rawData: String) =>
+  rawData
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.length > 0);
 
 const getHeaderIndexOffset = (rarity: PoeItemRarity) => {
   return rarity === "rare" || rarity === "unique" ? 1 : 0;

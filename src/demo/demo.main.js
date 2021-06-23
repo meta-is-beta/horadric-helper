@@ -3,6 +3,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "bootstrap/dist/css/bootstrap.css";
 import VTooltip from "v-tooltip";
 import Vue from "vue";
+import "./../shared/register-global-hh-object";
 import Demo from "./Demo.vue";
 
 Vue.config.productionTip = false;

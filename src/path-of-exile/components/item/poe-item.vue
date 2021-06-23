@@ -94,11 +94,13 @@ export default {
   props: {
     showSockets: { type: Boolean, default: false },
     showSocketsInShowcase: { type: Boolean, default: false },
-    socketReferences: { type: Object, default: () => {} },
   },
   computed: {
     item() {
-      return this.showcaseData;
+      return this.data;
+    },
+    socketReferences() {
+      return this.extensions ? this.extensions.socketReferences : void 0;
     },
     classesComputed() {
       let classes = `poe-item-showcase ${this.classes}`;

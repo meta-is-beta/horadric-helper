@@ -24,8 +24,9 @@ export default {
   data() {
     return {
       show: false,
-      showcaseData: {},
+      data: {},
       iconUrl: "",
+      extensions: {},
       popoverWrapperClasses: "horadric-helper-wrapper",
       popoverArrowClasses:
         "horadric-helper-tooltip-arrow horadric-helper-popover-arrow",
@@ -59,70 +60,62 @@ export default {
     labelTextComputed() {
       let labelText = this.labelText
         ? this.labelText
-        : this.showcaseData
-        ? this.showcaseData.name
+        : this.data
+        ? this.data.name
         : "";
 
-      if (this.showStacksInLabel && this.showcaseData.stacks) {
-        labelText = `(${this.showcaseData.stacks}x) ${labelText}`;
+      if (this.showStacksInLabel && this.data.stacks) {
+        labelText = `(${this.data.stacks}x) ${labelText}`;
       }
 
       return labelText;
     },
     shouldShowStacksOnIcon() {
-      return this.showcaseData.stacks && this.showStacks;
+      return this.data.stacks && this.showStacks;
     },
   },
-  mounted() {
+  beforeMount() {
     this.registerShowcase();
+  },
+  mounted() {
+    this.setConfigFromReference(this.reference);
   },
   beforeDestroy() {
     this.unregisterShowcase();
   },
-  watch: {
-    reference: {
-      immediate: true,
-      handler: function (value) {
-        if (!value) {
-          return;
-        }
-
-        const hhObject = window.HoradricHelper;
-        const reference = value;
-
-        if (
-          !hhObject ||
-          !hhObject.showcases ||
-          !hhObject.showcases[reference] ||
-          !hhObject.showcases[reference].showcaseData ||
-          !Object.keys(hhObject.showcases[reference].showcaseData).length
-        ) {
-          return;
-        }
-
-        this.applyConfig(
-          hhObject.showcases[reference].showcaseData,
-          hhObject.showcases[reference].iconUrl
-        );
-      },
-    },
-  },
   methods: {
-    applyConfig(showcaseData, iconUrl) {
-      this.showcaseData = showcaseData;
+    setConfigFromReference(reference) {
+      if (!reference) {
+        return;
+      }
+
+      const hhObject = window.HoradricHelper;
+
+      if (
+        !hhObject ||
+        !hhObject.showcases ||
+        !hhObject.showcases[reference] ||
+        !hhObject.showcases[reference].data ||
+        !Object.keys(hhObject.showcases[reference].data).length
+      ) {
+        return;
+      }
+
+      this.applyConfig(hhObject.showcases[reference]);
+    },
+    applyConfig({ data, iconUrl, extensions }) {
+      this.data = data;
       this.iconUrl = iconUrl;
+      this.extensions = extensions;
       this.show = true;
     },
     registerShowcase() {
-      const hhObject = registerHoradricHelperGlobalObject();
-      const showcases = hhObject.showcases;
-      const reference = this.reference;
+      const showcases = window.HoradricHelper.showcases;
 
-      if (showcases[reference]) {
-        showcases[reference].applyConfigCallbacks.push(this.applyConfig);
+      if (showcases[this.reference]) {
+        showcases[this.reference].applyConfigCallbacks.push(this.applyConfig);
       } else {
-        showcases[reference] = {
-          showcaseData: {},
+        showcases[this.reference] = {
           applyConfigCallbacks: [this.applyConfig],
           ...this.$options.metadata,
         };
@@ -177,64 +170,4 @@ const getSelectedSections = (sectionsString) => {
   } catch {
     return {};
   }
-};
-
-const registerHoradricHelperGlobalObject = () => {
-  window.HoradricHelper = window.HoradricHelper || {
-    showcases: {},
-    applyConfig(config) {
-      if (Array.isArray(config)) {
-        applyConfigFromArray(config);
-      } else {
-        applyConfigFromObject(config);
-      }
-    },
-  };
-
-  return window.HoradricHelper;
-};
-
-const applyConfigFromArray = (configArray) => {
-  configArray.forEach((configObject) => applyConfigFromObject(configObject));
-};
-
-const applyConfigFromObject = ({ reference, data, iconUrl }) => {
-  const referencedShowcase = window.HoradricHelper.showcases[reference];
-
-  if (!referencedShowcase) {
-    return;
-  }
-
-  if (typeof data === "string") {
-    if (!referencedShowcase.processStringData) {
-      throw new Error(
-        `String data processor is not plemented for showcase of type "${referencedShowcase.type}"`
-      );
-    }
-    referencedShowcase.showcaseData = referencedShowcase.processStringData(
-      data
-    );
-  } else if (typeof data === "object") {
-    if (!referencedShowcase.processDataObject) {
-      referencedShowcase.processDataObject = (data) => data;
-    }
-    referencedShowcase.showcaseData = referencedShowcase.processDataObject(
-      data
-    );
-  } else {
-    throw new Error("Showcase data not provided");
-  }
-
-  referencedShowcase.iconUrl = iconUrl;
-
-  referencedShowcase.applyConfigCallbacks.forEach((callback) => {
-    if (!callback || typeof callback !== "function") {
-      return;
-    }
-    try {
-      callback(referencedShowcase.showcaseData, iconUrl);
-    } catch {
-      // no-op
-    }
-  });
 };
