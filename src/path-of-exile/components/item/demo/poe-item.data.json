@@ -104,6 +104,7 @@
     {
       "props": {
         "asIcon": true,
+        "show-sockets": true,
         "labelText": "",
         "iconSize": "md",
         "iconInside": true
@@ -450,13 +451,25 @@
     {
       "props": {
         "icon-inside": true,
-        "as-showcase": true,
+        "as-icon": true,
+        "as-showcase": false,
+        "show-sockets": true,
         "show-sockets-in-showcase": true
       },
       "config": {
         "reference": "New Glorious Plate",
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
-        "data": "Rarity: RARE\nNew Glorious Plate\nGlorious Plate\nShaper Item\nElder Item\nCrafted: true\nPrefix: {range:0.972}LocalIncreasedPhysicalDamageReductionRatingPercent6\nPrefix: {range:0.746}LocalBaseArmourAndLife3\nPrefix: {range:1}DelveBodyArmourAvoidFire1_\nSuffix: {range:0.5}DelveBodyArmourSocketedSkillsSupportedByArcaneSurge1_\nSuffix: {range:0.5}DelveStrengthGemLevel1\nSuffix: {range:0.113}DelveArmourPhysDamageTakenv2_3\nQuality: 20\nSockets: R-R-R-R-R-R\nLevelReq: 68\nImplicits: 2\n{tags:damage}{range:0.5}(40-50)% increased Damage\n{tags:resistance}+1% to all maximum Resistances\n+1 to Level of Socketed Strength Gems\nSocketed Gems are Supported by Level 1 Arcane Surge\n+82 to Armour\n91% increased Armour\n+32 to maximum Life\n-72 Physical Damage taken from Hits\n10% chance to Avoid Fire Damage from Hits\nCorrupted"
+        "data": "Rarity: RARE\nNew Glorious Plate\nGlorious Plate\nShaper Item\nElder Item\nCrafted: true\nPrefix: {range:0.972}LocalIncreasedPhysicalDamageReductionRatingPercent6\nPrefix: {range:0.746}LocalBaseArmourAndLife3\nPrefix: {range:1}DelveBodyArmourAvoidFire1_\nSuffix: {range:0.5}DelveBodyArmourSocketedSkillsSupportedByArcaneSurge1_\nSuffix: {range:0.5}DelveStrengthGemLevel1\nSuffix: {range:0.113}DelveArmourPhysDamageTakenv2_3\nQuality: 20\nSockets: R-R-R-R-R-R\nLevelReq: 68\nImplicits: 2\n{tags:damage}{range:0.5}(40-50)% increased Damage\n{tags:resistance}+1% to all maximum Resistances\n+1 to Level of Socketed Strength Gems\nSocketed Gems are Supported by Level 1 Arcane Surge\n+82 to Armour\n91% increased Armour\n+32 to maximum Life\n-72 Physical Damage taken from Hits\n10% chance to Avoid Fire Damage from Hits\nCorrupted",
+        "extensions": {
+          "socketReferences": {
+            "1": "Flammability",
+            "2": "Divergent Multiple Totems Support",
+            "3": "Divergent Multiple Totems Support",
+            "4": "Divergent Multiple Totems Support",
+            "5": "Divergent Multiple Totems Support",
+            "6": "Divergent Multiple Totems Support"
+          }
+        }
       }
     },
     {

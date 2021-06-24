@@ -16583,6 +16583,14 @@ var es_string_includes = __webpack_require__("2532");
         delete showcases[reference];
       }
     }
+  },
+  watch: {
+    reference: {
+      immediate: false,
+      handler: function handler(value) {
+        this.setConfigFromReference(value);
+      }
+    }
   }
 });
 

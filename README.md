@@ -2,7 +2,8 @@
 
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
-A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you website using Html tags. See it in action on my [blog](https://meta-is-beta.com/?p=40).
+A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you website using Html tags.
+To see more examples see post on my [blog](https://meta-is-beta.com/?p=40).
 
 **Currently supported games** (as of version v0.7 Beta)
 
@@ -136,6 +137,10 @@ You can apply props to set or change behaviour for individual components.
 | `icon-inside` | `Bool` | Show icon inside of showcase. (_Only works if `iconUrl` was provided in config_) |
 | `icon-outside` | `Bool` | Show icon outside of showcase. (_Only works if `iconUrl` was provided in config_) |
 | `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set the size of the icon. Default is `auto`. |
+| `show-stacks` | `Bool` | Displays amount of stacks when in `as-icon` mode as number above icon. _(Stacks are defined in ether "stacks" section of Item Config or in raw data copied from the game)_ |
+| `show-stacks-in-label` | `Bool` | Displays amount of stacks when in `as-icon` or `as-text` mode as number in label. _(Stacks are defined in ether "stacks" section of Item Config or in raw data copied from the game)_|
+| `show-sockets` | `Bool` | Displays sockets under icon when in `as-icon` mode. |
+| `show-sockets-in-showcase` | `Bool` | Displays sockets inside of showcase. |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
 
@@ -180,6 +185,21 @@ type PoeConfig = {
   // Required
   // Object which describes all properties of item or passive you want to display or string with raw item data.
   data: PoeItem | PoePassive | String;
+
+  // Optional
+  // Object with extension data for config that does not fit into "data" field
+  extensions?: {
+    // Optional
+    // Dictionary that assigns item references to sockets.
+    // Referenced items need to also have thir config defined.
+    // Eg:
+    // socketReferences: {
+    //    1: "Shield Charge",
+    //    2: "Fortify"
+    //    3: "Increased Duration Support"
+    //  }
+    socketReferences?: { [Number]: String }
+  }
 };
 ```
 
@@ -498,7 +518,8 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 | `modifiers` | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 | `statuses` | `statuses` | `String[]` | Avalible statuses: `corrupted`, `mirrored`, `split`.  |
 | `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. |
-| `talismanTier` | `talisman-tier` | `String` | Numerical value of talisman tier. |
+| `talismanTier` | `talisman-tier` | `String` | String of numerical value of talisman tier. |
+| `stacks` | `stacks` | "Number" | Numerical value of how many of given item there is. |
 
 ### `PoePassive` sections
 
@@ -517,13 +538,13 @@ You can target entire sections by passing section names separated by `;`.
 **Format**
 
 ```js
-hide - sections = "section1;section2;section3";
+hide-sections = "section1;section2;section3";
 ```
 
 or
 
 ```js
-hide - sections = "section1:all;section2:all;section3:all";
+hide-sections = "section1:all;section2:all;section3:all";
 ```
 
 **Example**
@@ -550,7 +571,7 @@ To target specific lines you can pass numbers of lines separated by `,` after th
 **Format**
 
 ```js
-hide - sections = "section1:1,2;section2:4,5,6;section3:1";
+hide-sections = "section1:1,2;section2:4,5,6;section3:1";
 ```
 
 **Example**

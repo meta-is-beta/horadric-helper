@@ -9,7 +9,7 @@
   },
 };
 
-const applyConfigFromArray = (configArray: ShowcaseConfig[]) => {
+const applyConfigFromArray = (configArray: ShowcaseConfig[]): void => {
   configArray.forEach((configObject) => applyConfigFromObject(configObject));
 };
 
@@ -18,7 +18,7 @@ const applyConfigFromObject = ({
   data,
   iconUrl,
   extensions,
-}: ShowcaseConfig) => {
+}: ShowcaseConfig): void => {
   const referencedShowcase = (window as any).HoradricHelper.showcases[
     reference
   ] as Showcase;
@@ -36,7 +36,7 @@ const applyConfigFromObject = ({
     referencedShowcase.data = referencedShowcase.processStringData(data);
   } else if (typeof data === "object") {
     if (!referencedShowcase.processDataObject) {
-      referencedShowcase.processDataObject = (data: DataObject) => data;
+      referencedShowcase.processDataObject = (data: object) => data;
     }
     referencedShowcase.data = referencedShowcase.processDataObject(data);
   } else {

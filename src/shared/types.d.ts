@@ -1,11 +1,9 @@
 type ShowcaseConfig = {
   reference: string;
-  data: DataObject;
+  data: object;
   extensions?: object;
   iconUrl?: string;
 };
-
-type DataObject = {};
 
 type Showcase = {
   data: object;

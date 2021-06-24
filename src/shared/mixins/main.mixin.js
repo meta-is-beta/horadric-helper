@@ -150,6 +150,14 @@ export default {
       }
     },
   },
+  watch: {
+    reference: {
+      immediate: false,
+      handler: function (value) {
+        this.setConfigFromReference(value);
+      },
+    },
+  },
 };
 
 const getSelectedSections = (sectionsString) => {
