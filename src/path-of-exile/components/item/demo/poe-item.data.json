@@ -516,6 +516,119 @@
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Amulets/HeistAmulet2.png",
         "data": "Rarity: RARE\nBeef Amulet\nSimplex Amulet\nCrusader Item\nRedeemer Item\nCrafted: true\nPrefix: {range:0.137}SpellDamage5\nPrefix: {range:0.863}AddedPhysicalDamage6\nPrefix: None\nSuffix: {range:0.5}FireDamagePercent3\nSuffix: {range:0.415}CriticalStrikeChance5\nSuffix: None\nCatalyst: Imbued\nCatalystQuality: 20\nQuality: 0\nLevelReq: 60\nImplicits: 5\n{crafted}Allocates Beef\n-1 Prefix Modifier allowed\n-1 Suffix Modifier allowed\nImplicit Modifiers Cannot Be Changed\n25% increased Explicit Modifier magnitudes\n27% increased Spell Damage\nAdds 9 to 15 Physical Damage to Attacks\n15% increased Fire Damage\n32% increased Global Critical Strike Chance"
       }
+    },
+    {
+      "props": {
+        "icon-inside": true,
+        "as-icon": true,
+        "show-sockets": true,
+        "show-sockets-in-showcase": true
+      },
+      "config": {
+        "reference": "Fortify Shield",
+        "extensions": {
+          "socketReferences": {
+            "1": "Shield Charge",
+            "2": "Fortify Support",
+            "3": "Increased Duration Support"
+          }
+        },
+        "data": "\nRarity: RARE\nFortify Shield\nHeat-attuned Tower Shield\nCrafted: true\nPrefix: {range:0.165}IncreasedLife7\nPrefix: {range:0.38}LocalIncreasedPhysicalDamageReductionRatingPercent6\nPrefix: None\nSuffix: None\nSuffix: {range:0.739}AllResistances4\nSuffix: {range:0.5}Strength5\nQuality: 20\nSockets: R-R-R\nLevelReq: 70\nImplicits: 1\nScorch Enemies when you Block their Damage\n+30 to Strength\n84% increased Armour\n+71 to maximum Life\n+13% to all Elemental Resistances\n",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Armours/Shields/HeistShield.png"
+      }
+    },
+    {
+      "props": {},
+      "config": {
+        "reference": "Shield Charge",
+        "data": {
+          "name": "Shield Charge",
+          "baseName": "Shield Charge",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "sections": {
+            "gemDescription": [
+              "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing off-hand damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike."
+            ],
+            "modifiers": [
+              "75% increased Stun Threshold reduction on enemies at Maximum charge distance",
+              "(90-109)% increased Movement Speed",
+              "100% more Damage with Hits at Maximum Charge Distance",
+              "(16-190) to (24-284) Base Off Hand Physical Damage",
+              "3 to 4 Added Physical Damage per 15 Armour or Evasion Rating on Shield",
+              "Base Off Hand Attack time is (0.53-0.48) seconds",
+              "+0.2% to Critical Strike Chance per 10 Maximum Energy Shield on Shield",
+              "Base Off Hand Critical Strike Chance is 5%"
+            ],
+            "properties": [
+              "Attack, AoE, Movement, Travel, Melee",
+              "Cast Time: 1s",
+              "Radius: 8",
+              "Radius 2: 16",
+              "Mana Cost: 10",
+              "Attack Speed: 100%",
+              "Effectiveness of Added Damage: 100%",
+              "Damage Multiplier: 100%"
+            ]
+          }
+        },
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/ShieldCharge.png"
+      }
+    },
+    {
+      "props": {},
+      "config": {
+        "reference": "Fortify Support",
+        "data": {
+          "name": "Fortify Support",
+          "baseName": "Fortify Support",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "sections": {
+            "gemDescription": [
+              "Supports melee attack skills that are not triggered."
+            ],
+            "modifiers": [
+              "Supported Skills grant Fortify on Melee hit",
+              "Supported Skills deal (20-34)% more Melee Damage",
+              "Supported Skills have (15-34)% increased Fortify duration",
+              "Supported Skills deal (20-34)% more Damage with Ailments caused by Melee Hits"
+            ],
+            "properties": [
+              "Mana Multiplier: 130%",
+              "Attack Speed: 100%",
+              "Effectiveness of Added Damage: 100%",
+              "Damage Multiplier: 100%"
+            ]
+          }
+        },
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/FortifyGem.png"
+      }
+    },
+    {
+      "props": {},
+      "config": {
+        "reference": "Increased Duration Support",
+        "data": {
+          "name": "Increased Duration Support",
+          "baseName": "Increased Duration Support",
+          "rarity": "Gem",
+          "class": "Skill Gems",
+          "sections": {
+            "gemDescription": ["Supports any skill with a duration."],
+            "modifiers": [
+              "Supported Skills have (45-64)% increased Skill Effect Duration"
+            ],
+            "properties": [
+              "Mana Multiplier: 140%",
+              "Attack Speed: 100%",
+              "Effectiveness of Added Damage: 100%",
+              "Damage Multiplier: 100%"
+            ]
+          }
+        },
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/IncreasedDuration.png"
+      }
     }
   ]
 }

@@ -114,6 +114,10 @@ export default {
 
   &.poe-icon-label {
     background-color: rgba(1, 1, 1, 0.5);
+    & div {
+      padding: 0 !important;
+      line-height: 0 !important;
+    }
   }
 
   & > .poe-socket {
