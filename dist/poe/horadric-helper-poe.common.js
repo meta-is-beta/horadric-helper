@@ -279,78 +279,6 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ }),
 
-/***/ "06d3":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = __webpack_require__("7037").default;
-
-__webpack_require__("159b");
-
-window.HoradricHelper = window.HoradricHelper || {
-  showcases: {},
-  applyConfig: function applyConfig(config) {
-    if (Array.isArray(config)) {
-      applyConfigFromArray(config);
-    } else {
-      applyConfigFromObject(config);
-    }
-  }
-};
-
-var applyConfigFromArray = function applyConfigFromArray(configArray) {
-  configArray.forEach(function (configObject) {
-    return applyConfigFromObject(configObject);
-  });
-};
-
-var applyConfigFromObject = function applyConfigFromObject(_ref) {
-  var reference = _ref.reference,
-      data = _ref.data,
-      iconUrl = _ref.iconUrl,
-      extensions = _ref.extensions;
-  var referencedShowcase = window.HoradricHelper.showcases[reference];
-
-  if (!referencedShowcase) {
-    throw new Error("Showcase for ".concat(reference, " was not registered."));
-  }
-
-  if (typeof data === "string") {
-    if (!referencedShowcase.processStringData) {
-      throw new Error("String data processor is not plemented for showcase of type \"".concat(referencedShowcase.type, "\""));
-    }
-
-    referencedShowcase.data = referencedShowcase.processStringData(data);
-  } else if (_typeof(data) === "object") {
-    if (!referencedShowcase.processDataObject) {
-      referencedShowcase.processDataObject = function (data) {
-        return data;
-      };
-    }
-
-    referencedShowcase.data = referencedShowcase.processDataObject(data);
-  } else {
-    throw new Error("Showcase data was not provided");
-  }
-
-  referencedShowcase.iconUrl = iconUrl;
-  referencedShowcase.extensions = extensions;
-  referencedShowcase.applyConfigCallbacks.forEach(function (callback) {
-    if (!callback || typeof callback !== "function") {
-      return;
-    }
-
-    try {
-      callback(referencedShowcase);
-    } catch (_unused) {// no-op
-    }
-  });
-};
-
-/***/ }),
-
 /***/ "07ac":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -575,6 +503,20 @@ function baseRest(func, start) {
 
 module.exports = baseRest;
 
+
+/***/ }),
+
+/***/ "1237":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  methods: {
+    getGlobalObject: function getGlobalObject() {
+      return window.HoradricHelper.PathOfExile;
+    }
+  }
+});
 
 /***/ }),
 
@@ -934,12 +876,12 @@ module.exports = isObject;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=f4b5ceee&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=02c3bfd7&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconUrl,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections,"showSockets":_vm.showSocketsInShowcase,"socketReferences":_vm.socketReferences}})],1):_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('v-popover',{attrs:{"trigger":"hover click","placement":"auto","offset":20,"hideOnTargetClick":"","popoverClass":_vm.popoverClassesComputed,"popoverWrapperClass":_vm.popoverWrapperClasses,"popoverBaseClass":_vm.popoverBaseClasses,"popoverInnerClass":_vm.popoverInnerClasses,"popoverArrowClass":_vm.popoverArrowClasses}},[_c('template',{slot:"popover"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconUrl,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections,"showSockets":_vm.showSocketsInShowcase,"socketReferences":_vm.socketReferences}})],1),(_vm.displayMode === "icon")?_c('div',[(_vm.shouldShowStacksOnIcon)?_c('svg',{staticClass:"poe-item-stacks"},[_c('text',{attrs:{"x":"2","y":"18"}},[_vm._v(_vm._s(_vm.item.stacks))])]):_vm._e(),_c('poe-item-image',{attrs:{"iconSize":_vm.iconSize,"iconUrl":_vm.iconUrl,"type":_vm.item.type}}),(_vm.shouldShowSockets)?_c('poe-item-sockets',{attrs:{"sockets":_vm.item.sockets,"socketReferences":_vm.socketReferences}}):_vm._e(),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))]),(_vm.shouldShowBaseName)?_c('div',{staticClass:"poe-icon-sublabel"},[_vm._v(" "+_vm._s(_vm.item.baseName)+" ")]):_vm._e()]):_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{class:_vm.linkClassesComputed},[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])],2)],1)]):_vm._e()}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=f4b5ceee&
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=template&id=02c3bfd7&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
@@ -1067,12 +1009,12 @@ var component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var poe_item_image = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=edd23c32&
-var poe_item_socketsvue_type_template_id_edd23c32_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:"poe-sockets " + (_vm.showBackground ? "poe-icon-label" : "")},[_vm._l((_vm.socketsList),function(socket,index){return [(_vm.socketReferences && _vm.socketReferences[index + 1])?_c('div',[_c('poe-item',{key:(index + "-item"),ref:("poe-item-" + index),refInFor:true,attrs:{"reference":_vm.socketReferences[index + 1],"show-as-text":"","icon-inside":"","classes":("poe-socketed-item poe-socket poe-item-socket-" + socket),"label-text":"◉"}})],1):_vm._e(),_c('div',{key:(index + "-socket"),class:_vm.getSocketClasses(socket, index)}),(_vm.linksList[index])?_c('div',{key:(index + "-link"),staticClass:"socket-link"}):_vm._e()]})],2)}
-var poe_item_socketsvue_type_template_id_edd23c32_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=64122704&
+var poe_item_socketsvue_type_template_id_64122704_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:"poe-sockets " + (_vm.showBackground ? "poe-icon-label" : "")},[_vm._l((_vm.socketsList),function(socket,index){return [(_vm.socketReferences && _vm.socketReferences[index + 1])?_c('div',[_c('poe-item',{key:(index + "-item"),ref:("poe-item-" + index),refInFor:true,attrs:{"reference":_vm.socketReferences[index + 1],"show-as-text":"","icon-inside":"","classes":("poe-socketed-item poe-socket poe-item-socket-" + socket),"label-text":"◉"}})],1):_vm._e(),_c('div',{key:(index + "-socket"),class:_vm.getSocketClasses(socket, index)}),(_vm.linksList[index])?_c('div',{key:(index + "-link"),staticClass:"socket-link"}):_vm._e()]})],2)}
+var poe_item_socketsvue_type_template_id_64122704_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=edd23c32&
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-sockets.vue?vue&type=template&id=64122704&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
@@ -1181,7 +1123,7 @@ var es_array_filter = __webpack_require__("4de4");
 
     if (this.socketReferences) {
       Object.values(this.socketReferences).forEach(function (r) {
-        var referencedItem = window.HoradricHelper.showcases[r];
+        var referencedItem = window.HoradricHelper.PathOfExile.showcases[r];
 
         if (!referencedItem) {
           return;
@@ -1239,8 +1181,8 @@ var poe_item_socketsvue_type_style_index_0_lang_scss_ = __webpack_require__("53f
 
 var poe_item_sockets_component = Object(componentNormalizer["a" /* default */])(
   item_poe_item_socketsvue_type_script_lang_js_,
-  poe_item_socketsvue_type_template_id_edd23c32_render,
-  poe_item_socketsvue_type_template_id_edd23c32_staticRenderFns,
+  poe_item_socketsvue_type_template_id_64122704_render,
+  poe_item_socketsvue_type_template_id_64122704_staticRenderFns,
   false,
   null,
   null,
@@ -1627,14 +1569,11 @@ var poe_item_showcase_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var poe_item_showcase = (poe_item_showcase_component.exports);
-// EXTERNAL MODULE: ./src/shared/mixins/main.mixin.js + 2 modules
+// EXTERNAL MODULE: ./src/shared/mixins/main.mixin.js
 var main_mixin = __webpack_require__("b7f2");
 
-// EXTERNAL MODULE: ./src/path-of-exile/components/data-processors/string-item-data-processor/index.ts + 9 modules
-var string_item_data_processor = __webpack_require__("dada");
-
-// EXTERNAL MODULE: ./src/path-of-exile/components/data-processors/data-object-data-processor/index.ts
-var data_object_data_processor = __webpack_require__("22d4");
+// EXTERNAL MODULE: ./src/path-of-exile/components/mixins/poe-entity.mixin.js
+var poe_entity_mixin = __webpack_require__("1237");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item.vue?vue&type=script&lang=js&
 
@@ -1720,7 +1659,6 @@ var data_object_data_processor = __webpack_require__("22d4");
 
 
 
-
 /* harmony default export */ var poe_itemvue_type_script_lang_js_ = ({
   name: "PoeItem",
   components: {
@@ -1728,7 +1666,7 @@ var data_object_data_processor = __webpack_require__("22d4");
     PoeItemImage: poe_item_image,
     PoeItemSockets: poe_item_sockets
   },
-  mixins: [main_mixin["a" /* default */]],
+  mixins: [main_mixin["a" /* default */], poe_entity_mixin["a" /* default */]],
   props: {
     showSockets: {
       type: Boolean,
@@ -1784,11 +1722,6 @@ var data_object_data_processor = __webpack_require__("22d4");
     shouldShowSockets: function shouldShowSockets() {
       return this.showSockets && this.item.sockets;
     }
-  },
-  metadata: {
-    type: "poe-item",
-    processStringData: string_item_data_processor["a" /* default */],
-    processDataObject: data_object_data_processor["a" /* default */]
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item.vue?vue&type=script&lang=js&
@@ -2227,20 +2160,6 @@ function overRest(func, start, transform) {
 
 module.exports = overRest;
 
-
-/***/ }),
-
-/***/ "22d4":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = (function (data) {
-  if (!data.sections) {
-    data.sections = {};
-  }
-
-  return data;
-});
 
 /***/ }),
 
@@ -16288,104 +16207,24 @@ module.exports = assignMergeValue;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
-var es_symbol = __webpack_require__("a4d3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__("4de4");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__("e439");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
-var web_dom_collections_for_each = __webpack_require__("159b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
-var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-
-
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__("b0c0");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__("99af");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
-var es_array_splice = __webpack_require__("a434");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("1276");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("caad");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("2532");
-
-// CONCATENATED MODULE: ./src/shared/mixins/main.mixin.js
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b0c0");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("99af");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("b64b");
+/* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("a434");
+/* harmony import */ var core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("1276");
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("ac1f");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("159b");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("caad");
+/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("2532");
+/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -16395,8 +16234,7 @@ var es_string_includes = __webpack_require__("2532");
 
 
 
-
-/* harmony default export */ var main_mixin = __webpack_exports__["a"] = ({
+/* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     classes: {
       type: String,
@@ -16520,7 +16358,7 @@ var es_string_includes = __webpack_require__("2532");
         return;
       }
 
-      var hhObject = window.HoradricHelper;
+      var hhObject = this.getGlobalObject();
 
       if (!hhObject || !hhObject.showcases || !hhObject.showcases[reference] || !hhObject.showcases[reference].data || !Object.keys(hhObject.showcases[reference].data).length) {
         return;
@@ -16538,18 +16376,18 @@ var es_string_includes = __webpack_require__("2532");
       this.show = true;
     },
     registerShowcase: function registerShowcase() {
-      var showcases = window.HoradricHelper.showcases;
+      var showcases = this.getGlobalObject().showcases;
 
       if (showcases[this.reference]) {
         showcases[this.reference].applyConfigCallbacks.push(this.applyConfig);
       } else {
-        showcases[this.reference] = _objectSpread2({
+        showcases[this.reference] = {
           applyConfigCallbacks: [this.applyConfig]
-        }, this.$options.metadata);
+        };
       }
     },
     unregisterShowcase: function unregisterShowcase() {
-      var hhObject = window.HoradricHelper;
+      var hhObject = this.getGlobalObject();
 
       if (!hhObject) {
         return;
@@ -17604,971 +17442,6 @@ module.exports =
   (function () { return this; })() || Function('return this')();
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
-/***/ "dada":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
-var es_array_find = __webpack_require__("7db0");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__("b0c0");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
-var es_string_match = __webpack_require__("466d");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
-var es_string_trim = __webpack_require__("498a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("caad");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("2532");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__("d81d");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__("4de4");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
-var es_string_starts_with = __webpack_require__("2ca0");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("1276");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__("5319");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
-var web_dom_collections_for_each = __webpack_require__("159b");
-
-// CONCATENATED MODULE: ./src/path-of-exile/components/data-processors/string-item-data-processor/game/sections-mapper.ts
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ var sections_mapper = (function (rawData) {
-  var rawSections = rawDataToRawSections(rawData);
-  var namedSections = rawSectionsToNamedSections(rawSections);
-  namedSections = fillUnknownSections(namedSections);
-  namedSections = removeUnknownSections(namedSections);
-  return namedSections;
-});
-
-var rawDataToRawSections = function rawDataToRawSections(rawData) {
-  var lines = splitDescriptionToLines(rawData);
-  var rawSections = splitLinesIntoSections(lines);
-  var sections = cleanupRawSections(rawSections);
-  return sections;
-};
-
-var rawSectionsToNamedSections = function rawSectionsToNamedSections(rawSections) {
-  return rawSections.map(function (lines, index) {
-    return {
-      name: getSectionName(lines),
-      lines: lines,
-      index: index
-    };
-  });
-};
-
-var splitDescriptionToLines = function splitDescriptionToLines(rawData) {
-  return rawData.split("\n").map(function (line) {
-    return line.replace("\r", "");
-  }).filter(function (x) {
-    return x.length > 0;
-  });
-};
-
-var splitLinesIntoSections = function splitLinesIntoSections(descriptionLines) {
-  var sections = [];
-  var section = [];
-  descriptionLines.forEach(function (line, index) {
-    if (line.startsWith("----")) {
-      sections.push(section);
-      section = [];
-    } else if (index + 1 === descriptionLines.length) {
-      section.push(line);
-      sections.push(section);
-      section = [];
-    } else {
-      section.push(line);
-    }
-  });
-  return sections;
-};
-
-var cleanupRawSections = function cleanupRawSections(rawSections) {
-  return rawSections.map(function (s) {
-    return s.map(function (l) {
-      return l.trim();
-    }).filter(function (l) {
-      return l.length > 0;
-    });
-  });
-};
-
-var getSectionName = function getSectionName(section) {
-  if (section.some(function (x) {
-    return x.startsWith("Item Class:");
-  })) {
-    return "Header";
-  }
-
-  if (section.some(function (x) {
-    return x.startsWith("Requirements:");
-  })) {
-    return "Requirements";
-  }
-
-  if (section.some(function (x) {
-    return x.startsWith("Item Level:");
-  })) {
-    return "Item level";
-  }
-
-  if (section.some(function (x) {
-    return x.includes("(enchant)");
-  })) {
-    return "Enchants";
-  }
-
-  if (section.some(function (x) {
-    return x.includes("(implicit)");
-  })) {
-    return "Implicits";
-  }
-
-  if (section.some(function (x) {
-    return x.startsWith("Quality");
-  })) {
-    return "Properties";
-  }
-
-  if (section.some(function (x) {
-    return x.startsWith("Sockets:");
-  })) {
-    return "Sockets";
-  }
-
-  if (section.some(function (x) {
-    return x.match(/^([A-Z][a-z]*) Item$/);
-  })) {
-    return "Influences";
-  }
-
-  if (section.some(function (x) {
-    return x.match(/^Corrupted$/);
-  })) {
-    return "Corrupted status";
-  }
-
-  if (section.some(function (x) {
-    return x.match(/^Split$/);
-  })) {
-    return "Split status";
-  }
-
-  if (section.some(function (x) {
-    return x.match(/^Mirrored$/);
-  })) {
-    return "Mirrored status";
-  }
-
-  if (section.some(function (x) {
-    return x.match(/^Talisman Tier:/);
-  })) {
-    return "Talisman tier";
-  }
-
-  return "Unknown";
-};
-
-var fillUnknownSections = function fillUnknownSections(sections) {
-  var unknownSections = sections.filter(function (section) {
-    return section.name === "Unknown";
-  });
-
-  if (!unknownSections || unknownSections.length <= 0) {
-    return sections;
-  }
-
-  var headerSection = sections.find(function (x) {
-    return x.name === "Header";
-  });
-
-  if (!headerSection) {
-    return sections;
-  }
-
-  var headerSectionIndex = headerSection === null || headerSection === void 0 ? void 0 : headerSection.index;
-  var itemRarityLine = headerSection.lines[1];
-  var itemIsGem = itemRarityLine.includes("Gem");
-  var itemIsNormal = itemRarityLine.includes("Normal");
-
-  if (sections[headerSectionIndex + 1].name === "Unknown") {
-    sections[headerSectionIndex + 1].name = "Properties";
-  }
-
-  if (!itemIsNormal && !itemIsGem) {
-    var _sections$find;
-
-    var modifiersIndex = (_sections$find = sections.find(function (x) {
-      return x.name === "Unknown";
-    })) === null || _sections$find === void 0 ? void 0 : _sections$find.index;
-    if (modifiersIndex) sections[modifiersIndex].name = "Modifiers";
-  }
-
-  if (itemIsGem) {
-    var _sections$find2;
-
-    var gemDescriptionIndex = (_sections$find2 = sections.find(function (x) {
-      return x.name === "Unknown";
-    })) === null || _sections$find2 === void 0 ? void 0 : _sections$find2.index;
-
-    if (gemDescriptionIndex) {
-      sections[gemDescriptionIndex].name = "Gem description";
-
-      if (sections[gemDescriptionIndex + 1].name === "Unknown") {
-        sections[gemDescriptionIndex + 1].name = "Modifiers";
-      }
-    }
-  }
-
-  return sections;
-};
-
-var removeUnknownSections = function removeUnknownSections(sections) {
-  return sections.filter(function (x) {
-    return x.name !== "Unknown";
-  });
-};
-// CONCATENATED MODULE: ./src/path-of-exile/components/data-processors/string-item-data-processor/game/index.ts
-
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ var game = (function (rawData) {
-  var sections = sections_mapper(rawData);
-  var headerSection = getHeaderSection(sections);
-  var itemClass = getItemClass(headerSection);
-  var properties = getProperties(sections);
-  return {
-    class: itemClass,
-    rarity: getItemRarity(headerSection),
-    type: getItemType(itemClass),
-    name: getItemName(headerSection),
-    baseName: getItemBaseName(headerSection),
-    influences: game_getItemInfluences(sections),
-    sockets: getSockets(sections),
-    stacks: getStacks(properties),
-    sections: {
-      itemLevel: getItemLevel(sections),
-      talismanTier: getTalismanTier(sections),
-      requirements: getRequirements(sections),
-      properties: properties,
-      enchants: getEnchants(sections),
-      implicits: getImplicits(sections),
-      modifiers: getModifiers(sections),
-      gemDescription: getGemDescription(sections),
-      statuses: getItemStatuses(sections)
-    }
-  };
-});
-
-var getHeaderSection = function getHeaderSection(sections) {
-  return sections.find(function (x) {
-    return x.name === "Header";
-  });
-};
-
-var getItemClass = function getItemClass(headerSection) {
-  var classMatch = headerSection.lines[0].match(/^Item Class: ([A-z ]+)$/);
-
-  if (classMatch && classMatch.length > 0) {
-    return classMatch[1].trim();
-  }
-
-  return "";
-};
-
-var getItemRarity = function getItemRarity(headerSection) {
-  var rarityMatch = headerSection.lines[1].match(/^Rarity: ([A-z ]+)$/);
-
-  if (rarityMatch && rarityMatch.length > 0) {
-    return rarityMatch[1].trim();
-  }
-
-  return "";
-};
-
-var getItemName = function getItemName(headerSection) {
-  return headerSection.lines[2].trim();
-};
-
-var getItemType = function getItemType(itemClass) {
-  if (itemClass.includes("Jewel")) return "jewel";
-  if (itemClass.includes("Flask")) return "flask";
-  if (itemClass.includes("Gem")) return "gem";
-  if (itemClass.includes("Currency")) return "currency";
-  if (itemClass.includes("Maps")) return "map";
-  return "equipment";
-};
-
-var getItemBaseName = function getItemBaseName(headerSection) {
-  return headerSection.lines[headerSection.lines.length - 1].trim();
-};
-
-var game_getItemInfluences = function getItemInfluences(sections) {
-  var influencesSection = sections.find(function (x) {
-    return x.name === "Influences";
-  });
-
-  if (!influencesSection) {
-    return [];
-  }
-
-  return influencesSection.lines.map(function (line) {
-    var lineMatch = line.match(/^([A-Z][a-z]+) Item$/);
-
-    if (lineMatch && lineMatch.length > 0) {
-      return lineMatch[1].toLowerCase().trim();
-    }
-
-    return "";
-  });
-};
-
-var getItemLevel = function getItemLevel(sections) {
-  var itemLevelSection = sections.find(function (x) {
-    return x.name === "Item level";
-  });
-
-  if (!itemLevelSection || itemLevelSection.lines.length < 1) {
-    return "";
-  }
-
-  var itemLevelMatch = itemLevelSection.lines[0].match(/^Item Level: ([0-9]+)$/);
-
-  if (itemLevelMatch && itemLevelMatch.length > 0) {
-    return itemLevelMatch[1].trim();
-  }
-
-  return "";
-};
-
-var getTalismanTier = function getTalismanTier(sections) {
-  var talismanTierSection = sections.find(function (x) {
-    return x.name === "Talisman tier";
-  });
-
-  if (!talismanTierSection || talismanTierSection.lines.length < 1) {
-    return "";
-  }
-
-  var talismanTierMatch = talismanTierSection.lines[0].match(/^Talisman Tier: ([0-9]+)$/);
-
-  if (talismanTierMatch && talismanTierMatch.length > 0) {
-    return talismanTierMatch[1].trim();
-  }
-
-  return "";
-};
-
-var getItemStatuses = function getItemStatuses(sections) {
-  var itemStatuses = [];
-
-  if (sections.some(function (x) {
-    return x.name === "Corrupted status";
-  })) {
-    itemStatuses.push("corrupted");
-  }
-
-  if (sections.some(function (x) {
-    return x.name === "Mirrored status";
-  })) {
-    itemStatuses.push("mirrored");
-  }
-
-  if (sections.some(function (x) {
-    return x.name === "Split status";
-  })) {
-    itemStatuses.push("split");
-  }
-
-  return itemStatuses;
-};
-
-var getRequirements = function getRequirements(sections) {
-  var _sections$find;
-
-  return (_sections$find = sections.find(function (x) {
-    return x.name === "Requirements";
-  })) === null || _sections$find === void 0 ? void 0 : _sections$find.lines.filter(function (l) {
-    return l !== "Requirements:";
-  }).map(function (l) {
-    return l.replaceAll("(unmet)", "").replaceAll("(augmented)", "");
-  });
-};
-
-var getEnchants = function getEnchants(sections) {
-  var _sections$find2;
-
-  return (_sections$find2 = sections.find(function (x) {
-    return x.name === "Enchants";
-  })) === null || _sections$find2 === void 0 ? void 0 : _sections$find2.lines.map(function (l) {
-    return l.replaceAll("(enchant)", "").trim();
-  });
-};
-
-var getImplicits = function getImplicits(sections) {
-  var _sections$find3;
-
-  return (_sections$find3 = sections.find(function (x) {
-    return x.name === "Implicits";
-  })) === null || _sections$find3 === void 0 ? void 0 : _sections$find3.lines.map(function (l) {
-    return l.replaceAll("(implicit)", "").trim();
-  });
-};
-
-var getSockets = function getSockets(sections) {
-  var _sections$find4;
-
-  var socketLine = (_sections$find4 = sections.find(function (x) {
-    return x.name === "Sockets";
-  })) === null || _sections$find4 === void 0 ? void 0 : _sections$find4.lines[0];
-
-  if (!socketLine) {
-    return undefined;
-  }
-
-  var socketsMatch = socketLine === null || socketLine === void 0 ? void 0 : socketLine.match(/^Sockets: ([A-Z- ]+)$/);
-
-  if (!socketsMatch) {
-    return undefined;
-  }
-
-  return socketsMatch[1];
-};
-
-var getProperties = function getProperties(sections) {
-  var _sections$find5;
-
-  return (_sections$find5 = sections.find(function (x) {
-    return x.name === "Properties";
-  })) === null || _sections$find5 === void 0 ? void 0 : _sections$find5.lines.map(function (l) {
-    return l.replaceAll("(augmented)", "");
-  });
-};
-
-var getModifiers = function getModifiers(sections) {
-  var _sections$find6;
-
-  return (_sections$find6 = sections.find(function (x) {
-    return x.name === "Modifiers";
-  })) === null || _sections$find6 === void 0 ? void 0 : _sections$find6.lines;
-};
-
-var getGemDescription = function getGemDescription(sections) {
-  var _sections$find7;
-
-  return (_sections$find7 = sections.find(function (x) {
-    return x.name === "Gem description";
-  })) === null || _sections$find7 === void 0 ? void 0 : _sections$find7.lines;
-};
-
-var getStacks = function getStacks(itemProperties) {
-  if (!itemProperties) {
-    return undefined;
-  }
-
-  var itemStacksLine = itemProperties.find(function (prop) {
-    return prop.startsWith("Stack ");
-  });
-
-  if (!itemStacksLine) {
-    return undefined;
-  }
-
-  var itemStacksMatch = itemStacksLine.match(/: ([0-9]+)/);
-
-  if (!itemStacksMatch) {
-    return undefined;
-  }
-
-  return parseInt(itemStacksMatch[1]);
-};
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
-var es_symbol = __webpack_require__("a4d3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
-var es_symbol_description = __webpack_require__("e01a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
-var es_object_to_string = __webpack_require__("d3b7");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
-var es_symbol_iterator = __webpack_require__("d28b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
-var es_string_iterator = __webpack_require__("3ca3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__("e260");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__("ddb0");
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
-
-
-
-
-
-
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
-var es_array_slice = __webpack_require__("fb6a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
-var es_array_from = __webpack_require__("a630");
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-
-
-
-
-
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js
-
-
-
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-// CONCATENATED MODULE: ./src/path-of-exile/components/data-processors/string-item-data-processor/pob/index.ts
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ var pob = (function (rawData) {
-  var item = {};
-  var dataLinesList = getDataLinesList(rawData);
-  var selectedVariant = getSelectedVariant(dataLinesList);
-  var sections = cleanMetadata(dataLinesList);
-  item.rarity = pob_getItemRarity(sections);
-  var headerIndexOffset = getHeaderIndexOffset(item.rarity);
-  item.name = sections[1];
-  item.baseName = pob_getItemBaseName(headerIndexOffset, sections);
-  item.influences = pob_getItemInfluences(headerIndexOffset, sections);
-  item.type = pob_getItemType(item.baseName);
-  item.sockets = getItemSockets(sections);
-
-  var _getItemImplicitsAndE = getItemImplicitsAndEnchants(sections, selectedVariant),
-      _getItemImplicitsAndE2 = _slicedToArray(_getItemImplicitsAndE, 3),
-      implicits = _getItemImplicitsAndE2[0],
-      enchants = _getItemImplicitsAndE2[1],
-      implicitsEndIndex = _getItemImplicitsAndE2[2];
-
-  var _getItemStatuses = pob_getItemStatuses(sections),
-      _getItemStatuses2 = _slicedToArray(_getItemStatuses, 2),
-      statuses = _getItemStatuses2[0],
-      statusesStartIndex = _getItemStatuses2[1];
-
-  var modifiers = getItemModifiers(sections, implicitsEndIndex, statusesStartIndex);
-  item.sections = {
-    requirements: getItemRequirements(sections),
-    properties: getItemProeprties(sections),
-    implicits: implicits,
-    enchants: enchants,
-    modifiers: modifiers,
-    statuses: statuses
-  };
-  return item;
-});
-
-var getDataLinesList = function getDataLinesList(rawData) {
-  return rawData.split("\n").map(function (l) {
-    return l.trim();
-  }).filter(function (l) {
-    return l.length > 0;
-  });
-};
-
-var getHeaderIndexOffset = function getHeaderIndexOffset(rarity) {
-  return rarity === "rare" || rarity === "unique" ? 1 : 0;
-};
-
-var processValuesInLine = function processValuesInLine(line) {
-  var rangeValueMatch = line.match(/{range:([0-9.]+)}/);
-
-  if (!rangeValueMatch) {
-    return line;
-  }
-
-  var rangePercentageValue = parseFloat(rangeValueMatch[1]);
-  var valuesMatch = line.match(/\(([0-9]+)-([0-9]+)\)/);
-
-  if (!valuesMatch) {
-    return line;
-  }
-
-  var lowerRangeValue = parseFloat(valuesMatch[1]);
-  var upperRangeValue = parseFloat(valuesMatch[2]);
-  var calculatedValue = (upperRangeValue - lowerRangeValue) * rangePercentageValue;
-  return line.replaceAll(/\(([0-9.,]+-[0-9.,]+)\)/g, "".concat(calculatedValue));
-};
-
-var cleanStatLine = function cleanStatLine(line) {
-  return line.replace(/{range:([0-9.,]+)}/, "").replace(/{variant:[0-9.,]+}/, "").replace(/{tags:[a-z.,]+}/, "");
-};
-
-var getItemProeprties = function getItemProeprties(sections) {
-  var qualityLine = sections.find(function (s) {
-    return s.includes("Quality: ");
-  });
-
-  if (!qualityLine || qualityLine.includes(" 0")) {
-    return [];
-  }
-
-  var qualityValueMatch = qualityLine.match(/: ([0-9]+)/);
-
-  if (!qualityValueMatch) {
-    return [];
-  }
-
-  return ["Quality: ".concat(qualityValueMatch[1], "%")];
-};
-
-var pob_getItemStatuses = function getItemStatuses(sections) {
-  return getSectionsFromLine(sections, sections.length - 1, /^(Corrupted|Mirrored|Split)$/);
-};
-
-var getItemModifiers = function getItemModifiers(sections, implicitsEndIndex, statusesStartIndex) {
-  return sections.slice(implicitsEndIndex, statusesStartIndex === sections.length ? sections.length : statusesStartIndex).map(function (line) {
-    return cleanStatLine(processValuesInLine(line));
-  });
-};
-
-var getItemImplicitsAndEnchants = function getItemImplicitsAndEnchants(sections, selectedVariant) {
-  var implicitsStartIndex = 0;
-  var implicitCountLine = sections.find(function (s, i) {
-    implicitsStartIndex = i;
-    return s.includes("Implicits: ");
-  });
-
-  if (!implicitCountLine) {
-    return [[], [], 0];
-  }
-
-  var matches = implicitCountLine.match(/^Implicits: ([0-9]+)$/);
-
-  if (!matches) {
-    return [[], [], 0];
-  }
-
-  var implicitsCount = matches[1];
-  var implicitLines = sections.slice(implicitsStartIndex + 1, implicitsStartIndex + 1 + parseInt(implicitsCount)).filter(function (line) {
-    if (!line.includes("{variant:")) {
-      return true;
-    }
-
-    if (!line.includes("{variant:".concat(selectedVariant, "}"))) {
-      return false;
-    }
-
-    return true;
-  }).map(function (line) {
-    return cleanStatLine(processValuesInLine(line));
-  });
-  var enchants = implicitLines.filter(function (line) {
-    return line.startsWith("{crafted}");
-  }).map(function (line) {
-    return line.replace("{crafted}", "");
-  });
-  var nonEnchants = implicitLines.filter(function (line) {
-    return !line.startsWith("{crafted}");
-  });
-  return [nonEnchants, enchants, implicitsStartIndex + 1 + parseInt(implicitsCount)];
-};
-
-var getItemRequirements = function getItemRequirements(sections) {
-  var reqLine = sections.find(function (s) {
-    return s.includes("LevelReq:");
-  });
-
-  if (!reqLine) {
-    return [];
-  }
-
-  var matches = reqLine.match(/^LevelReq: (.+)$/);
-
-  if (!matches) {
-    return [];
-  }
-
-  return ["Level: ".concat(matches[1])];
-};
-
-var getItemSockets = function getItemSockets(sections) {
-  var socketsLine = sections.find(function (s) {
-    return s.includes("Sockets:");
-  });
-
-  if (!socketsLine) {
-    return undefined;
-  }
-
-  var matches = socketsLine.match(/^Sockets: (.+)$/);
-
-  if (!matches) {
-    return undefined;
-  }
-
-  return matches[1];
-};
-
-var pob_getItemType = function getItemType(baseName) {
-  if (baseName.includes("Jewel")) return "jewel";
-  if (baseName.includes("Flask")) return "flask";
-  if (baseName.includes("Gem")) return "gem";
-  if (baseName.includes("Currency")) return "currency";
-  if (baseName.includes("Maps")) return "map";
-  return "equipment";
-};
-
-var pob_getItemInfluences = function getItemInfluences(headerIndexOffset, sections) {
-  var _getSectionsUpToLine = getSectionsUpToLine(sections, headerIndexOffset + 2, /^[A-z]+ Item$/),
-      _getSectionsUpToLine2 = _slicedToArray(_getSectionsUpToLine, 1),
-      influenceSections = _getSectionsUpToLine2[0];
-
-  if (influenceSections.length < 0) {
-    return [];
-  }
-
-  return influenceSections.map(function (i) {
-    var match = i.match(/^([A-z]+) Item$/);
-    return match ? match[1] : "";
-  });
-};
-
-var pob_getItemBaseName = function getItemBaseName(headerIndexOffset, sections) {
-  return sections[headerIndexOffset + 1];
-};
-
-var pob_getItemRarity = function getItemRarity(sections) {
-  var rarityLine = sections.find(function (s) {
-    return s.includes("Rarity: ");
-  });
-
-  if (!rarityLine) {
-    return "";
-  }
-
-  var matches = rarityLine.match(/^Rarity: ([A-Z]+)$/);
-
-  if (!matches) {
-    return "";
-  }
-
-  return matches[1].toLowerCase();
-};
-
-var getSelectedVariant = function getSelectedVariant(sections) {
-  var socketsLine = sections.find(function (s) {
-    return s.includes("Selected Variant:");
-  });
-
-  if (!socketsLine) {
-    return "";
-  }
-
-  var matches = socketsLine.match(/Selected Variant: ([0-9]+)$/);
-
-  if (!matches) {
-    return "";
-  }
-
-  return matches[1];
-};
-
-var getSectionsUpToLine = function getSectionsUpToLine(sections, startIndex, pattern) {
-  var selectedSections = [];
-  var currentLine = sections[startIndex];
-  var index = startIndex;
-
-  while (pattern.test(currentLine)) {
-    selectedSections.push(currentLine);
-    index++;
-
-    if (index + 1 === selectedSections.length) {
-      break;
-    }
-
-    currentLine = sections[index];
-  }
-
-  return [selectedSections, index - 1];
-};
-
-var getSectionsFromLine = function getSectionsFromLine(sections, startIndex, pattern) {
-  var selectedSections = [];
-  var currentLine = sections[startIndex];
-  var index = startIndex;
-
-  while (pattern.test(currentLine)) {
-    selectedSections.push(currentLine);
-    index--;
-
-    if (index === 0) {
-      break;
-    }
-
-    currentLine = sections[index];
-  }
-
-  return [selectedSections, index + 1];
-};
-
-var cleanMetadata = function cleanMetadata(dataLinesList) {
-  return dataLinesList.filter(function (line) {
-    if (line.includes("Prefix:") || line.includes("Suffix:") || line.includes("Variant: ") || line.includes("Crafted: ")) {
-      return false;
-    }
-
-    return true;
-  });
-};
-// CONCATENATED MODULE: ./src/path-of-exile/components/data-processors/string-item-data-processor/index.ts
-
-
-/* harmony default export */ var string_item_data_processor = __webpack_exports__["a"] = (function (rawData) {
-  return rawDataIsFromPob(rawData) ? pob(rawData) : game(rawData);
-});
-
-var rawDataIsFromPob = function rawDataIsFromPob(rawData) {
-  return /^\s*Rarity:/g.test(rawData);
-};
-
-/***/ }),
-
-/***/ "dbb4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var DESCRIPTORS = __webpack_require__("83ab");
-var ownKeys = __webpack_require__("56ef");
-var toIndexedObject = __webpack_require__("fc6a");
-var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
-var createProperty = __webpack_require__("8418");
-
-// `Object.getOwnPropertyDescriptors` method
-// https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
-$({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
-  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
-    var O = toIndexedObject(object);
-    var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-    var keys = ownKeys(O);
-    var result = {};
-    var index = 0;
-    var key, descriptor;
-    while (keys.length > index) {
-      descriptor = getOwnPropertyDescriptor(O, key = keys[index++]);
-      if (descriptor !== undefined) createProperty(result, key, descriptor);
-    }
-    return result;
-  }
-});
-
 
 /***/ }),
 
@@ -20999,29 +19872,6 @@ if (GlobalVue) {
 
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
-/***/ "e439":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var fails = __webpack_require__("d039");
-var toIndexedObject = __webpack_require__("fc6a");
-var nativeGetOwnPropertyDescriptor = __webpack_require__("06cf").f;
-var DESCRIPTORS = __webpack_require__("83ab");
-
-var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1); });
-var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
-$({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
-  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
-    return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
-  }
-});
-
 
 /***/ }),
 
@@ -24550,12 +23400,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./src/path-of-exile/components/item/poe-item.vue + 19 modules
 var poe_item = __webpack_require__("1b32");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=9d37c6f0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=159874a8&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconUrl,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections}})],1):_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('v-popover',{attrs:{"trigger":"hover click","placement":"auto","offset":20,"hideOnTargetClick":"","popoverClass":_vm.popoverClassesComputed,"popoverWrapperClass":_vm.popoverWrapperClasses,"popoverBaseClass":_vm.popoverBaseClasses,"popoverInnerClass":_vm.popoverInnerClasses,"popoverArrowClass":_vm.popoverArrowClasses}},[_c('template',{slot:"popover"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconUrl,"iconSize":_vm.iconSize,"showIconInside":_vm.iconInside,"showIconOutside":_vm.iconOutside,"dimedSections":_vm.dimedSections}})],1),(_vm.displayMode === "icon")?_c('div',[(_vm.shouldShowStacksOnIcon)?_c('svg',{staticClass:"poe-item-stacks"},[_c('text',{attrs:{"x":"2","y":"18"}},[_vm._v(_vm._s(_vm.passive.stacks))])]):_vm._e(),_c('poe-passive-image',{attrs:{"type":_vm.passive.type,"iconUrl":_vm.iconUrl,"iconSize":_vm.iconSize}}),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))]),_c('div',{staticClass:"poe-icon-sublabel"},[_vm._v(" "+_vm._s(_vm.passive.type)+" ")])]):_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{staticClass:"poe-passive-link"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))])])],2)],1)]):_vm._e()}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=9d37c6f0&
+// CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=template&id=159874a8&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"64658061-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive-showcase.vue?vue&type=template&id=57502156&
 var poe_passive_showcasevue_type_template_id_57502156_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-passive-image',{staticClass:"poe-passive-icon-beside-showcase",attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{staticClass:"poe-passive-header"},[_c('div',{staticClass:"poe-passive-header-left-panel"}),_c('div',{staticClass:"poe-passive-header-center-panel"},[_vm._v(" "+_vm._s(_vm.passiveName)+" ")]),_c('div',{staticClass:"poe-passive-header-right-panel"})]),_c('div',{staticClass:"poe-passive-description"},_vm._l((_vm.passiveDescription),function(descLine,index){return _c('div',{key:(index + "-desc-line"),class:_vm.getDescriptionClasses(index)},[_vm._v(" "+_vm._s(descLine)+" ")])}),0),(_vm.shouldShowIconInside)?_c('poe-passive-image',{attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e()],1)],1)}
@@ -24768,14 +23618,11 @@ var poe_passive_showcase_component = Object(componentNormalizer["a" /* default *
 )
 
 /* harmony default export */ var poe_passive_showcase = (poe_passive_showcase_component.exports);
-// EXTERNAL MODULE: ./src/shared/mixins/main.mixin.js + 2 modules
+// EXTERNAL MODULE: ./src/shared/mixins/main.mixin.js
 var main_mixin = __webpack_require__("b7f2");
 
-// EXTERNAL MODULE: ./src/path-of-exile/components/data-processors/string-item-data-processor/index.ts + 9 modules
-var string_item_data_processor = __webpack_require__("dada");
-
-// EXTERNAL MODULE: ./src/path-of-exile/components/data-processors/data-object-data-processor/index.ts
-var data_object_data_processor = __webpack_require__("22d4");
+// EXTERNAL MODULE: ./src/path-of-exile/components/mixins/poe-entity.mixin.js
+var poe_entity_mixin = __webpack_require__("1237");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/passive/poe-passive.vue?vue&type=script&lang=js&
 //
@@ -24848,10 +23695,9 @@ var data_object_data_processor = __webpack_require__("22d4");
 
 
 
-
 /* harmony default export */ var poe_passivevue_type_script_lang_js_ = ({
   name: "PoePassive",
-  mixins: [main_mixin["a" /* default */]],
+  mixins: [main_mixin["a" /* default */], poe_entity_mixin["a" /* default */]],
   components: {
     PoePassiveShowcase: poe_passive_showcase,
     PoePassiveImage: poe_passive_image
@@ -24883,11 +23729,6 @@ var data_object_data_processor = __webpack_require__("22d4");
     popoverClassesComputed: function popoverClassesComputed() {
       return "poe-passive-showcase-popover ".concat(this.popoverClasses);
     }
-  },
-  metadata: {
-    type: "poe-passive",
-    processStringData: string_item_data_processor["a" /* default */],
-    processDataObject: data_object_data_processor["a" /* default */]
   }
 });
 // CONCATENATED MODULE: ./src/path-of-exile/components/passive/poe-passive.vue?vue&type=script&lang=js&
@@ -25478,9 +24319,1006 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 /* harmony default export */ var vue_custom_element_esm = (install);
 
-// EXTERNAL MODULE: ./src/shared/register-global-hh-object.ts
-var register_global_hh_object = __webpack_require__("06d3");
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+var es_object_to_string = __webpack_require__("d3b7");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
+var es_symbol_iterator = __webpack_require__("d28b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__("3ca3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__("e260");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__("ddb0");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
+
+
+
+
+
+
+
+function typeof_typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    typeof_typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    typeof_typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return typeof_typeof(obj);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
+var web_dom_collections_for_each = __webpack_require__("159b");
+
+// CONCATENATED MODULE: ./src/path-of-exile/data-processors/data-object-data-processor/index.ts
+/* harmony default export */ var data_object_data_processor = (function (data) {
+  if (!data.sections) {
+    data.sections = {};
+  }
+
+  return data;
+});
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
+var es_array_find = __webpack_require__("7db0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
+var es_string_match = __webpack_require__("466d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
+var es_array_includes = __webpack_require__("caad");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
+var es_string_includes = __webpack_require__("2532");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__("d81d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
+var es_array_filter = __webpack_require__("4de4");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
+var es_string_starts_with = __webpack_require__("2ca0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("1276");
+
+// CONCATENATED MODULE: ./src/path-of-exile/data-processors/string-item-data-processor/game/sections-mapper.ts
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var sections_mapper = (function (rawData) {
+  var rawSections = rawDataToRawSections(rawData);
+  var namedSections = rawSectionsToNamedSections(rawSections);
+  namedSections = fillUnknownSections(namedSections);
+  namedSections = removeUnknownSections(namedSections);
+  return namedSections;
+});
+
+var rawDataToRawSections = function rawDataToRawSections(rawData) {
+  var lines = splitDescriptionToLines(rawData);
+  var rawSections = splitLinesIntoSections(lines);
+  var sections = cleanupRawSections(rawSections);
+  return sections;
+};
+
+var rawSectionsToNamedSections = function rawSectionsToNamedSections(rawSections) {
+  return rawSections.map(function (lines, index) {
+    return {
+      name: getSectionName(lines),
+      lines: lines,
+      index: index
+    };
+  });
+};
+
+var splitDescriptionToLines = function splitDescriptionToLines(rawData) {
+  return rawData.split("\n").map(function (line) {
+    return line.replace("\r", "");
+  }).filter(function (x) {
+    return x.length > 0;
+  });
+};
+
+var splitLinesIntoSections = function splitLinesIntoSections(descriptionLines) {
+  var sections = [];
+  var section = [];
+  descriptionLines.forEach(function (line, index) {
+    if (line.startsWith("----")) {
+      sections.push(section);
+      section = [];
+    } else if (index + 1 === descriptionLines.length) {
+      section.push(line);
+      sections.push(section);
+      section = [];
+    } else {
+      section.push(line);
+    }
+  });
+  return sections;
+};
+
+var cleanupRawSections = function cleanupRawSections(rawSections) {
+  return rawSections.map(function (s) {
+    return s.map(function (l) {
+      return l.trim();
+    }).filter(function (l) {
+      return l.length > 0;
+    });
+  });
+};
+
+var getSectionName = function getSectionName(section) {
+  if (section.some(function (x) {
+    return x.startsWith("Item Class:");
+  })) {
+    return "Header";
+  }
+
+  if (section.some(function (x) {
+    return x.startsWith("Requirements:");
+  })) {
+    return "Requirements";
+  }
+
+  if (section.some(function (x) {
+    return x.startsWith("Item Level:");
+  })) {
+    return "Item level";
+  }
+
+  if (section.some(function (x) {
+    return x.includes("(enchant)");
+  })) {
+    return "Enchants";
+  }
+
+  if (section.some(function (x) {
+    return x.includes("(implicit)");
+  })) {
+    return "Implicits";
+  }
+
+  if (section.some(function (x) {
+    return x.startsWith("Quality");
+  })) {
+    return "Properties";
+  }
+
+  if (section.some(function (x) {
+    return x.startsWith("Sockets:");
+  })) {
+    return "Sockets";
+  }
+
+  if (section.some(function (x) {
+    return x.match(/^([A-Z][a-z]*) Item$/);
+  })) {
+    return "Influences";
+  }
+
+  if (section.some(function (x) {
+    return x.match(/^Corrupted$/);
+  })) {
+    return "Corrupted status";
+  }
+
+  if (section.some(function (x) {
+    return x.match(/^Split$/);
+  })) {
+    return "Split status";
+  }
+
+  if (section.some(function (x) {
+    return x.match(/^Mirrored$/);
+  })) {
+    return "Mirrored status";
+  }
+
+  if (section.some(function (x) {
+    return x.match(/^Talisman Tier:/);
+  })) {
+    return "Talisman tier";
+  }
+
+  return "Unknown";
+};
+
+var fillUnknownSections = function fillUnknownSections(sections) {
+  var unknownSections = sections.filter(function (section) {
+    return section.name === "Unknown";
+  });
+
+  if (!unknownSections || unknownSections.length <= 0) {
+    return sections;
+  }
+
+  var headerSection = sections.find(function (x) {
+    return x.name === "Header";
+  });
+
+  if (!headerSection) {
+    return sections;
+  }
+
+  var headerSectionIndex = headerSection === null || headerSection === void 0 ? void 0 : headerSection.index;
+  var itemRarityLine = headerSection.lines[1];
+  var itemIsGem = itemRarityLine.includes("Gem");
+  var itemIsNormal = itemRarityLine.includes("Normal");
+
+  if (sections[headerSectionIndex + 1].name === "Unknown") {
+    sections[headerSectionIndex + 1].name = "Properties";
+  }
+
+  if (!itemIsNormal && !itemIsGem) {
+    var _sections$find;
+
+    var modifiersIndex = (_sections$find = sections.find(function (x) {
+      return x.name === "Unknown";
+    })) === null || _sections$find === void 0 ? void 0 : _sections$find.index;
+    if (modifiersIndex) sections[modifiersIndex].name = "Modifiers";
+  }
+
+  if (itemIsGem) {
+    var _sections$find2;
+
+    var gemDescriptionIndex = (_sections$find2 = sections.find(function (x) {
+      return x.name === "Unknown";
+    })) === null || _sections$find2 === void 0 ? void 0 : _sections$find2.index;
+
+    if (gemDescriptionIndex) {
+      sections[gemDescriptionIndex].name = "Gem description";
+
+      if (sections[gemDescriptionIndex + 1].name === "Unknown") {
+        sections[gemDescriptionIndex + 1].name = "Modifiers";
+      }
+    }
+  }
+
+  return sections;
+};
+
+var removeUnknownSections = function removeUnknownSections(sections) {
+  return sections.filter(function (x) {
+    return x.name !== "Unknown";
+  });
+};
+// CONCATENATED MODULE: ./src/path-of-exile/data-processors/string-item-data-processor/game/index.ts
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var game = (function (rawData) {
+  var sections = sections_mapper(rawData);
+  var headerSection = getHeaderSection(sections);
+  var itemClass = getItemClass(headerSection);
+  var properties = getProperties(sections);
+  return {
+    class: itemClass,
+    rarity: getItemRarity(headerSection),
+    type: getItemType(itemClass),
+    name: getItemName(headerSection),
+    baseName: getItemBaseName(headerSection),
+    influences: game_getItemInfluences(sections),
+    sockets: getSockets(sections),
+    stacks: getStacks(properties),
+    sections: {
+      itemLevel: getItemLevel(sections),
+      talismanTier: getTalismanTier(sections),
+      requirements: getRequirements(sections),
+      properties: properties,
+      enchants: getEnchants(sections),
+      implicits: getImplicits(sections),
+      modifiers: getModifiers(sections),
+      gemDescription: getGemDescription(sections),
+      statuses: getItemStatuses(sections)
+    }
+  };
+});
+
+var getHeaderSection = function getHeaderSection(sections) {
+  return sections.find(function (x) {
+    return x.name === "Header";
+  });
+};
+
+var getItemClass = function getItemClass(headerSection) {
+  var classMatch = headerSection.lines[0].match(/^Item Class: ([A-z ]+)$/);
+
+  if (classMatch && classMatch.length > 0) {
+    return classMatch[1].trim();
+  }
+
+  return "";
+};
+
+var getItemRarity = function getItemRarity(headerSection) {
+  var rarityMatch = headerSection.lines[1].match(/^Rarity: ([A-z ]+)$/);
+
+  if (rarityMatch && rarityMatch.length > 0) {
+    return rarityMatch[1].trim();
+  }
+
+  return "";
+};
+
+var getItemName = function getItemName(headerSection) {
+  return headerSection.lines[2].trim();
+};
+
+var getItemType = function getItemType(itemClass) {
+  if (itemClass.includes("Jewel")) return "jewel";
+  if (itemClass.includes("Flask")) return "flask";
+  if (itemClass.includes("Gem")) return "gem";
+  if (itemClass.includes("Currency")) return "currency";
+  if (itemClass.includes("Maps")) return "map";
+  return "equipment";
+};
+
+var getItemBaseName = function getItemBaseName(headerSection) {
+  return headerSection.lines[headerSection.lines.length - 1].trim();
+};
+
+var game_getItemInfluences = function getItemInfluences(sections) {
+  var influencesSection = sections.find(function (x) {
+    return x.name === "Influences";
+  });
+
+  if (!influencesSection) {
+    return [];
+  }
+
+  return influencesSection.lines.map(function (line) {
+    var lineMatch = line.match(/^([A-Z][a-z]+) Item$/);
+
+    if (lineMatch && lineMatch.length > 0) {
+      return lineMatch[1].toLowerCase().trim();
+    }
+
+    return "";
+  });
+};
+
+var getItemLevel = function getItemLevel(sections) {
+  var itemLevelSection = sections.find(function (x) {
+    return x.name === "Item level";
+  });
+
+  if (!itemLevelSection || itemLevelSection.lines.length < 1) {
+    return "";
+  }
+
+  var itemLevelMatch = itemLevelSection.lines[0].match(/^Item Level: ([0-9]+)$/);
+
+  if (itemLevelMatch && itemLevelMatch.length > 0) {
+    return itemLevelMatch[1].trim();
+  }
+
+  return "";
+};
+
+var getTalismanTier = function getTalismanTier(sections) {
+  var talismanTierSection = sections.find(function (x) {
+    return x.name === "Talisman tier";
+  });
+
+  if (!talismanTierSection || talismanTierSection.lines.length < 1) {
+    return "";
+  }
+
+  var talismanTierMatch = talismanTierSection.lines[0].match(/^Talisman Tier: ([0-9]+)$/);
+
+  if (talismanTierMatch && talismanTierMatch.length > 0) {
+    return talismanTierMatch[1].trim();
+  }
+
+  return "";
+};
+
+var getItemStatuses = function getItemStatuses(sections) {
+  var itemStatuses = [];
+
+  if (sections.some(function (x) {
+    return x.name === "Corrupted status";
+  })) {
+    itemStatuses.push("corrupted");
+  }
+
+  if (sections.some(function (x) {
+    return x.name === "Mirrored status";
+  })) {
+    itemStatuses.push("mirrored");
+  }
+
+  if (sections.some(function (x) {
+    return x.name === "Split status";
+  })) {
+    itemStatuses.push("split");
+  }
+
+  return itemStatuses;
+};
+
+var getRequirements = function getRequirements(sections) {
+  var _sections$find;
+
+  return (_sections$find = sections.find(function (x) {
+    return x.name === "Requirements";
+  })) === null || _sections$find === void 0 ? void 0 : _sections$find.lines.filter(function (l) {
+    return l !== "Requirements:";
+  }).map(function (l) {
+    return l.replaceAll("(unmet)", "").replaceAll("(augmented)", "");
+  });
+};
+
+var getEnchants = function getEnchants(sections) {
+  var _sections$find2;
+
+  return (_sections$find2 = sections.find(function (x) {
+    return x.name === "Enchants";
+  })) === null || _sections$find2 === void 0 ? void 0 : _sections$find2.lines.map(function (l) {
+    return l.replaceAll("(enchant)", "").trim();
+  });
+};
+
+var getImplicits = function getImplicits(sections) {
+  var _sections$find3;
+
+  return (_sections$find3 = sections.find(function (x) {
+    return x.name === "Implicits";
+  })) === null || _sections$find3 === void 0 ? void 0 : _sections$find3.lines.map(function (l) {
+    return l.replaceAll("(implicit)", "").trim();
+  });
+};
+
+var getSockets = function getSockets(sections) {
+  var _sections$find4;
+
+  var socketLine = (_sections$find4 = sections.find(function (x) {
+    return x.name === "Sockets";
+  })) === null || _sections$find4 === void 0 ? void 0 : _sections$find4.lines[0];
+
+  if (!socketLine) {
+    return undefined;
+  }
+
+  var socketsMatch = socketLine === null || socketLine === void 0 ? void 0 : socketLine.match(/^Sockets: ([A-Z- ]+)$/);
+
+  if (!socketsMatch) {
+    return undefined;
+  }
+
+  return socketsMatch[1];
+};
+
+var getProperties = function getProperties(sections) {
+  var _sections$find5;
+
+  return (_sections$find5 = sections.find(function (x) {
+    return x.name === "Properties";
+  })) === null || _sections$find5 === void 0 ? void 0 : _sections$find5.lines.map(function (l) {
+    return l.replaceAll("(augmented)", "");
+  });
+};
+
+var getModifiers = function getModifiers(sections) {
+  var _sections$find6;
+
+  return (_sections$find6 = sections.find(function (x) {
+    return x.name === "Modifiers";
+  })) === null || _sections$find6 === void 0 ? void 0 : _sections$find6.lines;
+};
+
+var getGemDescription = function getGemDescription(sections) {
+  var _sections$find7;
+
+  return (_sections$find7 = sections.find(function (x) {
+    return x.name === "Gem description";
+  })) === null || _sections$find7 === void 0 ? void 0 : _sections$find7.lines;
+};
+
+var getStacks = function getStacks(itemProperties) {
+  if (!itemProperties) {
+    return undefined;
+  }
+
+  var itemStacksLine = itemProperties.find(function (prop) {
+    return prop.startsWith("Stack ");
+  });
+
+  if (!itemStacksLine) {
+    return undefined;
+  }
+
+  var itemStacksMatch = itemStacksLine.match(/: ([0-9]+)/);
+
+  if (!itemStacksMatch) {
+    return undefined;
+  }
+
+  return parseInt(itemStacksMatch[1]);
+};
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
+
+
+
+
+
+
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__("fb6a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
+var es_array_from = __webpack_require__("a630");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+
+
+
+
+
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js
+
+
+
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+// CONCATENATED MODULE: ./src/path-of-exile/data-processors/string-item-data-processor/pob/index.ts
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var pob = (function (rawData) {
+  var item = {};
+  var dataLinesList = getDataLinesList(rawData);
+  var selectedVariant = getSelectedVariant(dataLinesList);
+  var sections = cleanMetadata(dataLinesList);
+  item.rarity = pob_getItemRarity(sections);
+  var headerIndexOffset = getHeaderIndexOffset(item.rarity);
+  item.name = sections[1];
+  item.baseName = pob_getItemBaseName(headerIndexOffset, sections);
+  item.influences = pob_getItemInfluences(headerIndexOffset, sections);
+  item.type = pob_getItemType(item.baseName);
+  item.sockets = getItemSockets(sections);
+
+  var _getItemImplicitsAndE = getItemImplicitsAndEnchants(sections, selectedVariant),
+      _getItemImplicitsAndE2 = _slicedToArray(_getItemImplicitsAndE, 3),
+      implicits = _getItemImplicitsAndE2[0],
+      enchants = _getItemImplicitsAndE2[1],
+      implicitsEndIndex = _getItemImplicitsAndE2[2];
+
+  var _getItemStatuses = pob_getItemStatuses(sections),
+      _getItemStatuses2 = _slicedToArray(_getItemStatuses, 2),
+      statuses = _getItemStatuses2[0],
+      statusesStartIndex = _getItemStatuses2[1];
+
+  var modifiers = getItemModifiers(sections, implicitsEndIndex, statusesStartIndex);
+  item.sections = {
+    requirements: getItemRequirements(sections),
+    properties: getItemProeprties(sections),
+    implicits: implicits,
+    enchants: enchants,
+    modifiers: modifiers,
+    statuses: statuses
+  };
+  return item;
+});
+
+var getDataLinesList = function getDataLinesList(rawData) {
+  return rawData.split("\n").map(function (l) {
+    return l.trim();
+  }).filter(function (l) {
+    return l.length > 0;
+  });
+};
+
+var getHeaderIndexOffset = function getHeaderIndexOffset(rarity) {
+  return rarity === "rare" || rarity === "unique" ? 1 : 0;
+};
+
+var processValuesInLine = function processValuesInLine(line) {
+  var rangeValueMatch = line.match(/{range:([0-9.]+)}/);
+
+  if (!rangeValueMatch) {
+    return line;
+  }
+
+  var rangePercentageValue = parseFloat(rangeValueMatch[1]);
+  var valuesMatch = line.match(/\(([0-9]+)-([0-9]+)\)/);
+
+  if (!valuesMatch) {
+    return line;
+  }
+
+  var lowerRangeValue = parseFloat(valuesMatch[1]);
+  var upperRangeValue = parseFloat(valuesMatch[2]);
+  var calculatedValue = (upperRangeValue - lowerRangeValue) * rangePercentageValue;
+  return line.replaceAll(/\(([0-9.,]+-[0-9.,]+)\)/g, "".concat(calculatedValue));
+};
+
+var cleanStatLine = function cleanStatLine(line) {
+  return line.replace(/{range:([0-9.,]+)}/, "").replace(/{variant:[0-9.,]+}/, "").replace(/{tags:[a-z.,]+}/, "");
+};
+
+var getItemProeprties = function getItemProeprties(sections) {
+  var qualityLine = sections.find(function (s) {
+    return s.includes("Quality: ");
+  });
+
+  if (!qualityLine || qualityLine.includes(" 0")) {
+    return [];
+  }
+
+  var qualityValueMatch = qualityLine.match(/: ([0-9]+)/);
+
+  if (!qualityValueMatch) {
+    return [];
+  }
+
+  return ["Quality: ".concat(qualityValueMatch[1], "%")];
+};
+
+var pob_getItemStatuses = function getItemStatuses(sections) {
+  return getSectionsFromLine(sections, sections.length - 1, /^(Corrupted|Mirrored|Split)$/);
+};
+
+var getItemModifiers = function getItemModifiers(sections, implicitsEndIndex, statusesStartIndex) {
+  return sections.slice(implicitsEndIndex, statusesStartIndex === sections.length ? sections.length : statusesStartIndex).map(function (line) {
+    return cleanStatLine(processValuesInLine(line));
+  });
+};
+
+var getItemImplicitsAndEnchants = function getItemImplicitsAndEnchants(sections, selectedVariant) {
+  var implicitsStartIndex = 0;
+  var implicitCountLine = sections.find(function (s, i) {
+    implicitsStartIndex = i;
+    return s.includes("Implicits: ");
+  });
+
+  if (!implicitCountLine) {
+    return [[], [], 0];
+  }
+
+  var matches = implicitCountLine.match(/^Implicits: ([0-9]+)$/);
+
+  if (!matches) {
+    return [[], [], 0];
+  }
+
+  var implicitsCount = matches[1];
+  var implicitLines = sections.slice(implicitsStartIndex + 1, implicitsStartIndex + 1 + parseInt(implicitsCount)).filter(function (line) {
+    if (!line.includes("{variant:")) {
+      return true;
+    }
+
+    if (!line.includes("{variant:".concat(selectedVariant, "}"))) {
+      return false;
+    }
+
+    return true;
+  }).map(function (line) {
+    return cleanStatLine(processValuesInLine(line));
+  });
+  var enchants = implicitLines.filter(function (line) {
+    return line.startsWith("{crafted}");
+  }).map(function (line) {
+    return line.replace("{crafted}", "");
+  });
+  var nonEnchants = implicitLines.filter(function (line) {
+    return !line.startsWith("{crafted}");
+  });
+  return [nonEnchants, enchants, implicitsStartIndex + 1 + parseInt(implicitsCount)];
+};
+
+var getItemRequirements = function getItemRequirements(sections) {
+  var reqLine = sections.find(function (s) {
+    return s.includes("LevelReq:");
+  });
+
+  if (!reqLine) {
+    return [];
+  }
+
+  var matches = reqLine.match(/^LevelReq: (.+)$/);
+
+  if (!matches) {
+    return [];
+  }
+
+  return ["Level: ".concat(matches[1])];
+};
+
+var getItemSockets = function getItemSockets(sections) {
+  var socketsLine = sections.find(function (s) {
+    return s.includes("Sockets:");
+  });
+
+  if (!socketsLine) {
+    return undefined;
+  }
+
+  var matches = socketsLine.match(/^Sockets: (.+)$/);
+
+  if (!matches) {
+    return undefined;
+  }
+
+  return matches[1];
+};
+
+var pob_getItemType = function getItemType(baseName) {
+  if (baseName.includes("Jewel")) return "jewel";
+  if (baseName.includes("Flask")) return "flask";
+  if (baseName.includes("Gem")) return "gem";
+  if (baseName.includes("Currency")) return "currency";
+  if (baseName.includes("Maps")) return "map";
+  return "equipment";
+};
+
+var pob_getItemInfluences = function getItemInfluences(headerIndexOffset, sections) {
+  var _getSectionsUpToLine = getSectionsUpToLine(sections, headerIndexOffset + 2, /^[A-z]+ Item$/),
+      _getSectionsUpToLine2 = _slicedToArray(_getSectionsUpToLine, 1),
+      influenceSections = _getSectionsUpToLine2[0];
+
+  if (influenceSections.length < 0) {
+    return [];
+  }
+
+  return influenceSections.map(function (i) {
+    var match = i.match(/^([A-z]+) Item$/);
+    return match ? match[1] : "";
+  });
+};
+
+var pob_getItemBaseName = function getItemBaseName(headerIndexOffset, sections) {
+  return sections[headerIndexOffset + 1];
+};
+
+var pob_getItemRarity = function getItemRarity(sections) {
+  var rarityLine = sections.find(function (s) {
+    return s.includes("Rarity: ");
+  });
+
+  if (!rarityLine) {
+    return "";
+  }
+
+  var matches = rarityLine.match(/^Rarity: ([A-Z]+)$/);
+
+  if (!matches) {
+    return "";
+  }
+
+  return matches[1].toLowerCase();
+};
+
+var getSelectedVariant = function getSelectedVariant(sections) {
+  var socketsLine = sections.find(function (s) {
+    return s.includes("Selected Variant:");
+  });
+
+  if (!socketsLine) {
+    return "";
+  }
+
+  var matches = socketsLine.match(/Selected Variant: ([0-9]+)$/);
+
+  if (!matches) {
+    return "";
+  }
+
+  return matches[1];
+};
+
+var getSectionsUpToLine = function getSectionsUpToLine(sections, startIndex, pattern) {
+  var selectedSections = [];
+  var currentLine = sections[startIndex];
+  var index = startIndex;
+
+  while (pattern.test(currentLine)) {
+    selectedSections.push(currentLine);
+    index++;
+
+    if (index + 1 === selectedSections.length) {
+      break;
+    }
+
+    currentLine = sections[index];
+  }
+
+  return [selectedSections, index - 1];
+};
+
+var getSectionsFromLine = function getSectionsFromLine(sections, startIndex, pattern) {
+  var selectedSections = [];
+  var currentLine = sections[startIndex];
+  var index = startIndex;
+
+  while (pattern.test(currentLine)) {
+    selectedSections.push(currentLine);
+    index--;
+
+    if (index === 0) {
+      break;
+    }
+
+    currentLine = sections[index];
+  }
+
+  return [selectedSections, index + 1];
+};
+
+var cleanMetadata = function cleanMetadata(dataLinesList) {
+  return dataLinesList.filter(function (line) {
+    if (line.includes("Prefix:") || line.includes("Suffix:") || line.includes("Variant: ") || line.includes("Crafted: ")) {
+      return false;
+    }
+
+    return true;
+  });
+};
+// CONCATENATED MODULE: ./src/path-of-exile/data-processors/string-item-data-processor/index.ts
+
+
+/* harmony default export */ var string_item_data_processor = (function (rawData) {
+  return rawDataIsFromPob(rawData) ? pob(rawData) : game(rawData);
+});
+
+var rawDataIsFromPob = function rawDataIsFromPob(rawData) {
+  return /^\s*Rarity:/g.test(rawData);
+};
+// CONCATENATED MODULE: ./src/path-of-exile/register-global-object.ts
+
+
+
+
+window.HoradricHelper = window.HoradricHelper || {};
+window.HoradricHelper.PathOfExile = {
+  showcases: {},
+  applyConfig: function applyConfig(config) {
+    if (Array.isArray(config)) {
+      applyConfigFromArray(config);
+    } else {
+      register_global_object_applyConfigFromObject(config);
+    }
+  }
+};
+
+var applyConfigFromArray = function applyConfigFromArray(configArray) {
+  configArray.forEach(function (configObject) {
+    return register_global_object_applyConfigFromObject(configObject);
+  });
+};
+
+var register_global_object_applyConfigFromObject = function applyConfigFromObject(_ref) {
+  var reference = _ref.reference,
+      data = _ref.data,
+      iconUrl = _ref.iconUrl,
+      extensions = _ref.extensions;
+  var hhObject = window.HoradricHelper.PathOfExile;
+  var referencedShowcase = hhObject.showcases[reference];
+
+  if (!referencedShowcase) {
+    hhObject.showcases[reference] = {
+      applyConfigCallbacks: []
+    };
+  }
+
+  if (typeof data === "string") {
+    referencedShowcase.data = string_item_data_processor(data);
+  } else if (typeof_typeof(data) === "object") {
+    referencedShowcase.data = data_object_data_processor(data);
+  } else {
+    throw new Error("Showcase data was not provided");
+  }
+
+  referencedShowcase.iconUrl = iconUrl;
+  referencedShowcase.extensions = extensions;
+  referencedShowcase.applyConfigCallbacks.forEach(function (callback) {
+    if (!callback || typeof callback !== "function") {
+      return;
+    }
+
+    try {
+      callback(referencedShowcase);
+    } catch (_unused) {// no-op
+    }
+  });
+};
 // CONCATENATED MODULE: ./src/path-of-exile/main.js
 
 

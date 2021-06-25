@@ -68,12 +68,11 @@
 import PoePassiveShowcase from "./poe-passive-showcase.vue";
 import PoePassiveImage from "./poe-passive-image.vue";
 import mainMixin from "@/shared/mixins/main.mixin";
-import processStringData from "../data-processors/string-item-data-processor";
-import processDataObject from "../data-processors/data-object-data-processor";
+import poeEntityMixin from "./../mixins/poe-entity.mixin";
 
 export default {
   name: "PoePassive",
-  mixins: [mainMixin],
+  mixins: [mainMixin, poeEntityMixin],
   components: { PoePassiveShowcase, PoePassiveImage },
   computed: {
     passive() {
@@ -100,11 +99,6 @@ export default {
     popoverClassesComputed() {
       return `poe-passive-showcase-popover ${this.popoverClasses}`;
     },
-  },
-  metadata: {
-    type: "poe-passive",
-    processStringData,
-    processDataObject,
   },
 };
 </script>

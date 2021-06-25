@@ -80,8 +80,7 @@ import PoeItemShowcase from "./poe-item-showcase.vue";
 import PoeItemImage from "./poe-item-image.vue";
 import PoeItemSockets from "./poe-item-sockets.vue";
 import mainMixin from "@/shared/mixins/main.mixin";
-import processStringData from "../data-processors/string-item-data-processor";
-import processDataObject from "../data-processors/data-object-data-processor";
+import poeEntityMixin from "./../mixins/poe-entity.mixin";
 
 export default {
   name: "PoeItem",
@@ -90,7 +89,7 @@ export default {
     PoeItemImage,
     PoeItemSockets,
   },
-  mixins: [mainMixin],
+  mixins: [mainMixin, poeEntityMixin],
   props: {
     showSockets: { type: Boolean, default: false },
     showSocketsInShowcase: { type: Boolean, default: false },
@@ -136,11 +135,6 @@ export default {
     shouldShowSockets() {
       return this.showSockets && this.item.sockets;
     },
-  },
-  metadata: {
-    type: "poe-item",
-    processStringData,
-    processDataObject,
   },
 };
 </script>

@@ -14,7 +14,9 @@ export default {
     };
   },
   mounted() {
-    window.HoradricHelper.applyConfig(this.passives.map((n) => n.config));
+    window.HoradricHelper.PathOfExile.applyConfig(
+      this.passives.map((n) => n.config)
+    );
   },
   render: function (h) {
     return (

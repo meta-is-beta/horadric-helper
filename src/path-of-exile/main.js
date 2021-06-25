@@ -3,7 +3,7 @@ import PoePassive from "@/path-of-exile/components/passive/poe-passive.vue";
 import VTooltip from "v-tooltip";
 import Vue from "vue";
 import vueCustomElement from "vue-custom-element";
-import "./../shared/register-global-hh-object";
+import "./register-global-object";
 
 Vue.config.productionTip = false;
 

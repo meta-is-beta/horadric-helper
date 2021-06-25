@@ -45,7 +45,7 @@ export default {
   mounted() {
     if (this.socketReferences) {
       Object.values(this.socketReferences).forEach((r) => {
-        let referencedItem = window.HoradricHelper.showcases[r];
+        let referencedItem = window.HoradricHelper.PathOfExile.showcases[r];
         if (!referencedItem) {
           return;
         }
@@ -114,10 +114,11 @@ export default {
 
   &.poe-icon-label {
     background-color: rgba(1, 1, 1, 0.5);
-    & div {
-      padding: 0 !important;
-      line-height: 0 !important;
-    }
+  }
+
+  & div {
+    padding: 0 !important;
+    line-height: 0 !important;
   }
 
   & > .poe-socket {
@@ -180,22 +181,22 @@ export default {
   }
 
   .poe-item-socket-R .poe-item-link {
-    transform: translate(-6.5px, -17px);
+    transform: translate(-6.5px, -7px);
   }
   .poe-item-socket-B .poe-item-link {
-    transform: translate(-5.5px, -16.5px);
+    transform: translate(-5.5px, -6.5px);
   }
   .poe-item-socket-G .poe-item-link {
-    transform: translate(-6px, -17px);
+    transform: translate(-6px, -7px);
   }
   .poe-item-socket-W .poe-item-link {
-    transform: translate(-6px, -17.5px);
+    transform: translate(-6px, -7.5px);
   }
   .poe-item-socket-D .poe-item-link {
-    transform: translate(-6px, -17.5px);
+    transform: translate(-6px, -7.5px);
   }
   .poe-item-socket-A .poe-item-link {
-    transform: translate(-5.5px, -17px);
+    transform: translate(-5.5px, -7px);
     &:hover {
       box-shadow: -0.5px -0.5px 5px 2px rgb(0 0 0 / 70%),
         inset 0 0 4px rgb(0 0 0 / 70%);

@@ -89,7 +89,7 @@ export default {
         return;
       }
 
-      const hhObject = window.HoradricHelper;
+      const hhObject = this.getGlobalObject();
 
       if (
         !hhObject ||
@@ -110,19 +110,18 @@ export default {
       this.show = true;
     },
     registerShowcase() {
-      const showcases = window.HoradricHelper.showcases;
+      const showcases = this.getGlobalObject().showcases;
 
       if (showcases[this.reference]) {
         showcases[this.reference].applyConfigCallbacks.push(this.applyConfig);
       } else {
         showcases[this.reference] = {
           applyConfigCallbacks: [this.applyConfig],
-          ...this.$options.metadata,
         };
       }
     },
     unregisterShowcase() {
-      const hhObject = window.HoradricHelper;
+      const hhObject = this.getGlobalObject();
 
       if (!hhObject) {
         return;
