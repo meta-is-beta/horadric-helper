@@ -3,7 +3,7 @@
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
 A JavaScript WebComponents library that allows you to display tooltips from ARPG games on your website using Html tags.
-To see more examples see the post on my [blog](https://meta-is-beta.com/?p=40).
+To see more examples checkout [this](https://meta-is-beta.com/?p=40) post on my [blog](https://meta-is-beta.com/).
 
 **Currently supported games** (as of version v0.7 Beta)
 
