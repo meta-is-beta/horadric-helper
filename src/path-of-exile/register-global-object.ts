@@ -5,7 +5,7 @@ import processStringData from "./data-processors/string-item-data-processor";
 
 (window as any).HoradricHelper.PathOfExile = {
   showcases: {},
-  applyConfig(config: ShowcaseConfig) {
+  applyConfig(config: PoeShowcaseConfig) {
     if (Array.isArray(config)) {
       applyConfigFromArray(config);
     } else {
@@ -14,7 +14,7 @@ import processStringData from "./data-processors/string-item-data-processor";
   },
 };
 
-const applyConfigFromArray = (configArray: ShowcaseConfig[]): void => {
+const applyConfigFromArray = (configArray: PoeShowcaseConfig[]): void => {
   configArray.forEach((configObject) => applyConfigFromObject(configObject));
 };
 
@@ -23,10 +23,9 @@ const applyConfigFromObject = ({
   data,
   iconUrl,
   extensions,
-}: ShowcaseConfig): void => {
+}: PoeShowcaseConfig): void => {
   const hhObject = (window as any).HoradricHelper.PathOfExile;
-  let referencedShowcase = hhObject.showcases[reference] as Showcase;
-
+  let referencedShowcase = hhObject.showcases[reference] as PoeShowcase;
   if (!referencedShowcase) {
     hhObject.showcases[reference] = {
       applyConfigCallbacks: [],
@@ -44,9 +43,8 @@ const applyConfigFromObject = ({
 
   referencedShowcase.iconUrl = iconUrl;
   referencedShowcase.extensions = extensions;
-
   referencedShowcase.applyConfigCallbacks.forEach(
-    (callback: (arg: Showcase) => void) => {
+    (callback: (arg: PoeShowcase) => void) => {
       if (!callback || typeof callback !== "function") {
         return;
       }

@@ -192,6 +192,7 @@ type PoeConfig = {
     // Optional
     // Dictionary that assigns item references to sockets.
     // Referenced items need to also have thir config defined.
+    // More about this in Sockets section
     // Eg:
     // socketReferences: {
     //    1: "Shield Charge",
@@ -212,7 +213,7 @@ In case of PoE items you can also pass raw item data from different sources and 
 Raw item data can be acquired from:
 
 - __The game__ - To copy an item's data to clipboard press CTRL+C while hovering over an item in-game.
-- __[PoE Trade](https://www.pathofexile.com/trade)__ - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
+- __PoE Trade__ - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
 - __Path of Building (PoB)__ - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
 
 ### `PoeItem` object
@@ -513,6 +514,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |:-------:|:---------:|:--------:|:------------|
 | `itemLevel` | `item-level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
 | `requirements` | `requirements` | `String[]` | List of item's requirement text lines.  |
+| `sockets`  | `sockets` | `String` | String representing socekts and their links. _More about sockets in [Sockets](#sockets) section._ |
 | `enchants` | `enchants` | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)). |
 | `implicits` | `implicits` | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)). |
 | `modifiers` | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
@@ -526,6 +528,53 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |     Name      |    Type    | Description                               |
 | :-----------: | :--------: | :---------------------------------------- |
 | `description` | `String[]` | List of passive's description text lines. |
+
+### Sockets
+_Full live example of sockets usage on [CodePen](https://codepen.io/meta-is-beta/pen/NWpQgjZ)_
+
+Sockets are defined by `sockets` section of Config Object or are provided by raw item data from the game or from PoB (with line "`Sockets: {socket string}`"). You can display them trough `show-sockets` and `show-sockets-in-showcase` props.
+
+#### Socket notation
+There are 6 types of sockets avalible:
+- `R`, `G`, `B`, `W` - Reb, blue, green and white. Usiually found on normal items.
+- `A` - "Abyssal" sockets found on abbysal items.
+- `D` - "Delve" sockets found on resonators.
+
+Socket string is a list of socket symbols separated by "`-`" if they are linked or by "` `" (whitespace) if they are not linked.
+
+For example:
+- 3 linked red sockets: `R-R-R`
+- 6 sockets (3 blue, 3 green), 5 of them linked: `G-G-B-G-B B`
+- 3 white linked sockets and one abyssal socket: `W-W-W A`
+- 3-socketed resonator: `D D D`
+
+#### Socketing items
+By default sockets will be empty. To plce items into them you have to:
+- Make sure that items you want to socket have their config defined.
+- Add them to the `extensions.socketReferences` section of config.
+
+Example:
+
+```javascript
+
+{
+    "reference": "Fortify Shield",
+    "extensions": {
+      "socketReferences": {
+        "1": "Shield Charge",
+        "2": "Fortify Support",
+        "3": "Increased Duration Support",
+      }
+    },
+    "data": `...`
+}
+```
+
+### Stacks
+- Stacks can display how many of given item or passive there is.
+- They are defined by `stacks` section of Config Object or by line on raw item data that looks like this: `Stack Size: {current stacks}/{max stacks}`
+- They can be displayed as ether a number above item's icon (through `show-stacks` prop) or as a prefix before item's name in it's label (trough `show-stacks-in-label` prop).
+
 
 ### Dimming and hiding sections
 

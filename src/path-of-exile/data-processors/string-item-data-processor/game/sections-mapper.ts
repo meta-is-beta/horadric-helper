@@ -27,7 +27,7 @@ const rawSectionsToNamedSections = (
 const splitDescriptionToLines = (rawData: String): String[] =>
   rawData
     .split("\n")
-    .map((line) => line.replace("\r", ""))
+    .map((line) => line.replace("\r", "").trim())
     .filter((x) => x.length > 0);
 
 const splitLinesIntoSections = (descriptionLines: String[]): String[][] => {

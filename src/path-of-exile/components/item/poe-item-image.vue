@@ -5,6 +5,8 @@
     :width="computedIconSize"
     height="auto"
     :src="this.iconUrl"
+    alt=" "
+    onerror="this.style.display='none'"
   />
 </template>
 

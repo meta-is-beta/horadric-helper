@@ -1,7 +1,12 @@
 <template>
   <div :class="passiveWrapperClasses">
     <div />
-    <img loading="lazy" :src="this.iconUrl" />
+    <img
+      loading="lazy"
+      :src="this.iconUrl"
+      alt=" "
+      onerror="this.style.display='none'"
+    />
   </div>
 </template>
 
