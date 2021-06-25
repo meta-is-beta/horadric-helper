@@ -2,8 +2,8 @@
 
 [![Release Horadric Helper](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/meta-is-beta/horadric-helper/actions/workflows/release.yml)
 
-A JavaScript WebComponents library that allows you to display tooltips from ARPG games on you website using Html tags.
-To see more examples see post on my [blog](https://meta-is-beta.com/?p=40).
+A JavaScript WebComponents library that allows you to display tooltips from ARPG games on your website using Html tags.
+To see more examples see the post on my [blog](https://meta-is-beta.com/?p=40).
 
 **Currently supported games** (as of version v0.7 Beta)
 
@@ -97,7 +97,7 @@ You can get them from this repo's `/dist/poe` folder.
 **Notes**
 
 - This library supports only newer browsers such as Chrome, Firefox or Opera. IE11 is **not** supported.
-- There is also non-minified version of JS available under `horadric-helper-poe.umd.js`.
+- There is also a non-minified version of JS available under `horadric-helper-poe.umd.js`.
 - There are source-map files for both minified and non-minified versions.
 
 ## Html Components
@@ -137,10 +137,10 @@ You can apply props to set or change behaviour for individual components.
 | `icon-inside` | `Bool` | Show icon inside of showcase. (_Only works if `iconUrl` was provided in config_) |
 | `icon-outside` | `Bool` | Show icon outside of showcase. (_Only works if `iconUrl` was provided in config_) |
 | `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set the size of the icon. Default is `auto`. |
-| `show-stacks` | `Bool` | Displays amount of stacks when in `as-icon` mode as number above icon. _(Stacks are defined in ether "stacks" section of Item Config or in raw data copied from the game)_ |
-| `show-stacks-in-label` | `Bool` | Displays amount of stacks when in `as-icon` or `as-text` mode as number in label. _(Stacks are defined in ether "stacks" section of Item Config or in raw data copied from the game)_|
+| `show-stacks` | `Bool` | Displays the amount of stacks when in `as-icon` mode as the number above icon. _(Stacks are defined in ether "stacks'' section of Item Config or in raw data copied from the game)_ |
+| `show-stacks-in-label` | `Bool` | Displays amount of stacks when in `as-icon` or `as-text` mode as number in label. _(Stacks are defined in ether "stacks'' section of Item Config or in raw data copied from the game)_|
 | `show-sockets` | `Bool` | Displays sockets under icon when in `as-icon` mode. |
-| `show-sockets-in-showcase` | `Bool` | Displays sockets inside of showcase. |
+| `show-sockets-in-showcase` | `Bool` | Displays sockets inside of the showcase. |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
 
@@ -191,7 +191,7 @@ type PoeConfig = {
   extensions?: {
     // Optional
     // Dictionary that assigns item references to sockets.
-    // Referenced items need to also have thir config defined.
+    // Referenced items need to also have their config defined.
     // More about this in Sockets section
     // Eg:
     // socketReferences: {
@@ -514,14 +514,14 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |:-------:|:---------:|:--------:|:------------|
 | `itemLevel` | `item-level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
 | `requirements` | `requirements` | `String[]` | List of item's requirement text lines.  |
-| `sockets`  | `sockets` | `String` | String representing socekts and their links. _More about sockets in [Sockets](#sockets) section._ |
+| `sockets`  | `sockets` | `String` | String representing sockets and their links. _(More about sockets in [Sockets](#sockets) section.)_ |
 | `enchants` | `enchants` | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)). |
 | `implicits` | `implicits` | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)). |
-| `modifiers` | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
-| `statuses` | `statuses` | `String[]` | Avalible statuses: `corrupted`, `mirrored`, `split`.  |
+| `modifiers` | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as __explicit modifiers__)_. |
+| `statuses` | `statuses` | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.  |
 | `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. |
 | `talismanTier` | `talisman-tier` | `String` | String of numerical value of talisman tier. |
-| `stacks` | `stacks` | "Number" | Numerical value of how many of given item there is. |
+| `stacks` | `stacks` | "Number" | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_ |
 
 ### `PoePassive` sections
 
@@ -532,12 +532,12 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 ### Sockets
 _Full live example of sockets usage on [CodePen](https://codepen.io/meta-is-beta/pen/NWpQgjZ)_
 
-Sockets are defined by `sockets` section of Config Object or are provided by raw item data from the game or from PoB (with line "`Sockets: {socket string}`"). You can display them trough `show-sockets` and `show-sockets-in-showcase` props.
+Sockets are defined by the `sockets` section of Config Object or are provided by raw item data from the game or from PoB (with line "`Sockets: {socket string}`"). You can display them through `show-sockets` and `show-sockets-in-showcase` props.
 
 #### Socket notation
-There are 6 types of sockets avalible:
-- `R`, `G`, `B`, `W` - Reb, blue, green and white. Usiually found on normal items.
-- `A` - "Abyssal" sockets found on abbysal items.
+There are 6 types of sockets available:
+- `R`, `G`, `B`, `W` - Reb, blue, green and white. Usually found on normal items.
+- `A` - "Abyssal" sockets found on abyssal items.
 - `D` - "Delve" sockets found on resonators.
 
 Socket string is a list of socket symbols separated by "`-`" if they are linked or by "` `" (whitespace) if they are not linked.
@@ -549,7 +549,7 @@ For example:
 - 3-socketed resonator: `D D D`
 
 #### Socketing items
-By default sockets will be empty. To plce items into them you have to:
+By default sockets will be empty. To place items into them you have to:
 - Make sure that items you want to socket have their config defined.
 - Add them to the `extensions.socketReferences` section of config.
 
@@ -571,9 +571,11 @@ Example:
 ```
 
 ### Stacks
-- Stacks can display how many of given item or passive there is.
+_Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/pen/vYxowbZ)_
+
+- Stacks can display how many of given item or passive there are.
 - They are defined by `stacks` section of Config Object or by line on raw item data that looks like this: `Stack Size: {current stacks}/{max stacks}`
-- They can be displayed as ether a number above item's icon (through `show-stacks` prop) or as a prefix before item's name in it's label (trough `show-stacks-in-label` prop).
+- They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
 
 
 ### Dimming and hiding sections
@@ -587,13 +589,13 @@ You can target entire sections by passing section names separated by `;`.
 **Format**
 
 ```js
-hide-sections = "section1;section2;section3";
+hide-sections="section1;section2;section3";
 ```
 
 or
 
 ```js
-hide-sections = "section1:all;section2:all;section3:all";
+hide-sections="section1:all;section2:all;section3:all";
 ```
 
 **Example**
@@ -620,7 +622,7 @@ To target specific lines you can pass numbers of lines separated by `,` after th
 **Format**
 
 ```js
-hide-sections = "section1:1,2;section2:4,5,6;section3:1";
+hide-sections="section1:1,2;section2:4,5,6;section3:1";
 ```
 
 **Example**
