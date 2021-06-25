@@ -48,7 +48,7 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 
 ```html
 <script>
-  window.HoradricHelper.applyConfig({
+  window..PathOfExile.applyConfig({
     reference: "example-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
     data: `
@@ -165,7 +165,7 @@ You can apply props to set or change behaviour for individual components.
 ## Configuration object
 
 When the library is loaded it will register a global object called `HoradricHelper`.
-You can use the `HoradricHelper.applyConfig` method to load either a single `PoeConfig` object or an array of `PoeConfig` objects.
+You can use the `HoradricHelper.PathOfExile.applyConfig` method to load either a single `PoeConfig` object or an array of `PoeConfig` objects.
 
 ### `PoeConfig` object
 
@@ -347,7 +347,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
 
 <!-- JavaScript --->
 <script>
-  window.HoradricHelper.applyConfig({
+  window.HoradricHelper.PathOfExile.applyConfig({
     reference: "custom-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
     data: {
@@ -389,7 +389,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
 
 <!-- JavaScript --->
 <script>
-  window.HoradricHelper.applyConfig({
+  window..PathOfExile.applyConfig({
     reference: "ingame-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
     data: `
@@ -435,7 +435,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
 
 <!-- JavaScript --->
 <script>
-  window.HoradricHelper.applyConfig({
+  window..PathOfExile.applyConfig({
     reference: "pob-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
     data: `
@@ -485,7 +485,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 
 <!-- JavaScript --->
 <script>
-  window.HoradricHelper.applyConfig({
+  window..PathOfExile.applyConfig({
     reference: "magnifier-passive",
     iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
     data: {
