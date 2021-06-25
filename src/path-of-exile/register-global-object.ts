@@ -25,12 +25,13 @@ const applyConfigFromObject = ({
   extensions,
 }: ShowcaseConfig): void => {
   const hhObject = (window as any).HoradricHelper.PathOfExile;
-  const referencedShowcase = hhObject.showcases[reference] as Showcase;
+  let referencedShowcase = hhObject.showcases[reference] as Showcase;
 
   if (!referencedShowcase) {
     hhObject.showcases[reference] = {
       applyConfigCallbacks: [],
     };
+    referencedShowcase = hhObject.showcases[reference];
   }
 
   if (typeof data === "string") {

@@ -25305,6 +25305,7 @@ var register_global_object_applyConfigFromObject = function applyConfigFromObjec
     hhObject.showcases[reference] = {
       applyConfigCallbacks: []
     };
+    referencedShowcase = hhObject.showcases[reference];
   }
 
   if (typeof data === "string") {
