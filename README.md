@@ -576,7 +576,7 @@ Example:
 _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/pen/vYxowbZ)_
 
 - Stacks can display how many of given item or passive there are.
-- They are defined by `stacks` section of Config Object or by line on raw item data that looks like this: <nobr>`Stack Size: {current stacks}/{max stacks}`</nobr>
+- They are defined by `stacks` section of Config Object or by line on raw item data (`Stack Size: {current stacks}/{max stacks}`)
 - They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
 
 
