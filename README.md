@@ -119,7 +119,7 @@ _(More about this in [Configuration](#configuration-object) section.)_
 
 - Multiple components with the same reference can exist - any config applied to that reference will work for all matching components.
 - Components can be used as any other Html element - this is thanks to [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard.
-- This library does **NOT** utilize shadow DOM - this means that collisions between website's styles and component's styles can occur and needs to be solved on a case-by-case basis. _(In other words - your website's css can conflict with this library's css)_
+- This library does **NOT** utilize shadow DOM - this means that collisions between website's styles and component's styles can occur and needs to be solved on a case-by-case basis _(In other words - your website's css can conflict with this library's css)_.
 
 ## Html Component Props
 
