@@ -189,6 +189,7 @@ type PoeConfig = {
   // Optional
   // Object with extension data for config that does not fit into "data" field
   extensions?: {
+
     // Optional
     // Dictionary that assigns item references to sockets.
     // Referenced items need to also have their config defined.
@@ -313,6 +314,7 @@ type PoePassive = {
 
   // All sections are optional
   sections: {
+
     // List of passives's description text lines
     // Eg. for "Arcane Blessing":
     // [
@@ -558,15 +560,15 @@ Example:
 ```javascript
 
 {
-    "reference": "Fortify Shield",
-    "extensions": {
-      "socketReferences": {
-        "1": "Shield Charge",
-        "2": "Fortify Support",
-        "3": "Increased Duration Support",
-      }
-    },
-    "data": `...`
+  "reference": "Fortify Shield",
+  "extensions": {
+    "socketReferences": {
+      "1": "Shield Charge",
+      "2": "Fortify Support",
+      "3": "Increased Duration Support",
+    }
+  },
+  "data": `...`
 }
 ```
 
@@ -574,7 +576,7 @@ Example:
 _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/pen/vYxowbZ)_
 
 - Stacks can display how many of given item or passive there are.
-- They are defined by `stacks` section of Config Object or by line on raw item data that looks like this: `Stack Size: {current stacks}/{max stacks}`
+- They are defined by `stacks` section of Config Object or by line on raw item data that looks like this: <nobr>`Stack Size: {current stacks}/{max stacks}`</nobr>
 - They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
 
 
@@ -602,10 +604,7 @@ hide-sections="section1:all;section2:all;section3:all";
 
 ```html
 <!-- Hiding all implicits and requirements -->
-<poe-item
-  reference="Headhunter"
-  hide-sections="implicits;requirements"
-></poe-item>
+<poe-item reference="Headhunter" hide-sections="implicits;requirements"></poe-item>
 
 <!-- Dimming entire description -->
 <poe-passive reference="Beef" dim-sections="description"></poe-passive>
@@ -629,10 +628,7 @@ hide-sections="section1:1,2;section2:4,5,6;section3:1";
 
 ```html
 <!-- Hiding 1st and 2nd line of modifiers and 1st line of properties -->
-<poe-item
-  reference="Headhunter"
-  hide-sections="modifiers:1,2;properties:1"
-></poe-item>
+<poe-item reference="Headhunter" hide-sections="modifiers:1,2;properties:1"></poe-item>
 
 <!-- Dimming 3rd and 4th line of description -->
 <poe-passive reference="Lethality" dim-sections="description:3,4"></poe-passive>
