@@ -112,7 +112,9 @@ This will allow you to later load configuration objects for that reference.
 _(More about this in [Configuration](#configuration-object) section.)_
 
 ```html
-<poe-item reference="Headhunter"></poe-item>
+<poe-item
+  reference="Headhunter">
+</poe-item>
 ```
 
 **Notes**
@@ -159,7 +161,11 @@ You can apply props to set or change behaviour for individual components.
 `Beef` passive as a showcase, with an icon displayed inside.
 
 ```html
-<poe-passive reference="Beef" as-text icon-inside></poe-passive>
+<poe-passive
+  reference="Beef"
+  as-text
+  icon-inside>
+</poe-passive>
 ```
 
 ## Configuration object
@@ -479,7 +485,11 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 <!-- Html --->
 <body>
   <div>
-    <poe-passive reference="magnifier-passive" as-text icon-outside></poe-passive>
+    <poe-passive
+      reference="magnifier-passive"
+      as-text
+      icon-outside>
+    </poe-passive>
   </div>
 </body>
 
@@ -603,10 +613,16 @@ hide-sections="section1:all;section2:all;section3:all";
 
 ```html
 <!-- Hiding all implicits and requirements -->
-<poe-item reference="Headhunter" hide-sections="implicits;requirements"></poe-item>
+<poe-item
+  reference="Headhunter"
+  hide-sections="implicits;requirements">
+</poe-item>
 
 <!-- Dimming entire description -->
-<poe-passive reference="Beef" dim-sections="description"></poe-passive>
+<poe-passive
+  reference="Beef"
+  dim-sections="description">
+</poe-passive>
 ```
 
 <p align="center">
@@ -627,10 +643,16 @@ hide-sections="section1:1,2;section2:4,5,6;section3:1";
 
 ```html
 <!-- Hiding 1st and 2nd line of modifiers and 1st line of properties -->
-<poe-item reference="Headhunter" hide-sections="modifiers:1,2;properties:1"></poe-item>
+<poe-item
+  reference="Headhunter"
+  hide-sections="modifiers:1,2;properties:1">
+</poe-item>
 
 <!-- Dimming 3rd and 4th line of description -->
-<poe-passive reference="Lethality" dim-sections="description:3,4"></poe-passive>
+<poe-passive
+  reference="Lethality"
+  dim-sections="description:3,4">
+</poe-passive>
 ```
 
 <p align="center">
