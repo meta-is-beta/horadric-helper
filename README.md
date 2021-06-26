@@ -48,7 +48,7 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 
 ```html
 <script>
-  window..PathOfExile.applyConfig({
+  window.HoradricHelper.PathOfExile.applyConfig({
     reference: "example-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
     data: `
@@ -389,7 +389,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
 
 <!-- JavaScript --->
 <script>
-  window..PathOfExile.applyConfig({
+  window.HoradricHelper.PathOfExile.applyConfig({
     reference: "ingame-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
     data: `
@@ -435,7 +435,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
 
 <!-- JavaScript --->
 <script>
-  window..PathOfExile.applyConfig({
+  window.HoradricHelper.PathOfExile.applyConfig({
     reference: "pob-item",
     iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
     data: `
@@ -485,7 +485,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 
 <!-- JavaScript --->
 <script>
-  window..PathOfExile.applyConfig({
+  window.HoradricHelper.PathOfExile.applyConfig({
     reference: "magnifier-passive",
     iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
     data: {
