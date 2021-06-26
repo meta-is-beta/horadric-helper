@@ -66,7 +66,8 @@ const processValuesInLine = (line: String): String => {
   const lowerRangeValue = parseFloat(valuesMatch[1]);
   const upperRangeValue = parseFloat(valuesMatch[2]);
   const calculatedValue =
-    (upperRangeValue - lowerRangeValue) * rangePercentageValue;
+    (upperRangeValue - lowerRangeValue) * rangePercentageValue +
+    lowerRangeValue;
 
   return line.replaceAll(/\(([0-9.,]+-[0-9.,]+)\)/g, `${calculatedValue}`);
 };
