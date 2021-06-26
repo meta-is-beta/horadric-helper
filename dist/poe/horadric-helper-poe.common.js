@@ -25033,7 +25033,7 @@ var processValuesInLine = function processValuesInLine(line) {
 
   var lowerRangeValue = parseFloat(valuesMatch[1]);
   var upperRangeValue = parseFloat(valuesMatch[2]);
-  var calculatedValue = (upperRangeValue - lowerRangeValue) * rangePercentageValue;
+  var calculatedValue = (upperRangeValue - lowerRangeValue) * rangePercentageValue + lowerRangeValue;
   return line.replaceAll(/\(([0-9.,]+-[0-9.,]+)\)/g, "".concat(calculatedValue));
 };
 
