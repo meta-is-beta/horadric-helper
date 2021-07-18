@@ -21,16 +21,8 @@ export default {
   },
   methods: {
     getIconSize(size) {
-      if (size === "auto" && this.type) {
-        switch (this.type.toLowerCase()) {
-          case "equipment":
-            return 100;
-          case "flask":
-            return 50;
-          case "gem":
-          default:
-            return 50;
-        }
+      if (size === "auto") {
+        return "auto";
       } else {
         switch (size) {
           case "sm":

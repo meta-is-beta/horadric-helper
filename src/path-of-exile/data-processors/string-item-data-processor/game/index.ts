@@ -1,3 +1,8 @@
+import {
+  PoeItem,
+  PoeItemDataSection,
+  PoeItemType,
+} from "@/path-of-exile/types";
 import mapSections from "./sections-mapper";
 
 export default (rawData: String): PoeItem => {
@@ -150,15 +155,15 @@ const getRequirements = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Requirements")
     ?.lines.filter((l) => l !== "Requirements:")
-    .map((l) => l.replaceAll("(unmet)", "").replaceAll("(augmented)", ""));
+    .map((l) => l.replace(/\(unmet\)/g, "").replace(/\(augmented\)/g, ""));
 const getEnchants = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Enchants")
-    ?.lines.map((l) => l.replaceAll("(enchant)", "").trim());
+    ?.lines.map((l) => l.replace(/\(enchant\)/g, "").trim());
 const getImplicits = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Implicits")
-    ?.lines.map((l) => l.replaceAll("(implicit)", "").trim());
+    ?.lines.map((l) => l.replace(/\(implicit\)/g, "").trim());
 const getSockets = (sections: PoeItemDataSection[]) => {
   const socketLine = sections.find((x) => x.name === "Sockets")?.lines[0];
   if (!socketLine) {
@@ -172,10 +177,11 @@ const getSockets = (sections: PoeItemDataSection[]) => {
 
   return socketsMatch[1];
 };
+
 const getProperties = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Properties")
-    ?.lines.map((l) => l.replaceAll("(augmented)", ""));
+    ?.lines.map((l) => l.replace(/\(augmented\)/g, ""));
 const getModifiers = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Modifiers")?.lines;
 const getGemDescription = (sections: PoeItemDataSection[]) =>

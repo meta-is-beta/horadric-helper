@@ -16,7 +16,14 @@
         </div>
         <div class="poe-item-header-center-panel">
           <div>{{ item.name }}</div>
-          <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
+          <div
+            v-if="
+              (item.name != item.baseName && item.rarity === 'rare') ||
+              item.rarity === 'unique'
+            "
+          >
+            {{ item.baseName }}
+          </div>
         </div>
         <div :class="rightHeaderPanelClasses">
           <div v-if="itemInfluences.length > 0" />
@@ -279,8 +286,8 @@ export default {
         ? this.item.sections.properties.map((line) => {
             return line
               .trim()
-              .replaceAll(
-                /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi,
+              .replace(
+                /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|(\(Max\))|(\(Min\)))/gi,
                 "<span class='poe-item-property-value'>$1</span>"
               );
           })
@@ -293,7 +300,7 @@ export default {
               .map((line) => {
                 return line
                   .trim()
-                  .replaceAll(
+                  .replace(
                     /([0-9]+)/gi,
                     "<span class='poe-item-requirement-value'>$1</span>"
                   );
@@ -310,7 +317,7 @@ export default {
     itemModifiers() {
       return this.item.sections.modifiers
         ? this.item.sections.modifiers.map((x) => ({
-            text: x.replaceAll("(crafted)", "").trim(),
+            text: x.replace(/\(crafted\)/g, "").trim(),
             isCrafter: x.includes("(crafted)"),
           }))
         : [];

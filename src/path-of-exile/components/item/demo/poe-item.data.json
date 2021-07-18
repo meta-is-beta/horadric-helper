@@ -30,9 +30,7 @@
         "asIcon": true,
         "labelText": "",
         "iconInside": true,
-        "iconSize": "md",
-        "dimSections": "modifiers:1,2",
-        "hideSections": "modifiers;statuses"
+        "iconSize": "md"
       },
       "config": {
         "reference": "Pandemonium Creed",
@@ -628,6 +626,29 @@
           }
         },
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/IncreasedDuration.png"
+      }
+    },
+    {
+      "props": {
+        "show-sockets": true,
+        "show-sockets-in-showcase": true,
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Soul Mantle",
+        "iconUrl":
+          "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/SoulMantle.png",
+        "data": "Item Class: Body Armours\nRarity: Unique\nSoul Mantle\nSpidersilk Robe\n--------\nQuality: +26% (augmented)\nEnergy Shield: 228 (augmented)\n--------\nRequirements:\nLevel: 49\nInt: 134\n--------\nSockets: R-G-B-B-G-B \n--------\nItem Level: 72\n--------\nSocketed Gems are Supported by Level 20 Spell Totem\n25% increased Spell Damage\n111% increased Energy Shield\n50% increased Totem Life\n+1 to maximum number of Summoned Totems\nInflicts a random Hex on you when your Totems die, with 80% more Effect"
+      }
+    },
+    {
+      "props": {
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Mjolner",
+        "data": "Item Class: One Hand Maces\nRarity: Unique\nMjölner\nGavel\n--------\nOne Handed Mace\nQuality: +20% (augmented)\nPhysical Damage: 110-205 (augmented)\nCritical Strike Chance: 5.00%\nAttacks per Second: 1.15\nWeapon Range: 11\n--------\nRequirements:\nLevel: 72\nStr: 412 (augmented)\nDex: 111\nInt: 300 (augmented)\n--------\nSockets: G-G-B \n--------\nItem Level: 80\n--------\n14% chance to gain Onslaught for 4 seconds on Kill (implicit)\n--------\nTrigger a Socketed Lightning Spell on Hit, with a 0.15 second Cooldown\nSocketed Lightning Spells deal 100% increased Spell Damage if Triggered\n+300 Intelligence Requirement\n+200 Strength Requirement\n83% increased Physical Damage\nSkills Chain +1 times\n32% increased Lightning Damage with Attack Skills\n--------\nLook the storm in the eye and you will have its respect.\n--------\nCorrupted",
+        "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Weapons/OneHandWeapons/OneHandMaces/Mjolner.png"
       }
     }
   ]

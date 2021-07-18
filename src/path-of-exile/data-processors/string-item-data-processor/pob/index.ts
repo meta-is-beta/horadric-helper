@@ -1,3 +1,11 @@
+import {
+  PoeItem,
+  PoeItemInfluence,
+  PoeItemRarity,
+  PoeItemStatus,
+  PoeItemType,
+} from "@/path-of-exile/types";
+
 export default (rawData: String): PoeItem => {
   const item: PoeItem = {} as PoeItem;
 
@@ -69,7 +77,7 @@ const processValuesInLine = (line: String): String => {
     (upperRangeValue - lowerRangeValue) * rangePercentageValue +
     lowerRangeValue;
 
-  return line.replaceAll(/\(([0-9.,]+-[0-9.,]+)\)/g, `${calculatedValue}`);
+  return line.replace(/\(([0-9.,]+-[0-9.,]+)\)/g, `${calculatedValue}`);
 };
 
 const cleanStatLine = (line: String): String =>
@@ -122,6 +130,7 @@ const getItemImplicitsAndEnchants = (
   selectedVariant: String
 ): [String[], String[], number] => {
   let implicitsStartIndex = 0;
+
   const implicitCountLine = sections.find((s, i) => {
     implicitsStartIndex = i;
     return s.includes("Implicits: ");
@@ -159,6 +168,7 @@ const getItemImplicitsAndEnchants = (
   const enchants = implicitLines
     .filter((line) => line.startsWith("{crafted}"))
     .map((line) => line.replace("{crafted}", ""));
+
   const nonEnchants = implicitLines.filter(
     (line) => !line.startsWith("{crafted}")
   );

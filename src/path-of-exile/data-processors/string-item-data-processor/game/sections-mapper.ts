@@ -1,3 +1,5 @@
+import { PoeItemDataSection } from "@/path-of-exile/types";
+
 export default (rawData: String): PoeItemDataSection[] => {
   const rawSections = rawDataToRawSections(rawData);
   let namedSections = rawSectionsToNamedSections(rawSections);
