@@ -137,6 +137,15 @@ const fillUnknownSections = (
   if (!itemIsNormal && !itemIsGem) {
     const modifiersIndex = sections.find((x) => x.name === "Unknown")?.index;
     if (modifiersIndex) sections[modifiersIndex].name = "Modifiers";
+
+    if (
+      modifiersIndex &&
+      sections[modifiersIndex + 1] &&
+      sections[modifiersIndex + 1].name === "Unknown" &&
+      itemRarityLine.includes("Unique")
+    ) {
+      sections[modifiersIndex + 1].name = "Flavor text";
+    }
   }
 
   if (itemIsGem) {

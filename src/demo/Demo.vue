@@ -1,158 +1,214 @@
 <template>
   <div id="app">
     <div>
-      <b-container style="max-width: unset; padding: 40px">
-        <b-card>
-          <h1>Load from the game</h1>
-          <b-row>
-            <b-col style="display: flex; justify-content: center">
-              <b-form-input
-                style="width: 200px; margin: 6px"
-                v-model="accountName"
-                placeholder="Account name"
-                id="accountname"
-              ></b-form-input>
-              <b-form-input
-                style="width: 200px; margin: 6px"
-                v-model="characterName"
-                placeholder="Character name"
-                id="charactername"
-              ></b-form-input>
-              <b-button @click="loadDataFromTheGame" style="margin: 6px"
-                >Load</b-button
-              >
-            </b-col>
-          </b-row>
-          <h1>Load from JSON</h1>
-          <b-row>
-            <b-form-textarea
-              v-model="jsonData"
-              rows="3"
-              max-rows="6"
-            ></b-form-textarea>
-          </b-row>
-        </b-card>
-        <br />
-        <b-card v-show="itemsFromJson.length > 0">
-          <b-tabs content-class="mt-3">
-            <b-tab title="All items" active>
+      <b-tabs content-class="mt-3">
+        <b-tab title="Load multiple items" active>
+          <b-container style="max-width: unset; padding: 40px">
+            <b-card>
+              <h1>Load from the game</h1>
               <b-row>
-                <b-table :fields="fields" :items="itemsFromJson">
-                  <template #cell(item)="data">
-                    <div>
-                      <poe-item
-                        as-icon
-                        show-sockets
-                        show-sockets-in-showcase
-                        :reference="data.item.reference"
-                      />
-                    </div>
-                  </template>
-                  <template #cell(name)="data">
-                    <span>
-                      {{ data.item.data.name }}
-                    </span>
-                  </template>
-                  <template #cell(base)="data">
-                    <span>
-                      {{ data.item.data.baseName }}
-                    </span>
-                  </template>
-                  <template #cell(type)="data">
-                    <span style="text-transform: capitalize">
-                      {{ data.item.data.type }}
-                    </span>
-                  </template>
-                  <template #cell(tag)="data">
-                    <pre><code>{{ generateTag(data.item.reference) }}</code></pre>
-                  </template>
-                </b-table>
-              </b-row>
-            </b-tab>
-            <b-tab title="Equipment">
-              <b-row>
-                <div class="section-container" v-show="equipment.length > 0">
-                  <div class="section">
-                    <poe-item
-                      v-for="(item, index) in equipment"
-                      :key="`eq-${index}`"
-                      :reference="item.reference"
-                      as-icon
-                      show-sockets
-                    ></poe-item>
-                  </div>
-                  <div class="section-code">
-                    <pre><code>{{equipmentCode}}</code></pre>
-                  </div>
-                </div>
-              </b-row>
-            </b-tab>
-            <b-tab title="Flasks">
-              <b-row>
-                <div class="section-container" v-show="flasks.length > 0">
-                  <div class="section">
-                    <poe-item
-                      v-for="(item, index) in flasks"
-                      :key="`flask-${index}`"
-                      :reference="item.reference"
-                      as-icon
-                    ></poe-item>
-                  </div>
-                  <div class="section-code">
-                    <pre><code>{{flasksCode}}</code></pre>
-                  </div>
-                </div>
-              </b-row>
-            </b-tab>
-            <b-tab title="Jewels">
-              <b-row>
-                <div class="section-container" v-show="jewels.length > 0">
-                  <div class="section">
-                    <poe-item
-                      v-for="(item, index) in jewels"
-                      :key="`jewel-${index}`"
-                      :reference="item.reference"
-                      as-icon
-                    ></poe-item>
-                  </div>
-                  <div class="section-code">
-                    <pre><code>{{jewelsCode}}</code></pre>
-                  </div>
-                </div>
-              </b-row>
-            </b-tab>
-            <b-tab title="Links">
-              <b-row>
-                <div class="section-container" v-show="jewels.length > 0">
-                  <div
-                    class="section gems-section"
-                    v-for="(link, index) in links"
-                    :key="`link-${index}`"
+                <b-col style="display: flex; justify-content: center">
+                  <b-form-input
+                    style="width: 200px; margin: 6px"
+                    v-model="accountName"
+                    placeholder="Account name"
+                    id="accountname"
+                  ></b-form-input>
+                  <b-form-input
+                    style="width: 200px; margin: 6px"
+                    v-model="characterName"
+                    placeholder="Character name"
+                    id="charactername"
+                  ></b-form-input>
+                  <b-button @click="loadDataFromTheGame" style="margin: 6px"
+                    >Load</b-button
                   >
-                    <div v-for="(gem, index) in link" :key="`gem-${index}`">
-                      <poe-item
-                        :reference="gem.reference"
-                        as-text
-                        icon-inside
-                        :label-text="getGemLabelName(gem)"
-                      ></poe-item>
-                      <div
-                        v-if="index != 0 || index + 1 != link.length"
-                        class="gem-link"
-                      >
-                        ┄
+                </b-col>
+              </b-row>
+              <h1>Load from JSON</h1>
+              <b-row style="padding-left: 8px; padding-right: 8px">
+                <b-form-textarea
+                  v-model="jsonData"
+                  rows="3"
+                  max-rows="6"
+                ></b-form-textarea>
+              </b-row>
+            </b-card>
+            <br />
+            <b-card v-show="itemsFromJson.length > 0">
+              <b-tabs content-class="mt-3">
+                <b-tab title="All items" active>
+                  <b-row style="overflow: auto">
+                    <b-table :fields="fields" :items="itemsFromJson">
+                      <template #cell(item)="data">
+                        <div>
+                          <poe-item
+                            as-icon
+                            show-sockets
+                            show-sockets-in-showcase
+                            :reference="data.item.reference"
+                          />
+                        </div>
+                      </template>
+                      <template #cell(name)="data">
+                        <span>
+                          {{ data.item.data.name }}
+                        </span>
+                      </template>
+                      <template #cell(base)="data">
+                        <span>
+                          {{ data.item.data.baseName }}
+                        </span>
+                      </template>
+                      <template #cell(type)="data">
+                        <span style="text-transform: capitalize">
+                          {{ data.item.data.type }}
+                        </span>
+                      </template>
+                      <template #cell(tag)="data">
+                        <pre><code>{{ generateTag(data.item.reference) }}</code></pre>
+                      </template>
+                    </b-table>
+                  </b-row>
+                </b-tab>
+                <b-tab title="Equipment">
+                  <b-row>
+                    <div
+                      class="section-container"
+                      v-show="equipment.length > 0"
+                    >
+                      <div class="section">
+                        <poe-item
+                          v-for="(item, index) in equipment"
+                          :key="`eq-${index}`"
+                          :reference="item.reference"
+                          as-icon
+                          show-sockets
+                        ></poe-item>
+                      </div>
+                      <div class="section-code">
+                        <pre><code>{{equipmentCode}}</code></pre>
                       </div>
                     </div>
+                  </b-row>
+                </b-tab>
+                <b-tab title="Flasks">
+                  <b-row>
+                    <div class="section-container" v-show="flasks.length > 0">
+                      <div class="section">
+                        <poe-item
+                          v-for="(item, index) in flasks"
+                          :key="`flask-${index}`"
+                          :reference="item.reference"
+                          as-icon
+                        ></poe-item>
+                      </div>
+                      <div class="section-code">
+                        <pre><code>{{flasksCode}}</code></pre>
+                      </div>
+                    </div>
+                  </b-row>
+                </b-tab>
+                <b-tab title="Jewels">
+                  <b-row>
+                    <div class="section-container" v-show="jewels.length > 0">
+                      <div class="section">
+                        <poe-item
+                          v-for="(item, index) in jewels"
+                          :key="`jewel-${index}`"
+                          :reference="item.reference"
+                          as-icon
+                        ></poe-item>
+                      </div>
+                      <div class="section-code">
+                        <pre><code>{{jewelsCode}}</code></pre>
+                      </div>
+                    </div>
+                  </b-row>
+                </b-tab>
+                <b-tab title="Links">
+                  <b-row>
+                    <div class="section-container" v-show="jewels.length > 0">
+                      <div
+                        class="section gems-section"
+                        v-for="(link, index) in links"
+                        :key="`link-${index}`"
+                      >
+                        <div v-for="(gem, index) in link" :key="`gem-${index}`">
+                          <poe-item
+                            :reference="gem.reference"
+                            as-text
+                            icon-inside
+                            :label-text="getGemLabelName(gem)"
+                          ></poe-item>
+                          <div
+                            v-if="index != 0 || index + 1 != link.length"
+                            class="gem-link"
+                          >
+                            ┄
+                          </div>
+                        </div>
+                      </div>
+                      <div class="section-code">
+                        <pre><code>{{jewelsCode}}</code></pre>
+                      </div>
+                    </div>
+                  </b-row>
+                </b-tab>
+              </b-tabs>
+            </b-card>
+          </b-container>
+        </b-tab>
+        <b-tab title="Load single item">
+          <b-container style="max-width: unset; padding: 40px">
+            <b-card>
+              <h1>Load from the game or PoB</h1>
+              <br />
+              <b-row>
+                <b-col sm="6">
+                  <h2>Item data</h2>
+                  <b-form-textarea
+                    v-model="singleItemData"
+                    rows="10"
+                  ></b-form-textarea>
+                  <br />
+                  <h2>Icon url</h2>
+                  <b-form-textarea
+                    v-model="singleItemIconUrl"
+                    rows="1"
+                  ></b-form-textarea>
+                  <br />
+                  <b-button @click="loadItemIcon"
+                    >Load icon from poedb</b-button
+                  >
+                </b-col>
+                <b-col sm="6" style="display: flex">
+                  <div style="margin-left: auto; margin-right: auto">
+                    <poe-item
+                      reference="single-item-demo"
+                      as-showcase
+                      icon-outside
+                      show-sockets-in-showcase
+                    />
                   </div>
-                  <div class="section-code">
-                    <pre><code>{{jewelsCode}}</code></pre>
-                  </div>
-                </div>
+                </b-col>
               </b-row>
-            </b-tab>
-          </b-tabs>
-        </b-card>
-      </b-container>
+            </b-card>
+          </b-container>
+        </b-tab>
+        <b-tab title="Preloaded demos">
+          <h1>Poe items</h1>
+          <br />
+          <div class="poe-demo">
+            <poe-item-demo />
+          </div>
+          <h1>Poe passives</h1>
+          <br />
+          <div class="poe-demo">
+            <poe-passive-demo />
+          </div>
+        </b-tab>
+      </b-tabs>
     </div>
   </div>
 </template>
@@ -161,10 +217,12 @@
 /* eslint-disable vue/no-unused-components */
 import PoeItem from "@/path-of-exile/components/item/poe-item.vue";
 import axios from "axios";
+import PoeItemDemo from "../path-of-exile/components/item/demo/poe-item.demo.vue";
+import PoePassiveDemo from "../path-of-exile/components/passive/demo/poe-passive.demo.vue";
 
 export default {
   name: "Demo",
-  components: { PoeItem },
+  components: { PoeItem, PoeItemDemo, PoePassiveDemo },
   data: function () {
     return {
       accountName: "",
@@ -172,6 +230,8 @@ export default {
       jsonData: "",
       fields: ["Item", "Name", "Base", "Type", "Tag"],
       itemsFromJson: [],
+      singleItemData: "",
+      singleItemIconUrl: void 0,
     };
   },
   watch: {
@@ -185,6 +245,28 @@ export default {
       }
 
       this.$forceUpdate();
+    },
+    singleItemData: function (value) {
+      try {
+        window.HoradricHelper.PathOfExile.applyConfig({
+          reference: "single-item-demo",
+          data: value,
+          iconUrl: this.singleItemIconUrl,
+        });
+      } catch {
+        // no-op
+      }
+    },
+    singleItemIconUrl: function (value) {
+      try {
+        window.HoradricHelper.PathOfExile.applyConfig({
+          reference: "single-item-demo",
+          data: this.singleItemData,
+          iconUrl: value,
+        });
+      } catch {
+        // no-op
+      }
     },
   },
   methods: {
@@ -200,6 +282,28 @@ export default {
       );
 
       this.jsonData = JSON.stringify(response.data);
+    },
+    loadItemIcon: async function () {
+      const itemObject =
+        window.HoradricHelper.PathOfExile.showcases["single-item-demo"];
+
+      if (!itemObject || !itemObject.data) {
+        return;
+      }
+
+      const itemIconName =
+        itemObject.data.rarity.toLowerCase() === "unique"
+          ? itemObject.data.name
+          : itemObject.data.baseName;
+
+      axios.defaults.headers.post["Content-Type"] =
+        "application/x-www-form-urlencoded";
+
+      const response = await axios.get(
+        `http://localhost:3000/icon?itemName=${itemIconName}`
+      );
+
+      this.singleItemIconUrl = response.data + "scale=1";
     },
     getGemLabelName(gem) {
       const isSupport = (g) =>
@@ -344,6 +448,9 @@ h1 {
   text-align: center;
   color: #b9b9b9;
 }
+h2 {
+  color: #b9b9b9;
+}
 .poe-demo,
 .poe-demo > div {
   display: flex;
@@ -359,16 +466,11 @@ input {
   color: white !important;
 }
 
-textarea {
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
 .nav-link {
   color: white !important;
 
   &.active {
-    background-color: #131516 !important;
+    background-color: transparent !important;
     border-bottom: 1px solid #131516 !important;
   }
 }

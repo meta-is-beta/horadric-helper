@@ -28,6 +28,7 @@ export default (rawData: String): PoeItem => {
       enchants: getEnchants(sections),
       implicits: getImplicits(sections),
       modifiers: getModifiers(sections),
+      flavourText: getFlavorText(sections),
       gemDescription: getGemDescription(sections),
       statuses: getItemStatuses(sections),
     },
@@ -155,7 +156,7 @@ const getRequirements = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Requirements")
     ?.lines.filter((l) => l !== "Requirements:")
-    .map((l) => l.replace(/\(unmet\)/g, "").replace(/\(augmented\)/g, ""));
+    .map((l) => l.replace(/\(unmet\)/g, ""));
 const getEnchants = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Enchants")
@@ -179,9 +180,7 @@ const getSockets = (sections: PoeItemDataSection[]) => {
 };
 
 const getProperties = (sections: PoeItemDataSection[]) =>
-  sections
-    .find((x) => x.name === "Properties")
-    ?.lines.map((l) => l.replace(/\(augmented\)/g, ""));
+  sections.find((x) => x.name === "Properties")?.lines;
 const getModifiers = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Modifiers")?.lines;
 const getGemDescription = (sections: PoeItemDataSection[]) =>
@@ -205,4 +204,10 @@ const getStacks = (
   }
 
   return parseInt(itemStacksMatch[1]);
+};
+
+const getFlavorText = (sections: PoeItemDataSection[]) => {
+  const flavourText = sections.find((x) => x.name === "Flavor text")?.lines;
+
+  return flavourText ? flavourText : [];
 };

@@ -68,7 +68,7 @@ const mapItemData = (itemData: PoeItemData): PoeItem =>
     sections: {
       enchants: breakLines(itemData.enchantMods),
       implicits: breakLines(itemData.implicitMods),
-      modifiers: breakLines(itemData.explicitMods),
+      modifiers: getItemModifiers(itemData),
       properties: breakLines(getItemProperties(itemData)),
       gemDescription: breakLines(
         itemData.frameType === 4 ? [itemData.secDescrText] : []
@@ -77,6 +77,7 @@ const mapItemData = (itemData: PoeItemData): PoeItem =>
       requirements: getItemRequirements(itemData),
       statuses: getItemStatuses(itemData),
       talismanTier: itemData.talismanTier ? `${itemData.talismanTier}` : null,
+      flavourText: getItemFlavorText(itemData),
     },
   } as PoeItem);
 
@@ -163,11 +164,19 @@ const getItemProperties = (itemData: PoeItemData): String[] =>
           );
         }
 
-        if (Array.isArray(property.values[0])) {
-          return `${property.name}: ${property.values[0][0]}`;
+        let value = Array.isArray(property.values[0])
+          ? `${property.values[0][0]}`
+          : `${property.values[0]}`;
+
+        const isAugmented = Array.isArray(property.values[0])
+          ? property.values[0][1] === 1
+          : false;
+
+        if (isAugmented) {
+          value += " (augmented)";
         }
 
-        return `${property.name}: ${property.values[0]}`;
+        return `${property.name}: ${value}`;
       })
     : [];
 
@@ -177,6 +186,22 @@ const getItemType = (itemData: PoeItemData): PoeItemType => {
   if (itemData.icon.includes("Jewels")) return "jewel";
 
   return "equipment";
+};
+
+const getItemModifiers = (itemData: PoeItemData): String[] => {
+  let modifiers: String[] = [];
+
+  if (itemData.explicitMods && itemData.explicitMods.length > 0) {
+    modifiers = itemData.explicitMods;
+  }
+
+  if (itemData.craftedMods && itemData.craftedMods.length > 0) {
+    modifiers = modifiers.concat(
+      itemData.craftedMods.map((m) => m + " (crafted)")
+    );
+  }
+
+  return breakLines(modifiers);
 };
 
 const getItemInfluences = (itemData: PoeItemData): PoeItemInfluence[] => {
@@ -216,4 +241,10 @@ const getItemSockets = (itemData: PoeItemData): string | undefined => {
   });
 
   return socketsString;
+};
+
+const getItemFlavorText = (itemData: PoeItemData): string[] | null => {
+  return itemData.flavourText
+    ? itemData.flavourText.map((t) => t.replace("\r", ""))
+    : null;
 };

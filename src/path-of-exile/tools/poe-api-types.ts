@@ -18,6 +18,7 @@ export interface PoeItemData {
   utilityMods: String[];
   implicitMods: String[];
   explicitMods: String[];
+  craftedMods: String[];
   socketedItems: PoeItemData[];
   flavourText: String[];
   frameType: number;

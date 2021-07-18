@@ -52,6 +52,7 @@ export type PoeItemSections = {
   gemDescription?: String[];
   talismanTier?: String;
   statuses?: PoeItemStatus[];
+  flavourText?: String[];
 };
 
 export type PoePassiveSections = {
