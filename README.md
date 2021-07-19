@@ -294,6 +294,10 @@ type PoeItem = {
     // Numerical value of talisman tier.
     // Eg: "1"
     talismanTier?: String;
+
+    // List of item's floavur text lines.
+    // Eg: ["You are slow, foolish and ignorant.", "I am not."]
+    flavourText?: String;
   };
 };
 ```
