@@ -334,7 +334,8 @@ export default {
                   .replace(
                     /([0-9]+)/gi,
                     "<span class='poe-item-requirement-value'>$1</span>"
-                  );
+                  )
+                  .replace(/\(augmented\)/gi, "");
               })
               .join(", ")
         : "";
