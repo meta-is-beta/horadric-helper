@@ -314,12 +314,12 @@ export default {
             return line
               .trim()
               .replace(
-                /([0-9-%+.-/]+s{0,1}(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
+                /(((?!s)[0-9%+./\-()s]+)(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
                 "<span class='poe-item-property-value-augmented'>$1</span>"
               )
               .replace(
-                /([0-9-%+.-/]+s{0,1}( \([Minax]{3}\)){0,1})$|([0-9-%+.-/]+s{0,1}( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
-                "<span class='poe-item-property-value'>$1$3</span>"
+                /(((?!s)[0-9%+./\-()s]+)( \([Minax]{3}\)){0,1})$|((?!s)[0-9%+./\-()s]+)(( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
+                "<span class='poe-item-property-value'>$1$4 </span>"
               );
           })
         : [];
