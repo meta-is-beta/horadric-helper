@@ -314,11 +314,11 @@ export default {
             return line
               .trim()
               .replace(
-                /([0-9-%+.-]+s{0,1}(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
+                /([0-9-%+.-/]+s{0,1}(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
                 "<span class='poe-item-property-value-augmented'>$1</span>"
               )
               .replace(
-                /([0-9-%+.-]+s{0,1}( \([Minax]{3}\)){0,1})$|([0-9-%+.-]+s{0,1}( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
+                /([0-9-%+.-/]+s{0,1}( \([Minax]{3}\)){0,1})$|([0-9-%+.-/]+s{0,1}( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
                 "<span class='poe-item-property-value'>$1$3</span>"
               );
           })
@@ -447,6 +447,7 @@ export default {
   .poe-item-wrapper {
     border: 1px solid white;
     padding: 2px;
+    height: fit-content;
   }
 }
 

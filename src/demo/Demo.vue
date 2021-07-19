@@ -20,7 +20,10 @@
                     placeholder="Character name"
                     id="charactername"
                   ></b-form-input>
-                  <b-button @click="loadDataFromTheGame" style="margin: 6px"
+                  <b-button
+                    @click="loadDataFromTheGame"
+                    style="margin: 6px"
+                    :disabled="disableButton"
                     >Load</b-button
                   >
                 </b-col>
@@ -130,27 +133,30 @@
                   <b-row>
                     <div class="section-container" v-show="jewels.length > 0">
                       <div
-                        class="section gems-section"
                         v-for="(link, index) in links"
                         :key="`link-${index}`"
                       >
-                        <div v-for="(gem, index) in link" :key="`gem-${index}`">
-                          <poe-item
-                            :reference="gem.reference"
-                            as-text
-                            icon-inside
-                            :label-text="getGemLabelName(gem)"
-                          ></poe-item>
+                        <div class="section gems-section">
                           <div
-                            v-if="index != 0 || index + 1 != link.length"
-                            class="gem-link"
+                            v-for="(gem, index) in link"
+                            :key="`gem-${index}`"
                           >
-                            ┄
+                            <poe-item
+                              :reference="gem.reference"
+                              as-text
+                              icon-inside
+                              :label-text="getGemLabelName(gem)"
+                            ></poe-item>
+                            <div
+                              v-if="index + 1 != link.length"
+                              class="gem-link"
+                            >
+                              ┄
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="section-code">
-                        <pre><code>{{jewelsCode}}</code></pre>
+                        <pre><code>{{ generateLinksTags(link) }}</code></pre>
+                        <br />
                       </div>
                     </div>
                   </b-row>
@@ -161,7 +167,7 @@
         </b-tab>
         <b-tab title="Load single item">
           <b-container style="max-width: unset; padding: 40px">
-            <b-card>
+            <b-card style="overflow: auto">
               <h1>Load from the game or PoB</h1>
               <br />
               <b-row>
@@ -178,7 +184,7 @@
                     rows="1"
                   ></b-form-textarea>
                   <br />
-                  <b-button @click="loadItemIcon"
+                  <b-button @click="loadItemIcon" :disabled="disableButton"
                     >Load icon from poedb</b-button
                   >
                 </b-col>
@@ -232,6 +238,7 @@ export default {
       itemsFromJson: [],
       singleItemData: "",
       singleItemIconUrl: void 0,
+      disableButton: false,
     };
   },
   watch: {
@@ -270,10 +277,23 @@ export default {
     },
   },
   methods: {
+    generateLinksTags(links) {
+      let linksTags = "";
+      links.forEach((gem, index) => {
+        const labelName = this.getGemLabelName(gem);
+        linksTags += `<poe-item label-text="${labelName}" reference="${gem.reference}"></poe-item>`;
+        if (index + 1 != links.length) {
+          linksTags += " ┄ \n";
+        }
+      });
+
+      return linksTags;
+    },
     generateTag(reference) {
       return `<poe-item reference="${reference}"></poe-item>`;
     },
     loadDataFromTheGame: async function () {
+      this.disableButton = true;
       axios.defaults.headers.post["Content-Type"] =
         "application/x-www-form-urlencoded";
 
@@ -282,8 +302,10 @@ export default {
       );
 
       this.jsonData = JSON.stringify(response.data);
+      this.disableButton = false;
     },
     loadItemIcon: async function () {
+      this.disableButton = true;
       const itemObject =
         window.HoradricHelper.PathOfExile.showcases["single-item-demo"];
 
@@ -304,6 +326,7 @@ export default {
       );
 
       this.singleItemIconUrl = response.data + "scale=1";
+      this.disableButton = false;
     },
     getGemLabelName(gem) {
       const isSupport = (g) =>
@@ -311,7 +334,7 @@ export default {
         g.data.sections.properties.find((x) => x === "Support");
 
       return isSupport(gem)
-        ? `◎ ${gem.data.name.replace("Support", "")}`
+        ? `◎ ${gem.data.name.replace("Support", "").trim()}`
         : `◉ ${gem.data.name}`;
     },
   },

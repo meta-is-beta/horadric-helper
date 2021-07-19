@@ -2,10 +2,8 @@
   "items": [
     {
       "props": {
-        "asIcon": true,
         "asShowcase": true,
-        "labelText": "",
-        "iconInside": true
+        "labelText": ""
       },
       "config": {
         "reference": "Flammability",
@@ -15,9 +13,7 @@
     },
     {
       "props": {
-        "asIcon": true,
-        "labelText": "",
-        "iconInside": true
+        "labelText": ""
       },
       "config": {
         "reference": "Divergent Multiple Totems Support",
@@ -53,11 +49,8 @@
     },
     {
       "props": {
-        "asIcon": true,
         "asShowcase": true,
         "labelText": "",
-        "iconInside": true,
-        "iconOutside": true,
         "dimSections": "requirements:1;item-level:1;",
         "hideSections": "requirements;item-level"
       },
@@ -69,9 +62,7 @@
     },
     {
       "props": {
-        "asIcon": true,
-        "labelText": "",
-        "iconInside": true
+        "labelText": ""
       },
       "config": {
         "reference": "Rumi's Concoction",
@@ -81,10 +72,8 @@
     },
     {
       "props": {
-        "asIcon": true,
         "asShowcase": true,
-        "labelText": "",
-        "iconInside": true
+        "labelText": ""
       },
       "config": {
         "reference": "Crimson Jewel",
@@ -115,9 +104,7 @@
     },
     {
       "props": {
-        "asIcon": true,
         "labelText": "",
-        "iconInside": true,
         "dimSections": "enchants:1;modifiers;properties:2",
         "showSockets": true
       },
@@ -129,8 +116,6 @@
     },
     {
       "props": {
-        "asText": false,
-        "asIcon": true,
         "asShowcase": true,
         "labelText": "",
         "showSockets": true,
@@ -154,9 +139,7 @@
     },
     {
       "props": {
-        "asIcon": true,
         "labelText": "",
-        "iconInside": true,
         "showStacksInLabel": true
       },
       "config": {
@@ -167,10 +150,7 @@
     },
     {
       "props": {
-        "asIcon": true,
-        "labelText": "",
-        "iconInside": true,
-        "showStacks": true
+        "labelText": ""
       },
       "config": {
         "reference": "Exalted Orb 2",
@@ -192,7 +172,6 @@
         "asText": true,
         "asShowcase": false,
         "labelText": "",
-        "iconInside": true,
         "showStacks": true,
         "showStacksInLabel": true
       },
@@ -219,9 +198,7 @@
     },
     {
       "props": {
-        "asIcon": true,
-        "labelText": "",
-        "iconInside": true
+        "labelText": ""
       },
       "config": {
         "reference": "Titan's Canyon Map of Venom",
