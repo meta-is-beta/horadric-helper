@@ -600,12 +600,7 @@ Rarity: Unique
 Stone of Lazhwar
 Lapis Amulet
 --------
-Requirements:
-Level: 5
---------
-Item Level: 57
---------
-+22 to Intelligence (implicit)
+...
 --------
 14% Chance to Block Spell Damage
 12% increased Cast Speed
@@ -622,16 +617,7 @@ Rarity: Rare
 Cataclysm Locket
 Horned Talisman
 --------
-Requirements:
-Level: 47
---------
-Item Level: 78
---------
-Talisman Tier: 2
---------
-Allocates Arcane Swiftness (enchant)
---------
-Projectiles Pierce 2 additional Targets (implicit)
+...
 --------
 28% increased Global Critical Strike Chance
 +34% to Global Critical Strike Multiplier
