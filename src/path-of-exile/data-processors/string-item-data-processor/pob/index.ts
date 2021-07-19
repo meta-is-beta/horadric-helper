@@ -84,7 +84,7 @@ const cleanStatLine = (line: String): String =>
   line
     .replace(/{range:([0-9.,]+)}/, "")
     .replace(/{variant:[0-9.,]+}/, "")
-    .replace(/{tags:[a-z.,]+}/, "");
+    .replace(/{tags:[a-z.,_]+}/, "");
 
 const getItemProeprties = (sections: String[]): String[] => {
   const qualityLine = sections.find((s) => s.includes("Quality: "));

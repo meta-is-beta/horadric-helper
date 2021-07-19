@@ -207,7 +207,13 @@ const getStacks = (
 };
 
 const getFlavorText = (sections: PoeItemDataSection[]) => {
-  const flavourText = sections.find((x) => x.name === "Flavor text")?.lines;
+  const flavourText = sections.find((x) => x.name === "Flavour text")?.lines;
 
-  return flavourText ? flavourText : [];
+  if (!flavourText) {
+    return [];
+  }
+
+  flavourText[0] = flavourText[0].replace(/Flavour text:/i, "");
+
+  return flavourText;
 };

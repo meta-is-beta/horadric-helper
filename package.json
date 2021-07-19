@@ -1,7 +1,12 @@
 {
   "name": "horadric-helper",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.8.0",
+  "private": false,
+  "author": {
+    "name": "Meta is Beta",
+    "email": "meta.is.beta@gmail.com",
+    "url": "https://www.meta-is-beta.com"
+  },
   "scripts": {
     "serve": "concurrently -c blue,yellow \"ts-node src/demo/demo.server.js\" \"vue-cli-service serve src/demo/demo.main.js\"",
     "build": "npm run build:poe",

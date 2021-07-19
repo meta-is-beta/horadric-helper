@@ -136,7 +136,7 @@
           <!-- Split -->
           <div class="poe-item-split" v-if="itemIsSplit">Split</div>
         </div>
-        <!-- Flavor text -->
+        <!-- Flavour text -->
         <div class="poe-item-separator" v-if="shouldShowFlavorText"></div>
         <div v-if="shouldShowFlavorText">
           <div

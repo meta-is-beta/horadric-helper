@@ -32,6 +32,7 @@ export interface PoeItemData {
   replica: boolean;
   split: boolean;
   talismanTier: number;
+  socket: number;
 }
 
 export interface PoeItemDataProperty {

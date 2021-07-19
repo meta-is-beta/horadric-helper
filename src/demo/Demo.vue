@@ -136,26 +136,31 @@
                         v-for="(link, index) in links"
                         :key="`link-${index}`"
                       >
-                        <div class="section gems-section">
-                          <div
-                            v-for="(gem, index) in link"
-                            :key="`gem-${index}`"
-                          >
-                            <poe-item
-                              :reference="gem.reference"
-                              as-text
-                              icon-inside
-                              :label-text="getGemLabelName(gem)"
-                            ></poe-item>
+                        <div v-if="link.length > 0">
+                          <div class="section gems-section">
                             <div
-                              v-if="index + 1 != link.length"
-                              class="gem-link"
+                              v-for="(gem, index) in link"
+                              :key="`gem-${index}`"
                             >
-                              ┄
+                              <poe-item
+                                v-if="gem && gem.reference"
+                                :reference="gem.reference"
+                                as-text
+                                icon-inside
+                                :label-text="getGemLabelName(gem)"
+                              ></poe-item>
+                              <div
+                                v-if="
+                                  index + 1 != link.length && link[index + 1]
+                                "
+                                class="gem-link"
+                              >
+                                ┄
+                              </div>
                             </div>
                           </div>
+                          <pre><code>{{ generateLinksTags(link) }}</code></pre>
                         </div>
-                        <pre><code>{{ generateLinksTags(link) }}</code></pre>
                         <br />
                       </div>
                     </div>
@@ -278,8 +283,15 @@ export default {
   },
   methods: {
     generateLinksTags(links) {
+      if (!links) {
+        return "";
+      }
+
       let linksTags = "";
       links.forEach((gem, index) => {
+        if (!gem || !gem.reference) {
+          return;
+        }
         const labelName = this.getGemLabelName(gem);
         linksTags += `<poe-item label-text="${labelName}" reference="${gem.reference}"></poe-item>`;
         if (index + 1 != links.length) {
@@ -366,7 +378,7 @@ export default {
         : [];
     },
     jewelsCode() {
-      if (this.flasks.length === 0) {
+      if (this.jewels.length === 0) {
         return "";
       }
 
@@ -446,14 +458,14 @@ export default {
           }
 
           if (i + 1 === sockets.length) {
-            allLinks.push(currentLink);
+            allLinks.push(currentLink.filter((x) => x != null));
           }
         });
 
         gems.push(allLinks);
       });
 
-      return gems.flat(1);
+      return gems.flat(1).filter((x) => x != null);
     },
   },
 };

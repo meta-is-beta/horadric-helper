@@ -62,13 +62,13 @@ export default {
     getSocketClasses(socket, index) {
       let classes = `poe-socket poe-socket-${socket} `;
 
-      if (!this.socketReferences || !this.socketedItemsPassiveStatus) {
+      if (!this.socketReferences || !this.socketReferences[index + 1]) {
         return classes;
       }
 
-      let socketIsPassive = this.socketedItemsPassiveStatus[
-        this.socketReferences[index + 1]
-      ];
+      let socketIsPassive = this.socketedItemsPassiveStatus
+        ? this.socketedItemsPassiveStatus[this.socketReferences[index + 1]]
+        : false;
 
       if (socketIsPassive) {
         classes += "poe-socketed-passive";
@@ -88,6 +88,9 @@ export default {
         .split(/[A-Z]+/)
         .filter((x) => !!x)
         .map((x) => x === "-");
+    },
+    gemsList() {
+      return Object.values(this.socketReferences);
     },
   },
 };

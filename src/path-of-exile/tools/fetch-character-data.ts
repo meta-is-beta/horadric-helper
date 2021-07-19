@@ -4,7 +4,7 @@ import {
   PoeItemInfluence,
   PoeItemRarity,
   PoeItemStatus,
-  PoeItemType,
+  PoeItemType
 } from "../types";
 import { PoeItemData } from "./poe-api-types";
 
@@ -98,9 +98,8 @@ const getItemSocketedItems = (
 ): { [id: string]: string } => {
   const socketedItems: any = {};
 
-  itemData.socketedItems.forEach((item, index) => {
-    const id = `${index + 1}` as string;
-    socketedItems[id] = getItemReference(item);
+  itemData.socketedItems.forEach((item) => {
+    socketedItems[item.socket + 1] = getItemReference(item);
   });
 
   return socketedItems;
