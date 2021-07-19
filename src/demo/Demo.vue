@@ -578,7 +578,7 @@ th {
 }
 
 table {
-  background-color: #212529 !important;
+  background-color: #232323 !important;
   border: 1px solid #535353;
 }
 
