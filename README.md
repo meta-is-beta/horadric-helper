@@ -602,10 +602,6 @@ Lapis Amulet
 --------
 ...
 --------
-14% Chance to Block Spell Damage
-12% increased Cast Speed
-+45 to maximum Mana
---------
 <b>You are slow, foolish and ignorant.
 I am not.</b>
 </code></pre>
@@ -618,12 +614,6 @@ Cataclysm Locket
 Horned Talisman
 --------
 ...
---------
-28% increased Global Critical Strike Chance
-+34% to Global Critical Strike Multiplier
-+28 to maximum Energy Shield
-15% increased maximum Energy Shield
-+12% to all Elemental Resistances
 --------
 <b>Flavour Text: The Empire hides lies and falsehoods
 Behind a mask of politeness and civility.
