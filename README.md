@@ -368,6 +368,10 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
           "14% Chance to Block Spell Damage",
           "12% increased Cast Speed",
           "+45 to maximum Mana"
+        ],
+        flavourText: [
+          "You are slow, foolish and ignorant.",
+          "I am not."
         ]
       }
     }
