@@ -205,6 +205,16 @@
                 </b-col>
               </b-row>
             </b-card>
+            <br />
+            <b-card style="overflow: auto" v-show="singleItemConfig">
+              <h2>Code</h2>
+              <pre
+                style="margin-left: unset"
+              ><code>{{ singleItemConfig }}</code></pre>
+              <pre
+                style="margin-left: unset"
+              ><code>{{ singleItemTag }}</code></pre>
+            </b-card>
           </b-container>
         </b-tab>
         <b-tab title="Preloaded demos">
@@ -244,6 +254,8 @@ export default {
       singleItemData: "",
       singleItemIconUrl: void 0,
       disableButton: false,
+      singleItemConfig: "",
+      singleItemTag: "",
     };
   },
   watch: {
@@ -260,28 +272,56 @@ export default {
     },
     singleItemData: function (value) {
       try {
-        window.HoradricHelper.PathOfExile.applyConfig({
+        const config = {
           reference: "single-item-demo",
           data: value,
           iconUrl: this.singleItemIconUrl,
-        });
+        };
+
+        window.HoradricHelper.PathOfExile.applyConfig(config);
+
+        this.generateSingleItemHelpers(config);
       } catch {
         // no-op
       }
     },
     singleItemIconUrl: function (value) {
       try {
-        window.HoradricHelper.PathOfExile.applyConfig({
+        const config = {
           reference: "single-item-demo",
           data: this.singleItemData,
           iconUrl: value,
-        });
+        };
+
+        window.HoradricHelper.PathOfExile.applyConfig(config);
+
+        this.generateSingleItemHelpers(config);
       } catch {
         // no-op
       }
     },
   },
   methods: {
+    generateSingleItemHelpers(config) {
+      const newReference = window.HoradricHelper.PathOfExile.showcases[
+        "single-item-demo"
+      ].data.name
+        .toLowerCase()
+        .replace(/ /g, "-");
+
+      this.singleItemConfig = JSON.stringify(
+        {
+          ...config,
+          reference: newReference,
+        },
+        null,
+        2
+      );
+      this.singleItemTag = this.generateSingleItemTag(newReference);
+    },
+    generateSingleItemTag(reference) {
+      return `<poe-item reference="${reference}"></poe-item>`;
+    },
     generateLinksTags(links) {
       if (!links) {
         return "";

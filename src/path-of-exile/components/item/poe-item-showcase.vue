@@ -576,8 +576,8 @@ export default {
   .poe-item-corrupted,
   .poe-item-mirrored,
   .poe-item-split {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 
   .poe-item-stats {
