@@ -1,3 +1,5 @@
+import { PoeItemDataSection } from "@/path-of-exile/types";
+
 export default (rawData: String): PoeItemDataSection[] => {
   const rawSections = rawDataToRawSections(rawData);
   let namedSections = rawSectionsToNamedSections(rawSections);
@@ -102,6 +104,9 @@ const getSectionName = (section: String[]): String => {
     return "Talisman tier";
   }
 
+  if (section.some((x) => x.match(/^Flavour Text:/i))) {
+    return "Flavour text";
+  }
   return "Unknown";
 };
 
@@ -135,6 +140,16 @@ const fillUnknownSections = (
   if (!itemIsNormal && !itemIsGem) {
     const modifiersIndex = sections.find((x) => x.name === "Unknown")?.index;
     if (modifiersIndex) sections[modifiersIndex].name = "Modifiers";
+
+    if (
+      !sections.some((x) => x.name === "Flavour text") &&
+      modifiersIndex &&
+      sections[modifiersIndex + 1] &&
+      sections[modifiersIndex + 1].name === "Unknown" &&
+      itemRarityLine.includes("Unique")
+    ) {
+      sections[modifiersIndex + 1].name = "Flavour text";
+    }
   }
 
   if (itemIsGem) {

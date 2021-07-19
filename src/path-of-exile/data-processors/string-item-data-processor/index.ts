@@ -1,3 +1,4 @@
+import { PoeItem } from "@/path-of-exile/types";
 import processGameData from "./game";
 import processPobData from "./pob";
 

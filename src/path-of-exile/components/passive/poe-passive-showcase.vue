@@ -98,6 +98,7 @@ export default {
   .poe-passive-wrapper {
     border: 2px solid #403b2e;
     padding: 2px;
+    height: fit-content;
   }
 }
 

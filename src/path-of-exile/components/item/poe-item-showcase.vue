@@ -16,7 +16,15 @@
         </div>
         <div class="poe-item-header-center-panel">
           <div>{{ item.name }}</div>
-          <div v-if="item.name != item.baseName">{{ item.baseName }}</div>
+          <div
+            v-if="
+              item.name != item.baseName &&
+              (item.rarity.toLowerCase() === 'rare' ||
+                item.rarity.toLowerCase() === 'unique')
+            "
+          >
+            {{ item.baseName }}
+          </div>
         </div>
         <div :class="rightHeaderPanelClasses">
           <div v-if="itemInfluences.length > 0" />
@@ -128,6 +136,17 @@
           <!-- Split -->
           <div class="poe-item-split" v-if="itemIsSplit">Split</div>
         </div>
+        <!-- Flavour text -->
+        <div class="poe-item-separator" v-if="shouldShowFlavorText"></div>
+        <div v-if="shouldShowFlavorText">
+          <div
+            v-for="(flavourLine, index) in itemFlavorText"
+            :key="`${index}-flavour`"
+            :class="getFlavorClasses(flavourLine, index)"
+          >
+            {{ flavourLine }}
+          </div>
+        </div>
         <!-- Inside Icon -->
         <div class="poe-item-separator" v-if="shouldShowIconInside"></div>
         <poe-item-image
@@ -207,6 +226,14 @@ export default {
 
       return classes;
     },
+    getFlavorClasses(flavour, index) {
+      let classes = "poe-item-flavour-text";
+
+      classes = this.addDimedClass("flavour-text", index, classes);
+      classes = this.addHiddenClasses("flavour-text", index, classes);
+
+      return classes;
+    },
   },
   computed: {
     shouldShowSockets() {
@@ -268,6 +295,13 @@ export default {
         this.sectionShouldBeFullyHidden("modifiers")
       );
     },
+    shouldShowFlavorText() {
+      return !(
+        !this.item.sections.flavourText ||
+        !this.item.sections.flavourText.length > 0 ||
+        this.sectionShouldBeFullyHidden("flavour-text")
+      );
+    },
     shouldShowStatuses() {
       return (
         this.item.sections.statuses &&
@@ -279,9 +313,13 @@ export default {
         ? this.item.sections.properties.map((line) => {
             return line
               .trim()
-              .replaceAll(
-                /(([0-9-%+-]+s*)|([0-9s.\-)(]{3,})|((Max))|((Min)))/gi,
-                "<span class='poe-item-property-value'>$1</span>"
+              .replace(
+                /([0-9-%+.-/]+s{0,1}(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
+                "<span class='poe-item-property-value-augmented'>$1</span>"
+              )
+              .replace(
+                /([0-9-%+.-/]+s{0,1}( \([Minax]{3}\)){0,1})$|([0-9-%+.-/]+s{0,1}( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
+                "<span class='poe-item-property-value'>$1$3</span>"
               );
           })
         : [];
@@ -293,7 +331,7 @@ export default {
               .map((line) => {
                 return line
                   .trim()
-                  .replaceAll(
+                  .replace(
                     /([0-9]+)/gi,
                     "<span class='poe-item-requirement-value'>$1</span>"
                   );
@@ -310,9 +348,14 @@ export default {
     itemModifiers() {
       return this.item.sections.modifiers
         ? this.item.sections.modifiers.map((x) => ({
-            text: x.replaceAll("(crafted)", "").trim(),
-            isCrafter: x.includes("(crafted)"),
+            text: x.replace(/[({]crafted[)}]/g, "").trim(),
+            isCrafter: x.match(/[({]crafted[})]/),
           }))
+        : [];
+    },
+    itemFlavorText() {
+      return this.item.sections.flavourText
+        ? this.item.sections.flavourText
         : [];
     },
     itemStatuses() {
@@ -404,6 +447,7 @@ export default {
   .poe-item-wrapper {
     border: 1px solid white;
     padding: 2px;
+    height: fit-content;
   }
 }
 
@@ -511,6 +555,7 @@ export default {
   .poe-item-implicit,
   .poe-item-modifier,
   .poe-item-mirrored,
+  .poe-item-property-value-augmented,
   .poe-item-split {
     color: var(--poe-color-augmented);
     white-space: nowrap;
@@ -520,6 +565,10 @@ export default {
     color: var(--poe-color-essencemod);
   }
 
+  .poe-item-flavour-text {
+    color: var(--poe-color-unique);
+  }
+
   .poe-item-corrupted {
     color: var(--poe-color-corrupted);
   }
@@ -527,8 +576,8 @@ export default {
   .poe-item-corrupted,
   .poe-item-mirrored,
   .poe-item-split {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 
   .poe-item-stats {
@@ -536,7 +585,7 @@ export default {
     padding-top: 6px;
     padding-bottom: 10px;
     display: inline-block;
-    min-width: 360px;
+    min-width: 300px;
     .poe-item-separator {
       height: 2px;
       background-repeat: no-repeat;

@@ -1,5 +1,6 @@
 import processDataObject from "./data-processors/data-object-data-processor";
 import processStringData from "./data-processors/string-item-data-processor";
+import { PoeItem, PoePassive, PoeShowcase, PoeShowcaseConfig } from "./types";
 
 (window as any).HoradricHelper = (window as any).HoradricHelper || {};
 

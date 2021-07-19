@@ -294,6 +294,10 @@ type PoeItem = {
     // Numerical value of talisman tier.
     // Eg: "1"
     talismanTier?: String;
+
+    // List of item's floavur text lines.
+    // Eg: ["You are slow, foolish and ignorant.", "I am not."]
+    flavourText?: String;
   };
 };
 ```
@@ -368,6 +372,10 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
           "14% Chance to Block Spell Damage",
           "12% increased Cast Speed",
           "+45 to maximum Mana"
+        ],
+        flavourText: [
+          "You are slow, foolish and ignorant.",
+          "I am not."
         ]
       }
     }
@@ -532,7 +540,8 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 | `statuses` | `statuses` | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.  |
 | `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. |
 | `talismanTier` | `talisman-tier` | `String` | String of numerical value of talisman tier. |
-| `stacks` | `stacks` | "Number" | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_ |
+| `stacks` | `stacks` | `Number` | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_ |
+| `flavourText` | `flavour-text` | `String` | List of item's flavour text lines.
 
 ### `PoePassive` sections
 
@@ -588,13 +597,45 @@ _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/
 - They are defined by `stacks` section of Config Object or by line on raw item data (`Stack Size: {current stacks}/{max stacks}`)
 - They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
 
+### Flavour text
+- When creating items with Config Object you can add flavour text by passing it to `flavourText` section.
+- Only `unique` items compied from the game will have their flavour text copied. If you want to add flavour text to non-unique items prepend it with "`Flavour Text:`" in item's raw data string.
+
+`Unique` item example:
+<pre><code>
+Item Class: Amulets
+Rarity: Unique
+Stone of Lazhwar
+Lapis Amulet
+--------
+...
+--------
+<b>You are slow, foolish and ignorant.
+I am not.</b>
+</code></pre>
+
+`Non-unique` item example:
+<pre><code>
+Item Class: Amulets
+Rarity: Rare
+Cataclysm Locket
+Horned Talisman
+--------
+...
+--------
+<b>Flavour Text: The Empire hides lies and falsehoods
+Behind a mask of politeness and civility.
+The First Ones teach us to look through the lies,
+And that no beast can truly cover their tracks.
+- The Wolven King</b>
+--------
+Corrupted
+</code></pre>
 
 ### Dimming and hiding sections
-
 You can dim or hide either entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. _(Section names are in `kebab-case`)_
 
 #### Targeting entire sections
-
 You can target entire sections by passing section names separated by `;`.
 
 **Format**

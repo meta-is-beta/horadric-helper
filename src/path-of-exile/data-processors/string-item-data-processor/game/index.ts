@@ -1,3 +1,8 @@
+import {
+  PoeItem,
+  PoeItemDataSection,
+  PoeItemType,
+} from "@/path-of-exile/types";
 import mapSections from "./sections-mapper";
 
 export default (rawData: String): PoeItem => {
@@ -23,6 +28,7 @@ export default (rawData: String): PoeItem => {
       enchants: getEnchants(sections),
       implicits: getImplicits(sections),
       modifiers: getModifiers(sections),
+      flavourText: getFlavorText(sections),
       gemDescription: getGemDescription(sections),
       statuses: getItemStatuses(sections),
     },
@@ -150,15 +156,15 @@ const getRequirements = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Requirements")
     ?.lines.filter((l) => l !== "Requirements:")
-    .map((l) => l.replaceAll("(unmet)", "").replaceAll("(augmented)", ""));
+    .map((l) => l.replace(/\(unmet\)/g, ""));
 const getEnchants = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Enchants")
-    ?.lines.map((l) => l.replaceAll("(enchant)", "").trim());
+    ?.lines.map((l) => l.replace(/\(enchant\)/g, "").trim());
 const getImplicits = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Implicits")
-    ?.lines.map((l) => l.replaceAll("(implicit)", "").trim());
+    ?.lines.map((l) => l.replace(/\(implicit\)/g, "").trim());
 const getSockets = (sections: PoeItemDataSection[]) => {
   const socketLine = sections.find((x) => x.name === "Sockets")?.lines[0];
   if (!socketLine) {
@@ -172,10 +178,9 @@ const getSockets = (sections: PoeItemDataSection[]) => {
 
   return socketsMatch[1];
 };
+
 const getProperties = (sections: PoeItemDataSection[]) =>
-  sections
-    .find((x) => x.name === "Properties")
-    ?.lines.map((l) => l.replaceAll("(augmented)", ""));
+  sections.find((x) => x.name === "Properties")?.lines;
 const getModifiers = (sections: PoeItemDataSection[]) =>
   sections.find((x) => x.name === "Modifiers")?.lines;
 const getGemDescription = (sections: PoeItemDataSection[]) =>
@@ -199,4 +204,16 @@ const getStacks = (
   }
 
   return parseInt(itemStacksMatch[1]);
+};
+
+const getFlavorText = (sections: PoeItemDataSection[]) => {
+  const flavourText = sections.find((x) => x.name === "Flavour text")?.lines;
+
+  if (!flavourText) {
+    return [];
+  }
+
+  flavourText[0] = flavourText[0].replace(/Flavour text:/i, "");
+
+  return flavourText;
 };

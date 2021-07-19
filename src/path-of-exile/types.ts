@@ -1,10 +1,15 @@
-type PoeConfig = {
-  reference: string;
-  data: PoeItem | PoePassive | string;
-  iconUrl?: string;
+export type PoeConfig = {
+  reference: String;
+  data: PoeItem | PoePassive | String;
+  iconUrl?: String;
+  extensions?: PoeConfigExtensions;
 };
 
-type PoeItemRarity =
+export type PoeConfigExtensions = {
+  socketReferences?: { [id: string]: string };
+};
+
+export type PoeItemRarity =
   | "normal"
   | "rare"
   | "magic"
@@ -12,7 +17,7 @@ type PoeItemRarity =
   | "gem"
   | "currency"
   | "";
-type PoeItemType =
+export type PoeItemType =
   | "equipment"
   | "gem"
   | "jewel"
@@ -20,7 +25,7 @@ type PoeItemType =
   | "currency"
   | "map"
   | "";
-type PoeItemInfluence =
+export type PoeItemInfluence =
   | "crusader"
   | "warlord"
   | "hunter"
@@ -29,15 +34,15 @@ type PoeItemInfluence =
   | "shaper"
   | "replica"
   | "";
-type PoeItemStatus = "corrupted" | "mirrored" | "split";
-type PoePassiveType =
+export type PoeItemStatus = "corrupted" | "mirrored" | "split";
+export type PoePassiveType =
   | "basic"
   | "notable"
   | "keystone"
   | "ascendancy basic"
   | "ascendancy notable";
 
-type PoeItemSections = {
+export type PoeItemSections = {
   itemLevel?: String;
   requirements?: String[];
   properties?: String[];
@@ -47,13 +52,14 @@ type PoeItemSections = {
   gemDescription?: String[];
   talismanTier?: String;
   statuses?: PoeItemStatus[];
+  flavourText?: String[];
 };
 
-type PoePassiveSections = {
+export type PoePassiveSections = {
   description: String[];
 };
 
-type PoeItem = {
+export type PoeItem = {
   rarity: PoeItemRarity;
   name: String;
   class?: String;
@@ -65,26 +71,26 @@ type PoeItem = {
   stacks?: Number;
 };
 
-type PoePassive = {
+export type PoePassive = {
   name: String;
   type: PoePassiveType;
   sections?: PoePassiveSections;
 };
 
-type PoeItemDataSection = {
+export type PoeItemDataSection = {
   name: String;
   lines: String[];
   index: number;
 };
 
-type PoeShowcaseConfig = {
+export type PoeShowcaseConfig = {
   reference: string;
   data: object;
   extensions?: object;
   iconUrl?: string;
 };
 
-type PoeShowcase = {
+export type PoeShowcase = {
   data: object;
   iconUrl?: string;
   extensions?: object;
