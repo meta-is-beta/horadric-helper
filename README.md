@@ -322,10 +322,17 @@ type PoePassive = {
     // List of passives's description text lines
     // Eg. for "Arcane Blessing":
     // [
-    //   "50% increased Effect of Arcane Surge on you"
+    //   "50% increased Effect of Arcane Surge on you",
     //   "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell"
     // ]
     description: String[];
+    // List of passives's flavour text text lines
+    // Eg. for Ancestral Bond
+    // [
+    //   "A wooden construct, mute and blind.",
+    //   "But fear the wrath of shackled mind."
+    // ]
+    flavourText: String[];
   };
 };
 ```
