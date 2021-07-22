@@ -325,9 +325,9 @@ type PoePassive = {
     //   "50% increased Effect of Arcane Surge on you",
     //   "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell"
     // ]
-
     description: String[];
-    // List of passives's flavour text text lines
+
+    // List of passives's flavour text lines
     // Eg. for "Ancestral Bond"
     // [
     //   "A wooden construct, mute and blind.",
@@ -549,6 +549,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |     Name      |    Type    | Description                               |
 | :-----------: | :--------: | :---------------------------------------- |
 | `description` | `String[]` | List of passive's description text lines. |
+| `flavourText` | `String[]` | List of passive's flavour text lines.     |
 
 ### Sockets
 
