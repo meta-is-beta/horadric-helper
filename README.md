@@ -30,17 +30,17 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.8.3/dist/poe/horadric-helper-poe.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.8.3/dist/poe/horadric-helper-poe.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.8.3/dist/poe/horadric-helper-poe.css"
+/>
 ```
 
 #### 2. Add a component to your website's Html.
 
 ```html
 <p>
-  <poe-item
-    as-icon
-    reference="example-item">
-  </poe-item>
+  <poe-item as-icon reference="example-item"> </poe-item>
 </p>
 ```
 
@@ -50,7 +50,8 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "example-item",
-    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
+    iconUrl:
+      "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
     data: `
       Item Class: Gloves
       Rarity: Magic
@@ -112,9 +113,7 @@ This will allow you to later load configuration objects for that reference.
 _(More about this in [Configuration](#configuration-object) section.)_
 
 ```html
-<poe-item
-  reference="Headhunter">
-</poe-item>
+<poe-item reference="Headhunter"> </poe-item>
 ```
 
 **Notes**
@@ -130,6 +129,8 @@ You can apply props to set or change behaviour for individual components.
 |:-------:|:----------:|:------|
 | `reference` | `String` | **Required**. Name used to target components with the same reference when loading configs. See [Configuration](#configuration-object) section for details. |
 | `classes` | `String` | Additional classes that will be applied to the root component.|
+| `bordered` | `Boolean` | Always show borders around showcase |
+| `borderless` | `Boolean` | Never show borders around showcase |
 | `popover-classes` | `String` | Additional classes that will be applied to popover. |
 | `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
 | `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (_This is the default settings_) |
@@ -161,11 +162,7 @@ You can apply props to set or change behaviour for individual components.
 `Beef` passive as a showcase, with an icon displayed inside.
 
 ```html
-<poe-passive
-  reference="Beef"
-  as-text
-  icon-inside>
-</poe-passive>
+<poe-passive reference="Beef" as-text icon-inside> </poe-passive>
 ```
 
 ## Configuration object
@@ -194,7 +191,6 @@ type PoeConfig = {
   // Optional
   // Object with extension data for config that does not fit into "data" field
   extensions?: {
-
     // Optional
     // Dictionary that assigns item references to sockets.
     // Referenced items need to also have their config defined.
@@ -205,8 +201,8 @@ type PoeConfig = {
     //    2: "Fortify"
     //    3: "Increased Duration Support"
     //  }
-    socketReferences?: { [Number]: String }
-  }
+    socketReferences?: { [Number]: String };
+  };
 };
 ```
 
@@ -218,9 +214,9 @@ type PoeConfig = {
 In case of PoE items you can also pass raw item data from different sources and the library will try to parse and display them.
 Raw item data can be acquired from:
 
-- __The game__ - To copy an item's data to clipboard press CTRL+C while hovering over an item in-game.
-- __PoE Trade__ - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
-- __Path of Building (PoB)__ - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
+- **The game** - To copy an item's data to clipboard press CTRL+C while hovering over an item in-game.
+- **PoE Trade** - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
+- **Path of Building (PoB)** - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
 
 ### `PoeItem` object
 
@@ -323,7 +319,6 @@ type PoePassive = {
 
   // All sections are optional
   sections: {
-
     // List of passives's description text lines
     // Eg. for "Arcane Blessing":
     // [
@@ -359,7 +354,8 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "custom-item",
-    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
+    iconUrl:
+      "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
     data: {
       rarity: "Unique",
       type: "Equipment",
@@ -371,14 +367,11 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
         modifiers: [
           "14% Chance to Block Spell Damage",
           "12% increased Cast Speed",
-          "+45 to maximum Mana"
+          "+45 to maximum Mana",
         ],
-        flavourText: [
-          "You are slow, foolish and ignorant.",
-          "I am not."
-        ]
-      }
-    }
+        flavourText: ["You are slow, foolish and ignorant.", "I am not."],
+      },
+    },
   });
 </script>
 ```
@@ -405,7 +398,8 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "ingame-item",
-    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
+    iconUrl:
+      "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
     data: `
       Item Class: Helmets
       Rarity: Unique
@@ -424,7 +418,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
       Reflects 4 Physical Damage to Melee Attackers
       --------
       No metal slips as easily through the fingers as gold.
-    `
+    `,
   });
 </script>
 ```
@@ -451,7 +445,8 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "pob-item",
-    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
+    iconUrl:
+      "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
     data: `
       Rarity: RARE
       New Glorious Plate
@@ -479,7 +474,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
       -72 Physical Damage taken from Hits
       10% chance to Avoid Fire Damage from Hits
       Corrupted
-    `
+    `,
   });
 </script>
 ```
@@ -493,10 +488,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 <!-- Html --->
 <body>
   <div>
-    <poe-passive
-      reference="magnifier-passive"
-      as-text
-      icon-outside>
+    <poe-passive reference="magnifier-passive" as-text icon-outside>
     </poe-passive>
   </div>
 </body>
@@ -505,7 +497,8 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "magnifier-passive",
-    iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
+    iconUrl:
+      "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
     data: {
       name: "Magnifier",
       type: "Notable",
@@ -513,10 +506,10 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
         description: [
           "10% increased Area of Effect",
           "10% increased Area Damage",
-          "+10% to Critical Strike Multiplier"
-        ]
-      }
-    }
+          "+10% to Critical Strike Multiplier",
+        ],
+      },
+    },
   });
 </script>
 ```
@@ -529,19 +522,19 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 
 ### `PoeItem` sections
 
-| Name    | Prop name | Type     | Description |
-|:-------:|:---------:|:--------:|:------------|
-| `itemLevel` | `item-level` | `String` | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_. |
-| `requirements` | `requirements` | `String[]` | List of item's requirement text lines.  |
-| `sockets`  | `sockets` | `String` | String representing sockets and their links. _(More about sockets in [Sockets](#sockets) section.)_ |
-| `enchants` | `enchants` | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)). |
-| `implicits` | `implicits` | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)). |
-| `modifiers` | `modifiers` | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as __explicit modifiers__)_. |
-| `statuses` | `statuses` | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.  |
-| `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. |
-| `talismanTier` | `talisman-tier` | `String` | String of numerical value of talisman tier. |
-| `stacks` | `stacks` | `Number` | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_ |
-| `flavourText` | `flavour-text` | `String` | List of item's flavour text lines.
+|       Name       |     Prop name     |    Type    | Description                                                                                                                                              |
+| :--------------: | :---------------: | :--------: | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   `itemLevel`    |   `item-level`    |  `String`  | Item's level ([wiki](https://pathofexile.fandom.com/wiki/Item_level)) _(do not confuse with item's level requirement)_.                                  |
+|  `requirements`  |  `requirements`   | `String[]` | List of item's requirement text lines.                                                                                                                   |
+|    `sockets`     |     `sockets`     |  `String`  | String representing sockets and their links. _(More about sockets in [Sockets](#sockets) section.)_                                                      |
+|    `enchants`    |    `enchants`     | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)).                                                 |
+|   `implicits`    |    `implicits`    | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)).                                          |
+|   `modifiers`    |    `modifiers`    | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
+|    `statuses`    |    `statuses`     | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.                                                                                                    |
+| `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines.                                                                                                               |
+|  `talismanTier`  |  `talisman-tier`  |  `String`  | String of numerical value of talisman tier.                                                                                                              |
+|     `stacks`     |     `stacks`      |  `Number`  | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_                                                   |
+|  `flavourText`   |  `flavour-text`   |  `String`  | List of item's flavour text lines.                                                                                                                       |
 
 ### `PoePassive` sections
 
@@ -550,12 +543,15 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 | `description` | `String[]` | List of passive's description text lines. |
 
 ### Sockets
+
 _Full live example of sockets usage on [CodePen](https://codepen.io/meta-is-beta/pen/NWpQgjZ)_
 
 Sockets are defined by the `sockets` section of Config Object or are provided by raw item data from the game or from PoB (with line "`Sockets: {socket string}`"). You can display them through `show-sockets` and `show-sockets-in-showcase` props.
 
 #### Socket notation
+
 There are 6 types of sockets available:
+
 - `R`, `G`, `B`, `W` - Reb, blue, green and white. Usually found on normal items.
 - `A` - "Abyssal" sockets found on abyssal items.
 - `D` - "Delve" sockets found on resonators.
@@ -563,13 +559,16 @@ There are 6 types of sockets available:
 Socket string is a list of socket symbols separated by "`-`" if they are linked or by "` `" (whitespace) if they are not linked.
 
 For example:
+
 - 3 linked red sockets: `R-R-R`
 - 6 sockets (3 blue, 3 green), 5 of them linked: `G-G-B-G-B B`
 - 3 white linked sockets and one abyssal socket: `W-W-W A`
 - 3-socketed resonator: `D D D`
 
 #### Socketing items
+
 By default sockets will be empty. To place items into them you have to:
+
 - Make sure that items you want to socket have their config defined.
 - Add them to the `extensions.socketReferences` section of config.
 
@@ -591,6 +590,7 @@ Example:
 ```
 
 ### Stacks
+
 _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/pen/vYxowbZ)_
 
 - Stacks can display how many of given item or passive there are.
@@ -598,10 +598,12 @@ _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/
 - They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
 
 ### Flavour text
+
 - When creating items with Config Object you can add flavour text by passing it to `flavourText` section.
 - Only `unique` items compied from the game will have their flavour text copied. If you want to add flavour text to non-unique items prepend it with "`Flavour Text:`" in item's raw data string.
 
 `Unique` item example:
+
 <pre><code>
 Item Class: Amulets
 Rarity: Unique
@@ -615,6 +617,7 @@ I am not.</b>
 </code></pre>
 
 `Non-unique` item example:
+
 <pre><code>
 Item Class: Amulets
 Rarity: Rare
@@ -633,37 +636,34 @@ Corrupted
 </code></pre>
 
 ### Dimming and hiding sections
+
 You can dim or hide either entire sections or specific lines of showcase using `dim‑sections` and `hide‑sections` props. _(Section names are in `kebab-case`)_
 
 #### Targeting entire sections
+
 You can target entire sections by passing section names separated by `;`.
 
 **Format**
 
 ```js
-hide-sections="section1;section2;section3";
+hide - sections = "section1;section2;section3";
 ```
 
 or
 
 ```js
-hide-sections="section1:all;section2:all;section3:all";
+hide - sections = "section1:all;section2:all;section3:all";
 ```
 
 **Example**
 
 ```html
 <!-- Hiding all implicits and requirements -->
-<poe-item
-  reference="Headhunter"
-  hide-sections="implicits;requirements">
+<poe-item reference="Headhunter" hide-sections="implicits;requirements">
 </poe-item>
 
 <!-- Dimming entire description -->
-<poe-passive
-  reference="Beef"
-  dim-sections="description">
-</poe-passive>
+<poe-passive reference="Beef" dim-sections="description"> </poe-passive>
 ```
 
 <p align="center">
@@ -677,22 +677,18 @@ To target specific lines you can pass numbers of lines separated by `,` after th
 **Format**
 
 ```js
-hide-sections="section1:1,2;section2:4,5,6;section3:1";
+hide - sections = "section1:1,2;section2:4,5,6;section3:1";
 ```
 
 **Example**
 
 ```html
 <!-- Hiding 1st and 2nd line of modifiers and 1st line of properties -->
-<poe-item
-  reference="Headhunter"
-  hide-sections="modifiers:1,2;properties:1">
+<poe-item reference="Headhunter" hide-sections="modifiers:1,2;properties:1">
 </poe-item>
 
 <!-- Dimming 3rd and 4th line of description -->
-<poe-passive
-  reference="Lethality"
-  dim-sections="description:3,4">
+<poe-passive reference="Lethality" dim-sections="description:3,4">
 </poe-passive>
 ```
 

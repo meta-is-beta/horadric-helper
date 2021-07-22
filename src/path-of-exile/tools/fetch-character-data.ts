@@ -4,7 +4,7 @@ import {
   PoeItemInfluence,
   PoeItemRarity,
   PoeItemStatus,
-  PoeItemType
+  PoeItemType,
 } from "../types";
 import { PoeItemData } from "./poe-api-types";
 
@@ -151,32 +151,38 @@ const getItemRequirements = (itemData: PoeItemData): String[] =>
 
 const getItemProperties = (itemData: PoeItemData): String[] =>
   itemData.properties
-    ? itemData.properties.map((property) => {
-        if (!property.values || property.values.length <= 0) {
-          return property.name;
-        }
+    ? itemData.properties
+        .filter((property) =>
+          property.values.length > 0 && property.values[0].length > 0
+            ? property.values[0][0] !== "Alternate Quality"
+            : true
+        )
+        .map((property) => {
+          if (!property.values || property.values.length <= 0) {
+            return property.name;
+          }
 
-        if (property.name.includes("{")) {
-          return (property.name as any).replace(
-            /\{([0-9]+)\}/g,
-            (_: any, index: any) => property.values[index][0]
-          );
-        }
+          if (property.name.includes("{")) {
+            return (property.name as any).replace(
+              /\{([0-9]+)\}/g,
+              (_: any, index: any) => property.values[index][0]
+            );
+          }
 
-        let value = Array.isArray(property.values[0])
-          ? `${property.values[0][0]}`
-          : `${property.values[0]}`;
+          let value = Array.isArray(property.values[0])
+            ? `${property.values[0][0]}`
+            : `${property.values[0]}`;
 
-        const isAugmented = Array.isArray(property.values[0])
-          ? property.values[0][1] === 1
-          : false;
+          const isAugmented = Array.isArray(property.values[0])
+            ? property.values[0][1] === 1
+            : false;
 
-        if (isAugmented) {
-          value += " (augmented)";
-        }
+          if (isAugmented) {
+            value += " (augmented)";
+          }
 
-        return `${property.name}: ${value}`;
-      })
+          return `${property.name}: ${value}`;
+        })
     : [];
 
 const getItemType = (itemData: PoeItemData): PoeItemType => {

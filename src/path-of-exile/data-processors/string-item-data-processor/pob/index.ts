@@ -66,16 +66,16 @@ const processValuesInLine = (line: String): String => {
 
   const rangePercentageValue = parseFloat(rangeValueMatch[1]);
 
-  const valuesMatch = line.match(/\(([0-9]+)-([0-9]+)\)/);
+  const valuesMatch = line.match(/\(([0-9.]+)-([0-9.]+)\)/);
   if (!valuesMatch) {
     return line;
   }
 
   const lowerRangeValue = parseFloat(valuesMatch[1]);
   const upperRangeValue = parseFloat(valuesMatch[2]);
-  const calculatedValue =
-    (upperRangeValue - lowerRangeValue) * rangePercentageValue +
-    lowerRangeValue;
+  const calculatedValue = Math.floor(
+    (upperRangeValue - lowerRangeValue) * rangePercentageValue + lowerRangeValue
+  );
 
   return line.replace(/\(([0-9.,]+-[0-9.,]+)\)/g, `${calculatedValue}`);
 };

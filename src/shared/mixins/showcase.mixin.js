@@ -1,5 +1,7 @@
 export default {
   props: {
+    showBorder: { type: Boolean, required: true },
+
     iconUrl: { type: String, default: "" },
     iconSize: { type: String, default: "auto" },
 

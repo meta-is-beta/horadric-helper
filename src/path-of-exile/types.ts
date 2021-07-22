@@ -57,6 +57,7 @@ export type PoeItemSections = {
 
 export type PoePassiveSections = {
   description: String[];
+  flavourText?: String[];
 };
 
 export type PoeItem = {

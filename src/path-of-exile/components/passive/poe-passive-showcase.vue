@@ -27,6 +27,16 @@
           {{ descLine }}
         </div>
       </div>
+      <!-- Flavour text -->
+      <div class="poe-passive-flavour-text">
+        <div
+          v-for="(flavourTextLine, index) in passiveFlavourText"
+          :key="`${index}-flav-line`"
+          :class="getFlavourTextClasses(index)"
+        >
+          {{ flavourTextLine }}
+        </div>
+      </div>
       <!-- Inside Icon -->
       <poe-passive-image
         v-if="shouldShowIconInside"
@@ -57,6 +67,11 @@ export default {
 
       return classes;
     },
+    getFlavourTextClasses(index) {
+      const classes = this.addDimedClass("flavour-text", index, "");
+
+      return classes;
+    },
   },
   computed: {
     passiveName() {
@@ -66,7 +81,14 @@ export default {
       return this.passive.type ? this.passive.type : "";
     },
     passiveDescription() {
-      return this.passive.sections ? this.passive.sections.description : [];
+      return this.passive.sections && this.passive.sections.description
+        ? this.passive.sections.description
+        : [];
+    },
+    passiveFlavourText() {
+      return this.passive.sections && this.passive.sections.flavourText
+        ? this.passive.sections.flavourText
+        : [];
     },
     wrapperClasses() {
       let classes = `poe-passive-wrapper`;
@@ -74,6 +96,10 @@ export default {
         classes += ` poe-passive-${this.passiveType
           .replace(" ", "-")
           .toLowerCase()}`;
+      }
+
+      if (this.showBorder) {
+        classes += ` poe-passive-with-border`;
       }
 
       return classes;
@@ -88,22 +114,17 @@ export default {
   object-fit: contain;
   margin-right: 12px;
 }
-.poe-passive-showcase-popover {
-  .poe-passive-wrapper {
-    border: 0;
-    padding: 0px;
-  }
-}
-.poe-passive-showcase {
-  .poe-passive-wrapper {
+
+.poe-passive-wrapper {
+  background-color: black;
+  border: 0;
+  padding: 0px;
+
+  &.poe-passive-with-border {
     border: 2px solid #403b2e;
     padding: 2px;
     height: fit-content;
   }
-}
-
-.poe-passive-wrapper {
-  background-color: black;
 
   & .poe-passive-header {
     height: 55px;
@@ -113,12 +134,14 @@ export default {
     background-image: url(../../assets/Passive-ui-header.png);
     display: flex;
     justify-content: space-between;
+    background-repeat: repeat;
 
     & .poe-passive-header-left-panel,
     & .poe-passive-header-right-panel {
       width: 44px;
       height: 55px;
       background-image: inherit;
+      background-repeat: repeat;
     }
 
     & .poe-passive-header-center-panel {
@@ -139,11 +162,19 @@ export default {
       }
     }
   }
-  & .poe-passive-description {
+  & .poe-passive-description,
+  & .poe-passive-flavour-text {
     padding: 10px;
     text-align: left;
-    color: var(--poe-color-augmented);
     min-width: 250px;
+  }
+  & .poe-passive-description {
+    color: var(--poe-color-augmented);
+  }
+  & .poe-passive-flavour-text {
+    margin-top: 10px;
+    color: var(--poe-color-unique);
+    font-style: italic;
   }
   &.poe-passive-notable {
     & .poe-passive-header {

@@ -333,7 +333,7 @@ export default {
           return;
         }
         const labelName = this.getGemLabelName(gem);
-        linksTags += `<poe-item label-text="${labelName}" reference="${gem.reference}"></poe-item>`;
+        linksTags += `<poe-item icon-inside label-text="${labelName}" reference="${gem.reference}"></poe-item>`;
         if (index + 1 != links.length) {
           linksTags += " ┄ \n";
         }

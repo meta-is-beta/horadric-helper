@@ -12,6 +12,7 @@
         :hiddenSections="hiddenSections"
         :showSockets="showSocketsInShowcase"
         :socketReferences="socketReferences"
+        :showBorder="showBorder"
       />
     </div>
     <div v-else class="poe-item-showcase-wrapper">
@@ -37,6 +38,7 @@
             :hiddenSections="hiddenSections"
             :showSockets="showSocketsInShowcase"
             :socketReferences="socketReferences"
+            :showBorder="showBorder"
           />
         </template>
         <!-- Icon -->
