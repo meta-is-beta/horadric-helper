@@ -18,6 +18,10 @@
             "description": [
               "You can't deal Damage with Skills yourself",
               "+1 to maximum number of Summoned Totems"
+            ],
+            "flavourText": [
+              "A wooden construct, mute and blind.",
+              "But fear the wrath of shackled mind."
             ]
           }
         },

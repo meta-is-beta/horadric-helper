@@ -155,8 +155,7 @@ const getItemStatuses = (sections: PoeItemDataSection[]) => {
 const getRequirements = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Requirements")
-    ?.lines.filter((l) => l !== "Requirements:")
-    .map((l) => l.replace(/\(unmet\)/g, ""));
+    ?.lines.filter((l) => l !== "Requirements:");
 const getEnchants = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Enchants")
@@ -209,7 +208,7 @@ const getStacks = (
 const getFlavorText = (sections: PoeItemDataSection[]) => {
   const flavourText = sections.find((x) => x.name === "Flavour text")?.lines;
 
-  if (!flavourText) {
+  if (!flavourText || flavourText.length === 0) {
     return [];
   }
 

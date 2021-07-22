@@ -331,11 +331,12 @@ export default {
               .map((line) => {
                 return line
                   .trim()
+                  .replace(/\(augmented\)|\(unmet\)|:/g, "")
+                  .replace(/^[ ]{0,1}([A-z]{3}) ([0-9]+)/g, "$2 $1")
                   .replace(
                     /([0-9]+)/gi,
                     "<span class='poe-item-requirement-value'>$1</span>"
-                  )
-                  .replace(/\(augmented\)/gi, "");
+                  );
               })
               .join(", ")
         : "";
@@ -382,6 +383,10 @@ export default {
       let classes = "poe-item-wrapper";
       if (this.item.rarity) {
         classes += ` ${this.item.rarity.toLowerCase()}-item`;
+      }
+
+      if (this.showBorder) {
+        classes += ` poe-item-with-border`;
       }
 
       return classes;
@@ -438,16 +443,8 @@ export default {
   margin-right: 12px;
 }
 
-.poe-item-showcase-popover {
-  .poe-item-wrapper {
-    border: 0;
-    padding: 0px;
-  }
-}
 .poe-item-showcase {
   .poe-item-wrapper {
-    border: 1px solid white;
-    padding: 2px;
     height: fit-content;
   }
 }
@@ -457,6 +454,13 @@ export default {
   .poe-item-wrapper {
     background-color: rgba(0, 0, 0, 1);
     display: inline-block;
+    border: 0;
+    padding: 0px;
+
+    &.poe-item-with-border {
+      border: 1px solid white;
+      padding: 2px;
+    }
 
     & .poe-item-icon {
       margin: 4px;
@@ -469,6 +473,7 @@ export default {
     justify-content: space-between;
     white-space: nowrap;
     font-size: 22px;
+    background-repeat: repeat;
 
     &.poe-item-header-single {
       height: 32px;
@@ -476,9 +481,10 @@ export default {
 
       & .poe-item-header-left-panel,
       & .poe-item-header-right-panel {
+        background-image: inherit;
+        background-repeat: repeat;
         height: 32px;
         width: 28px;
-        background-image: inherit;
       }
       & .poe-item-influenced div {
         margin-top: 2px;
@@ -495,6 +501,7 @@ export default {
 
       & .poe-item-header-left-panel,
       & .poe-item-header-right-panel {
+        background-repeat: repeat;
         background-image: inherit;
         width: 44px;
         height: 52px;
@@ -568,6 +575,7 @@ export default {
 
   .poe-item-flavour-text {
     color: var(--poe-color-unique);
+    font-style: italic;
   }
 
   .poe-item-corrupted {

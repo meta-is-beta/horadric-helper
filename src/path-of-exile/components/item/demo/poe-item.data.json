@@ -634,8 +634,9 @@
       "props": {
         "show-sockets": true,
         "show-sockets-in-showcase": true,
-        "asShowcase": true,
-        "iconInside": true
+        "asIcon": true,
+        "iconInside": true,
+        "bordered": true
       },
       "config": {
         "reference": "Soul Mantle",
@@ -646,7 +647,8 @@
     {
       "props": {
         "asShowcase": true,
-        "iconInside": true
+        "iconInside": true,
+        "borderless": true
       },
       "config": {
         "reference": "Mjolner",

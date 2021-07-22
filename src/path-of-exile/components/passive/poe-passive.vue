@@ -9,6 +9,7 @@
         :showIconInside="iconInside"
         :showIconOutside="iconOutside"
         :dimedSections="dimedSections"
+        :showBorder="showBorder"
       />
     </div>
     <div v-else class="poe-passive-showcase-wrapper">
@@ -31,6 +32,7 @@
             :showIconInside="iconInside"
             :showIconOutside="iconOutside"
             :dimedSections="dimedSections"
+            :showBorder="showBorder"
           />
         </template>
         <!-- Icon -->

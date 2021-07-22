@@ -3,6 +3,9 @@ export default {
     classes: { type: String, default: "" },
     popoverClasses: { type: String, default: "" },
 
+    bordered: { type: Boolean, default: undefined },
+    borderless: { type: Boolean, default: undefined },
+
     reference: { type: String, default: "" },
 
     labelText: { type: String, default: "" },
@@ -72,6 +75,17 @@ export default {
     },
     shouldShowStacksOnIcon() {
       return this.data.stacks && this.showStacks;
+    },
+    showBorder() {
+      if (this.bordered !== undefined) {
+        return true;
+      }
+
+      if (this.borderless !== undefined) {
+        return false;
+      }
+
+      return this.displayMode === "showcase";
     },
   },
   beforeMount() {
