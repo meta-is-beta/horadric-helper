@@ -328,7 +328,7 @@ type PoePassive = {
 
     description: String[];
     // List of passives's flavour text text lines
-    // Eg. for Ancestral Bond
+    // Eg. for "Ancestral Bond"
     // [
     //   "A wooden construct, mute and blind.",
     //   "But fear the wrath of shackled mind."
