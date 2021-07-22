@@ -325,6 +325,7 @@ type PoePassive = {
     //   "50% increased Effect of Arcane Surge on you",
     //   "Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell"
     // ]
+
     description: String[];
     // List of passives's flavour text text lines
     // Eg. for Ancestral Bond
