@@ -47,8 +47,7 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "example-item",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Gloves/GlovesStrDex1.png",
     data: `
       Item Class: Gloves
       Rarity: Magic
@@ -359,8 +358,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVvZ))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "custom-item",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Amulets/Amulet5Unique.png",
     data: {
       rarity: "Unique",
       type: "Equipment",
@@ -406,8 +404,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/VwpQVeZ))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "ingame-item",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/Helmets/HelmetDexUnique2.png",
     data: `
       Item Class: Helmets
       Rarity: Unique
@@ -453,8 +450,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "pob-item",
-    iconUrl:
-      "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
+    iconUrl: "https://web.poecdn.com/image/Art/2DItems/Armours/BodyArmours/BodyStr3C.png",
     data: `
       Rarity: RARE
       New Glorious Plate
@@ -508,8 +504,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 <script>
   window.HoradricHelper.PathOfExile.applyConfig({
     reference: "magnifier-passive",
-    iconUrl:
-      "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
+    iconUrl: "https://static.wikia.nocookie.net/pathofexile_gamepedia/images/2/2e/AreaDmgNotable_passive_skill_icon.png",
     data: {
       name: "Magnifier",
       type: "Notable",
