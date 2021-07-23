@@ -37,7 +37,7 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 
 ```html
 <p>
-  <poe-item as-icon reference="example-item"> </poe-item>
+  <poe-item as-icon reference="example-item"></poe-item>
 </p>
 ```
 
