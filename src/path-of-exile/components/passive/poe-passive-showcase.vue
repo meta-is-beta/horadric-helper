@@ -28,7 +28,10 @@
         </div>
       </div>
       <!-- Flavour text -->
-      <div class="poe-passive-flavour-text">
+      <div
+        class="poe-passive-flavour-text"
+        v-if="passiveFlavourText && passiveFlavourText.length > 0"
+      >
         <div
           v-for="(flavourTextLine, index) in passiveFlavourText"
           :key="`${index}-flav-line`"
