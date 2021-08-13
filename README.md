@@ -125,9 +125,9 @@ You can apply props to set or change behaviour for individual components.
 |:-------:|:----------:|:------|
 | `reference` | `String` | **Required**. Name used to target components with the same reference when loading configs. See [Configuration](#configuration-object) section for details. |
 | `classes` | `String` | Additional classes that will be applied to the root component.|
+| `popover-classes` | `String` | Additional classes that will be applied to popover. |
 | `bordered` | `Boolean` | Always show borders around showcase |
 | `borderless` | `Boolean` | Never show borders around showcase |
-| `popover-classes` | `String` | Additional classes that will be applied to popover. |
 | `label-text` | `String` | By default items will be labeled by their name. You can override that with this prop and assign your own text. |
 | `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (_This is the default settings_) |
 | `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
