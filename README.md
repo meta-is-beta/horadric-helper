@@ -653,13 +653,13 @@ You can target entire sections by passing section names separated by `;`.
 **Format**
 
 ```js
-hide-sections = "section1;section2;section3";
+hide-section="section1;section2;section3";
 ```
 
 or
 
 ```js
-hide-sections = "section1:all;section2:all;section3:all";
+hide-sections="section1:all;section2:all;section3:all";
 ```
 
 **Example**
@@ -683,7 +683,7 @@ To target specific lines you can pass numbers of lines separated by `,` after th
 **Format**
 
 ```js
-hide-sections = "section1:1,2;section2:4,5,6;section3:1";
+hide-sections="section1:1,2;section2:4,5,6;section3:1";
 ```
 
 **Example**
