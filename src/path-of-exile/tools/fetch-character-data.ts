@@ -4,7 +4,7 @@ import {
   PoeItemInfluence,
   PoeItemRarity,
   PoeItemStatus,
-  PoeItemType,
+  PoeItemType
 } from "../types";
 import { PoeItemData } from "./poe-api-types";
 
@@ -187,8 +187,8 @@ const getItemProperties = (itemData: PoeItemData): String[] =>
 
 const getItemType = (itemData: PoeItemData): PoeItemType => {
   if (itemData.typeLine.includes("Flask")) return "flask";
-  if (itemData.icon.includes("Gems")) return "gem";
-  if (itemData.icon.includes("Jewels")) return "jewel";
+  if (itemData.frameType === 4) return "gem";
+  if (itemData.baseType.includes("Jewel")) return "jewel";
 
   return "equipment";
 };
