@@ -6,7 +6,7 @@
         "name": "Physical Damage, Life Leeched per Second",
         "sections": {
           "description": [
-            "30% increased Recovery per second from Life Leech",
+            "30% increased total Recovery per second from Life Leech",
             "10% increased Physical Damage"
           ]
         },
@@ -333,7 +333,7 @@
         "sections": {
           "description": [
             "2% of Damage dealt by your Totems is Leeched to you as Life",
-            "100% increased Effect of Buffs granted by your Active Ancestor Totems",
+            "100% increased Effect of Buffs your Ancestor Totems grant while Active",
             "Ancestor Totems have 100% increased Activation range"
           ]
         },
@@ -491,7 +491,6 @@
         "sections": {
           "description": [
             "Consecrated Ground you create causes Life Regeneration to\nalso Recover Energy Shield for you and Allies",
-            "Consecrated Ground you create grants Immunity to Elemental Ailments\nto you and Allies",
             "Effects of Consecrated Ground you create Linger for 4 seconds"
           ]
         },
@@ -919,8 +918,8 @@
         "name": "Illuminated Devotion",
         "sections": {
           "description": [
+            "Non-Damaging Ailments have 50% reduced Effect on you while you have Arcane Surge",
             "30% increased Area of Effect while you have Arcane Surge",
-            "Immune to Elemental Ailments while you have Arcane Surge",
             "0.5% of Spell Damage Leeched as Life while you have Arcane Surge"
           ]
         },
@@ -1568,7 +1567,7 @@
           "description": [
             "Damage Penetrates 8% of Enemy Elemental Resistances",
             "10% chance to create Consecrated Ground when you Hit a Rare or Unique Enemy, lasting 8 seconds",
-            "Immune to Elemental Ailments while on Consecrated Ground",
+            "Effects of Consecrated Ground you create Linger for 4 seconds",
             "Nearby Enemies take 10% increased Elemental Damage"
           ]
         },
@@ -1622,7 +1621,7 @@
         "sections": {
           "description": [
             "Culling Strike",
-            "Life Leech effects are not removed at Full Life",
+            "Life Leech effects are not removed when Unreserved Life is Filled",
             "30% increased Area of Effect if you've Killed Recently",
             "Cannot take Reflected Physical Damage"
           ]
@@ -4141,19 +4140,18 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/SkillscostingLifenode.png"
     },
     {
-      "reference": "Vitality Extraction",
+      "reference": "Cannibalistic Rite",
       "data": {
-        "name": "Vitality Extraction",
+        "name": "Cannibalistic Rite",
         "sections": {
           "description": [
             "Recover 2% of Life on Kill if you've Spent Life Recently",
-            "25% increased Damage with Skills that Cost Life",
-            "Life Flasks gain 1 Charge every 3 seconds"
+            "25% increased Damage with Skills that Cost Life"
           ]
         },
         "type": "notable"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/SkillscostingLifenotable.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/CannibalisticRite.png"
     },
     {
       "reference": "Physical Damage Mastery",
@@ -4180,13 +4178,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/SkillscostingLifenode.png"
     },
     {
-      "reference": "Damage with Life Cost Skills and Life Flasks",
+      "reference": "Damage with Life Cost Skills",
       "data": {
-        "name": "Damage with Life Cost Skills and Life Flasks",
+        "name": "Damage with Life Cost Skills",
         "sections": {
           "description": [
-            "15% increased Life Recovery from Flasks",
-            "12% increased Damage with Skills that Cost Life"
+            "16% increased Damage with Skills that Cost Life"
           ]
         },
         "type": "basic"
@@ -4852,7 +4849,7 @@
           "description": [
             "12% increased Attack Speed",
             "1.2% of Physical Attack Damage Leeched as Life",
-            "60% increased Recovery per second from Life Leech"
+            "60% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "notable"
@@ -4866,7 +4863,7 @@
         "sections": {
           "description": [
             "3% increased Attack Speed",
-            "40% increased Recovery per second from Life Leech"
+            "40% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -5456,14 +5453,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusintelligence.png"
     },
     {
-      "reference": "Fortify Effect and Melee Damage",
+      "reference": "Melee Damage while Fortified",
       "data": {
-        "name": "Fortify Effect and Melee Damage",
+        "name": "Melee Damage while Fortified",
         "sections": {
           "description": [
             "Attacks with Melee Weapons deal 12% increased Damage with Ailments",
-            "12% increased Melee Physical Damage while you have Fortify",
-            "5% increased Effect of Fortify on you"
+            "12% increased Melee Physical Damage while you have Fortify"
           ]
         },
         "type": "basic"
@@ -5471,14 +5467,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/FortifyNode.png"
     },
     {
-      "reference": "Fortify Effect and Melee Damage",
+      "reference": "Melee Damage while Fortified",
       "data": {
-        "name": "Fortify Effect and Melee Damage",
+        "name": "Melee Damage while Fortified",
         "sections": {
           "description": [
             "Attacks with Melee Weapons deal 14% increased Damage with Ailments",
-            "14% increased Melee Physical Damage while you have Fortify",
-            "5% increased Effect of Fortify on you"
+            "14% increased Melee Physical Damage while you have Fortify"
           ]
         },
         "type": "basic"
@@ -5486,13 +5481,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/FortifyNode.png"
     },
     {
-      "reference": "Fortify Effect and Armour",
+      "reference": "Armour while Fortified",
       "data": {
-        "name": "Fortify Effect and Armour",
+        "name": "Armour while Fortified",
         "sections": {
           "description": [
-            "15% increased Armour while you have Fortify",
-            "10% increased Effect of Fortify on you"
+            "20% increased Armour while you have Fortify"
           ]
         },
         "type": "basic"
@@ -5593,6 +5587,49 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupLife.png"
     },
     {
+      "reference": "Curse Effect on You and Consecrated Ground Effect",
+      "data": {
+        "name": "Curse Effect on You and Consecrated Ground Effect",
+        "sections": {
+          "description": [
+            "5% reduced Effect of Curses on you",
+            "5% increased Effect of Consecrated Ground you create"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/CursemitigationclusterNode.png"
+    },
+    {
+      "reference": "Curse Effect on You and Consecrated Ground Effect",
+      "data": {
+        "name": "Curse Effect on You and Consecrated Ground Effect",
+        "sections": {
+          "description": [
+            "5% reduced Effect of Curses on you",
+            "5% increased Effect of Consecrated Ground you create"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/CursemitigationclusterNode.png"
+    },
+    {
+      "reference": "Asylum",
+      "data": {
+        "name": "Asylum",
+        "sections": {
+          "description": [
+            "10% reduced Effect of Curses on you",
+            "10% increased Effect of Consecrated Ground you create",
+            "20% reduced Effect of Curses on you while on Consecrated Ground"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/CursemitigationclusterNotable.png"
+    },
+    {
       "reference": "Arcane Potency",
       "data": {
         "name": "Arcane Potency",
@@ -5639,7 +5676,7 @@
         "sections": {
           "description": [
             "25% increased Melee Critical Strike Chance",
-            "Damage with Weapons Penetrates 3% Elemental Resistance",
+            "Attack Damage Penetrates 3% of Enemy Elemental Resistances",
             "24% increased Elemental Damage with Attack Skills",
             "+10 to Strength and Intelligence"
           ]
@@ -5996,17 +6033,44 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/damagemelee.png"
     },
     {
-      "reference": "Avatar of Fire",
+      "reference": "Strength",
       "data": {
-        "name": "Avatar of Fire",
+        "name": "Strength",
         "sections": {
           "description": [
-            "50% of Physical, Cold and Lightning Damage Converted to Fire Damage\nDeal no Non-Fire Damage"
+            "+15 to Strength"
           ]
         },
-        "type": "keystone"
+        "type": "basic"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/KeystoneAvatarOfFire.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
+    },
+    {
+      "reference": "Strength",
+      "data": {
+        "name": "Strength",
+        "sections": {
+          "description": [
+            "+15 to Strength"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
+    },
+    {
+      "reference": "Utmost Might",
+      "data": {
+        "name": "Utmost Might",
+        "sections": {
+          "description": [
+            "+40 to Strength",
+            "8% increased Strength"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
     },
     {
       "reference": "Position Proxy",
@@ -6174,46 +6238,6 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
     },
     {
-      "reference": "Strength",
-      "data": {
-        "name": "Strength",
-        "sections": {
-          "description": [
-            "+15 to Strength"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
-    },
-    {
-      "reference": "Strength",
-      "data": {
-        "name": "Strength",
-        "sections": {
-          "description": [
-            "+15 to Strength"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
-    },
-    {
-      "reference": "Utmost Might",
-      "data": {
-        "name": "Utmost Might",
-        "sections": {
-          "description": [
-            "+40 to Strength",
-            "8% increased Strength"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusstrength.png"
-    },
-    {
       "reference": "Staff Damage, Stun Duration and Block",
       "data": {
         "name": "Staff Damage, Stun Duration and Block",
@@ -6354,6 +6378,19 @@
         "type": "basic"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupMace.png"
+    },
+    {
+      "reference": "Avatar of Fire",
+      "data": {
+        "name": "Avatar of Fire",
+        "sections": {
+          "description": [
+            "50% of Physical, Cold and Lightning Damage Converted to Fire Damage\nDeal no Non-Fire Damage"
+          ]
+        },
+        "type": "keystone"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/KeystoneAvatarOfFire.png"
     },
     {
       "reference": "Strength",
@@ -8361,13 +8398,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryBlank.png"
     },
     {
-      "reference": "Attack and Minion Damage",
+      "reference": "Physical and Minion Damage",
       "data": {
-        "name": "Attack and Minion Damage",
+        "name": "Physical and Minion Damage",
         "sections": {
           "description": [
-            "10% increased Attack Damage",
-            "Minions deal 8% increased Damage"
+            "Minions deal 8% increased Damage",
+            "10% increased Physical Damage"
           ]
         },
         "type": "basic"
@@ -8375,13 +8412,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/miniondamageBlue.png"
     },
     {
-      "reference": "Attack and Minion Damage",
+      "reference": "Physical and Minion Damage",
       "data": {
-        "name": "Attack and Minion Damage",
+        "name": "Physical and Minion Damage",
         "sections": {
           "description": [
-            "10% increased Attack Damage",
-            "Minions deal 8% increased Damage"
+            "Minions deal 8% increased Damage",
+            "10% increased Physical Damage"
           ]
         },
         "type": "basic"
@@ -8389,13 +8426,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/miniondamageBlue.png"
     },
     {
-      "reference": "Attack and Minion Damage",
+      "reference": "Physical and Minion Damage",
       "data": {
-        "name": "Attack and Minion Damage",
+        "name": "Physical and Minion Damage",
         "sections": {
           "description": [
-            "10% increased Attack Damage",
-            "Minions deal 8% increased Damage"
+            "Minions deal 8% increased Damage",
+            "10% increased Physical Damage"
           ]
         },
         "type": "basic"
@@ -9677,13 +9714,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/FortifyNode.png"
     },
     {
-      "reference": "Fortify Effect and Duration",
+      "reference": "Attack Damage while Fortified and Fortify Duration",
       "data": {
-        "name": "Fortify Effect and Duration",
+        "name": "Attack Damage while Fortified and Fortify Duration",
         "sections": {
           "description": [
             "25% increased Fortify Duration",
-            "10% increased Effect of Fortify on you"
+            "12% increased Attack Damage while you have Fortify"
           ]
         },
         "type": "basic"
@@ -10501,7 +10538,7 @@
           "description": [
             "20% increased maximum Mana",
             "Guard Skills have 25% increased Duration",
-            "Recover 20% of Mana over 1 second when you use a Guard Skill"
+            "Recover 10% of Mana over 1 second when you use a Guard Skill"
           ]
         },
         "type": "notable"
@@ -10691,7 +10728,7 @@
           "description": [
             "30% increased Physical Damage with Two Handed Melee Weapons",
             "Attacks with Two Handed Melee Weapons deal 30% increased Damage with Ailments",
-            "100% increased Recovery per second from Life Leech",
+            "100% increased total Recovery per second from Life Leech",
             "Overwhelm 12% Physical Damage Reduction"
           ]
         },
@@ -10733,7 +10770,7 @@
           "description": [
             "12% increased Physical Damage with Two Handed Melee Weapons",
             "Attacks with Two Handed Melee Weapons deal 12% increased Damage with Ailments",
-            "60% increased Recovery per second from Life Leech"
+            "60% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -10748,7 +10785,7 @@
           "description": [
             "12% increased Physical Damage with Two Handed Melee Weapons",
             "Attacks with Two Handed Melee Weapons deal 12% increased Damage with Ailments",
-            "60% increased Recovery per second from Life Leech"
+            "60% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -10845,8 +10882,7 @@
         "sections": {
           "description": [
             "25% increased Mana Regeneration Rate",
-            "15% increased Flask Charges gained",
-            "Mana Flasks gain 1 Charge every 3 seconds",
+            "20% increased Flask Charges gained",
             "Remove a random Elemental Ailment when you use a Mana Flask"
           ]
         },
@@ -11275,7 +11311,7 @@
         "sections": {
           "description": [
             "5% increased Attack Speed",
-            "Impale Damage dealt to Enemies Impaled by you Overwhelms 10% Physical Damage Reduction",
+            "Impale Damage dealt to Enemies Impaled by you Overwhelms 15% Physical Damage Reduction",
             "15% chance to Impale Enemies on Hit with Attacks",
             "5% increased Impale Effect"
           ]
@@ -11899,7 +11935,7 @@
             "12% increased Physical Damage with One Handed Melee Weapons",
             "Attacks with One Handed Melee Weapons deal 12% increased Damage with Ailments",
             "0.4% of Physical Attack Damage Leeched as Life",
-            "40% increased Recovery per second from Life Leech"
+            "40% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -12252,7 +12288,7 @@
         "sections": {
           "description": [
             "10% increased Maximum total Life Recovery per second from Leech",
-            "30% increased Recovery per second from Life Leech"
+            "30% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -12266,7 +12302,7 @@
         "sections": {
           "description": [
             "0.6% of Physical Attack Damage Leeched as Life",
-            "50% increased Recovery per second from Life Leech"
+            "50% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -12281,7 +12317,7 @@
           "description": [
             "1% of Physical Attack Damage Leeched as Life",
             "15% increased Maximum total Life Recovery per second from Leech",
-            "100% increased Recovery per second from Life Leech",
+            "100% increased total Recovery per second from Life Leech",
             "30% increased Damage while Leeching"
           ]
         },
@@ -12473,7 +12509,6 @@
         "sections": {
           "description": [
             "3% increased Attack Speed",
-            "Impale Damage dealt to Enemies Impaled by you Overwhelms 5% Physical Damage Reduction",
             "5% increased Impale Effect"
           ]
         },
@@ -12501,7 +12536,7 @@
         "name": "Forceful Skewering",
         "sections": {
           "description": [
-            "Impale Damage dealt to Enemies Impaled by you Overwhelms 10% Physical Damage Reduction",
+            "Impale Damage dealt to Enemies Impaled by you Overwhelms 25% Physical Damage Reduction",
             "15% chance to Impale Enemies on Hit with Attacks",
             "5% increased Impale Effect",
             "+20 to Strength"
@@ -12991,7 +13026,6 @@
         "sections": {
           "description": [
             "Summoned Golems are Immune to Elemental Damage",
-            "35% chance to Avoid Elemental Ailments per Summoned Golem",
             "25% increased Effect of Buffs granted by your Golems per Summoned Golem",
             "+1 to maximum number of Summoned Golems"
           ]
@@ -13049,7 +13083,7 @@
         "sections": {
           "description": [
             "Your Hits always Ignite",
-            "All Damage with Hits can Ignite",
+            "All Damage can Ignite",
             "25% more Damage with Ignites you inflict with Hits for which the highest Damage Type is Fire"
           ]
         },
@@ -13064,8 +13098,8 @@
         "sections": {
           "description": [
             "Your Hits always Shock",
-            "All Damage with Hits can Shock",
             "Shocks from your Hits always increase Damage taken by at least 15%",
+            "All Damage can Shock",
             "25% more Effect of Lightning Ailments you inflict with Hits if the highest Damage Type is Lightning"
           ]
         },
@@ -13151,8 +13185,7 @@
         "name": "Liege of the Primordial",
         "sections": {
           "description": [
-            "25% increased Damage per Summoned Golem",
-            "25% increased Effect of Buffs granted by your Golems per Summoned Golem",
+            "100% increased Effect of Buffs granted by your Golems",
             "Summoned Golems are Resummoned 4 seconds after being Killed",
             "+1 to maximum number of Summoned Golems"
           ]
@@ -13703,7 +13736,7 @@
           "description": [
             "30% increased Totem Damage",
             "Attack Skills have +1 to maximum number of Summoned Ballista Totems",
-            "50% increased Effect of Buffs granted by your Active Ancestor Totems"
+            "50% increased Effect of Buffs your Ancestor Totems grant while Active"
           ]
         },
         "type": "notable"
@@ -14863,7 +14896,8 @@
           "description": [
             "20% increased Armour",
             "+400 to Armour while affected by a Guard Skill Buff",
-            "Regenerate 1.5% of Life per second while affected by a Guard Skill Buff"
+            "Remove Bleeding when you use a Guard Skill",
+            "Remove Corrupted Blood when you use a Guard Skill"
           ]
         },
         "type": "notable"
@@ -15137,13 +15171,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Champion/AnETaunt.png"
     },
     {
-      "reference": "Armour and Evasion, Fortify Effect",
+      "reference": "Armour and Evasion, Attack Damage while Fortified",
       "data": {
-        "name": "Armour and Evasion, Fortify Effect",
+        "name": "Armour and Evasion, Attack Damage while Fortified",
         "sections": {
           "description": [
             "15% increased Evasion Rating and Armour",
-            "5% increased Effect of Fortify on you"
+            "10% increased Attack Damage while you have Fortify"
           ]
         },
         "type": "ascendancy basic"
@@ -15151,13 +15185,13 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Champion/AnEFortify.png"
     },
     {
-      "reference": "Armour and Evasion, Fortify Effect",
+      "reference": "Armour and Evasion, Attack Damage while Fortified",
       "data": {
-        "name": "Armour and Evasion, Fortify Effect",
+        "name": "Armour and Evasion, Attack Damage while Fortified",
         "sections": {
           "description": [
             "15% increased Evasion Rating and Armour",
-            "5% increased Effect of Fortify on you"
+            "10% increased Attack Damage while you have Fortify"
           ]
         },
         "type": "ascendancy basic"
@@ -18297,9 +18331,8 @@
         "sections": {
           "description": [
             "15% increased maximum Mana",
-            "25% increased Mana Recovery from Flasks",
-            "10% reduced Flask Charges used",
-            "Flasks applied to you have 8% increased Effect"
+            "30% increased Mana Recovery from Flasks",
+            "Mana Flasks gain 1 Charge every 3 seconds"
           ]
         },
         "type": "notable"
@@ -18964,7 +18997,7 @@
         "name": "Command of Steel",
         "sections": {
           "description": [
-            "1% increased Damage per 1% Chance to Block Attack Damage",
+            "5% increased Attack Damage per 5% Chance to Block Attack Damage",
             "+3% Chance to Block Attack Damage while holding a Shield"
           ]
         },
@@ -19008,7 +19041,7 @@
           "description": [
             "6% increased maximum Life",
             "30% increased Life Recovery from Flasks",
-            "Flasks applied to you have 8% increased Effect"
+            "Life Flasks gain 1 Charge every 3 seconds"
           ]
         },
         "type": "notable"
@@ -19891,7 +19924,7 @@
         "sections": {
           "description": [
             "100% increased Maximum Recovery per Life Leech",
-            "Life Leech effects are not removed at Full Life",
+            "Life Leech effects are not removed when Unreserved Life is Filled",
             "10% reduced Damage taken while Leeching"
           ]
         },
@@ -20015,9 +20048,9 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Slayer/2HdmgAOE.png"
     },
     {
-      "reference": "Bane of Legends",
+      "reference": "Headsman",
       "data": {
-        "name": "Bane of Legends",
+        "name": "Headsman",
         "sections": {
           "description": [
             "Kill Enemies that have 20% or lower Life when Hit by your Skills",
@@ -20045,9 +20078,9 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Slayer/CriticalAttacks.png"
     },
     {
-      "reference": "Headsman",
+      "reference": "Bane of Legends",
       "data": {
-        "name": "Headsman",
+        "name": "Bane of Legends",
         "sections": {
           "description": [
             "10% more Damage if you've Killed Recently",
@@ -20591,7 +20624,7 @@
         "sections": {
           "description": [
             "0.4% of Attack Damage Leeched as Life",
-            "40% increased Recovery per second from Life Leech"
+            "40% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -20606,7 +20639,7 @@
           "description": [
             "0.8% of Attack Damage Leeched as Life",
             "15% increased Maximum total Life Recovery per second from Leech",
-            "60% increased Recovery per second from Life Leech"
+            "60% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "notable"
@@ -23822,8 +23855,8 @@
         "sections": {
           "description": [
             "15% increased maximum Mana",
-            "20% increased Mana Regeneration Rate",
             "20% increased Flask Charges gained",
+            "Flasks applied to you have 10% increased Effect",
             "+20 to Strength and Intelligence"
           ]
         },
@@ -23832,13 +23865,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/animalspirit.png"
     },
     {
-      "reference": "Mana and Flask Effect",
+      "reference": "Mana",
       "data": {
-        "name": "Mana and Flask Effect",
+        "name": "Mana",
         "sections": {
           "description": [
-            "8% increased maximum Mana",
-            "Flasks applied to you have 5% increased Effect"
+            "8% increased maximum Mana"
           ]
         },
         "type": "basic"
@@ -23846,13 +23878,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/mana.png"
     },
     {
-      "reference": "Mana and Flask Effect",
+      "reference": "Mana",
       "data": {
-        "name": "Mana and Flask Effect",
+        "name": "Mana",
         "sections": {
           "description": [
-            "8% increased maximum Mana",
-            "Flasks applied to you have 5% increased Effect"
+            "8% increased maximum Mana"
           ]
         },
         "type": "basic"
@@ -24469,7 +24500,7 @@
           "description": [
             "Dagger Attacks deal 12% increased Damage with Hits and Ailments",
             "0.3% of Attack Damage Leeched as Life",
-            "20% increased Recovery per second from Life Leech"
+            "20% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -24484,7 +24515,7 @@
           "description": [
             "Dagger Attacks deal 12% increased Damage with Hits and Ailments",
             "0.3% of Attack Damage Leeched as Life",
-            "20% increased Recovery per second from Life Leech"
+            "20% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -24532,19 +24563,6 @@
         "type": "notable"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/IgnorePain.png"
-    },
-    {
-      "reference": "Intelligence",
-      "data": {
-        "name": "Intelligence",
-        "sections": {
-          "description": [
-            "+10 to Intelligence"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusintelligence.png"
     },
     {
       "reference": "Life and Elemental Ailment Avoidance",
@@ -24612,6 +24630,19 @@
         "type": "notable"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/thickskin.png"
+    },
+    {
+      "reference": "Intelligence",
+      "data": {
+        "name": "Intelligence",
+        "sections": {
+          "description": [
+            "+10 to Intelligence"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusintelligence.png"
     },
     {
       "reference": "Mine Damage and Area of Effect",
@@ -25537,6 +25568,19 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
     },
     {
+      "reference": "Dexterity",
+      "data": {
+        "name": "Dexterity",
+        "sections": {
+          "description": [
+            "+10 to Dexterity"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
+    },
+    {
       "reference": "Evasion Mastery",
       "data": {
         "name": "Evasion Mastery",
@@ -25624,12 +25668,108 @@
         "name": "Dexterity",
         "sections": {
           "description": [
-            "+10 to Dexterity"
+            "+15 to Dexterity"
           ]
         },
         "type": "basic"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
+    },
+    {
+      "reference": "Dexterity",
+      "data": {
+        "name": "Dexterity",
+        "sections": {
+          "description": [
+            "+15 to Dexterity"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
+    },
+    {
+      "reference": "Utmost Swiftness",
+      "data": {
+        "name": "Utmost Swiftness",
+        "sections": {
+          "description": [
+            "+40 to Dexterity",
+            "8% increased Dexterity"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
+    },
+    {
+      "reference": "Claw Attack Speed and Movement Speed",
+      "data": {
+        "name": "Claw Attack Speed and Movement Speed",
+        "sections": {
+          "description": [
+            "3% increased Attack Speed with Claws",
+            "3% increased Movement Speed"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/attackspeedclaw.png"
+    },
+    {
+      "reference": "Claw Damage and Attack Speed",
+      "data": {
+        "name": "Claw Damage and Attack Speed",
+        "sections": {
+          "description": [
+            "Claw Attacks deal 8% increased Damage with Hits and Ailments",
+            "3% increased Attack Speed with Claws"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/attackspeedclaw.png"
+    },
+    {
+      "reference": "Claw Mastery",
+      "data": {
+        "name": "Claw Mastery",
+        "sections": {
+          "description": []
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupClaw.png"
+    },
+    {
+      "reference": "Claw Attack Speed and Movement Speed",
+      "data": {
+        "name": "Claw Attack Speed and Movement Speed",
+        "sections": {
+          "description": [
+            "3% increased Attack Speed with Claws",
+            "3% increased Movement Speed"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/attackspeedclaw.png"
+    },
+    {
+      "reference": "Claws of the Pride",
+      "data": {
+        "name": "Claws of the Pride",
+        "sections": {
+          "description": [
+            "Claw Attacks deal 25% increased Damage with Hits and Ailments",
+            "Overwhelm 10% Physical Damage Reduction",
+            "15% increased Attack and Cast Speed if you've used a Movement Skill Recently",
+            "+1 to Melee Strike Range with Claws"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/clawsofthepride.png"
     },
     {
       "reference": "Position Proxy",
@@ -25761,75 +25901,6 @@
         "type": "basic"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryBlank.png"
-    },
-    {
-      "reference": "Claw Attack Speed and Movement Speed",
-      "data": {
-        "name": "Claw Attack Speed and Movement Speed",
-        "sections": {
-          "description": [
-            "3% increased Attack Speed with Claws",
-            "3% increased Movement Speed"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/attackspeedclaw.png"
-    },
-    {
-      "reference": "Claw Damage and Attack Speed",
-      "data": {
-        "name": "Claw Damage and Attack Speed",
-        "sections": {
-          "description": [
-            "Claw Attacks deal 8% increased Damage with Hits and Ailments",
-            "3% increased Attack Speed with Claws"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/attackspeedclaw.png"
-    },
-    {
-      "reference": "Claw Mastery",
-      "data": {
-        "name": "Claw Mastery",
-        "sections": {
-          "description": []
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupClaw.png"
-    },
-    {
-      "reference": "Claw Attack Speed and Movement Speed",
-      "data": {
-        "name": "Claw Attack Speed and Movement Speed",
-        "sections": {
-          "description": [
-            "3% increased Attack Speed with Claws",
-            "3% increased Movement Speed"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/attackspeedclaw.png"
-    },
-    {
-      "reference": "Claws of the Pride",
-      "data": {
-        "name": "Claws of the Pride",
-        "sections": {
-          "description": [
-            "Claw Attacks deal 25% increased Damage with Hits and Ailments",
-            "Overwhelm 10% Physical Damage Reduction",
-            "15% increased Attack and Cast Speed if you've used a Movement Skill Recently",
-            "+1 to Melee Strike Range with Claws"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/clawsofthepride.png"
     },
     {
       "reference": "Position Proxy",
@@ -25969,89 +26040,6 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasterofForce.png"
     },
     {
-      "reference": "Elemental Resistances and Attack Speed with Shields",
-      "data": {
-        "name": "Elemental Resistances and Attack Speed with Shields",
-        "sections": {
-          "description": [
-            "4% increased Attack Speed while holding a Shield",
-            "+4% Elemental Resistances while holding a Shield"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
-    },
-    {
-      "reference": "Weapon Elemental Damage and Attack Speed with Shield",
-      "data": {
-        "name": "Weapon Elemental Damage and Attack Speed with Shield",
-        "sections": {
-          "description": [
-            "3% increased Attack Speed while holding a Shield",
-            "10% increased Elemental Damage with Attack Skills"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
-    },
-    {
-      "reference": "Weapon Elemental Damage and Attack Speed with Shield",
-      "data": {
-        "name": "Weapon Elemental Damage and Attack Speed with Shield",
-        "sections": {
-          "description": [
-            "3% increased Attack Speed while holding a Shield",
-            "10% increased Elemental Damage with Attack Skills"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
-    },
-    {
-      "reference": "Elemental Resistance with Shields and Shield Defences",
-      "data": {
-        "name": "Elemental Resistance with Shields and Shield Defences",
-        "sections": {
-          "description": [
-            "+6% Elemental Resistances while holding a Shield",
-            "40% increased Defences from Equipped Shield"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
-    },
-    {
-      "reference": "Command of the Elements",
-      "data": {
-        "name": "Command of the Elements",
-        "sections": {
-          "description": [
-            "6% increased Attack Speed while holding a Shield",
-            "40% increased Defences from Equipped Shield",
-            "Damage with Weapons Penetrates 4% Elemental Resistance",
-            "24% increased Elemental Damage with Attack Skills"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
-    },
-    {
-      "reference": "Shield Mastery",
-      "data": {
-        "name": "Shield Mastery",
-        "sections": {
-          "description": []
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupShield.png"
-    },
-    {
       "reference": "One Handed Damage",
       "data": {
         "name": "One Handed Damage",
@@ -26137,17 +26125,87 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/blademistress.png"
     },
     {
-      "reference": "Intelligence",
+      "reference": "Elemental Resistances and Attack Speed with Shields",
       "data": {
-        "name": "Intelligence",
+        "name": "Elemental Resistances and Attack Speed with Shields",
         "sections": {
           "description": [
-            "+10 to Intelligence"
+            "4% increased Attack Speed while holding a Shield",
+            "+4% Elemental Resistances while holding a Shield"
           ]
         },
         "type": "basic"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusintelligence.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
+    },
+    {
+      "reference": "Weapon Elemental Damage and Attack Speed with Shield",
+      "data": {
+        "name": "Weapon Elemental Damage and Attack Speed with Shield",
+        "sections": {
+          "description": [
+            "3% increased Attack Speed while holding a Shield",
+            "10% increased Elemental Damage with Attack Skills"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
+    },
+    {
+      "reference": "Weapon Elemental Damage and Attack Speed with Shield",
+      "data": {
+        "name": "Weapon Elemental Damage and Attack Speed with Shield",
+        "sections": {
+          "description": [
+            "3% increased Attack Speed while holding a Shield",
+            "10% increased Elemental Damage with Attack Skills"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
+    },
+    {
+      "reference": "Elemental Resistance with Shields and Shield Defences",
+      "data": {
+        "name": "Elemental Resistance with Shields and Shield Defences",
+        "sections": {
+          "description": [
+            "+6% Elemental Resistances while holding a Shield",
+            "40% increased Defences from Equipped Shield"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
+    },
+    {
+      "reference": "Command of the Elements",
+      "data": {
+        "name": "Command of the Elements",
+        "sections": {
+          "description": [
+            "6% increased Attack Speed while holding a Shield",
+            "40% increased Defences from Equipped Shield",
+            "Attack Damage Penetrates 4% of Enemy Elemental Resistances",
+            "24% increased Elemental Damage with Attack Skills"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ShieldAttackDamage.png"
+    },
+    {
+      "reference": "Shield Mastery",
+      "data": {
+        "name": "Shield Mastery",
+        "sections": {
+          "description": []
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupShield.png"
     },
     {
       "reference": "Curse Cast Speed",
@@ -26212,6 +26270,19 @@
         "type": "basic"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MarkMastery.png"
+    },
+    {
+      "reference": "Intelligence",
+      "data": {
+        "name": "Intelligence",
+        "sections": {
+          "description": [
+            "+10 to Intelligence"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusintelligence.png"
     },
     {
       "reference": "Dexterity",
@@ -27000,7 +27071,7 @@
         "name": "Forces of Nature",
         "sections": {
           "description": [
-            "Damage with Weapons Penetrates 6% Elemental Resistance",
+            "Attack Damage Penetrates 6% of Enemy Elemental Resistances",
             "20% increased Elemental Damage with Attack Skills"
           ]
         },
@@ -27231,46 +27302,6 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ProjectilesNotable.png"
     },
     {
-      "reference": "Dexterity",
-      "data": {
-        "name": "Dexterity",
-        "sections": {
-          "description": [
-            "+15 to Dexterity"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
-    },
-    {
-      "reference": "Dexterity",
-      "data": {
-        "name": "Dexterity",
-        "sections": {
-          "description": [
-            "+15 to Dexterity"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
-    },
-    {
-      "reference": "Utmost Swiftness",
-      "data": {
-        "name": "Utmost Swiftness",
-        "sections": {
-          "description": [
-            "+40 to Dexterity",
-            "8% increased Dexterity"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/plusdexterity.png"
-    },
-    {
       "reference": "Claw Damage and Poison Chance",
       "data": {
         "name": "Claw Damage and Poison Chance",
@@ -27340,6 +27371,71 @@
         "type": "notable"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ClawNotable2.png"
+    },
+    {
+      "reference": "Flask Effect Duration",
+      "data": {
+        "name": "Flask Effect Duration",
+        "sections": {
+          "description": [
+            "10% increased Flask Effect Duration"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/flaskdex.png"
+    },
+    {
+      "reference": "Flask Charges Used",
+      "data": {
+        "name": "Flask Charges Used",
+        "sections": {
+          "description": [
+            "5% reduced Flask Charges used"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/flaskdex.png"
+    },
+    {
+      "reference": "Flask Effect Duration",
+      "data": {
+        "name": "Flask Effect Duration",
+        "sections": {
+          "description": [
+            "15% increased Flask Effect Duration"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/flaskdex.png"
+    },
+    {
+      "reference": "Natural Remedies",
+      "data": {
+        "name": "Natural Remedies",
+        "sections": {
+          "description": [
+            "20% increased Flask Effect Duration",
+            "Flasks applied to you have 10% increased Effect",
+            "Remove Maim and Hinder when you use a Flask"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/FlaskNotableFlasksLastLonger.png"
+    },
+    {
+      "reference": "Flask Mastery",
+      "data": {
+        "name": "Flask Mastery",
+        "sections": {
+          "description": []
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryFlasks.png"
     },
     {
       "reference": "Cold Damage",
@@ -28143,6 +28239,49 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/chargedex.png"
     },
     {
+      "reference": "Mana Leech",
+      "data": {
+        "name": "Mana Leech",
+        "sections": {
+          "description": [
+            "0.4% of Attack Damage Leeched as Mana"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ManaLeechThemedNode.png"
+    },
+    {
+      "reference": "Mana Leech",
+      "data": {
+        "name": "Mana Leech",
+        "sections": {
+          "description": [
+            "+2 Mana gained for each Enemy hit by your Attacks",
+            "50% increased total Recovery per second from Mana Leech"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ManaLeechThemedNode.png"
+    },
+    {
+      "reference": "Essence Sap",
+      "data": {
+        "name": "Essence Sap",
+        "sections": {
+          "description": [
+            "0.6% of Attack Damage Leeched as Mana",
+            "25% increased Maximum total Mana Recovery per second from Leech",
+            "+2 Mana gained for each Enemy hit by your Attacks",
+            "50% increased total Recovery per second from Mana Leech"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/minddrinker.png"
+    },
+    {
       "reference": "Evasion and Blind Duration",
       "data": {
         "name": "Evasion and Blind Duration",
@@ -28213,47 +28352,270 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryGroupEvasion.png"
     },
     {
-      "reference": "Mana Leech",
+      "reference": "Shield Spell Block and Block Recovery",
       "data": {
-        "name": "Mana Leech",
+        "name": "Shield Spell Block and Block Recovery",
         "sections": {
           "description": [
-            "0.4% of Attack Damage Leeched as Mana"
+            "+2% Chance to Block Spell Damage while holding a Shield",
+            "40% increased Block Recovery"
           ]
         },
         "type": "basic"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ManaLeechThemedNode.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/shieldrecovery.png"
     },
     {
-      "reference": "Mana Leech",
+      "reference": "Dual Wield Damage and Block",
       "data": {
-        "name": "Mana Leech",
+        "name": "Dual Wield Damage and Block",
         "sections": {
           "description": [
-            "+2 Mana gained for each Enemy hit by your Attacks",
-            "50% increased total Recovery per second from Mana Leech"
+            "+3% Chance to Block Attack Damage while Dual Wielding",
+            "Attack Skills deal 8% increased Damage while Dual Wielding"
           ]
         },
         "type": "basic"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ManaLeechThemedNode.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/dualwieldblock.png"
     },
     {
-      "reference": "Essence Sap",
+      "reference": "Dual Wield Attack Speed",
       "data": {
-        "name": "Essence Sap",
+        "name": "Dual Wield Attack Speed",
         "sections": {
           "description": [
-            "0.6% of Attack Damage Leeched as Mana",
-            "25% increased Maximum total Mana Recovery per second from Leech",
-            "+2 Mana gained for each Enemy hit by your Attacks",
-            "50% increased total Recovery per second from Mana Leech"
+            "4% increased Attack Speed while Dual Wielding"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/dualwieldspeedint.png"
+    },
+    {
+      "reference": "Gemini",
+      "data": {
+        "name": "Gemini",
+        "sections": {
+          "description": [
+            "+4% Chance to Block Attack Damage while Dual Wielding",
+            "Attack Skills deal 16% increased Damage while Dual Wielding",
+            "6% increased Attack Speed while Dual Wielding",
+            "12% increased Accuracy Rating while Dual Wielding"
           ]
         },
         "type": "notable"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/minddrinker.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/gemini.png"
+    },
+    {
+      "reference": "Shield Block and Shield Defences",
+      "data": {
+        "name": "Shield Block and Shield Defences",
+        "sections": {
+          "description": [
+            "40% increased Defences from Equipped Shield",
+            "+2% Chance to Block Attack Damage while holding a Shield"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/blockstr.png"
+    },
+    {
+      "reference": "Deflection",
+      "data": {
+        "name": "Deflection",
+        "sections": {
+          "description": [
+            "+4% Chance to Block Spell Damage while holding a Shield",
+            "40% increased Defences from Equipped Shield",
+            "+8% Chance to Block Projectile Attack Damage",
+            "+4% Chance to Block Attack Damage while holding a Shield"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/barricade.png"
+    },
+    {
+      "reference": "Attack Speed and Poison Chance",
+      "data": {
+        "name": "Attack Speed and Poison Chance",
+        "sections": {
+          "description": [
+            "3% increased Attack Speed",
+            "10% chance to Poison on Hit with Attacks"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNode.png"
+    },
+    {
+      "reference": "Poison Damage",
+      "data": {
+        "name": "Poison Damage",
+        "sections": {
+          "description": [
+            "+4% to Damage over Time Multiplier for Poison",
+            "8% increased Damage with Poison"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNode.png"
+    },
+    {
+      "reference": "Attack Speed and Poison Duration",
+      "data": {
+        "name": "Attack Speed and Poison Duration",
+        "sections": {
+          "description": [
+            "4% increased Attack Speed",
+            "10% increased Poison Duration"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNode.png"
+    },
+    {
+      "reference": "Swift Venoms",
+      "data": {
+        "name": "Swift Venoms",
+        "sections": {
+          "description": [
+            "+8% to Damage over Time Multiplier for Poison",
+            "8% increased Attack Speed",
+            "10% chance to Poison on Hit with Attacks",
+            "16% increased Damage with Poison",
+            "Poisons you inflict deal Damage 5% faster"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNotable.png"
+    },
+    {
+      "reference": "Poison Mastery",
+      "data": {
+        "name": "Poison Mastery",
+        "sections": {
+          "description": []
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryPoison.png"
+    },
+    {
+      "reference": "Channelling Attack Speed and Stun Avoidance",
+      "data": {
+        "name": "Channelling Attack Speed and Stun Avoidance",
+        "sections": {
+          "description": [
+            "Channelling Skills have 4% increased Attack Speed",
+            "10% chance to Avoid being Stunned while Channelling"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNode.png"
+    },
+    {
+      "reference": "Channelling Attack Damage and Speed",
+      "data": {
+        "name": "Channelling Attack Damage and Speed",
+        "sections": {
+          "description": [
+            "Channelling Skills deal 8% increased Attack Damage",
+            "Channelling Skills have 3% increased Attack Speed"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNode.png"
+    },
+    {
+      "reference": "Channelling Attack Speed and Stun Avoidance",
+      "data": {
+        "name": "Channelling Attack Speed and Stun Avoidance",
+        "sections": {
+          "description": [
+            "Channelling Skills have 4% increased Attack Speed",
+            "10% chance to Avoid being Stunned while Channelling"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNode.png"
+    },
+    {
+      "reference": "Channelling Mastery",
+      "data": {
+        "name": "Channelling Mastery",
+        "sections": {
+          "description": []
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksMasterySymbol.png"
+    },
+    {
+      "reference": "Unpredictable Offensive",
+      "data": {
+        "name": "Unpredictable Offensive",
+        "sections": {
+          "description": [
+            "5% chance to Dodge Attack Hits while Channelling",
+            "Channelling Skills have 10% increased Attack Speed",
+            "30% chance to Avoid being Stunned while Channelling"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNotable2.png"
+    },
+    {
+      "reference": "Careful Conservationist",
+      "data": {
+        "name": "Careful Conservationist",
+        "sections": {
+          "description": [
+            "10% reduced Flask Charges used",
+            "Flasks applied to you have 5% increased Effect",
+            "20% increased Flask Charges gained if you've dealt a Critical Strike Recently"
+          ]
+        },
+        "type": "notable"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/FlaskNotableCritStrikeRecharge.png"
+    },
+    {
+      "reference": "Flask Charges Gained",
+      "data": {
+        "name": "Flask Charges Gained",
+        "sections": {
+          "description": [
+            "10% increased Flask Charges gained"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/flaskdex.png"
+    },
+    {
+      "reference": "Flask Charges Gained",
+      "data": {
+        "name": "Flask Charges Gained",
+        "sections": {
+          "description": [
+            "10% increased Flask Charges gained"
+          ]
+        },
+        "type": "basic"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/flaskdex.png"
     },
     {
       "reference": "Poison Chance",
@@ -28336,231 +28698,6 @@
         "type": "basic"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Poison.png"
-    },
-    {
-      "reference": "Dual Wield Damage and Block",
-      "data": {
-        "name": "Dual Wield Damage and Block",
-        "sections": {
-          "description": [
-            "+3% Chance to Block Attack Damage while Dual Wielding",
-            "Attack Skills deal 8% increased Damage while Dual Wielding"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/dualwieldblock.png"
-    },
-    {
-      "reference": "Dual Wield Attack Speed",
-      "data": {
-        "name": "Dual Wield Attack Speed",
-        "sections": {
-          "description": [
-            "4% increased Attack Speed while Dual Wielding"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/dualwieldspeedint.png"
-    },
-    {
-      "reference": "Gemini",
-      "data": {
-        "name": "Gemini",
-        "sections": {
-          "description": [
-            "+4% Chance to Block Attack Damage while Dual Wielding",
-            "Attack Skills deal 16% increased Damage while Dual Wielding",
-            "6% increased Attack Speed while Dual Wielding",
-            "12% increased Accuracy Rating while Dual Wielding"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/gemini.png"
-    },
-    {
-      "reference": "Shield Spell Block and Block Recovery",
-      "data": {
-        "name": "Shield Spell Block and Block Recovery",
-        "sections": {
-          "description": [
-            "+2% Chance to Block Spell Damage while holding a Shield",
-            "40% increased Block Recovery"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/shieldrecovery.png"
-    },
-    {
-      "reference": "Shield Block and Shield Defences",
-      "data": {
-        "name": "Shield Block and Shield Defences",
-        "sections": {
-          "description": [
-            "40% increased Defences from Equipped Shield",
-            "+2% Chance to Block Attack Damage while holding a Shield"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/blockstr.png"
-    },
-    {
-      "reference": "Deflection",
-      "data": {
-        "name": "Deflection",
-        "sections": {
-          "description": [
-            "+4% Chance to Block Spell Damage while holding a Shield",
-            "40% increased Defences from Equipped Shield",
-            "+8% Chance to Block Projectile Attack Damage",
-            "+4% Chance to Block Attack Damage while holding a Shield"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/barricade.png"
-    },
-    {
-      "reference": "Channelling Attack Speed and Stun Avoidance",
-      "data": {
-        "name": "Channelling Attack Speed and Stun Avoidance",
-        "sections": {
-          "description": [
-            "Channelling Skills have 4% increased Attack Speed",
-            "10% chance to Avoid being Stunned while Channelling"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNode.png"
-    },
-    {
-      "reference": "Channelling Attack Damage and Speed",
-      "data": {
-        "name": "Channelling Attack Damage and Speed",
-        "sections": {
-          "description": [
-            "Channelling Skills deal 8% increased Attack Damage",
-            "Channelling Skills have 3% increased Attack Speed"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNode.png"
-    },
-    {
-      "reference": "Channelling Attack Speed and Stun Avoidance",
-      "data": {
-        "name": "Channelling Attack Speed and Stun Avoidance",
-        "sections": {
-          "description": [
-            "Channelling Skills have 4% increased Attack Speed",
-            "10% chance to Avoid being Stunned while Channelling"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNode.png"
-    },
-    {
-      "reference": "Channelling Mastery",
-      "data": {
-        "name": "Channelling Mastery",
-        "sections": {
-          "description": []
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksMasterySymbol.png"
-    },
-    {
-      "reference": "Unpredictable Offensive",
-      "data": {
-        "name": "Unpredictable Offensive",
-        "sections": {
-          "description": [
-            "5% chance to Dodge Attack Hits while Channelling",
-            "Channelling Skills have 10% increased Attack Speed",
-            "30% chance to Avoid being Stunned while Channelling"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/ChannellingAttacksNotable2.png"
-    },
-    {
-      "reference": "Attack Speed and Poison Chance",
-      "data": {
-        "name": "Attack Speed and Poison Chance",
-        "sections": {
-          "description": [
-            "3% increased Attack Speed",
-            "10% chance to Poison on Hit with Attacks"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNode.png"
-    },
-    {
-      "reference": "Poison Damage",
-      "data": {
-        "name": "Poison Damage",
-        "sections": {
-          "description": [
-            "+4% to Damage over Time Multiplier for Poison",
-            "8% increased Damage with Poison"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNode.png"
-    },
-    {
-      "reference": "Attack Speed and Poison Duration",
-      "data": {
-        "name": "Attack Speed and Poison Duration",
-        "sections": {
-          "description": [
-            "4% increased Attack Speed",
-            "10% increased Poison Duration"
-          ]
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNode.png"
-    },
-    {
-      "reference": "Swift Venoms",
-      "data": {
-        "name": "Swift Venoms",
-        "sections": {
-          "description": [
-            "+8% to Damage over Time Multiplier for Poison",
-            "8% increased Attack Speed",
-            "10% chance to Poison on Hit with Attacks",
-            "16% increased Damage with Poison",
-            "Poisons you inflict deal Damage 5% faster"
-          ]
-        },
-        "type": "notable"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AttackPoisonNotable.png"
-    },
-    {
-      "reference": "Poison Mastery",
-      "data": {
-        "name": "Poison Mastery",
-        "sections": {
-          "description": []
-        },
-        "type": "basic"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/MasteryPoison.png"
     },
     {
       "reference": "Claw Accuracy and Critical Strike Multiplier",
@@ -29142,6 +29279,19 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/RangedTotemOffensive.png"
     },
     {
+      "reference": "Arrow Dancing",
+      "data": {
+        "name": "Arrow Dancing",
+        "sections": {
+          "description": [
+            "40% more chance to Evade Projectile Attacks\n20% less chance to Evade Melee Attacks"
+          ]
+        },
+        "type": "keystone"
+      },
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/KeystoneArrowDodging.png"
+    },
+    {
       "reference": "Acrobatics",
       "data": {
         "name": "Acrobatics",
@@ -29222,19 +29372,6 @@
         "type": "notable"
       },
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/daggerpenetration.png"
-    },
-    {
-      "reference": "Arrow Dancing",
-      "data": {
-        "name": "Arrow Dancing",
-        "sections": {
-          "description": [
-            "40% more chance to Evade Projectile Attacks\n20% less chance to Evade Melee Attacks"
-          ]
-        },
-        "type": "keystone"
-      },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/KeystoneArrowDodging.png"
     },
     {
       "reference": "Dagger Damage",
@@ -29449,7 +29586,7 @@
         "name": "Primeval Force",
         "sections": {
           "description": [
-            "Damage with Weapons Penetrates 5% Elemental Resistance",
+            "Attack Damage Penetrates 5% of Enemy Elemental Resistances",
             "20% increased Elemental Damage during any Flask Effect",
             "20% increased Elemental Damage with Attack Skills"
           ]
@@ -29712,7 +29849,7 @@
           "description": [
             "Claw Attacks deal 12% increased Damage with Hits and Ailments",
             "0.4% of Attack Damage Leeched as Life",
-            "20% increased Recovery per second from Life Leech"
+            "20% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -29727,7 +29864,7 @@
           "description": [
             "Claw Attacks deal 12% increased Damage with Hits and Ailments",
             "0.4% of Attack Damage Leeched as Life",
-            "20% increased Recovery per second from Life Leech"
+            "20% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "basic"
@@ -29784,7 +29921,7 @@
             "Claw Attacks deal 20% increased Damage with Hits and Ailments",
             "1.2% of Attack Damage Leeched as Life",
             "0.8% of Attack Damage Leeched as Mana",
-            "50% increased Recovery per second from Life Leech"
+            "50% increased total Recovery per second from Life Leech"
           ]
         },
         "type": "notable"
@@ -30416,7 +30553,7 @@
         "name": "Toxic Delivery",
         "sections": {
           "description": [
-            "Poison you inflict with Critical Strikes deals 50% more Damage",
+            "Poison you inflict with Critical Strikes deals 25% more Damage",
             "+0.5% to Critical Strike Chance per Poison affecting Enemy, up to +2.0%"
           ]
         },
@@ -30444,9 +30581,8 @@
         "name": "Noxious Strike",
         "sections": {
           "description": [
-            "+30% to Damage over Time Multiplier for Poison",
             "40% chance to Poison on Hit",
-            "5% increased Poison Duration for each Poison you have inflicted Recently",
+            "5% increased Poison Duration for each Poison you have inflicted Recently, up to a maximum of 100%",
             "Recover 0.5% of Life per Poison affecting Enemies you Kill"
           ]
         },
@@ -30711,8 +30847,8 @@
         "name": "Master Toxicist",
         "sections": {
           "description": [
-            "Poisons you inflict during any Flask Effect have 30% chance to deal 100% more Damage",
-            "When you kill a Poisoned Enemy during any Flask Effect, nearby Enemies are Poisoned"
+            "When you kill a Poisoned Enemy during any Flask Effect, nearby Enemies are Poisoned",
+            "Poisons you inflict during any Flask Effect have 20% chance to deal 100% more Damage"
           ]
         },
         "type": "ascendancy notable"
@@ -30812,8 +30948,7 @@
         "name": "Master Alchemist",
         "sections": {
           "description": [
-            "Immune to Elemental Ailments during any Flask Effect",
-            "40% increased Elemental Damage during any Flask Effect",
+            "Removes Elemental Ailments when you use a Flask",
             "20% chance to Freeze, Shock and Ignite during any Flask Effect"
           ]
         },
@@ -31389,18 +31524,18 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Raider/AvatarOfPhasing.png"
     },
     {
-      "reference": "Evasion, Movement Speed",
+      "reference": "Evasion, Elemental Damage",
       "data": {
-        "name": "Evasion, Movement Speed",
+        "name": "Evasion, Elemental Damage",
         "sections": {
           "description": [
             "15% increased Evasion Rating",
-            "4% increased Movement Speed"
+            "10% increased Elemental Damage"
           ]
         },
         "type": "ascendancy basic"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Raider/IncreasedMovementSpeed.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Raider/IncreasedElementalDamage.png"
     },
     {
       "reference": "Avatar of the Veil",
@@ -31408,7 +31543,7 @@
         "name": "Avatar of the Veil",
         "sections": {
           "description": [
-            "Immune to Elemental Ailments while Phasing",
+            "50% chance to Avoid Elemental Ailments while Phasing",
             "Nearby Enemies have Fire, Cold and Lightning Exposure while you have Phasing, applying -20% to those Resistances",
             "Nearby Enemies have 20% less Accuracy Rating while you have Phasing"
           ]
@@ -31482,7 +31617,6 @@
         "name": "Rapid Assault",
         "sections": {
           "description": [
-            "50% increased Onslaught Effect",
             "Onslaught"
           ]
         },
@@ -31520,18 +31654,18 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Raider/RapidAssault.png"
     },
     {
-      "reference": "Evasion, Movement Speed",
+      "reference": "Evasion, Elemental Damage",
       "data": {
-        "name": "Evasion, Movement Speed",
+        "name": "Evasion, Elemental Damage",
         "sections": {
           "description": [
             "15% increased Evasion Rating",
-            "4% increased Movement Speed"
+            "10% increased Elemental Damage"
           ]
         },
         "type": "ascendancy basic"
       },
-      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Raider/IncreasedMovementSpeed.png"
+      "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Raider/IncreasedElementalDamage.png"
     },
     {
       "reference": "Raider",
@@ -31891,7 +32025,7 @@
         "name": "Hollow Palm Technique",
         "sections": {
           "description": [
-            "You count as Dual Wielding while you are Unencumbered\n60% more Attack Speed while you are Unencumbered\n14 to 20 Added Attack Physical Damage per 10 Dexterity while you are Unencumbered"
+            "You count as Dual Wielding while you are Unencumbered\n40% more Attack Speed with Melee Skills while you are Unencumbered\nAdds 14 to 20 Attack Physical Damage to Melee Skills per 10 Dexterity while you are Unencumbered"
           ]
         },
         "type": "keystone"
@@ -32344,7 +32478,7 @@
         "name": "Eye of the Storm",
         "sections": {
           "description": [
-            "+20% to Damage over Time Multiplier for Ignite from Critical Strikes",
+            "+10% to Damage over Time Multiplier for Ignite from Critical Strikes",
             "20% increased Effect of non-Damaging Ailments you inflict with Critical Strikes",
             "40% increased Critical Strike Chance"
           ]
@@ -32558,7 +32692,7 @@
         "name": "Ancestral Guidance",
         "sections": {
           "description": [
-            "30% increased Effect of Buffs granted by your Active Ancestor Totems",
+            "30% increased Effect of Buffs your Ancestor Totems grant while Active",
             "Totems' Action Speed cannot be modified to below base value"
           ]
         },
@@ -32703,7 +32837,7 @@
           "description": [
             "25% increased Life Recovery from Flasks",
             "25% increased Mana Recovery from Flasks",
-            "20% increased Flask Effect Duration"
+            "10% increased Flask Effect Duration"
           ]
         },
         "type": "notable"
@@ -32731,7 +32865,7 @@
         "sections": {
           "description": [
             "20% increased Flask Charges gained",
-            "20% increased Movement Speed while under no Flask Effects"
+            "10% increased Movement Speed while under no Flask Effects"
           ]
         },
         "type": "notable"
@@ -32773,8 +32907,8 @@
         "name": "Numbing Elixir",
         "sections": {
           "description": [
-            "40% reduced Effect of Curses on you during Effect of any Life or Mana Flask",
-            "40% reduced Effect of non-Damaging Ailments on you during Effect of any Life or Mana Flask"
+            "40% reduced Effect of Curses on you during Effect of any Mana Flask",
+            "40% reduced Effect of Non-Damaging Ailments on you during Effect of any Life Flask"
           ]
         },
         "type": "notable"
@@ -32914,7 +33048,7 @@
           "description": [
             "Axe or Sword Attacks deal 20% increased Damage with Ailments",
             "20% increased Physical Damage with Axes or Swords",
-            "+10% to Physical Damage over Time Multiplier while wielding an Axe or Sword"
+            "+5% to Physical Damage over Time Multiplier while wielding an Axe or Sword"
           ]
         },
         "type": "notable"
@@ -32999,7 +33133,7 @@
         "sections": {
           "description": [
             "Enemies Poisoned by you cannot Regenerate Life",
-            "+10% to Damage over Time Multiplier for Poison while wielding a Claw or Dagger"
+            "+6% to Damage over Time Multiplier for Poison while wielding a Claw or Dagger"
           ]
         },
         "type": "notable"
@@ -33026,7 +33160,7 @@
         "name": "Tempered Arrowheads",
         "sections": {
           "description": [
-            "Bow Skills have +10% to Damage over Time Multiplier",
+            "Bow Skills have +6% to Damage over Time Multiplier",
             "Bow Skills have 10% increased Skill Effect Duration",
             "10% increased Duration of Ailments inflicted while wielding a Bow"
           ]
@@ -33734,7 +33868,7 @@
         "name": "Cold-Blooded Killer",
         "sections": {
           "description": [
-            "+8% to Cold Damage over Time Multiplier",
+            "+5% to Cold Damage over Time Multiplier",
             "Recover 2% of Life on Killing a Chilled Enemy"
           ]
         },
@@ -33944,7 +34078,7 @@
         "name": "Blowback",
         "sections": {
           "description": [
-            "Ignites you inflict deal Damage 15% faster"
+            "Ignites you inflict deal Damage 8% faster"
           ]
         },
         "type": "notable"
@@ -33971,7 +34105,7 @@
         "sections": {
           "description": [
             "15% chance to Ignite",
-            "Enemies Ignited by you have -10% to Fire Resistance"
+            "Enemies Ignited by you have -5% to Fire Resistance"
           ]
         },
         "type": "notable"
@@ -33984,8 +34118,7 @@
         "name": "Burning Bright",
         "sections": {
           "description": [
-            "+8% to Fire Damage over Time Multiplier",
-            "20% increased Fire Damage",
+            "25% increased Burning Damage",
             "8% increased Area of Effect"
           ]
         },
@@ -34014,9 +34147,9 @@
         "name": "Vivid Hues",
         "sections": {
           "description": [
-            "+12% to Damage over Time Multiplier for Bleeding",
             "2% of Attack Damage Leeched as Life against Bleeding Enemies",
-            "20% increased Recovery per second from Life Leech"
+            "20% increased total Recovery per second from Life Leech",
+            "20% increased Damage with Bleeding"
           ]
         },
         "type": "notable"
@@ -34029,8 +34162,8 @@
         "name": "Rend",
         "sections": {
           "description": [
-            "+12% to Physical Damage over Time Multiplier",
-            "30% increased Bleeding Duration"
+            "+5% to Physical Damage over Time Multiplier",
+            "20% increased Bleeding Duration"
           ]
         },
         "type": "notable"
@@ -34057,7 +34190,7 @@
         "name": "Compound Injury",
         "sections": {
           "description": [
-            "50% increased Damage with Bleeding you inflict on Maimed Enemies"
+            "35% increased Damage with Bleeding you inflict on Maimed Enemies"
           ]
         },
         "type": "notable"
@@ -34070,7 +34203,7 @@
         "name": "Blood Artist",
         "sections": {
           "description": [
-            "+14% to Physical Damage over Time Multiplier if you've Spent Life Recently",
+            "+6% to Physical Damage over Time Multiplier if you've Spent Life Recently",
             "+20 to Strength"
           ]
         },
@@ -34084,7 +34217,7 @@
         "name": "Phlebotomist",
         "sections": {
           "description": [
-            "+14% to Physical Damage over Time Multiplier if you've dealt a Critical Strike Recently",
+            "+6% to Physical Damage over Time Multiplier if you've dealt a Critical Strike Recently",
             "20% increased Critical Strike Chance"
           ]
         },
@@ -34098,8 +34231,8 @@
         "name": "Septic Spells",
         "sections": {
           "description": [
-            "8% increased Cast Speed",
-            "Spell Skills have +10% to Damage over Time Multiplier for Poison",
+            "5% increased Cast Speed",
+            "Spell Skills have +5% to Damage over Time Multiplier for Poison",
             "20% chance to Poison on Hit with Spell Damage"
           ]
         },
@@ -34113,7 +34246,6 @@
         "name": "Low Tolerance",
         "sections": {
           "description": [
-            "+8% to Damage over Time Multiplier for Poison",
             "Poisons you inflict on non-Poisoned Enemies deal 300% increased Damage"
           ]
         },
@@ -34127,10 +34259,10 @@
         "name": "Steady Torment",
         "sections": {
           "description": [
-            "20% increased Poison Duration",
-            "20% increased Bleeding Duration",
-            "+10% to Damage over Time Multiplier for Bleeding you inflict on Poisoned Enemies",
-            "+10% to Damage over Time Multiplier for Poison you inflict on Bleeding Enemies"
+            "15% increased Poison Duration",
+            "15% increased Bleeding Duration",
+            "+6% to Damage over Time Multiplier for Bleeding you inflict on Poisoned Enemies",
+            "+6% to Damage over Time Multiplier for Poison you inflict on Bleeding Enemies"
           ]
         },
         "type": "notable"
@@ -34157,7 +34289,7 @@
         "name": "Eldritch Inspiration",
         "sections": {
           "description": [
-            "+8% to Chaos Damage over Time Multiplier",
+            "20% increased Chaos Damage",
             "16% increased maximum Mana",
             "20% increased Mana Regeneration Rate"
           ]
@@ -34173,7 +34305,7 @@
         "sections": {
           "description": [
             "20% increased Damage with Ailments",
-            "Damaging Ailments deal damage 10% faster"
+            "Damaging Ailments deal damage 5% faster"
           ]
         },
         "type": "notable"
@@ -34186,7 +34318,7 @@
         "name": "Haemorrhage",
         "sections": {
           "description": [
-            "+15% to Damage over Time Multiplier for Ailments from Critical Strikes",
+            "+10% to Damage over Time Multiplier for Ailments from Critical Strikes",
             "30% increased Critical Strike Chance"
           ]
         },
@@ -34215,7 +34347,7 @@
         "name": "Exposure Therapy",
         "sections": {
           "description": [
-            "+8% to Damage over Time Multiplier",
+            "+5% to Damage over Time Multiplier",
             "+30% Chaos Resistance against Damage Over Time"
           ]
         },
@@ -34229,7 +34361,7 @@
         "name": "Brush with Death",
         "sections": {
           "description": [
-            "+10% to Damage over Time Multiplier",
+            "+5% to Damage over Time Multiplier",
             "Recover 1% of Life on Kill",
             "Recover 1% of Energy Shield on Kill"
           ]
@@ -34260,7 +34392,7 @@
         "sections": {
           "description": [
             "25% increased Damage over Time",
-            "25% increased Duration of Ailments on Enemies"
+            "15% increased Duration of Ailments on Enemies"
           ]
         },
         "type": "notable"
@@ -34303,8 +34435,8 @@
         "name": "Cold Conduction",
         "sections": {
           "description": [
-            "Enemies Chilled by your Hits are Shocked",
-            "Enemies Shocked by your Hits are Chilled"
+            "25% increased Effect of Cold Ailments you inflict on Shocked Enemies",
+            "25% increased Effect of Lightning Ailments you inflict on Chilled Enemies"
           ]
         },
         "type": "notable"
@@ -34346,7 +34478,7 @@
         "name": "Deep Chill",
         "sections": {
           "description": [
-            "+10% to Cold Damage over Time Multiplier",
+            "+5% to Cold Damage over Time Multiplier",
             "30% increased Effect of Cold Ailments"
           ]
         },
@@ -34872,8 +35004,7 @@
         "name": "Brand Loyalty",
         "sections": {
           "description": [
-            "Enemies take 4% increased Damage for each of your Brands Attached to them",
-            "20% increased Brand Attachment range"
+            "Enemies take 3% increased Damage for each of your Brands Attached to them"
           ]
         },
         "type": "notable"
@@ -34886,9 +35017,7 @@
         "name": "Holy Conquest",
         "sections": {
           "description": [
-            "5% increased Movement Speed",
-            "Brands Attach to a new Enemy each time they Activate, no more than once every 0.3 seconds",
-            "10% increased Cast Speed with Brand Skills"
+            "Brands Attach to a new Enemy each time they Activate, no more than once every 0.3 seconds"
           ]
         },
         "type": "notable"
@@ -34901,7 +35030,7 @@
         "name": "Grand Design",
         "sections": {
           "description": [
-            "10% increased Cast Speed with Brand Skills",
+            "20% increased Brand Damage",
             "Brand Skills have 10% increased Duration",
             "10% increased Brand Attachment range"
           ]
@@ -35025,7 +35154,7 @@
         "sections": {
           "description": [
             "8% increased maximum Life",
-            "30% increased Life Recovery from Flasks"
+            "20% increased Life Recovery from Flasks"
           ]
         },
         "type": "notable"
@@ -35155,7 +35284,7 @@
         "sections": {
           "description": [
             "15% increased maximum Mana",
-            "30% increased Mana Recovery from Flasks",
+            "20% increased Mana Recovery from Flasks",
             "25% chance to gain a Power Charge when you use a Mana Flask"
           ]
         },
@@ -35644,7 +35773,7 @@
         "name": "Elegant Form",
         "sections": {
           "description": [
-            "30% chance to Avoid Elemental Ailments",
+            "15% chance to Avoid Elemental Ailments",
             "3% chance to Dodge Attack Hits",
             "3% chance to Dodge Spell Hits"
           ]
@@ -35659,7 +35788,7 @@
         "name": "Darting Movements",
         "sections": {
           "description": [
-            "5% increased Movement Speed",
+            "3% increased Movement Speed",
             "5% chance to Dodge Attack and Spell Hits while moving"
           ]
         },
@@ -35762,7 +35891,7 @@
         "sections": {
           "description": [
             "+2% to maximum Cold Resistance",
-            "6% increased Movement Speed"
+            "10% increased Life Recovery from Flasks"
           ]
         },
         "type": "notable"
@@ -36109,7 +36238,7 @@
         "name": "Winter Commander",
         "sections": {
           "description": [
-            "4% increased Movement Speed",
+            "8% increased Evasion Rating",
             "Purity of Ice has 30% increased Aura Effect"
           ]
         },
@@ -36544,12 +36673,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AltMasteryGroupMinions.png"
     },
     {
-      "reference": "Fire Damage over Time Multiplier",
+      "reference": "Fire Damage over Time",
       "data": {
-        "name": "Fire Damage over Time Multiplier",
+        "name": "Fire Damage over Time",
         "sections": {
           "description": [
-            "+4% to Fire Damage over Time Multiplier"
+            "12% increased Burning Damage"
           ]
         },
         "type": "basic"
@@ -36568,12 +36697,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AltFireDamageMastery.png"
     },
     {
-      "reference": "Chaos Damage over Time Multiplier",
+      "reference": "Chaos Damage over Time",
       "data": {
-        "name": "Chaos Damage over Time Multiplier",
+        "name": "Chaos Damage over Time",
         "sections": {
           "description": [
-            "+4% to Chaos Damage over Time Multiplier"
+            "12% increased Chaos Damage over Time"
           ]
         },
         "type": "basic"
@@ -36592,12 +36721,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AltChaosDamageMastery.png"
     },
     {
-      "reference": "Physical Damage over Time Multiplier",
+      "reference": "Physical Damage over Time",
       "data": {
-        "name": "Physical Damage over Time Multiplier",
+        "name": "Physical Damage over Time",
         "sections": {
           "description": [
-            "+4% to Physical Damage over Time Multiplier"
+            "12% increased Physical Damage over Time"
           ]
         },
         "type": "basic"
@@ -36616,12 +36745,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AltBloodMastery.png"
     },
     {
-      "reference": "Cold Damage over Time Multiplier",
+      "reference": "Cold Damage over Time",
       "data": {
-        "name": "Cold Damage over Time Multiplier",
+        "name": "Cold Damage over Time",
         "sections": {
           "description": [
-            "+4% to Cold Damage over Time Multiplier"
+            "12% increased Cold Damage over Time"
           ]
         },
         "type": "basic"
@@ -36640,12 +36769,12 @@
       "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/AltColdDamageMastery.png"
     },
     {
-      "reference": "Damage over Time Multiplier",
+      "reference": "Damage over Time",
       "data": {
-        "name": "Damage over Time Multiplier",
+        "name": "Damage over Time",
         "sections": {
           "description": [
-            "+4% to Damage over Time Multiplier"
+            "10% increased Damage over Time"
           ]
         },
         "type": "basic"
