@@ -72,6 +72,10 @@ const getSectionName = (section: String[]): String => {
     return "Enchants";
   }
 
+  if (section.some((x) => x.includes("(scourge)"))) {
+    return "Scourge";
+  }
+
   if (section.some((x) => x.includes("(implicit)"))) {
     return "Implicits";
   }

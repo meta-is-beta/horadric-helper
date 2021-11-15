@@ -25,6 +25,7 @@ export default (rawData: String): PoeItem => {
       talismanTier: getTalismanTier(sections),
       requirements: getRequirements(sections),
       properties,
+      scourgeMods: getScourgeMods(sections),
       enchants: getEnchants(sections),
       implicits: getImplicits(sections),
       modifiers: getModifiers(sections),
@@ -156,14 +157,22 @@ const getRequirements = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Requirements")
     ?.lines.filter((l) => l !== "Requirements:");
+
+const getScourgeMods = (sections: PoeItemDataSection[]) =>
+  sections
+    .find((x) => x.name === "Scourge")
+    ?.lines.map((l) => l.replace(/\(scourge\)/g, "").trim());
+
 const getEnchants = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Enchants")
     ?.lines.map((l) => l.replace(/\(enchant\)/g, "").trim());
+
 const getImplicits = (sections: PoeItemDataSection[]) =>
   sections
     .find((x) => x.name === "Implicits")
     ?.lines.map((l) => l.replace(/\(implicit\)/g, "").trim());
+
 const getSockets = (sections: PoeItemDataSection[]) => {
   const socketLine = sections.find((x) => x.name === "Sockets")?.lines[0];
   if (!socketLine) {

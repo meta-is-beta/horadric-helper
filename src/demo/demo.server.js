@@ -22,7 +22,8 @@ app.get("/character", cors(), async (req, res) => {
     );
 
     res.send(characterData);
-  } catch {
+  } catch (e) {
+    console.log(e);
     res.send({});
   }
 });

@@ -4,19 +4,33 @@ import {
   PoeItemInfluence,
   PoeItemRarity,
   PoeItemStatus,
-  PoeItemType
+  PoeItemType,
 } from "../types";
 import { PoeItemData } from "./poe-api-types";
+
+const USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36";
 
 export default (http: any) => async (
   acountName: String,
   characterName: String
 ) => {
   const characterData = await http.get(
-    `https://www.pathofexile.com/character-window/get-items?accountName=${acountName}&character=${characterName}`
+    `https://www.pathofexile.com/character-window/get-items?accountName=${acountName.trim()}&character=${characterName.trim()}`,
+    {
+      headers: {
+        "User-Agent": USER_AGENT,
+      },
+    }
   );
+
   const passiveData = await http.get(
-    `https://www.pathofexile.com/character-window/get-passive-skills?accountName=${acountName}&character=${characterName}`
+    `https://www.pathofexile.com/character-window/get-passive-skills?accountName=${acountName.trim()}&character=${characterName.trim()}`,
+    {
+      headers: {
+        "User-Agent": USER_AGENT,
+      },
+    }
   );
 
   const itemsData: PoeItemData[] = [
@@ -68,6 +82,7 @@ const mapItemData = (itemData: PoeItemData): PoeItem =>
     sections: {
       enchants: breakLines(itemData.enchantMods),
       implicits: breakLines(itemData.implicitMods),
+      scourgeMods: getItemScourgeMods(itemData),
       modifiers: getItemModifiers(itemData),
       properties: breakLines(getItemProperties(itemData)),
       gemDescription: breakLines(
@@ -208,6 +223,9 @@ const getItemModifiers = (itemData: PoeItemData): String[] => {
 
   return breakLines(modifiers);
 };
+
+const getItemScourgeMods = (itemData: PoeItemData): String[] =>
+  breakLines(itemData.scourgeMods);
 
 const getItemInfluences = (itemData: PoeItemData): PoeItemInfluence[] => {
   let influences: PoeItemInfluence[] = [];

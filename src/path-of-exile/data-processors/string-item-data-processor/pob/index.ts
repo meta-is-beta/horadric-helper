@@ -39,6 +39,7 @@ export default (rawData: String): PoeItem => {
   item.sections = {
     requirements: getItemRequirements(sections),
     properties: getItemProeprties(sections),
+    scourgeMods: getScourgeMods(sections),
     implicits,
     enchants,
     modifiers,
@@ -125,6 +126,11 @@ const getItemModifiers = (
     .map((line) => cleanStatLine(processValuesInLine(line)));
 };
 
+const getScourgeMods = (sections: String[]) =>
+  sections
+    .filter((section) => section.includes("{scourge}"))
+    .map((section) => section.replace(/\{scourge\}/g, ""));
+
 const getItemImplicitsAndEnchants = (
   sections: String[],
   selectedVariant: String
@@ -170,7 +176,7 @@ const getItemImplicitsAndEnchants = (
     .map((line) => line.replace("{crafted}", ""));
 
   const nonEnchants = implicitLines.filter(
-    (line) => !line.startsWith("{crafted}")
+    (line) => !line.startsWith("{crafted}") && !line.startsWith("{scourge}")
   );
 
   return [

@@ -377,7 +377,7 @@ export default {
         `http://localhost:3000/icon?itemName=${itemIconName}`
       );
 
-      this.singleItemIconUrl = response.data + "scale=1";
+      this.singleItemIconUrl = response.data;
       this.disableButton = false;
     },
     getGemLabelName(gem) {

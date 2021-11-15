@@ -47,6 +47,7 @@ export type PoeItemSections = {
   requirements?: String[];
   properties?: String[];
   enchants?: String[];
+  scourgeMods?: String[];
   implicits?: String[];
   modifiers?: String[];
   gemDescription?: String[];

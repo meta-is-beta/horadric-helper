@@ -841,32 +841,6 @@
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/ChaosDegenAura.png"
   },
   {
-    "reference": "Death Aura",
-    "data": {
-      "name": "Death Aura",
-      "baseName": "Death Aura",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": [
-          "Casts an aura that deals Chaos Damage over Time to nearby Enemies. This skill cannot be cast by Totems."
-        ],
-        "modifiers": [
-          "Deals 562.5 Base Chaos Damage per second",
-          "This Spell is Triggered when Equipped",
-          "You cannot Cast this Spell directly"
-        ],
-        "properties": [
-          "Cast Time: 1s",
-          "Attack Speed: 100%",
-          "Effectiveness of Added Damage: 100%",
-          "Damage Multiplier: 100%"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/ChaosDegenAuraUnique.png"
-  },
-  {
     "reference": "Cold Aegis",
     "data": {
       "name": "Cold Aegis",
@@ -7334,31 +7308,6 @@
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/BlockReduction.png"
   },
   {
-    "reference": "Generosity Support",
-    "data": {
-      "name": "Generosity Support",
-      "baseName": "Generosity Support",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": [
-          "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems."
-        ],
-        "modifiers": [
-          "Non-Curse Auras from Supported Skills have (20-39)% increased Effect",
-          "Supported Auras do not affect you"
-        ],
-        "properties": [
-          "Cost and Reservation Multiplier: 100%",
-          "Attack Speed: 100% of base",
-          "Attack Damage: 100% of base",
-          "Effectiveness of Added Damage: 100%"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/Generosity.png"
-  },
-  {
     "reference": "Combust",
     "data": {
       "name": "Combust",
@@ -8012,32 +7961,6 @@
       }
     },
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/UrgentOrders.png"
-  },
-  {
-    "reference": "Unleash Support",
-    "data": {
-      "name": "Unleash Support",
-      "baseName": "Unleash Support",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": [
-          "Supports spell skills, making their effect reoccur when cast. Cannot support skills with cooldowns, triggered skills, Brand skills, Vaal skills, channelling skills, skills which reserve mana, or skills used by totems, traps, or mines. Cannot modify the skills of minions."
-        ],
-        "modifiers": [
-          "Supported Spells gain a Seal every (0.9-0.71) seconds, to a maximum of 3 Seals",
-          "Supported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost",
-          "Supported Skills deal (20-11)% less Damage when Reoccurring"
-        ],
-        "properties": [
-          "Cost and Reservation Multiplier: 140%",
-          "Attack Speed: 100% of base",
-          "Attack Damage: 100% of base",
-          "Effectiveness of Added Damage: 100%"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/HandcastAnticipation.png"
   },
   {
     "reference": "Unbound Ailments Support",
@@ -8713,34 +8636,6 @@
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/MeleePhysicalDamage.png"
   },
   {
-    "reference": "Lifetap Support",
-    "data": {
-      "name": "Lifetap Support",
-      "baseName": "Lifetap Support",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": [
-          "Supports any skill. Minions cannot gain the Lifetap buff."
-        ],
-        "modifiers": [
-          "Supported Skills deal (10-29)% more Damage while you have Lifetap",
-          "Gain Lifetap after Spending a total of (17-205) Life with a Supported Skill",
-          "Lifetap lasts 4 seconds",
-          "Supported Skills Cost Life instead of Mana"
-        ],
-        "properties": [
-          "Cost and Reservation Multiplier: 200%",
-          "Attack Speed: 100% of base",
-          "Attack Damage: 100% of base",
-          "Effectiveness of Added Damage: 100%",
-          "Cooldown: 0.00 sec"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/Lifetap.png"
-  },
-  {
     "reference": "Life Leech Support",
     "data": {
       "name": "Life Leech Support",
@@ -9185,52 +9080,6 @@
       }
     },
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/GreaterVolley.png"
-  },
-  {
-    "reference": "Awakened Greater Multiple Projectiles Support",
-    "data": {
-      "name": "Awakened Greater Multiple Projectiles Support",
-      "baseName": "Awakened Greater Multiple Projectiles Support",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": ["Supports projectile skills."],
-        "modifiers": [
-          "Supported Skills fire 5 additional Projectiles",
-          "Supported Skills deal (30-26)% less Projectile Damage"
-        ],
-        "properties": [
-          "Cost and Reservation Multiplier: 165%",
-          "Attack Speed: 100% of base",
-          "Attack Damage: 100% of base",
-          "Effectiveness of Added Damage: 100%"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/SupportPlus/GreaterMultipleProjectilesPlus.png"
-  },
-  {
-    "reference": "Greater Multiple Projectiles Support",
-    "data": {
-      "name": "Greater Multiple Projectiles Support",
-      "baseName": "Greater Multiple Projectiles Support",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": ["Supports projectile skills."],
-        "modifiers": [
-          "Supported Skills fire 4 additional Projectiles",
-          "Supported Skills deal (35-26)% less Projectile Damage"
-        ],
-        "properties": [
-          "Cost and Reservation Multiplier: 165%",
-          "Attack Speed: 100% of base",
-          "Attack Damage: 100% of base",
-          "Effectiveness of Added Damage: 100%"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/GreaterMultipleProjectiles.png"
   },
   {
     "reference": "Awakened Generosity Support",
@@ -9689,31 +9538,6 @@
       }
     },
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/CullingStrike.png"
-  },
-  {
-    "reference": "Concentrated Effect Support",
-    "data": {
-      "name": "Concentrated Effect Support",
-      "baseName": "Concentrated Effect Support",
-      "rarity": "Gem",
-      "class": "Skill Gems",
-      "sections": {
-        "gemDescription": [
-          "Supports any skill with an area of effect, regardless of whether that skill deals damage."
-        ],
-        "modifiers": [
-          "Supported Skills have 30% less Area of Effect",
-          "Supported Skills deal (35-54)% more Area Damage"
-        ],
-        "properties": [
-          "Cost and Reservation Multiplier: 140%",
-          "Attack Speed: 100% of base",
-          "Attack Damage: 100% of base",
-          "Effectiveness of Added Damage: 100%"
-        ]
-      }
-    },
-    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/ConcentratedEffect.png"
   },
   {
     "reference": "Combustion Support",
@@ -11424,6 +11248,182 @@
       }
     },
     "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/Fortify.png"
+  },
+  {
+    "reference": "Death Aura",
+    "data": {
+      "name": "Death Aura",
+      "baseName": "Death Aura",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": [
+          "Casts an aura that deals Chaos Damage over Time to nearby Enemies. This skill cannot be cast by Totems."
+        ],
+        "modifiers": [
+          "Deals 758 Base Chaos Damage per second",
+          "This Spell is Triggered when Equipped",
+          "You cannot Cast this Spell directly"
+        ],
+        "properties": [
+          "Cast Time: 1.00 sec",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/ChaosDegenAuraUnique.png"
+  },
+  {
+    "reference": "Generosity Support",
+    "data": {
+      "name": "Generosity Support",
+      "baseName": "Generosity Support",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": [
+          "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems."
+        ],
+        "modifiers": [
+          "Non-Curse Auras from Supported Skills have (20-39)% increased Effect",
+          "Supported Auras do not affect you"
+        ],
+        "properties": [
+          "Cost and Reservation Multiplier: 100%",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/Generosity.png"
+  },
+  {
+    "reference": "Awakened Greater Multiple Projectiles Support",
+    "data": {
+      "name": "Awakened Greater Multiple Projectiles Support",
+      "baseName": "Awakened Greater Multiple Projectiles Support",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": ["Supports projectile skills."],
+        "modifiers": [
+          "Supported Skills fire 5 additional Projectiles",
+          "Supported Skills deal (30-26)% less Projectile Damage"
+        ],
+        "properties": [
+          "Cost and Reservation Multiplier: 160%",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/SupportPlus/GreaterMultipleProjectilesPlus.png"
+  },
+  {
+    "reference": "Greater Multiple Projectiles Support",
+    "data": {
+      "name": "Greater Multiple Projectiles Support",
+      "baseName": "Greater Multiple Projectiles Support",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": ["Supports projectile skills."],
+        "modifiers": [
+          "Supported Skills fire 4 additional Projectiles",
+          "Supported Skills deal (35-26)% less Projectile Damage"
+        ],
+        "properties": [
+          "Cost and Reservation Multiplier: 160%",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/GreaterMultipleProjectiles.png"
+  },
+  {
+    "reference": "Lifetap Support",
+    "data": {
+      "name": "Lifetap Support",
+      "baseName": "Lifetap Support",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": [
+          "Supports any skill. Minions cannot gain the Lifetap buff."
+        ],
+        "modifiers": [
+          "Supported Skills deal (10-29)% more Damage while you have Lifetap",
+          "Gain Lifetap after Spending a total of (17-205) Life with a Supported Skill",
+          "Lifetap lasts 4 seconds",
+          "Supported Skills Cost Life instead of Mana"
+        ],
+        "properties": [
+          "Cost and Reservation Multiplier: 300%",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%",
+          "Cooldown: 0.00 sec"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/Lifetap.png"
+  },
+  {
+    "reference": "Concentrated Effect Support",
+    "data": {
+      "name": "Concentrated Effect Support",
+      "baseName": "Concentrated Effect Support",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": [
+          "Supports any skill with an area of effect, regardless of whether that skill deals damage."
+        ],
+        "modifiers": [
+          "Supported Skills have 30% less Area of Effect",
+          "Supported Skills deal (25-39)% more Area Damage"
+        ],
+        "properties": [
+          "Cost and Reservation Multiplier: 140%",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/ConcentratedEffect.png"
+  },
+  {
+    "reference": "Unleash Support",
+    "data": {
+      "name": "Unleash Support",
+      "baseName": "Unleash Support",
+      "rarity": "Gem",
+      "class": "Skill Gems",
+      "sections": {
+        "gemDescription": [
+          "Supports spell skills, making their effect reoccur when cast. Cannot support skills with cooldowns, triggered skills, Brand skills, Vaal skills, channelling skills, skills which reserve mana, or skills used by totems, traps, or mines. Cannot modify the skills of minions."
+        ],
+        "modifiers": [
+          "Supported Spells gain a Seal every (0.9-0.71) seconds, to a maximum of 3 Seals",
+          "Supported Spells are Unsealed when cast, and their effects Reoccur for each Seal lost",
+          "Supported Skills deal (30-21)% less Damage when Reoccurring"
+        ],
+        "properties": [
+          "Cost and Reservation Multiplier: 160%",
+          "Attack Speed: 100% of base",
+          "Attack Damage: 100% of base",
+          "Effectiveness of Added Damage: 100%"
+        ]
+      }
+    },
+    "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Gems/Support/HandcastAnticipation.png"
   },
   {
     "reference": "Ancestral Cry",
@@ -13605,8 +13605,8 @@
           "Cast Time: 1.00 sec",
           "Cost: 8 Mana",
           "Attack Speed: 100% of base",
-          "Attack Damage: (165%-190%) of base",
-          "Effectiveness of Added Damage: (165%-190%)"
+          "Attack Damage: (165%-238%) of base",
+          "Effectiveness of Added Damage: (165%-238%)"
         ]
       }
     },
@@ -14612,7 +14612,7 @@
           "Attack enemies with increased range, releasing icy blades from the first enemy hit which fly at other enemies. Requires a Melee Weapon."
         ],
         "modifiers": [
-          "Deals (100-140)% of Base Attack Damage",
+          "Deals (100-175)% of Base Attack Damage",
           "Fires (4-7) additional Projectiles",
           "+(18-21) to Melee Strike Range",
           "60% of Physical Damage Converted to Cold Damage",
@@ -14625,8 +14625,8 @@
           "Projectile Speed: 2250",
           "Cost: 6 Mana",
           "Attack Speed: 100% of base",
-          "Attack Damage: (100%-140%) of base",
-          "Effectiveness of Added Damage: (100%-140%)"
+          "Attack Damage: (100%-175%) of base",
+          "Effectiveness of Added Damage: (100%-175%)"
         ]
       }
     },

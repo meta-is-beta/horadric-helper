@@ -94,6 +94,17 @@
             {{ enchant }}
           </div>
         </div>
+        <!-- Scourge Mods -->
+        <div class="poe-item-separator" v-if="shouldShowItemScourgeMods"></div>
+        <div v-if="shouldShowItemScourgeMods">
+          <div
+            v-for="(scourgeMod, index) in itemScourgeMods"
+            :key="`${index}-scourge-mod`"
+            :class="getScourgeModClasses(index)"
+          >
+            {{ scourgeMod }}
+          </div>
+        </div>
         <!-- Implicits -->
         <div class="poe-item-separator" v-if="shouldShowItemImplicits"></div>
         <div v-if="shouldShowItemImplicits">
@@ -147,6 +158,11 @@
             {{ flavourLine }}
           </div>
         </div>
+        <!-- Scourged Status -->
+        <div class="poe-item-separator" v-if="itemIsScourged"></div>
+        <div v-if="itemIsScourged">
+          <div class="poe-item-scourged">Scourged</div>
+        </div>
         <!-- Inside Icon -->
         <div class="poe-item-separator" v-if="shouldShowIconInside"></div>
         <poe-item-image
@@ -198,6 +214,13 @@ export default {
       let classes = "poe-item-enchant";
       classes = this.addDimedClass("enchants", index, classes);
       classes = this.addHiddenClasses("enchants", index, classes);
+
+      return classes;
+    },
+    getScourgeModClasses(index) {
+      let classes = "poe-item-scourge-mod";
+      classes = this.addDimedClass("scourge-mods", index, classes);
+      classes = this.addHiddenClasses("scourge-mods", index, classes);
 
       return classes;
     },
@@ -274,6 +297,13 @@ export default {
         this.sectionShouldBeFullyHidden("enchants")
       );
     },
+    shouldShowItemScourgeMods() {
+      return !(
+        !this.itemScourgeMods ||
+        !this.itemScourgeMods.length > 0 ||
+        this.sectionShouldBeFullyHidden("scourge-mods")
+      );
+    },
     shouldShowItemImplicits() {
       return !(
         !this.itemImplicits ||
@@ -314,11 +344,11 @@ export default {
             return line
               .trim()
               .replace(
-                /(((?!s)[0-9%+./\-()s]+)(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
+                /(((?!s)[0-9%+,./\-()s]+)(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
                 "<span class='poe-item-property-value-augmented'>$1</span>"
               )
               .replace(
-                /(((?!s)[0-9%+./\-()s]+)( \([Minax]{3}\)){0,1})$|((?!s)[0-9%+./\-()s]+)(( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
+                /(((?!s)[0-9%+,./\-()s]+)( \([Minax]{3}\)){0,1})$|((?!s)[0-9%+,./\-()s]+)(( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
                 "<span class='poe-item-property-value'>$1$4 </span>"
               );
           })
@@ -343,6 +373,9 @@ export default {
     },
     itemEnchants() {
       return this.item.sections.enchants;
+    },
+    itemScourgeMods() {
+      return this.item.sections.scourgeMods;
     },
     itemImplicits() {
       return this.item.sections.implicits;
@@ -378,6 +411,9 @@ export default {
     },
     itemIsSplit() {
       return !!this.itemStatuses.some((s) => s === "split");
+    },
+    itemIsScourged() {
+      return !!this.itemScourgeMods && !!this.itemScourgeMods.length > 0;
     },
     wrapperClasses() {
       let classes = "poe-item-wrapper";
@@ -569,8 +605,17 @@ export default {
     white-space: nowrap;
   }
 
+  .poe-item-scourged {
+    color: var(--poe-color-scourge-mod);
+    white-space: nowrap;
+  }
+
   .poe-item-enchant {
     color: var(--poe-color-essencemod);
+  }
+
+  .poe-item-scourge-mod {
+    color: var(--poe-color-scourge-mod);
   }
 
   .poe-item-flavour-text {

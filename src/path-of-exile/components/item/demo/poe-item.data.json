@@ -666,6 +666,17 @@
         "data": "Item Class: Fishing Rods\nRarity: Unique\nReefbane\nFishing Rod\n--------\nFishing Rod\nPhysical Damage: 8-15\nCritical Strike Chance: 5.00%\nAttacks per Second: 1.20\nWeapon Range: 13\n--------\nSockets: G-R B \n--------\nItem Level: 72\n--------\n9% increased Quantity of Fish Caught (implicit)\n--------\n37% increased Cast Speed\nThaumaturgical Lure\n19% increased Quantity of Fish Caught\nGlows while in an Area containing a Unique Fish\n--------\nHe cast far into the ocean\nAnd tore out her heart.\n--------\nCorrupted\n--------\nNote: ~price 3 exalted",
         "iconUrl": "https://web.poecdn.com/image/Art/2DItems/Weapons/TwoHandWeapons/FishingRods/Reefbane.png?v=cca0d2c8ebcabe8d54e35682277c34dd&w=1&h=4&scale=1"
       }
+    },
+    {
+      "props": {
+        "asShowcase": true,
+        "iconInside": true
+      },
+      "config": {
+        "reference": "reach-of-the-council",
+        "data": "Item Class: Bows\nRarity: Unique\nReach of the Council\nSpine Bow\n--------\nBow\nQuality: +30% (augmented)\nPhysical Damage: 130-354 (augmented)\nCritical Strike Chance: 6.50%\nAttacks per Second: 1.56 (augmented)\n--------\nRequirements:\nLevel: 74\nStr: 70\nDex: 212\nInt: 117\n--------\nSockets: B-R-G-B-G-G \n--------\nItem Level: 80\n--------\nAdds 11 to 21 Physical Damage (scourge)\nDeal no Fire Damage (scourge)\n--------\nSocketed Gems are Supported by Level 20 Greater Volley\n70% increased Physical Damage\nAdds 28 to 78 Physical Damage\n11% increased Attack Speed\n20% reduced Projectile Speed\nArrows fired from the first firing points always Pierce\nArrows fired from the second firing points Fork\nArrows fired from the third firing points Return to you\nArrows fired from the fourth firing points Chain +2 times\n--------\nWe stand together. We strike together.\n--------\nCorrupted\n--------\nScourged\n",
+        "iconUrl": "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvV2VhcG9ucy9Ud29IYW5kV2VhcG9ucy9Cb3dzL0Jvd09mVGhlQ291bmNpbCIsInciOjIsImgiOjQsInNjYWxlIjoxfV0/55dc65893e/BowOfTheCouncil.png"
+      }
     }
   ]
 }

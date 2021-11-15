@@ -29,11 +29,11 @@ const getRawDataJson = async () => {
 };
 
 const mapData = (rawData) => {
-  return rawData
+  const data = rawData
     .map((entry) => {
       const gemData = entry.title;
       const $ = cheerio.load(decode(gemData.html));
-
+      let skillId = "";
       const name =
         gemData["active skill name"] ||
         $("tr")
@@ -44,7 +44,16 @@ const mapData = (rawData) => {
       if (!name) {
         return;
       }
-      const skillId = gemData["skill id"];
+      if (name === "Skill") {
+        skillId = $("tr")
+          .filter((_, el) => $(el).find("th").text() == "Skill Id")
+          .find("td")
+          .text()
+          .match(/\[[A-z[- ]+:([A-z]+)|/)[1];
+      }
+      if (!skillId) {
+        skillId = gemData["skill id"];
+      }
       const propSections = $("tr").filter(
         (_, e) =>
           $(e).find("th").length &&
@@ -102,6 +111,7 @@ const mapData = (rawData) => {
       return mappedEntry;
     })
     .filter((x) => x != null);
+  return data;
 };
 
 const saveMappedJsonToFile = (mappedData) => {

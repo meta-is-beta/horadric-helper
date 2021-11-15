@@ -14,6 +14,7 @@ export interface PoeItemData {
   influences: object;
   properties: PoeItemDataProperty[];
   requirements: PoeItemDataRequirements[];
+  scourgeMods: String[];
   enchantMods: String[];
   utilityMods: String[];
   implicitMods: String[];
