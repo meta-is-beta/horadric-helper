@@ -14,6 +14,7 @@ v0.10.1:
 v1.0 (first full release):
 
 - [ ] Fix project's structure
+- [ ] Update dependencies
 - [ ] Change properties for displaying sockets
 - [ ] Add core tests
 - [ ] Add alias from `HoradricHelper.PathOfExile.` to just `HoradricHelper.`
