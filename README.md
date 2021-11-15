@@ -271,6 +271,10 @@ type PoeItem = {
     // Eg: ["Has 1 Socket"]
     implicits?: String[];
 
+    // List of item's Scourge Modifiers text lines
+    // Eg: ["Adds 5 to 6 Physical Damage to Attacks"]
+    scourgeMods?: String[];
+
     // List of item's modifiers text lines
     // Eg: ["Adds 1 to 2 Cold Damage to Attacks", "6% Increased Attack Speed"]
     modifiers?: String[];
@@ -535,6 +539,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |    `sockets`     |     `sockets`     |  `String`  | String representing sockets and their links. _(More about sockets in [Sockets](#sockets) section.)_                                                      |
 |    `enchants`    |    `enchants`     | `String[]` | List of item's enchants text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Enchantments)).                                                 |
 |   `implicits`    |    `implicits`    | `String[]` | List of item's implicits text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Implicit_modifiers)).                                          |
+|   `scourgeMods`    |    `scourge-mods`    | `String[]` | List of item's Scourge mods. |
 |   `modifiers`    |    `modifiers`    | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 |    `statuses`    |    `statuses`     | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.                                                                                                    |
 | `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines.                                                                                                               |
