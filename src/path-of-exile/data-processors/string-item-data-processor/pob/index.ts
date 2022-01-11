@@ -104,11 +104,11 @@ const getItemProeprties = (sections: String[]): String[] => {
 };
 
 const getItemStatuses = (sections: String[]): [PoeItemStatus[], number] => {
-  return (getSectionsFromLine(
+  return getSectionsFromLine(
     sections,
     sections.length - 1,
     /^(Corrupted|Mirrored|Split)$/
-  ) as unknown) as [PoeItemStatus[], number];
+  ) as unknown as [PoeItemStatus[], number];
 };
 
 const getItemModifiers = (
@@ -263,7 +263,7 @@ const getItemRarity = (sections: String[]): PoeItemRarity => {
     return "";
   }
 
-  return (matches[1].toLowerCase() as unknown) as PoeItemRarity;
+  return matches[1].toLowerCase() as unknown as PoeItemRarity;
 };
 
 const getSelectedVariant = (sections: String[]): String => {

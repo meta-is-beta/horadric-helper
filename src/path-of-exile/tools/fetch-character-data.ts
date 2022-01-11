@@ -11,47 +11,45 @@ import { PoeItemData } from "./poe-api-types";
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36";
 
-export default (http: any) => async (
-  acountName: String,
-  characterName: String
-) => {
-  const characterData = await http.get(
-    `https://www.pathofexile.com/character-window/get-items?accountName=${acountName.trim()}&character=${characterName.trim()}`,
-    {
-      headers: {
-        "User-Agent": USER_AGENT,
-      },
-    }
-  );
+export default (http: any) =>
+  async (acountName: String, characterName: String) => {
+    const characterData = await http.get(
+      `https://www.pathofexile.com/character-window/get-items?accountName=${acountName.trim()}&character=${characterName.trim()}`,
+      {
+        headers: {
+          "User-Agent": USER_AGENT,
+        },
+      }
+    );
 
-  const passiveData = await http.get(
-    `https://www.pathofexile.com/character-window/get-passive-skills?accountName=${acountName.trim()}&character=${characterName.trim()}`,
-    {
-      headers: {
-        "User-Agent": USER_AGENT,
-      },
-    }
-  );
+    const passiveData = await http.get(
+      `https://www.pathofexile.com/character-window/get-passive-skills?accountName=${acountName.trim()}&character=${characterName.trim()}`,
+      {
+        headers: {
+          "User-Agent": USER_AGENT,
+        },
+      }
+    );
 
-  const itemsData: PoeItemData[] = [
-    ...characterData.data.items,
-    ...passiveData.data.items,
-  ];
+    const itemsData: PoeItemData[] = [
+      ...characterData.data.items,
+      ...passiveData.data.items,
+    ];
 
-  const poeItemConfigs: PoeConfig[] = itemsData.map((item) =>
-    mapItemConfig(item)
-  );
+    const poeItemConfigs: PoeConfig[] = itemsData.map((item) =>
+      mapItemConfig(item)
+    );
 
-  itemsData.forEach((item) => {
-    if (item.socketedItems) {
-      item.socketedItems.forEach((socketedItem) => {
-        poeItemConfigs.push(mapItemConfig(socketedItem));
-      });
-    }
-  });
+    itemsData.forEach((item) => {
+      if (item.socketedItems) {
+        item.socketedItems.forEach((socketedItem) => {
+          poeItemConfigs.push(mapItemConfig(socketedItem));
+        });
+      }
+    });
 
-  return poeItemConfigs;
-};
+    return poeItemConfigs;
+  };
 
 const mapItemConfig = (itemData: PoeItemData): PoeConfig => {
   const poeItem = mapItemData(itemData);

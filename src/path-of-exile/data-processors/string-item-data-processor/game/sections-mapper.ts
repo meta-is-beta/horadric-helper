@@ -157,8 +157,9 @@ const fillUnknownSections = (
   }
 
   if (itemIsGem) {
-    const gemDescriptionIndex = sections.find((x) => x.name === "Unknown")
-      ?.index;
+    const gemDescriptionIndex = sections.find(
+      (x) => x.name === "Unknown"
+    )?.index;
     if (gemDescriptionIndex) {
       sections[gemDescriptionIndex].name = "Gem description";
 
