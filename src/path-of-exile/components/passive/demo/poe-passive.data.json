@@ -25,7 +25,7 @@
             ]
           }
         },
-        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/totemmax.png"
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/01/totemmax.png"
       }
     },
     {
@@ -119,7 +119,7 @@
             ]
           }
         },
-        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Hierophant/SpiritualEmpowerment.png"
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/01/SpiritualEmpowerment_Hierophant_passive_skill_icon.png"
       }
     },
     {
@@ -142,7 +142,7 @@
             ]
           }
         },
-        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/Occultist/IncreasedEnergyShieldCriticalStrikeChance.png"
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/01/IncreasedEnergyShieldCriticalStrikeChance_Occultist_passive_skill_icon.png"
       }
     },
     {
@@ -160,7 +160,7 @@
             "description": ["+30 to Strength"]
           }
         },
-        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/oxblood.png"
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/01/Oxblood_passive_skill_icon.png"
       }
     },
     {
@@ -186,7 +186,7 @@
           },
           "type": "basic"
         },
-        "iconUrl": "https://web.poecdn.com/image/Art/2DArt/SkillIcons/passives/heartpierce.png"
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/01/Heartpierce_passive_skill_icon.png"
       }
     }
   ]

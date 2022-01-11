@@ -5,7 +5,7 @@
       loading="lazy"
       :src="this.iconUrl"
       alt=" "
-      onerror="this.style.display='none'"
+      @error="handleMissingImage"
     />
   </div>
 </template>
@@ -17,6 +17,13 @@ export default {
     type: { type: String, required: true },
     iconUrl: { type: String, required: true },
     iconSize: { type: String, default: "auto" },
+  },
+  methods: {
+    handleMissingImage(event) {
+      event.target.src =
+        "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+      event.target.style.backgroundColor = "#0f0f0f";
+    },
   },
   computed: {
     passiveWrapperClasses() {
@@ -78,6 +85,7 @@ export default {
   }
   & img {
     height: 54px;
+    width: 54px;
     margin: 18px;
   }
 }
@@ -90,6 +98,7 @@ export default {
     }
     & img {
       height: 34px;
+      width: 34px;
       margin: 8px;
     }
   }
@@ -100,8 +109,9 @@ export default {
       width: 68px;
     }
     & img {
-      height: 40px;
-      margin: 14px;
+      height: 46px;
+      width: 46px;
+      margin: 11px;
     }
   }
 
@@ -111,6 +121,7 @@ export default {
     }
     & img {
       height: 54px;
+      width: 54px;
       margin: 18px;
     }
   }
@@ -122,6 +133,7 @@ export default {
   }
   & img {
     height: 34px;
+    width: 34px;
     margin: 8px;
   }
 }
@@ -132,6 +144,7 @@ export default {
   }
   & img {
     height: 40px;
+    width: 40px;
     margin: 12px;
   }
 }
@@ -142,6 +155,7 @@ export default {
   }
   & img {
     height: 54px;
+    width: 54px;
     margin: 18px;
   }
 }
@@ -152,6 +166,7 @@ export default {
   }
   & img {
     height: 76px;
+    width: 76px;
     margin: 22px;
   }
 }

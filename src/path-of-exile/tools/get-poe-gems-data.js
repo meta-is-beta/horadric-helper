@@ -49,7 +49,7 @@ const mapData = (rawData) => {
           .filter((_, el) => $(el).find("th").text() == "Skill Id")
           .find("td")
           .text()
-          .match(/\[[A-z[- ]+:([A-z]+)|/)[1];
+          .match(/\[[A-z\-[ ]+:([A-z]+)|/)[1];
       }
       if (!skillId) {
         skillId = gemData["skill id"];
