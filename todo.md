@@ -1,7 +1,11 @@
 v0.10.2:
+- [x] Implement Masteries
 
-- [ ] Update gem data sript to match current GGG api
-- [ ] Implement Masteries
+v0.10.3:
+
+- [ ] (Remove?) Update gem data sript to match current GGG api
+- [ ] Cleanup image assets - remove unused fames, maybe merge some images
+- [ ] Implement 3.17 features
 
 v1.0 (first full release):
 

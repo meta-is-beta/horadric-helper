@@ -95,6 +95,7 @@ export default {
     },
     wrapperClasses() {
       let classes = `poe-passive-wrapper`;
+
       if (this.passiveType) {
         classes += ` poe-passive-${this.passiveType
           .replace(" ", "-")
@@ -205,6 +206,18 @@ export default {
   &.poe-passive-ascendancy-notable,
   &.poe-passive-ascendancy-basic {
     & .poe-passive-header {
+      background-position-y: 228px;
+      & .poe-passive-header-left-panel {
+        background-position-y: 342px;
+      }
+      & .poe-passive-header-right-panel {
+        background-position-y: 285px;
+      }
+    }
+  }
+  &.poe-passive-mastery {
+    & .poe-passive-header {
+      color: #e2dedd !important;
       background-position-y: 57px;
       & .poe-passive-header-left-panel {
         background-position-y: 171px;

@@ -188,6 +188,32 @@
         },
         "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/01/Heartpierce_passive_skill_icon.png"
       }
+    },
+    {
+      "reference": "Projectile Mastery",
+      "props": {
+        "as-showcase": true,
+        "iconInside": true,
+        "dim-sections": "description:1,2,3,4,5"
+      },
+      "config": {
+        "reference": "Projectile Mastery",
+        "data": {
+          "name": "Projectile Mastery",
+          "sections": {
+            "description": [
+              "◎ Projectiles deal 20% increased Damage for each Enemy Pierced",
+              "◎ Projectiles deal 20% increased Damage for each time they have Chained",
+              "◎ 1% increased Projectile Damage per 16 Dexterity",
+              "◎ Knock Back Enemies if you get a Critical Strike with Projectile Damage",
+              "◎ 15% more Projectile Speed",
+              "◉ 15% less Projectile Speed"
+            ]
+          },
+          "type": "mastery"
+        },
+        "iconUrl": "https://www.poewiki.net/w/images/8/83/PassiveMasteryProjectileInactive_mastery_icon.png"
+      }
     }
   ]
 }

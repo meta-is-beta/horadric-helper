@@ -66,6 +66,15 @@ export default {
   }
 }
 
+.poe-mastery-passive-icon-wrapper {
+  & img {
+    z-index: 1;
+  }
+  & div {
+    content: url(../../assets/Mastery_frame.png);
+  }
+}
+
 .poe-notable-passive-icon-wrapper {
   & div {
     content: url(../../assets/Notable_passive_frame.png);
@@ -123,6 +132,17 @@ export default {
       height: 54px;
       width: 54px;
       margin: 18px;
+    }
+  }
+
+  &.poe-mastery-passive-icon-wrapper {
+    & div {
+      width: 82px;
+    }
+    & img {
+      height: 80px;
+      width: 80px;
+      margin: 2px;
     }
   }
 }

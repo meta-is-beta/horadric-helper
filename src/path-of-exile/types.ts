@@ -40,7 +40,8 @@ export type PoePassiveType =
   | "notable"
   | "keystone"
   | "ascendancy basic"
-  | "ascendancy notable";
+  | "ascendancy notable"
+  | "mastery";
 
 export type PoeItemSections = {
   itemLevel?: String;

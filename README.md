@@ -314,7 +314,8 @@ type PoePassive = {
     | "notable"
     | "keystone"
     | "ascendancy basic"
-    | "ascendancy notable";
+    | "ascendancy notable"
+    | "mastery";
 
   // All sections are optional
   sections: {
