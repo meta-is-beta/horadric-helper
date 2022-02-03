@@ -545,17 +545,16 @@ export default {
 
       & .poe-item-header-left-panel.poe-item-influenced div {
         float: left;
-        width: 38px;
-        margin-left: 6px;
+        margin-left: 5px;
       }
 
       & .poe-item-header-right-panel.poe-item-influenced div {
         float: right;
-        width: 38px;
+        margin-right: 5px;
       }
 
       & .poe-item-influenced div {
-        margin-top: 12px;
+        margin-top: 13px;
         display: flex;
       }
 
@@ -770,8 +769,9 @@ export default {
   .poe-item-influenced div {
     background-image: url(../../assets/Influence-icons.png);
     background-repeat: no-repeat;
-    background-size: 27px;
-    height: 25px;
+    background-size: 63px;
+    height: 24px;
+    width: 24px;
   }
   .poe-item-influenced-crusader div {
     background-position-y: 0;
@@ -793,6 +793,17 @@ export default {
   }
   .poe-item-influenced-replica div {
     background-position-y: -163px;
+  }
+  .poe-item-influenced-exarch div,
+  .poe-item-influenced-eater div {
+    background-position-x: -17px;
+    background-size: 40px;
+  }
+  .poe-item-influenced-eater div {
+    background-position-y: 1px;
+  }
+  .poe-item-influenced-exarch div {
+    background-position-y: -24px;
   }
 }
 </style>
