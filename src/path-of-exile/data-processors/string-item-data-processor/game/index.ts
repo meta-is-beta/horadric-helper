@@ -95,7 +95,9 @@ const getItemInfluences = (sections: PoeItemDataSection[]) => {
         | "redeemer"
         | "elder"
         | "shaper"
-        | "replica";
+        | "replica"
+        | "eater"
+        | "exarch";
     }
     return "";
   });
