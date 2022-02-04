@@ -41,7 +41,10 @@ export type PoePassiveType =
   | "keystone"
   | "ascendancy basic"
   | "ascendancy notable"
-  | "mastery";
+  | "mastery"
+  | "atlas basic"
+  | "atlas notable"
+  | "atlas mastery";
 
 export type PoeItemSections = {
   itemLevel?: String;

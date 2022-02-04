@@ -155,7 +155,8 @@ export default {
   & .poe-passive-image-wrapper {
     padding-bottom: 10px;
   }
-  &.poe-passive-basic {
+  &.poe-passive-basic,
+  &.poe-passive-atlas-basic {
     & .poe-passive-header {
       background-position-y: -114px;
       & .poe-passive-header-left-panel {
@@ -180,7 +181,8 @@ export default {
     color: var(--poe-color-unique);
     font-style: italic;
   }
-  &.poe-passive-notable {
+  &.poe-passive-notable,
+  &.poe-passive-atlas-notable {
     & .poe-passive-header {
       background-position-y: -284px;
       & .poe-passive-header-left-panel {
@@ -215,7 +217,8 @@ export default {
       }
     }
   }
-  &.poe-passive-mastery {
+  &.poe-passive-mastery,
+  &.poe-passive-atlas-mastery {
     & .poe-passive-header {
       color: #e2dedd !important;
       background-position-y: 57px;

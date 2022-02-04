@@ -214,6 +214,68 @@
         },
         "iconUrl": "https://www.poewiki.net/w/images/8/83/PassiveMasteryProjectileInactive_mastery_icon.png"
       }
+    },
+    {
+      "reference": "Prolific Essence",
+      "props": {
+        "as-icon": true,
+        "as-showcase": false
+      },
+      "config": {
+        "reference": "Prolific Essence",
+        "data": {
+          "name": "Prolific Essence",
+          "sections": {
+            "description": [
+              "Areas contains an additional Essence"
+            ]
+          },
+          "type": "atlas notable"
+        },
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/notable_atlas_example.png"
+      }
+    },
+    {
+      "reference": "Essence Rare Chance",
+      "props": {
+        "as-icon": true,
+        "as-showcase": false
+      },
+      "config": {
+        "reference": "Essence Rare Chance",
+        "data": {
+          "name": "Essence Rare Chance",
+          "sections": {
+            "description": [
+              "Imprisoned Monsters in Area have 25% chance to drop an additional Rare Item with and Essence Modifier"
+            ]
+          },
+          "type": "atlas basic"
+        },
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/basic_atlas_example.png"
+      }
+    },
+    {
+      "reference": "Essence Mastery",
+      "props": {
+        "as-icon": true,
+        "as-showcase": false,
+        "dim-sections": "description:1"
+      },
+      "config": {
+        "reference": "Essence Mastery",
+        "data": {
+          "name": "Essence Mastery",
+          "sections": {
+            "description": [
+              "◎ Essence Mastery 1",
+              "◉ Essence Mastery 2"
+            ]
+          },
+          "type": "atlas mastery"
+        },
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/mastery_atlas_example.png"
+      }
     }
   ]
 }

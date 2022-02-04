@@ -315,7 +315,10 @@ type PoePassive = {
     | "keystone"
     | "ascendancy basic"
     | "ascendancy notable"
-    | "mastery";
+    | "mastery"
+    | "atlas basic"
+    | "atlas notable"
+    | "atlas mastery";
 
   // All sections are optional
   sections: {

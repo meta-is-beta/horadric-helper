@@ -15,11 +15,17 @@ export default (rawData: String): PoeItem => {
 
   item.rarity = getItemRarity(sections);
 
-  const headerIndexOffset = getHeaderIndexOffset(item.rarity);
+  let indexOffset = getHeaderIndexOffset(item.rarity);
 
   item.name = sections[1];
-  item.baseName = getItemBaseName(headerIndexOffset, sections);
-  item.influences = getItemInfluences(headerIndexOffset, sections);
+  item.baseName = getItemBaseName(indexOffset, sections);
+  indexOffset += item.baseName ? 2 : 1;
+
+  const defensiveValues = getItemDefenseValue(indexOffset, sections);
+  const quality = getItemQuality(sections);
+  indexOffset += defensiveValues ? defensiveValues.length : 1;
+
+  item.influences = getItemInfluences(indexOffset, sections);
   item.type = getItemType(item.baseName);
   item.sockets = getItemSockets(sections);
 
@@ -38,7 +44,7 @@ export default (rawData: String): PoeItem => {
 
   item.sections = {
     requirements: getItemRequirements(sections),
-    properties: getItemProeprties(sections),
+    properties: [...quality, ...defensiveValues],
     scourgeMods: getScourgeMods(sections),
     implicits,
     enchants,
@@ -47,6 +53,23 @@ export default (rawData: String): PoeItem => {
   };
 
   return item;
+};
+
+const getItemDefenseValue = (
+  indexOffset: number,
+  sections: String[]
+): String[] => {
+  let currentLine = sections[indexOffset];
+  let lineIndex = indexOffset;
+  const defensiveValues: String[] = [];
+
+  while (/(Evasion|Energy Shield|Armour|Ward):/.test(currentLine as string)) {
+    defensiveValues.push(currentLine);
+    lineIndex++;
+    currentLine = sections[lineIndex];
+  }
+
+  return defensiveValues;
 };
 
 const getDataLinesList = (rawData: String) =>
@@ -87,7 +110,7 @@ const cleanStatLine = (line: String): String =>
     .replace(/{variant:[0-9.,]+}/, "")
     .replace(/{tags:[a-z.,_]+}/, "");
 
-const getItemProeprties = (sections: String[]): String[] => {
+const getItemQuality = (sections: String[]): String[] => {
   const qualityLine = sections.find((s) => s.includes("Quality: "));
 
   if (!qualityLine || qualityLine.includes(" 0")) {
@@ -227,12 +250,12 @@ const getItemType = (baseName: String): PoeItemType => {
 };
 
 const getItemInfluences = (
-  headerIndexOffset: number,
+  indexOffset: number,
   sections: String[]
 ): PoeItemInfluence[] => {
   const [influenceSections] = getSectionsUpToLine(
     sections,
-    headerIndexOffset + 2,
+    indexOffset,
     /^[A-z]+ Item$/
   );
 
@@ -249,7 +272,17 @@ const getItemInfluences = (
 const getItemBaseName = (
   headerIndexOffset: number,
   sections: String[]
-): String => sections[headerIndexOffset + 1];
+): String => {
+  if (
+    /($(Evasion|Energy Shield|Armour|Ward):|(^[A-z]+ Item$))/.test(
+      sections[headerIndexOffset + 1] as string
+    )
+  ) {
+    return "";
+  } else {
+    return sections[headerIndexOffset + 1];
+  }
+};
 
 const getItemRarity = (sections: String[]): PoeItemRarity => {
   const rarityLine = sections.find((s) => s.includes("Rarity: "));
@@ -333,7 +366,9 @@ const cleanMetadata = (dataLinesList: string[]): string[] =>
       line.includes("Prefix:") ||
       line.includes("Suffix:") ||
       line.includes("Variant: ") ||
-      line.includes("Crafted: ")
+      line.includes("Crafted: ") ||
+      line.includes("BasePercentile: ") ||
+      line.includes("Unique ID: ")
     ) {
       return false;
     }

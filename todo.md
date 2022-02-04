@@ -1,14 +1,12 @@
-v0.10.2:
-- [x] Implement Masteries
+v0.11.0:
+- [x] Implement 3.17 features
 
-v0.10.3:
-
+v0.11.1:
+- [ ] Update demos to cover new cases
 - [ ] (Remove?) Update gem data sript to match current GGG api
 - [ ] Cleanup image assets - remove unused fames, maybe merge some images
-- [ ] Implement 3.17 features
 
 v1.0 (first full release):
-
 - [ ] Fix project's structure
 - [ ] Update dependencies
 - [ ] Change properties for displaying sockets
