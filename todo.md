@@ -13,3 +13,4 @@ v1.0 (first full release):
 - [ ] Add core tests
 - [ ] Add alias from `HoradricHelper.PathOfExile.` to just `HoradricHelper.`
 - [ ] Maybe normalize models with official api?
+- [ ] Create @types

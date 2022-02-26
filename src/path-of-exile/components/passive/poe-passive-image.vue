@@ -99,15 +99,6 @@ export default {
   }
 }
 
-.poe-atlas-mastery-passive-icon-wrapper {
-  & img {
-    z-index: 1;
-  }
-  & div {
-    content: url(../../assets/Atlas_mastery_frame.png);
-  }
-}
-
 .poe-keystone-passive-icon-wrapper {
   & div {
     width: 88px;
@@ -161,20 +152,9 @@ export default {
       width: 42px;
     }
     & img {
-      height: 24px;
-      width: 24px;
-      margin: 10px;
-    }
-  }
-
-  &.poe-atlas-mastery-passive-icon-wrapper {
-    & div {
-      width: 68px;
-    }
-    & img {
-      height: 48px;
-      width: 48px;
-      margin: 10px;
+      height: 32px;
+      width: 32px;
+      margin: 8px;
     }
   }
 

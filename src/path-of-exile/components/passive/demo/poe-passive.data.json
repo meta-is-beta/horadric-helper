@@ -216,26 +216,6 @@
       }
     },
     {
-      "reference": "Prolific Essence",
-      "props": {
-        "as-icon": true,
-        "as-showcase": false
-      },
-      "config": {
-        "reference": "Prolific Essence",
-        "data": {
-          "name": "Prolific Essence",
-          "sections": {
-            "description": [
-              "Areas contains an additional Essence"
-            ]
-          },
-          "type": "atlas notable"
-        },
-        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/notable_atlas_example.png"
-      }
-    },
-    {
       "reference": "Essence Rare Chance",
       "props": {
         "as-icon": true,
@@ -256,25 +236,23 @@
       }
     },
     {
-      "reference": "Essence Mastery",
+      "reference": "Prolific Essence",
       "props": {
         "as-icon": true,
-        "as-showcase": false,
-        "dim-sections": "description:1"
+        "as-showcase": false
       },
       "config": {
-        "reference": "Essence Mastery",
+        "reference": "Prolific Essence",
         "data": {
-          "name": "Essence Mastery",
+          "name": "Prolific Essence",
           "sections": {
             "description": [
-              "◎ Essence Mastery 1",
-              "◉ Essence Mastery 2"
+              "Areas contains an additional Essence"
             ]
           },
-          "type": "atlas mastery"
+          "type": "atlas notable"
         },
-        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/mastery_atlas_example.png"
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/notable_atlas_example.png"
       }
     }
   ]

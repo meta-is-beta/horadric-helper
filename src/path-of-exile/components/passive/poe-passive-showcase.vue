@@ -217,8 +217,7 @@ export default {
       }
     }
   }
-  &.poe-passive-mastery,
-  &.poe-passive-atlas-mastery {
+  &.poe-passive-mastery {
     & .poe-passive-header {
       color: #e2dedd !important;
       background-position-y: 57px;
