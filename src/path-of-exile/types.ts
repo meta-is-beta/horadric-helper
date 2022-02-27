@@ -33,8 +33,8 @@ export type PoeItemInfluence =
   | "elder"
   | "shaper"
   | "replica"
-  | "eater"
-  | "exarch"
+  | "eater of worlds"
+  | "searing exarch"
   | "";
 export type PoeItemStatus = "corrupted" | "mirrored" | "split";
 export type PoePassiveType =

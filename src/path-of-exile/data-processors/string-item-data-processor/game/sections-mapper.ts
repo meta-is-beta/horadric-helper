@@ -1,12 +1,57 @@
 import { PoeItemDataSection } from "@/path-of-exile/types";
 
-export default (rawData: String): PoeItemDataSection[] => {
+export const mapSections = (rawData: String): PoeItemDataSection[] => {
   const rawSections = rawDataToRawSections(rawData);
   let namedSections = rawSectionsToNamedSections(rawSections);
   namedSections = fillUnknownSections(namedSections);
   namedSections = removeUnknownSections(namedSections);
 
   return namedSections;
+};
+
+export const remapSiegeOfTheAtlasInfluences = (
+  sections: PoeItemDataSection[]
+): PoeItemDataSection[] => {
+  const modifiers = sections.find((s) => s.name === "Modifiers");
+
+  if (!modifiers) {
+    return sections;
+  }
+
+  const eaterOfWorldsInfluence = modifiers.lines.indexOf(
+    "Eater of Worlds Item"
+  );
+  const searingExarchInfluence = modifiers.lines.indexOf("Searing Exarch Item");
+
+  if (eaterOfWorldsInfluence < 0 && searingExarchInfluence < 0) {
+    return sections;
+  }
+
+  const newInfluences = [];
+
+  if (eaterOfWorldsInfluence > 0) {
+    modifiers.lines.splice(eaterOfWorldsInfluence, 1);
+    newInfluences.push("Eater of Worlds Item");
+  }
+
+  if (searingExarchInfluence > 0) {
+    modifiers.lines.splice(searingExarchInfluence, 1);
+    newInfluences.push("Searing Exarch Item");
+  }
+
+  let influencesSection = sections.find((s) => s.name === "Influences");
+  if (influencesSection) {
+    influencesSection.lines = [...influencesSection.lines, ...newInfluences];
+  } else {
+    influencesSection = {
+      name: "Influences",
+      lines: newInfluences,
+      index: sections.length,
+    };
+    sections.push(influencesSection);
+  }
+
+  return sections;
 };
 
 const rawDataToRawSections = (rawData: String): String[][] => {
@@ -88,7 +133,7 @@ const getSectionName = (section: String[]): String => {
     return "Sockets";
   }
 
-  if (section.some((x) => x.match(/^([A-Z][a-z]*) Item$/))) {
+  if (section.every((x) => x.match(/^([A-z ]*) Item$/))) {
     return "Influences";
   }
 

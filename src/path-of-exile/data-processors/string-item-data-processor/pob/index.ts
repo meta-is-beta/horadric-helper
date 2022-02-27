@@ -256,7 +256,7 @@ const getItemInfluences = (
   const [influenceSections] = getSectionsUpToLine(
     sections,
     indexOffset,
-    /^[A-z]+ Item$/
+    /^[A-z ]+ Item$/
   );
 
   if (influenceSections.length < 0) {
@@ -264,7 +264,7 @@ const getItemInfluences = (
   }
 
   return influenceSections.map((i) => {
-    const match = i.match(/^([A-z]+) Item$/);
+    const match = i.match(/^([A-z ]+) Item$/);
     return match ? match[1] : "";
   }) as PoeItemInfluence[];
 };
@@ -274,7 +274,7 @@ const getItemBaseName = (
   sections: String[]
 ): String => {
   if (
-    /($(Evasion|Energy Shield|Armour|Ward):|(^[A-z]+ Item$))/.test(
+    /($(Evasion|Energy Shield|Armour|Ward):|(^[A-z ]+ Item$))/.test(
       sections[headerIndexOffset + 1] as string
     )
   ) {

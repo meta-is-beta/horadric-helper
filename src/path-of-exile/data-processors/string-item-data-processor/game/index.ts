@@ -3,10 +3,11 @@ import {
   PoeItemDataSection,
   PoeItemType,
 } from "@/path-of-exile/types";
-import mapSections from "./sections-mapper";
+import { mapSections, remapSiegeOfTheAtlasInfluences } from "./sections-mapper";
 
 export default (rawData: String): PoeItem => {
-  const sections = mapSections(rawData);
+  let sections = mapSections(rawData);
+  sections = remapSiegeOfTheAtlasInfluences(sections);
   const headerSection = getHeaderSection(sections);
   const itemClass = getItemClass(headerSection);
   const properties = getProperties(sections);
@@ -85,10 +86,12 @@ const getItemInfluences = (sections: PoeItemDataSection[]) => {
   }
 
   return influencesSection.lines.map((line) => {
-    const lineMatch = line.match(/^([A-Z][a-z]+) Item$/);
+    const lineMatch = line.match(/^([A-z ]+) Item$/);
 
     if (lineMatch && lineMatch.length > 0) {
-      return lineMatch[1].toLowerCase().trim() as
+      const influence = lineMatch[1];
+
+      return influence.toLowerCase().trim() as
         | "crusader"
         | "warlord"
         | "hunter"
@@ -96,8 +99,8 @@ const getItemInfluences = (sections: PoeItemDataSection[]) => {
         | "elder"
         | "shaper"
         | "replica"
-        | "eater"
-        | "exarch";
+        | "eater of worlds"
+        | "searing exarch";
     }
     return "";
   });

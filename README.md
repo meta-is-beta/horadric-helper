@@ -245,8 +245,8 @@ type PoeItem = {
         | "elder"
         | "shaper"
         | "replica"
-        | "eater"
-        | "exarch"
+        | "eater of worlds"
+        | "searing exarch"
       )[]
     | null;
 

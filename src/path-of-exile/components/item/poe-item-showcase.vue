@@ -444,7 +444,10 @@ export default {
       let classes = "poe-item-header-left-panel";
 
       if (this.itemInfluences.length > 0) {
-        classes += ` poe-item-influenced poe-item-influenced-${this.itemInfluences[0].toLowerCase()}`;
+        const influence = this.itemInfluences[0]
+          .toLowerCase()
+          .replace(/ /gi, "-");
+        classes += ` poe-item-influenced poe-item-influenced-${influence}`;
       }
 
       return classes;
@@ -457,12 +460,20 @@ export default {
       }
 
       if (this.itemInfluences.length === 1) {
-        classes += ` poe-item-influenced-${this.itemInfluences[0].toLowerCase()}`;
+        const influence = this.itemInfluences[0]
+          .toLowerCase()
+          .replace(/ /gi, "-");
+        classes += ` poe-item-influenced-${influence}`;
+
         return classes;
       }
 
       if (this.itemInfluences.length === 2) {
-        classes += ` poe-item-influenced-${this.itemInfluences[1].toLowerCase()}`;
+        const influence = this.itemInfluences[1]
+          .toLowerCase()
+          .replace(/ /gi, "-");
+        classes += ` poe-item-influenced-${influence}`;
+
         return classes;
       }
 
@@ -794,15 +805,15 @@ export default {
   .poe-item-influenced-replica div {
     background-position-y: -163px;
   }
-  .poe-item-influenced-exarch div,
-  .poe-item-influenced-eater div {
+  .poe-item-influenced-searing-exarch div,
+  .poe-item-influenced-eater-of-worlds div {
     background-position-x: -17px;
     background-size: 40px;
   }
-  .poe-item-influenced-eater div {
+  .poe-item-influenced-eater-of-worlds div {
     background-position-y: 1px;
   }
-  .poe-item-influenced-exarch div {
+  .poe-item-influenced-searing-exarch div {
     background-position-y: -24px;
   }
 }

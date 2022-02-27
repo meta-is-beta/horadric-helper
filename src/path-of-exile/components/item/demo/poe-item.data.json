@@ -697,8 +697,8 @@
 				"show-sockets-in-showcase": true
 			},
 			"config": {
-				"reference": "sidge-of-atlast-chest",
-				"data": "Rarity: RARE\nSidge of Atlast Chest\nSaint's Hauberk\nArmour: 673\nArmourBasePercentile: 1\nEnergy Shield: 102\nEnergyShieldBasePercentile: 1\nExarch Item\nEater Item\nCrafted: true\nPrefix: {range:0.289}DamageTakenFromManaBeforeLifeUber1_\nPrefix: {range:0.338}LocalBaseArmourAndLife3\nPrefix: {range:0.93}IncreasedMana7\nSuffix: None\nSuffix: {range:0.5}DelveIntelligenceGemLevel1\nSuffix: {range:0.116}Strength7\nQuality: 20\nSockets: R-R-R-R-R-R\nLevelReq: 67\nImplicits: 0\n+1 to Level of Socketed Intelligence Gems\n+38 to Strength\n+65 to Armour\n+30 to maximum Life\n+49 to maximum Mana\n6% of Damage is taken from Mana before Life",
+				"reference": "siege-of-atlast-chest",
+				"data": "Rarity: RARE\nSiege of Atlast Chest\nSaint's Hauberk\nArmour: 673\nArmourBasePercentile: 1\nEnergy Shield: 102\nEnergyShieldBasePercentile: 1\nExarch Item\nEater Item\nCrafted: true\nPrefix: {range:0.289}DamageTakenFromManaBeforeLifeUber1_\nPrefix: {range:0.338}LocalBaseArmourAndLife3\nPrefix: {range:0.93}IncreasedMana7\nSuffix: None\nSuffix: {range:0.5}DelveIntelligenceGemLevel1\nSuffix: {range:0.116}Strength7\nQuality: 20\nSockets: R-R-R-R-R-R\nLevelReq: 67\nImplicits: 0\n+1 to Level of Socketed Intelligence Gems\n+38 to Strength\n+65 to Armour\n+30 to maximum Life\n+49 to maximum Mana\n6% of Damage is taken from Mana before Life",
 				"iconUrl": "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQXJtb3Vycy9Cb2R5QXJtb3Vycy9Cb2R5U3RySW50MkMiLCJ3IjoyLCJoIjozLCJzY2FsZSI6MX1d/5a1804c81b/BodyStrInt2C.png"
 			}
 		},
@@ -715,8 +715,8 @@
 					"name": "Hate Cowl",
 					"baseName": "Deicide Mask",
           "influences": [
-            "exarch",
-            "eater"
+            "searing exarch",
+            "eater of worlds"
           ],
 					"sections": {
 						"requirements": [
