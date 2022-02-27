@@ -1136,16 +1136,16 @@ var staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30cb9179-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=2914f63b&
-var poe_item_showcasevue_type_template_id_2914f63b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon poe-item-icon-beside-showcase","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30cb9179-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=4fdd8530&
+var poe_item_showcasevue_type_template_id_4fdd8530_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon poe-item-icon-beside-showcase","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(
             _vm.item.name != _vm.item.baseName &&
             (_vm.item.rarity.toLowerCase() === 'rare' ||
               _vm.item.rarity.toLowerCase() === 'unique')
           )?_c('div',[_vm._v(" "+_vm._s(_vm.item.baseName)+" ")]):_vm._e()]),_c('div',{class:_vm.rightHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()])]),_c('div',{staticClass:"poe-item-stats"},[(_vm.shouldShowSockets)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowSockets)?_c('poe-item-sockets',{attrs:{"sockets":_vm.item.sockets,"showBackground":false,"socketReferences":_vm.socketReferences}}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',_vm._l((_vm.itemProperties),function(property,index){return _c('div',{key:(index + "-property"),class:_vm.getPropertyClasses(index),domProps:{"innerHTML":_vm._s(property)}})}),0):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{class:_vm.getItemLevelClasses()},[_vm._v(" Item Level: "),(_vm.item.sections.itemLevel)?_c('span',{staticClass:"poe-item-level-value"},[_vm._v(" "+_vm._s(_vm.item.sections.itemLevel)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowTalismanTier && !_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowTalismanTier)?_c('div',{class:_vm.getTalismanTierClasses()},[_vm._v(" Talisman Tier: "),(_vm.item.sections.talismanTier)?_c('span',{staticClass:"poe-item-talisman-tier"},[_vm._v(" "+_vm._s(_vm.item.sections.talismanTier)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowItemRequirements && !_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemRequirements)?_c('div',{class:_vm.getRequirementsClasses()},[_c('div',{domProps:{"innerHTML":_vm._s(_vm.itemRequirements)}})]):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',_vm._l((_vm.itemEnchants),function(enchant,index){return _c('div',{key:(index + "-enchant"),class:_vm.getEnchantsClasses(index)},[_vm._v(" "+_vm._s(enchant)+" ")])}),0):_vm._e(),(_vm.shouldShowItemScourgeMods)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemScourgeMods)?_c('div',_vm._l((_vm.itemScourgeMods),function(scourgeMod,index){return _c('div',{key:(index + "-scourge-mod"),class:_vm.getScourgeModClasses(index)},[_vm._v(" "+_vm._s(scourgeMod)+" ")])}),0):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',_vm._l((_vm.itemImplicits),function(implicit,index){return _c('div',{key:(index + "-implicit"),class:_vm.getImplicitClasses(index)},[_vm._v(" "+_vm._s(implicit)+" ")])}),0):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',_vm._l((_vm.item.sections.gemDescription),function(desciptionLine,index){return _c('div',{key:(index + "-gem-desc"),class:_vm.getGemDescriptionClasses(index)},[_vm._v(" "+_vm._s(desciptionLine)+" ")])}),0):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',_vm._l((_vm.itemModifiers),function(modifier,index){return _c('div',{key:(index + "-modifier"),class:_vm.getModifierClasses(modifier, index)},[_vm._v(" "+_vm._s(modifier.text)+" ")])}),0):_vm._e(),(_vm.shouldShowStatuses)?_c('div',[(_vm.itemIsCorrupted)?_c('div',{staticClass:"poe-item-corrupted"},[_vm._v("Corrupted")]):_vm._e(),(_vm.itemIsMirrored)?_c('div',{staticClass:"poe-item-mirrored"},[_vm._v("Mirrored")]):_vm._e(),(_vm.itemIsSplit)?_c('div',{staticClass:"poe-item-split"},[_vm._v("Split")]):_vm._e()]):_vm._e(),(_vm.shouldShowFlavorText)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowFlavorText)?_c('div',_vm._l((_vm.itemFlavorText),function(flavourLine,index){return _c('div',{key:(index + "-flavour"),class:_vm.getFlavorClasses(flavourLine, index)},[_vm._v(" "+_vm._s(flavourLine)+" ")])}),0):_vm._e(),(_vm.itemIsScourged)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.itemIsScourged)?_c('div',[_c('div',{staticClass:"poe-item-scourged"},[_vm._v("Scourged")])]):_vm._e(),(_vm.shouldShowIconInside)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowIconInside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e()],1)])],1)}
-var poe_item_showcasevue_type_template_id_2914f63b_staticRenderFns = []
+var poe_item_showcasevue_type_template_id_4fdd8530_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=2914f63b&
+// CONCATENATED MODULE: ./src/path-of-exile/components/item/poe-item-showcase.vue?vue&type=template&id=4fdd8530&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
@@ -1840,7 +1840,8 @@ var showcase_mixin = __webpack_require__("d57b");
       var classes = "poe-item-header-left-panel";
 
       if (this.itemInfluences.length > 0) {
-        classes += " poe-item-influenced poe-item-influenced-".concat(this.itemInfluences[0].toLowerCase());
+        var influence = this.itemInfluences[0].toLowerCase().replace(/ /gi, "-");
+        classes += " poe-item-influenced poe-item-influenced-".concat(influence);
       }
 
       return classes;
@@ -1853,12 +1854,15 @@ var showcase_mixin = __webpack_require__("d57b");
       }
 
       if (this.itemInfluences.length === 1) {
-        classes += " poe-item-influenced-".concat(this.itemInfluences[0].toLowerCase());
+        var influence = this.itemInfluences[0].toLowerCase().replace(/ /gi, "-");
+        classes += " poe-item-influenced-".concat(influence);
         return classes;
       }
 
       if (this.itemInfluences.length === 2) {
-        classes += " poe-item-influenced-".concat(this.itemInfluences[1].toLowerCase());
+        var _influence = this.itemInfluences[1].toLowerCase().replace(/ /gi, "-");
+
+        classes += " poe-item-influenced-".concat(_influence);
         return classes;
       }
 
@@ -1882,8 +1886,8 @@ var poe_item_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__("44
 
 var poe_item_showcase_component = Object(componentNormalizer["a" /* default */])(
   item_poe_item_showcasevue_type_script_lang_js_,
-  poe_item_showcasevue_type_template_id_2914f63b_render,
-  poe_item_showcasevue_type_template_id_2914f63b_staticRenderFns,
+  poe_item_showcasevue_type_template_id_4fdd8530_render,
+  poe_item_showcasevue_type_template_id_4fdd8530_staticRenderFns,
   false,
   null,
   null,
@@ -18320,11 +18324,21 @@ module.exports = cloneTypedArray;
 "use strict";
 
 
+var _toConsumableArray = __webpack_require__("448a").default;
+
+__webpack_require__("7db0");
+
+__webpack_require__("d3b7");
+
+__webpack_require__("b0c0");
+
+__webpack_require__("a434");
+
+__webpack_require__("99af");
+
 __webpack_require__("d81d");
 
 __webpack_require__("4de4");
-
-__webpack_require__("d3b7");
 
 __webpack_require__("ac1f");
 
@@ -18344,21 +18358,68 @@ __webpack_require__("2532");
 
 __webpack_require__("466d");
 
-__webpack_require__("b0c0");
-
-__webpack_require__("7db0");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.remapSiegeOfTheAtlasInfluences = exports.mapSections = void 0;
 
-exports.default = function (rawData) {
+var mapSections = function mapSections(rawData) {
   var rawSections = rawDataToRawSections(rawData);
   var namedSections = rawSectionsToNamedSections(rawSections);
   namedSections = fillUnknownSections(namedSections);
   namedSections = removeUnknownSections(namedSections);
   return namedSections;
 };
+
+exports.mapSections = mapSections;
+
+var remapSiegeOfTheAtlasInfluences = function remapSiegeOfTheAtlasInfluences(sections) {
+  var modifiers = sections.find(function (s) {
+    return s.name === "Modifiers";
+  });
+
+  if (!modifiers) {
+    return sections;
+  }
+
+  var eaterOfWorldsInfluence = modifiers.lines.indexOf("Eater of Worlds Item");
+  var searingExarchInfluence = modifiers.lines.indexOf("Searing Exarch Item");
+
+  if (eaterOfWorldsInfluence < 0 && searingExarchInfluence < 0) {
+    return sections;
+  }
+
+  var newInfluences = [];
+
+  if (eaterOfWorldsInfluence > 0) {
+    modifiers.lines.splice(eaterOfWorldsInfluence, 1);
+    newInfluences.push("Eater of Worlds Item");
+  }
+
+  if (searingExarchInfluence > 0) {
+    modifiers.lines.splice(searingExarchInfluence, 1);
+    newInfluences.push("Searing Exarch Item");
+  }
+
+  var influencesSection = sections.find(function (s) {
+    return s.name === "Influences";
+  });
+
+  if (influencesSection) {
+    influencesSection.lines = [].concat(_toConsumableArray(influencesSection.lines), newInfluences);
+  } else {
+    influencesSection = {
+      name: "Influences",
+      lines: newInfluences,
+      index: sections.length
+    };
+    sections.push(influencesSection);
+  }
+
+  return sections;
+};
+
+exports.remapSiegeOfTheAtlasInfluences = remapSiegeOfTheAtlasInfluences;
 
 var rawDataToRawSections = function rawDataToRawSections(rawData) {
   var lines = splitDescriptionToLines(rawData);
@@ -18462,8 +18523,8 @@ var getSectionName = function getSectionName(section) {
     return "Sockets";
   }
 
-  if (section.some(function (x) {
-    return x.match(/^([A-Z][a-z]*) Item$/);
+  if (section.every(function (x) {
+    return x.match(/^([A-z ]*) Item$/);
   })) {
     return "Influences";
   }
@@ -19471,7 +19532,7 @@ var getItemType = function getItemType(baseName) {
 };
 
 var getItemInfluences = function getItemInfluences(indexOffset, sections) {
-  var _getSectionsUpToLine = getSectionsUpToLine(sections, indexOffset, /^[A-z]+ Item$/),
+  var _getSectionsUpToLine = getSectionsUpToLine(sections, indexOffset, /^[A-z ]+ Item$/),
       _getSectionsUpToLine2 = _slicedToArray(_getSectionsUpToLine, 1),
       influenceSections = _getSectionsUpToLine2[0];
 
@@ -19480,13 +19541,13 @@ var getItemInfluences = function getItemInfluences(indexOffset, sections) {
   }
 
   return influenceSections.map(function (i) {
-    var match = i.match(/^([A-z]+) Item$/);
+    var match = i.match(/^([A-z ]+) Item$/);
     return match ? match[1] : "";
   });
 };
 
 var getItemBaseName = function getItemBaseName(headerIndexOffset, sections) {
-  if (/($(Evasion|Energy Shield|Armour|Ward):|(^[A-z]+ Item$))/.test(sections[headerIndexOffset + 1])) {
+  if (/($(Evasion|Energy Shield|Armour|Ward):|(^[A-z ]+ Item$))/.test(sections[headerIndexOffset + 1])) {
     return "";
   } else {
     return sections[headerIndexOffset + 1];
@@ -22905,12 +22966,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var tslib_1 = __webpack_require__("9ab4");
-
-var sections_mapper_1 = tslib_1.__importDefault(__webpack_require__("ca06"));
+var sections_mapper_1 = __webpack_require__("ca06");
 
 exports.default = function (rawData) {
-  var sections = sections_mapper_1.default(rawData);
+  var sections = sections_mapper_1.mapSections(rawData);
+  sections = sections_mapper_1.remapSiegeOfTheAtlasInfluences(sections);
   var headerSection = getHeaderSection(sections);
   var itemClass = getItemClass(headerSection);
   var properties = getProperties(sections);
@@ -22992,10 +23052,11 @@ var getItemInfluences = function getItemInfluences(sections) {
   }
 
   return influencesSection.lines.map(function (line) {
-    var lineMatch = line.match(/^([A-Z][a-z]+) Item$/);
+    var lineMatch = line.match(/^([A-z ]+) Item$/);
 
     if (lineMatch && lineMatch.length > 0) {
-      return lineMatch[1].toLowerCase().trim();
+      var influence = lineMatch[1];
+      return influence.toLowerCase().trim();
     }
 
     return "";
