@@ -13,18 +13,11 @@
       />
     </div>
     <div v-else class="poe-passive-showcase-wrapper">
-      <v-popover
-        trigger="hover click"
-        placement="auto"
-        :offset="20"
-        hideOnTargetClick
-        :popoverClass="popoverClassesComputed"
-        :popoverWrapperClass="popoverWrapperClasses"
-        :popoverBaseClass="popoverBaseClasses"
-        :popoverInnerClass="popoverInnerClasses"
-        :popoverArrowClass="popoverArrowClasses"
+      <generic-popover
+        :contentClasses="`poe-passive-showcase-popover`"
+        :placement="popoverPosition"
       >
-        <template slot="popover">
+        <template slot="content">
           <poe-passive-showcase
             :passive="passive"
             :iconUrl="iconUrl"
@@ -35,33 +28,35 @@
             :showBorder="showBorder"
           />
         </template>
-        <!-- Icon -->
-        <div v-if="displayMode === `icon`">
-          <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
-            <text x="2" y="18">{{ passive.stacks }}</text>
-          </svg>
-          <poe-passive-image
-            :type="passive.type"
-            :iconUrl="iconUrl"
-            :iconSize="iconSize"
-          />
-          <div class="poe-icon-label" v-if="!showCustomLabel">
+        <template slot="trigger">
+          <!-- Icon -->
+          <div v-if="displayMode === `icon`">
+            <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
+              <text x="2" y="18">{{ passive.stacks }}</text>
+            </svg>
+            <poe-passive-image
+              :type="passive.type"
+              :iconUrl="iconUrl"
+              :iconSize="iconSize"
+            />
+            <div class="poe-icon-label" v-if="!showCustomLabel">
+              <div>{{ labelTextComputed }}</div>
+              <div class="poe-icon-sublabel">
+                {{ passive.type }}
+              </div>
+            </div>
+            <div class="poe-icon-label" v-else>
+              <div>
+                {{ labelTextComputed }}
+              </div>
+            </div>
+          </div>
+          <!-- Text -->
+          <div v-else class="poe-passive-link">
             <div>{{ labelTextComputed }}</div>
-            <div class="poe-icon-sublabel">
-              {{ passive.type }}
-            </div>
           </div>
-          <div class="poe-icon-label" v-else>
-            <div>
-              {{ labelTextComputed }}
-            </div>
-          </div>
-        </div>
-        <!-- Text -->
-        <div v-else class="poe-passive-link">
-          <div>{{ labelTextComputed }}</div>
-        </div>
-      </v-popover>
+        </template>
+      </generic-popover>
     </div>
   </div>
 </template>
@@ -71,11 +66,12 @@ import PoePassiveShowcase from "./poe-passive-showcase.vue";
 import PoePassiveImage from "./poe-passive-image.vue";
 import mainMixin from "@/shared/mixins/main.mixin";
 import poeEntityMixin from "./../mixins/poe-entity.mixin";
+import GenericPopover from "./../generic-popover.vue";
 
 export default {
   name: "PoePassive",
   mixins: [mainMixin, poeEntityMixin],
-  components: { PoePassiveShowcase, PoePassiveImage },
+  components: { PoePassiveShowcase, PoePassiveImage, GenericPopover },
   computed: {
     passive() {
       return this.data;
@@ -109,7 +105,9 @@ export default {
 @use "./../../_styles" as styles;
 
 .poe-passive-showcase-popover {
-  z-index: 10000;
+  isolation: isolate;
+  z-index: 3;
+
   .poe-passive-wrapper {
     background-color: black;
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);

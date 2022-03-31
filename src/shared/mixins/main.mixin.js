@@ -23,6 +23,8 @@ export default {
 
     showStacks: { type: Boolean, default: false },
     showStacksInLabel: { type: Boolean, default: false },
+
+    popoverPosition: { type: String, default: `auto` },
   },
   data() {
     return {

@@ -2,7 +2,7 @@
 	"items": [
 		{
 			"props": {
-				"asShowcase": true,
+				"asText": true,
 				"iconInside": true
 			},
 			"config": {
@@ -157,7 +157,7 @@
 		},
 		{
 			"props": {
-				"asShowcase": true,
+				"asIcon": true,
 				"iconInside": true
 			},
 			"config": {

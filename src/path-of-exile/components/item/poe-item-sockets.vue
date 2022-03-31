@@ -11,6 +11,7 @@
           :classes="`poe-socketed-item poe-socket poe-item-socket-${socket}`"
           label-text="◉"
           :ref="`poe-item-${index}`"
+          popover-position="left"
         />
       </div>
       <div
@@ -103,6 +104,7 @@ export default {
   width: max-content;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
 
   & .socket-link {
     background-image: url(./../../assets/Socket-link.png);
@@ -110,18 +112,13 @@ export default {
     height: 14px;
     background-size: 20px;
     margin-top: 10px;
-    z-index: 20;
     margin-left: -9px;
     margin-right: -9px;
+    transform: rotate(0);
   }
 
   &.poe-icon-label {
     background-color: rgba(1, 1, 1, 0.5);
-  }
-
-  & div {
-    padding: 0 !important;
-    line-height: 0 !important;
   }
 
   & > .poe-socket {
@@ -184,22 +181,22 @@ export default {
   }
 
   .poe-item-socket-R .poe-item-link {
-    transform: translate(-6.5px, -7px);
+    transform: translate(-6.5px, -3px);
   }
   .poe-item-socket-B .poe-item-link {
-    transform: translate(-5.5px, -6.5px);
+    transform: translate(-5.5px, -3px);
   }
   .poe-item-socket-G .poe-item-link {
-    transform: translate(-6px, -7px);
+    transform: translate(-6px, -3px);
   }
   .poe-item-socket-W .poe-item-link {
-    transform: translate(-6px, -7.5px);
+    transform: translate(-6px, -3.5px);
   }
   .poe-item-socket-D .poe-item-link {
-    transform: translate(-6px, -7.5px);
+    transform: translate(-6px, -3.5px);
   }
   .poe-item-socket-A .poe-item-link {
-    transform: translate(-5.5px, -7px);
+    transform: translate(-5.5px, -3px);
     &:hover {
       box-shadow: -0.5px -0.5px 5px 2px rgb(0 0 0 / 70%),
         inset 0 0 4px rgb(0 0 0 / 70%);

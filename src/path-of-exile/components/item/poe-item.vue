@@ -16,18 +16,11 @@
       />
     </div>
     <div v-else class="poe-item-showcase-wrapper">
-      <v-popover
-        trigger="hover click"
-        placement="auto"
-        :offset="20"
-        hideOnTargetClick
-        :popoverClass="popoverClassesComputed"
-        :popoverWrapperClass="popoverWrapperClasses"
-        :popoverBaseClass="popoverBaseClasses"
-        :popoverInnerClass="popoverInnerClasses"
-        :popoverArrowClass="popoverArrowClasses"
+      <generic-popover
+        :contentClasses="`poe-item-showcase-popover`"
+        :placement="popoverPosition"
       >
-        <template slot="popover">
+        <template slot="content">
           <poe-item-showcase
             :item="item"
             :iconUrl="iconUrl"
@@ -41,38 +34,42 @@
             :showBorder="showBorder"
           />
         </template>
-        <!-- Icon -->
-        <div v-if="displayMode === `icon`">
-          <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
-            <text x="2" y="18">{{ item.stacks }}</text>
-          </svg>
-          <poe-item-image
-            :iconSize="iconSize"
-            :iconUrl="iconUrl"
-            :type="item.type"
-          />
-          <poe-item-sockets
-            :sockets="item.sockets"
-            :socketReferences="socketReferences"
-            v-if="shouldShowSockets"
-          />
-          <div class="poe-icon-label" v-if="!showCustomLabel">
-            <div>{{ labelTextComputed }}</div>
-            <div class="poe-icon-sublabel" v-if="shouldShowBaseName">
-              {{ item.baseName }}
+        <template slot="trigger">
+          <div>
+            <!-- Icon -->
+            <div v-if="displayMode === `icon`">
+              <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
+                <text x="2" y="18">{{ item.stacks }}</text>
+              </svg>
+              <poe-item-image
+                :iconSize="iconSize"
+                :iconUrl="iconUrl"
+                :type="item.type"
+              />
+              <poe-item-sockets
+                :sockets="item.sockets"
+                :socketReferences="socketReferences"
+                v-if="shouldShowSockets"
+              />
+              <div class="poe-icon-label" v-if="!showCustomLabel">
+                <div>{{ labelTextComputed }}</div>
+                <div class="poe-icon-sublabel" v-if="shouldShowBaseName">
+                  {{ item.baseName }}
+                </div>
+              </div>
+              <div class="poe-icon-label" v-else>
+                <div>
+                  {{ labelTextComputed }}
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="poe-icon-label" v-else>
-            <div>
+            <!-- Text -->
+            <div v-else :class="linkClassesComputed">
               {{ labelTextComputed }}
             </div>
           </div>
-        </div>
-        <!-- Text -->
-        <div v-else :class="linkClassesComputed">
-          {{ labelTextComputed }}
-        </div>
-      </v-popover>
+        </template>
+      </generic-popover>
     </div>
   </div>
 </template>
@@ -83,6 +80,7 @@ import PoeItemImage from "./poe-item-image.vue";
 import PoeItemSockets from "./poe-item-sockets.vue";
 import mainMixin from "@/shared/mixins/main.mixin";
 import poeEntityMixin from "./../mixins/poe-entity.mixin";
+import GenericPopover from "./../generic-popover.vue";
 
 export default {
   name: "PoeItem",
@@ -90,6 +88,7 @@ export default {
     PoeItemShowcase,
     PoeItemImage,
     PoeItemSockets,
+    GenericPopover,
   },
   mixins: [mainMixin, poeEntityMixin],
   props: {
@@ -145,7 +144,9 @@ export default {
 @use "./../../_styles" as styles;
 
 .poe-item-showcase-popover {
-  z-index: 10000;
+  isolation: isolate;
+  z-index: 3;
+
   .poe-item-wrapper {
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.5);
   }
@@ -155,6 +156,7 @@ export default {
 .poe-item-showcase-popover {
   @include styles.font;
   @include styles.colors;
+
   display: inline-block;
   .poe-item-link-unique {
     color: var(--poe-color-unique);

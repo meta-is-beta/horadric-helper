@@ -650,7 +650,7 @@ code {
 
 ::-webkit-scrollbar-track {
   background: #222527;
-  border-radius: 0a;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
