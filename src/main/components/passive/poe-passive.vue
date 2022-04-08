@@ -14,7 +14,7 @@
     </div>
     <div v-else class="poe-passive-showcase-wrapper">
       <popover-wrapper
-        :contentClasses="`poe-passive-showcase-popover`"
+        :contentClasses="popoverClassesComputed"
         :placement="_popoverPosition"
       >
         <template slot="content">
