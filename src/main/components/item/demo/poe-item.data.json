@@ -27,7 +27,8 @@
 				"labelText": "",
 				"asShowcase": true,
 				"iconInside": true,
-				"iconSize": "md"
+				"iconSize": "md",
+				"borderless": true
 			},
 			"config": {
 				"reference": "Pandemonium Creed",
