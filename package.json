@@ -13,7 +13,7 @@
     "test:unit": "vue-cli-service test:unit --passWithNoTests",
     "lint": "vue-cli-service lint",
     "lint:fix": "npm run lint --fix",
-    "build:poe": "vue-cli-service build --dest ./dist/poe --target lib --inline-vue --name horadric-helper-poe src/path-of-exile/main.js",
+    "build:poe": "vue-cli-service build --dest ./dist/poe --target lib --inline-vue --name horadric-helper-poe src/main/main.js",
     "start": "npm run serve"
   },
   "dependencies": {
