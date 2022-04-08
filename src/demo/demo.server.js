@@ -1,7 +1,7 @@
 import axios from "axios";
 import cors from "cors";
 import express from "express";
-import characterDataFetchFactory from "../path-of-exile/tools/fetch-character-data";
+import characterDataFetchFactory from "./fetch-character-data";
 
 const app = express();
 

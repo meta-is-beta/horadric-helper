@@ -236,10 +236,10 @@
 
 <script>
 /* eslint-disable vue/no-unused-components */
-import PoeItem from "@/path-of-exile/components/item/poe-item.vue";
+import PoeItem from "@/main/components/item/poe-item.vue";
 import axios from "axios";
-import PoeItemDemo from "../path-of-exile/components/item/demo/poe-item.demo.vue";
-import PoePassiveDemo from "../path-of-exile/components/passive/demo/poe-passive.demo.vue";
+import PoeItemDemo from "../main/components/item/demo/poe-item.demo.vue";
+import PoePassiveDemo from "../main/components/passive/demo/poe-passive.demo.vue";
 
 export default {
   name: "Demo",
@@ -256,6 +256,11 @@ export default {
       disableButton: false,
       singleItemConfig: "",
       singleItemTag: "",
+    };
+  },
+  created() {
+    window.HoradricHelper.PathOfExile.defaults = {
+      bordered: true,
     };
   },
   watch: {
@@ -650,7 +655,7 @@ code {
 
 ::-webkit-scrollbar-track {
   background: #222527;
-  border-radius: 0a;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {

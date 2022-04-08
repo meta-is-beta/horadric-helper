@@ -28,8 +28,8 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 #### 1. Include `js` and `css` files on your site.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.11/dist/poe/horadric-helper-poe.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.11/dist/poe/horadric-helper-poe.css"/>
+<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.12/dist/poe/horadric-helper-poe.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.12/dist/poe/horadric-helper-poe.css"/>
 ```
 
 #### 2. Add a component to your website's Html.
@@ -80,11 +80,11 @@ To enable Horadric Helper you simply need to include JavaScript and CSS files on
 You can get both `js` and `css` files from jsDelivr CND:
 
 ```url
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.11/dist/poe/horadric-helper-poe.umd.min.js
-https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.11/dist/poe/horadric-helper-poe.css
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.12/dist/poe/horadric-helper-poe.umd.min.js
+https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.12/dist/poe/horadric-helper-poe.css
 ```
 
-_You can specify a version of the library by changing `@v0.11` to the desired version. You can also set it to `latest` to always get newest version._
+_You can specify a version of the library by changing `@v0.12` to the desired version. You can also set it to `latest` to always get newest version._
 
 **OR**
 
@@ -133,13 +133,14 @@ You can apply props to set or change behaviour for individual components.
 | `as-showcase` | `Bool` | Displays an item as a showcase. Showcase popover will **not** appear on hover. |
 | `icon-inside` | `Bool` | Show icon inside of showcase. (_Only works if `iconUrl` was provided in config_) |
 | `icon-outside` | `Bool` | Show icon outside of showcase. (_Only works if `iconUrl` was provided in config_) |
-| `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Allows to set the size of the icon. Default is `auto`. |
+| `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Default is `auto`. Allows to set the size of the icon. |
 | `show-stacks` | `Bool` | Displays the amount of stacks when in `as-icon` mode as the number above icon. _(Stacks are defined in ether "stacks'' section of Item Config or in raw data copied from the game)_ |
 | `show-stacks-in-label` | `Bool` | Displays amount of stacks when in `as-icon` or `as-text` mode as number in label. _(Stacks are defined in ether "stacks'' section of Item Config or in raw data copied from the game)_|
 | `show-sockets` | `Bool` | Displays sockets under icon when in `as-icon` mode. |
 | `show-sockets-in-showcase` | `Bool` | Displays sockets inside of the showcase. |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
+| `popover-position` | `String` | Available values: `auto\|left\|right\|top\|bottom`. Default is `auto`. Sets where showcase popover should appear. _If rendering showcase in set direction is impossible then direction will be automaticly flipped._ |
 
 #### Examples
 
@@ -159,6 +160,27 @@ You can apply props to set or change behaviour for individual components.
 ```html
 <poe-passive reference="Beef" as-text icon-inside></poe-passive>
 ```
+
+### Global default props
+You can set default values for props globally using `HoradricHelper.PathOfExile.defaults` object.
+
+For example you can make all components display as bordered showcase with the following code:
+```js
+window.HoradricHelper.PathOfExile.defaults = {
+    bordered: true,
+    asShowcase: true,
+};
+```
+
+You can still override those settings for a specific component:
+```html
+<poe-item reference="example" as-icon borderless></poe-item>
+```
+
+Priority of prop values from lowest to highest:
+1. `default` value
+2. global `defaults` object
+3. local prop value
 
 ## Configuration object
 
@@ -472,7 +494,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/KKWjKKp))_
       Prefix: {range:1}DelveBodyArmourAvoidFire1_
       Suffix: {range:0.5}DelveBodyArmourSocketedSkillsSupportedByArcaneSurge1_
       Suffix: {range:0.5}DelveStrengthGemLevel1
-      Suffix: {range:0.113}DelveArmourPhysDamageTakenv2_3
+      Suffix: {range:0.123}DelveArmourPhysDamageTakenv2_3
       Quality: 20
       Sockets: R-R-R-R-R-R
       LevelReq: 68

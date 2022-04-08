@@ -19,9 +19,10 @@
   // Files
   // ===
   "files.exclude": {
+    "**/coverage": true,
     "*/.log": true,
     "*/.log*": true,
-    "**/coverage": true
+    "dist": true
   },
   "files.associations": {
     ".markdownlintrc": "jsonc",
