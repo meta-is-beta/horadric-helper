@@ -1,4 +1,6 @@
 const path = require("path");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   configureWebpack: {
@@ -8,6 +10,12 @@ module.exports = {
       },
       extensions: [".js", ".ts", ".vue", ".json"],
     },
+    plugins: [
+      new BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        openAnalyzer: false,
+      }),
+    ],
   },
   chainWebpack: (config) => {
     // Remove comments

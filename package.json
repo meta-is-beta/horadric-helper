@@ -19,7 +19,8 @@
   "dependencies": {
     "@floating-ui/dom": "^0.4.1",
     "core-js": "^3.6.5",
-    "vue-custom-element": "^3.3.0"
+    "vue-custom-element": "^3.3.0",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
