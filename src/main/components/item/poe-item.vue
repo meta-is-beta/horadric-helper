@@ -116,7 +116,7 @@ export default {
       return classes;
     },
     popoverClassesComputed() {
-      return `poe-item-showcase-popover ${this._popoverClasses}`;
+      return `poe-showcase-popover poe-item-showcase-popover ${this._popoverClasses}`;
     },
     linkClassesComputed() {
       let classes = `poe-item-link`;

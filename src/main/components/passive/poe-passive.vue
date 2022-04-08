@@ -94,7 +94,7 @@ export default {
       return classes;
     },
     popoverClassesComputed() {
-      return `poe-passive-showcase-popover ${this._popoverClasses}`;
+      return `poe-showcase-popover poe-passive-showcase-popover ${this._popoverClasses}`;
     },
   },
 };
