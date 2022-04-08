@@ -179,7 +179,7 @@ You can still override those settings for a specific component:
 
 Priority of prop values from lowest to highest:
 1. `default` value
-2. global `defaults` object
+2. global `defaults` object value
 3. local prop value
 
 ## Configuration object
