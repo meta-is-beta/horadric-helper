@@ -40,7 +40,7 @@ export default {
   },
   mounted() {
     try {
-      this.$root.$el.appendChild(this.$refs["content"]);
+      document.body.appendChild(this.$refs["content"]);
     } catch {
       // no-op
     }
