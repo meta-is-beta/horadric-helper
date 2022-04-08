@@ -15125,7 +15125,7 @@ var createGettersForProps = function createGettersForProps(props) {
 
       var globalObject = this.getGlobalObject();
 
-      if (globalObject.defaults[propKey]) {
+      if (globalObject.defaults && globalObject.defaults[propKey]) {
         return globalObject.defaults[propKey];
       } // Otherwise use default value or undefined
 

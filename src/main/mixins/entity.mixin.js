@@ -46,7 +46,7 @@ const createGettersForProps = function (props) {
 
       // If default value was overriten with defaults object
       const globalObject = this.getGlobalObject();
-      if (globalObject.defaults[propKey]) {
+      if (globalObject.defaults && globalObject.defaults[propKey]) {
         return globalObject.defaults[propKey];
       }
 
