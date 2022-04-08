@@ -39,7 +39,11 @@ export default {
     };
   },
   mounted() {
-    this.$root.$el.appendChild(this.$refs["content"]);
+    try {
+      this.$root.$el.appendChild(this.$refs["content"]);
+    } catch {
+      // no-op
+    }
     this.show = false;
     this.updateStyles({ show: this.show });
   },

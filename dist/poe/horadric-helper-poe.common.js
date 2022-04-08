@@ -10718,12 +10718,12 @@ module.exports = function (argument) {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b01134b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/popover-wrapper.vue?vue&type=template&id=1b2f465b&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b01134b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/popover-wrapper.vue?vue&type=template&id=7b5bf52e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{ref:"trigger",class:("" + _vm.triggerClasses),on:{"mouseover":_vm.showPopover,"mouseleave":_vm.hidePopover,"click":_vm.togglePopover}},[_vm._t("trigger")],2),_c('div',{ref:"content",class:("" + _vm.contentClasses)},[_vm._t("content")],2)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/main/components/popover-wrapper.vue?vue&type=template&id=1b2f465b&
+// CONCATENATED MODULE: ./src/main/components/popover-wrapper.vue?vue&type=template&id=7b5bf52e&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js + 1 modules
 var objectSpread2 = __webpack_require__("5530");
@@ -12462,7 +12462,11 @@ var validPlacements = ["bottom", "top", "right", "left"];
     };
   },
   mounted: function mounted() {
-    this.$root.$el.appendChild(this.$refs["content"]);
+    try {
+      this.$root.$el.appendChild(this.$refs["content"]);
+    } catch (_unused) {// no-op
+    }
+
     this.show = false;
     this.updateStyles({
       show: this.show
