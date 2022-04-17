@@ -764,13 +764,13 @@ There are premade configs for skill gems and passive that you can use.
 Installing dependencies
 
 ```sh
-npm install
+yarn
 ```
 
 Running demo
 
 ```sh
-npm run serve
+npm start
 ```
 
 Building production libraries to `/dist/`

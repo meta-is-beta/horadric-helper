@@ -2,56 +2,103 @@ const mainProps = {
   reference: { type: String, default: "" },
 
   classes: { type: String, default: "" },
+
   popoverClasses: { type: String, default: "" },
 
-  bordered: { type: Boolean, default: undefined },
-  borderless: { type: Boolean, default: undefined },
+  bordered: {
+    type: [Boolean, String],
+    default: undefined,
+    exclusive: ["borderless"],
+  },
+  borderless: {
+    type: [Boolean, String],
+    default: undefined,
+    exclusive: ["bordered"],
+  },
 
   labelText: { type: String, default: "" },
+
   iconSize: { type: String, default: "auto" },
 
-  asIcon: { type: Boolean, default: false },
-  asText: { type: Boolean, default: true },
-  asShowcase: { type: Boolean, default: false },
+  asIcon: {
+    type: [Boolean, String],
+    default: false,
+    exclusive: ["asShowcase", "asText"],
+  },
+  asText: {
+    type: [Boolean, String],
+    default: true,
+    exclusive: ["asIcon", "asShowcase"],
+  },
+  asShowcase: {
+    type: [Boolean, String],
+    default: false,
+    exclusive: ["asIcon", "asText"],
+  },
 
-  iconInside: { type: Boolean, default: false },
-  iconOutside: { type: Boolean, default: false },
+  iconInside: { type: [Boolean, String], default: false },
+  iconOutside: { type: [Boolean, String], default: false },
 
   dimSections: { type: String, default: "" },
   hideSections: { type: String, default: "" },
 
-  showStacks: { type: Boolean, default: false },
-  showStacksInLabel: { type: Boolean, default: false },
+  showStacks: { type: [Boolean, String], default: false },
+  showStacksInLabel: { type: [Boolean, String], default: false },
 
   popoverPosition: { type: String, default: `auto` },
 
-  showSockets: { type: Boolean, default: false },
-  showSocketsInShowcase: { type: Boolean, default: false },
+  showSockets: { type: [Boolean, String], default: false },
+  showSocketsInShowcase: { type: [Boolean, String], default: false },
 };
 
 const createGettersForProps = function (props) {
   return Object.keys(props).reduce((acc, propKey) => {
     acc[`_${propKey}`] = function () {
+      const explicitPropValue = this.$options.propsData[propKey];
+      const baseProp = props[propKey];
+
       // If prop was explicitly set
-      if (this.$options.propsData[propKey]) {
-        return this.$options.propsData[propKey];
+      if (explicitPropValue) {
+        // Handle native HTML string attributes that should be parsed as boolean
+        if (
+          typeof explicitPropValue === "string" &&
+          Array.isArray(baseProp.type) &&
+          baseProp.type.includes(Boolean) &&
+          baseProp.type.includes(String)
+        ) {
+          if (explicitPropValue.length === 0) {
+            return true;
+          } else {
+            return explicitPropValue.toLowerCase() === "true";
+          }
+        }
+
+        return explicitPropValue;
       }
-      // Interpret empty string as true
+
+      // Interpret empty string as true for boolean props
       if (
-        this.$options.propsData[propKey] === "" &&
-        props[propKey].type === Boolean
+        explicitPropValue === "" &&
+        (baseProp.type === Boolean ||
+          (Array.isArray(baseProp.type) && baseProp.type.includes(Boolean)))
       ) {
         return true;
       }
 
       // If default value was overriten with defaults object
+      // but not if provided value is exclusive with other explicitly set values
       const globalObject = this.getGlobalObject();
-      if (globalObject.defaults && globalObject.defaults[propKey]) {
+      if (
+        globalObject.defaults &&
+        globalObject.defaults[propKey] &&
+        (!baseProp.exclusive ||
+          !baseProp.exclusive.some((p) => this.$options.propsData[p]))
+      ) {
         return globalObject.defaults[propKey];
       }
 
       // Otherwise use default value or undefined
-      return props[propKey].default;
+      return baseProp.default;
     };
 
     return acc;

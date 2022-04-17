@@ -1,5 +1,5 @@
 v0.13:
-- [ ] Cleanup image assets - remove unused fames, maybe merge some images
+- [ ] Cleanup image assets - remove unused frames, maybe merge some images
 
 v1.0 (first full release):
 - [ ] Fix project's structure

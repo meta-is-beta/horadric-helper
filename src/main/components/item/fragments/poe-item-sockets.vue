@@ -6,12 +6,15 @@
         <poe-item
           :key="`${index}-item`"
           :reference="socketReferences[index + 1]"
-          show-as-text
-          icon-inside
           :classes="`poe-socketed-item poe-socket poe-item-socket-${socket}`"
           label-text="◉"
           :ref="`poe-item-${index}`"
           popover-position="bottom"
+          :as-text="true"
+          :as-showcase="false"
+          :as-icon="false"
+          :icon-inside="true"
+          :icon-outside="false"
         />
       </div>
       <div

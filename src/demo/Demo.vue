@@ -261,6 +261,7 @@ export default {
   created() {
     window.HoradricHelper.PathOfExile.defaults = {
       bordered: true,
+      asIcon: true,
     };
   },
   watch: {

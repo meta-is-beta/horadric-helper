@@ -2,8 +2,7 @@
 	"items": [
 		{
 			"props": {
-				"asText": true,
-				"iconInside": true
+				"asText": true
 			},
 			"config": {
 				"reference": "Flammability",
@@ -14,7 +13,7 @@
 		{
 			"props": {
 				"asShowcase": true,
-				"iconInside": true
+				"iconInside": "false"
 			},
 			"config": {
 				"reference": "Divergent Multiple Totems Support",
