@@ -58,7 +58,7 @@ const createGettersForProps = function (props) {
       const baseProp = props[propKey];
 
       // If prop was explicitly set
-      if (explicitPropValue) {
+      if (explicitPropValue !== undefined) {
         // Handle native HTML string attributes that should be parsed as boolean
         if (
           typeof explicitPropValue === "string" &&

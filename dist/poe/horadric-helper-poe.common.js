@@ -15126,7 +15126,7 @@ var createGettersForProps = function createGettersForProps(props) {
       var explicitPropValue = this.$options.propsData[propKey];
       var baseProp = props[propKey]; // If prop was explicitly set
 
-      if (explicitPropValue) {
+      if (explicitPropValue !== undefined) {
         // Handle native HTML string attributes that should be parsed as boolean
         if (typeof explicitPropValue === "string" && Array.isArray(baseProp.type) && baseProp.type.includes(Boolean) && baseProp.type.includes(String)) {
           if (explicitPropValue.length === 0) {
