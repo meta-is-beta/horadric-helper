@@ -341,16 +341,21 @@ export default {
     itemProperties() {
       return this.item.sections.properties
         ? this.item.sections.properties.map((line) => {
-            return line
-              .trim()
-              .replace(
-                /(((?!s)[0-9%+,./\-()s]+)(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
-                "<span class='poe-item-property-value-augmented'>$1</span>"
-              )
-              .replace(
-                /(((?!s)[0-9%+,./\-()s]+)( \([Minax]{3}\)){0,1})$|((?!s)[0-9%+,./\-()s]+)(( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
-                "<span class='poe-item-property-value'>$1$4 </span>"
-              );
+            // Skip tags list
+            if (line.match(/^[A-z, ]+$/gi)) {
+              return line.trim();
+            } else {
+              return line
+                .trim()
+                .replace(
+                  /(((?!s)[0-9%+,./\-()s]+)(\([Minax]{3}\)){0,1})( \(augmented\))/gi,
+                  "<span class='poe-item-property-value-augmented'>$1</span>"
+                )
+                .replace(
+                  /(((?!s)[0-9%+,./\-()s]+)( \([Minax]{3}\)){0,1})$|((?!s)[0-9%+,./\-()s]+)(( \([Minax]{3}\)){0,1} )(?!\(augmented\))/gi,
+                  "<span class='poe-item-property-value'>$1$4 </span>"
+                );
+            }
           })
         : [];
     },
