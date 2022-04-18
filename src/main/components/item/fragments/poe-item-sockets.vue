@@ -9,7 +9,6 @@
           :classes="`poe-socketed-item poe-socket poe-item-socket-${socket}`"
           label-text="◉"
           :ref="`poe-item-${index}`"
-          popover-position="bottom"
           :as-text="true"
           :as-showcase="false"
           :as-icon="false"
