@@ -63,26 +63,18 @@ const createGettersForProps = function (props) {
         if (
           typeof explicitPropValue === "string" &&
           Array.isArray(baseProp.type) &&
-          baseProp.type.includes(Boolean) &&
-          baseProp.type.includes(String)
+          baseProp.type.includes(Boolean)
         ) {
+          // Interpret empty string as true
           if (explicitPropValue.length === 0) {
             return true;
           } else {
-            return explicitPropValue.toLowerCase() === "true";
+            // Interpret any string other than "false" as true
+            return explicitPropValue.toLowerCase() !== "false";
           }
         }
 
         return explicitPropValue;
-      }
-
-      // Interpret empty string as true for boolean props
-      if (
-        explicitPropValue === "" &&
-        (baseProp.type === Boolean ||
-          (Array.isArray(baseProp.type) && baseProp.type.includes(Boolean)))
-      ) {
-        return true;
       }
 
       // If default value was overriten with defaults object
