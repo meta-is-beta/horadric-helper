@@ -5,6 +5,8 @@
       @mouseover="showPopover"
       @mouseleave="hidePopover"
       @click="togglePopover"
+      v-touch:start="showPopover"
+      v-touch:end="hidePopover"
       :class="`${triggerClasses}`"
     >
       <slot name="trigger"></slot>

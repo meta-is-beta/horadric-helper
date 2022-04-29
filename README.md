@@ -100,8 +100,8 @@ You can get them from this repo's `/dist/poe` folder.
 
 Package `horadric-helper-poe` contains 2 components:
 
-- `<poe-item>` - This component can render equipment, gems, jewels, flasks, currency and maps
-- `<poe-passive>` - This component can render passives, including ascendancy nodes
+- `<poe-item>` - This component can render items such as equipment, gems, jewels, flasks, currency, maps and more
+- `<poe-passive>` - This component can render passive nodes - including atlas tree passives
 
 To activate components you need to assign a `reference` prop to them.
 This will allow you to later load configuration objects for that reference.
@@ -131,16 +131,16 @@ You can apply props to set or change behaviour for individual components.
 | `as-text` | `Bool` | Display item as text. Showcase popover will appear on hover. (_This is the default settings_) |
 | `as-icon` | `Bool` | Displays item as icon with label. Showcase popover will appear on hover. |
 | `as-showcase` | `Bool` | Displays an item as a showcase. Showcase popover will **not** appear on hover. |
-| `icon-inside` | `Bool` | Show icon inside of showcase. (_Only works if `iconUrl` was provided in config_) |
-| `icon-outside` | `Bool` | Show icon outside of showcase. (_Only works if `iconUrl` was provided in config_) |
+| `icon-inside` | `Bool` | Show icon inside of showcase. (_Only works if `iconUrl` was provided in the config_) |
+| `icon-outside` | `Bool` | Show icon outside of showcase. (_Only works if `iconUrl` was provided in the config_) |
 | `icon-size` | `string` | Available values: `auto\|sm\|md\|lg\|xlg`. Default is `auto`. Allows to set the size of the icon. |
-| `show-stacks` | `Bool` | Displays the amount of stacks when in `as-icon` mode as the number above icon. _(Stacks are defined in ether "stacks'' section of Item Config or in raw data copied from the game)_ |
-| `show-stacks-in-label` | `Bool` | Displays amount of stacks when in `as-icon` or `as-text` mode as number in label. _(Stacks are defined in ether "stacks'' section of Item Config or in raw data copied from the game)_|
+| `show-stacks` | `Bool` | Displays the amount of stacks when in `as-icon` mode as the number above icon. |
+| `show-stacks-in-label` | `Bool` | Displays amount of stacks when in `as-icon` or `as-text` mode as number in label. |
 | `show-sockets` | `Bool` | Displays sockets under icon when in `as-icon` mode. |
 | `show-sockets-in-showcase` | `Bool` | Displays sockets inside of the showcase. |
 | `dim-sections` | `String` | List of sections to be greyed-out. More about this in [Sections](#showcase-sections) chapter. |
 | `hide-sections` | `String` | List of sections to be hidden. More about this in [Sections](#showcase-sections) chapter. |
-| `popover-position` | `String` | Available values: `auto\|left\|right\|top\|bottom`. Default is `auto`. Sets where showcase popover should appear. _If rendering showcase in set direction is impossible then direction will be automaticly flipped._ |
+| `popover-position` | `String` | Available values: `auto\|left\|right\|top\|bottom`. Default is `auto`. Sets where showcase popover should appear. _If rendering popover in the set direction is impossible then direction will be automaticly flipped._ |
 
 #### Examples
 
@@ -226,7 +226,7 @@ type PoeConfig = {
 ### Getting item data
 
 `data` property of `PoeConfig` object accepts data of type `PoeItem`, `PoePassive` and `String`.
-`PoeItem` and `PoePassive` are objects with structure described in their respective sections and allow you to define your own configurations.
+`PoeItem` and `PoePassive` are objects with structure described in their respective sections and allow you to define your own items and passives.
 
 In case of PoE items you can also pass raw item data from different sources and the library will try to parse and display them.
 Raw item data can be acquired from:
@@ -764,13 +764,13 @@ There are premade configs for skill gems and passive that you can use.
 Installing dependencies
 
 ```sh
-npm install
+yarn
 ```
 
 Running demo
 
 ```sh
-npm run serve
+npm start
 ```
 
 Building production libraries to `/dist/`

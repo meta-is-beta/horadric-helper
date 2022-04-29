@@ -260,7 +260,9 @@ export default {
   },
   created() {
     window.HoradricHelper.PathOfExile.defaults = {
-      bordered: true,
+      asText: true,
+      iconOutside: true,
+      showSocketsInShowcase: true,
     };
   },
   watch: {
