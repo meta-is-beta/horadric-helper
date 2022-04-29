@@ -435,7 +435,7 @@ export default {
     headerClasses() {
       let classes = "poe-item-header";
       if (
-        this.item.rarity.toLowerCase() === "rare" ||
+        (this.item.rarity && this.item.rarity.toLowerCase() === "rare") ||
         this.item.rarity.toLowerCase() === "unique"
       ) {
         classes += " poe-item-header-double";
