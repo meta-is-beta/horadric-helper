@@ -721,27 +721,6 @@
         },
         "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/Hate-Cowl.png"
       }
-    },
-    {
-      "props": {},
-      "config": {
-        "reference": "frigid-wake",
-        "data": {
-          "name": "Frigid Wake",
-          "sections": {
-            "description": [
-              "15% more Cold Damage",
-              "Cannot be Chilled",
-              "Cannot be Frozen",
-              "Every 4 seconds, Freeze nearby Chilled Non-Unique Enemies for 0.6 seconds",
-              "Every 4 seconds, 33% chance to Freeze nearby Chilled Unique Enemies for 0.6 seconds",
-              "Nearby Chilled Enemies deal 10% reduced Damage with Hits"
-            ]
-          },
-          "type": "keystone"
-        },
-        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/04/FrigidWake_Occultist_passive_skill_icon.webp"
-      }
     }
   ]
 }

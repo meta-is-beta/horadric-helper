@@ -2,11 +2,11 @@
   <div>
     <div
       ref="trigger"
-      @mouseover="showPopover"
-      @mouseleave="hidePopover"
-      @click="togglePopover"
-      v-touch:start="showPopover"
-      v-touch:end="hidePopover"
+      @mouseover="handleMouseover"
+      @mouseleave="handleMouseleave"
+      @click="handleClick"
+      v-touch:start="handleTouchstart"
+      v-touch:end="handleTouchstop"
       :class="`${triggerClasses}`"
     >
       <slot name="trigger"></slot>
@@ -50,17 +50,63 @@ export default {
     this.updateStyles({ show: this.show });
   },
   methods: {
-    showPopover(event) {
+    handleMouseover(event) {
+      if (event?.sourceCapabilities?.firesTouchEvents) {
+        return;
+      }
+
       event.stopPropagation();
+      this.showPopover();
+    },
+    handleMouseleave(event) {
+      if (event?.sourceCapabilities?.firesTouchEvents) {
+        return;
+      }
+
+      event.stopPropagation();
+      this.hidePopover();
+    },
+    handleClick(event) {
+      if (event?.sourceCapabilities?.firesTouchEvents) {
+        return;
+      }
+
+      event.stopPropagation();
+      this.togglePopover();
+    },
+    handleTouchstart(event) {
+      if (!event?.sourceCapabilities?.firesTouchEvents) {
+        return;
+      }
+
+      this.showPopover();
+    },
+    handleTouchstop(event) {
+      if (!event?.sourceCapabilities?.firesTouchEvents) {
+        return;
+      }
+
+      this.hidePopover();
+    },
+    showPopover() {
+      event.stopPropagation();
+      if (this.show) {
+        return;
+      }
+
       this.show = true;
       this.updateStyles({ show: this.show });
     },
-    hidePopover(event) {
+    hidePopover() {
       event.stopPropagation();
+      if (!this.show) {
+        return;
+      }
+
       this.show = false;
       this.updateStyles({ show: this.show });
     },
-    togglePopover(event) {
+    togglePopover() {
       event.stopPropagation();
       this.show = !this.show;
       this.updateStyles({ show: this.show });
