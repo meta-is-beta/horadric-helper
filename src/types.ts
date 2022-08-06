@@ -16,6 +16,7 @@ export type PoeItemRarity =
   | "unique"
   | "gem"
   | "currency"
+  | "divination card"
   | "";
 export type PoeItemType =
   | "equipment"
@@ -24,6 +25,7 @@ export type PoeItemType =
   | "flask"
   | "currency"
   | "map"
+  | "divination card"
   | "";
 export type PoeItemInfluence =
   | "crusader"
@@ -46,7 +48,7 @@ export type PoePassiveType =
   | "mastery"
   | "atlas basic"
   | "atlas notable"
-  | "atlas mastery";
+  | "atlas keystone";
 
 export type PoeItemSections = {
   itemLevel?: String;
@@ -57,6 +59,8 @@ export type PoeItemSections = {
   implicits?: String[];
   modifiers?: String[];
   gemDescription?: String[];
+  divCardStacks?: String;
+  divCardDescription?: String[];
   talismanTier?: String;
   statuses?: PoeItemStatus[];
   flavourText?: String[];
@@ -68,7 +72,7 @@ export type PoePassiveSections = {
 };
 
 export type PoeItem = {
-  rarity: PoeItemRarity;
+  rarity?: PoeItemRarity;
   name: String;
   class?: String;
   type?: PoeItemType;

@@ -87,6 +87,18 @@ export default {
   }
 }
 
+.poe-keystone-passive-icon-wrapper {
+  & div {
+    width: 88px;
+    content: url(../../../assets/Keystone_passive_frame.png);
+  }
+  & img {
+    height: 54px;
+    width: 54px;
+    margin: 18px;
+  }
+}
+
 .poe-atlas-basic-passive-icon-wrapper {
   & div {
     content: url(../../../assets/Atlas_basic_passive_frame.png);
@@ -99,10 +111,10 @@ export default {
   }
 }
 
-.poe-keystone-passive-icon-wrapper {
+.poe-atlas-keystone-passive-icon-wrapper {
   & div {
     width: 88px;
-    content: url(../../../assets/Keystone_passive_frame.png);
+    content: url(../../../assets/Atlas_keystone_passive_frame.png);
   }
   & img {
     height: 54px;
@@ -158,7 +170,8 @@ export default {
     }
   }
 
-  &.poe-keystone-passive-icon-wrapper {
+  &.poe-keystone-passive-icon-wrapper,
+  .poe-atlas-keystone-passive-icon-wrapper {
     & div {
       width: 88px;
     }

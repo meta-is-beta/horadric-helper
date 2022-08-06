@@ -45,3 +45,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.poe-item-div-card-icon {
+  content: url(../../../assets/Divination_card_icon.png);
+}
+</style>

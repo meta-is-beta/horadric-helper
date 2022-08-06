@@ -235,6 +235,8 @@ Raw item data can be acquired from:
 - **PoE Trade** - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
 - **Path of Building (PoB)** - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
 
+:warning: Item data from the game works only in English. :warning:
+
 ### `PoeItem` object
 
 ```typescript
@@ -342,7 +344,7 @@ type PoePassive = {
     | "mastery"
     | "atlas basic"
     | "atlas notable"
-    | "atlas mastery";
+    | "atlas keystone";
 
   // All sections are optional
   sections: {

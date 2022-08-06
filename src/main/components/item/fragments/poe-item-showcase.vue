@@ -19,6 +19,7 @@
           <div
             v-if="
               item.name != item.baseName &&
+              item.rarity &&
               (item.rarity.toLowerCase() === 'rare' ||
                 item.rarity.toLowerCase() === 'unique')
             "
@@ -434,8 +435,12 @@ export default {
     },
     headerClasses() {
       let classes = "poe-item-header";
+      if (this.item?.rarity === undefined) {
+        return classes;
+      }
+
       if (
-        (this.item.rarity && this.item.rarity.toLowerCase() === "rare") ||
+        this.item.rarity.toLowerCase() === "rare" ||
         this.item.rarity.toLowerCase() === "unique"
       ) {
         classes += " poe-item-header-double";

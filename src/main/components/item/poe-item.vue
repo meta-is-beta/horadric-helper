@@ -2,7 +2,15 @@
   <div v-if="show" :class="classesComputed">
     <div v-if="displayMode === `showcase`" class="poe-item-showcase-wrapper">
       <!-- Showcase -->
+      <!-- Div Card item showcase -->
+      <poe-divination-card
+        v-if="item.type === `divination card`"
+        :card="item"
+        :iconUrl="iconUrl"
+      />
+      <!-- Standard item showcase -->
       <poe-item-showcase
+        v-else
         :item="item"
         :iconUrl="iconUrl"
         :iconSize="_iconSize"
@@ -21,7 +29,15 @@
         :placement="_popoverPosition"
       >
         <template slot="content">
+          <!-- Div Card showcase -->
+          <poe-divination-card
+            v-if="item.type === `divination card`"
+            :card="item"
+            :iconUrl="iconUrl"
+          />
+          <!-- Standard item showcase -->
           <poe-item-showcase
+            v-else
             :item="item"
             :iconUrl="iconUrl"
             :iconSize="_iconSize"
@@ -45,6 +61,7 @@
                 :iconSize="_iconSize"
                 :iconUrl="iconUrl"
                 :type="item.type"
+                :classes="iconImageClassesComputed"
               />
               <poe-item-sockets
                 :sockets="item.sockets"
@@ -80,6 +97,7 @@ import PoeItemImage from "./fragments/poe-item-image.vue";
 import PoeItemSockets from "./fragments/poe-item-sockets.vue";
 import PopoverWrapper from "../popover-wrapper.vue";
 import entityMixin from "./../../mixins/entity.mixin";
+import PoeDivinationCard from "./fragments/poe-divination-card.vue";
 
 export default {
   name: "PoeItem",
@@ -88,6 +106,7 @@ export default {
     PoeItemImage,
     PoeItemSockets,
     PopoverWrapper,
+    PoeDivinationCard,
   },
   mixins: [entityMixin],
   computed: {
@@ -123,6 +142,11 @@ export default {
       if (this.item.rarity) {
         classes += ` poe-item-link-${this.item.rarity.toLowerCase()}`;
       }
+      return classes;
+    },
+    iconImageClassesComputed() {
+      const classes =
+        this.item.type === `divination card` ? `poe-item-div-card-icon` : "";
       return classes;
     },
     shouldShowBaseName() {

@@ -5,6 +5,7 @@ export const mapSections = (rawData: String): PoeItemDataSection[] => {
   let namedSections = rawSectionsToNamedSections(rawSections);
   namedSections = fillUnknownSections(namedSections);
   namedSections = removeUnknownSections(namedSections);
+  namedSections = reasignSectionsForDivCard(namedSections);
 
   return namedSections;
 };
@@ -180,6 +181,7 @@ const fillUnknownSections = (
   const itemRarityLine = headerSection.lines[1];
 
   const itemIsGem = itemRarityLine.includes("Gem");
+  const itemIsDivinityCard = itemRarityLine.includes("Divination");
   const itemIsNormal = itemRarityLine.includes("Normal");
 
   if (sections[headerSectionIndex + 1].name === "Unknown") {
@@ -214,7 +216,88 @@ const fillUnknownSections = (
     }
   }
 
+  if (itemIsDivinityCard) {
+    const divCardFlavorTextIndex = sections.find(
+      (x) => x.name === "Unknown"
+    )?.index;
+
+    if (divCardFlavorTextIndex) {
+      sections[divCardFlavorTextIndex].name = "Flavour text";
+    }
+  }
+
   return sections;
+};
+
+const reasignSectionsForDivCard = (
+  sections: PoeItemDataSection[]
+): PoeItemDataSection[] => {
+  const headerSection = sections.find((x) => x.name === "Header");
+  if (!headerSection) {
+    return sections;
+  }
+
+  const itemRarityLine = headerSection.lines[1];
+  if (!itemRarityLine) {
+    return sections;
+  }
+
+  const itemIsDivinityCard = itemRarityLine.includes("Divination");
+  if (!itemIsDivinityCard) {
+    return sections;
+  }
+
+  const newSections: PoeItemDataSection[] = [headerSection];
+
+  const propertiesSection = sections.find((x) => x.name === "Properties");
+  if (propertiesSection) {
+    const stacksSection = { ...propertiesSection };
+    stacksSection.name = "Div card stacks";
+    stacksSection.index = 1;
+    newSections.push(stacksSection);
+  }
+
+  const misslabeledSections = sections.filter(
+    (s) =>
+      !["Header", "Modifiers", "Properties", "Flavour text"].includes(
+        s.name as string
+      )
+  );
+  const modifiersSection = sections.find((s) => s.name === "Modifiers");
+
+  if (misslabeledSections.length > 0) {
+    const descriptionSection: PoeItemDataSection = {
+      index: newSections.length,
+      name: "Div card description",
+      lines: misslabeledSections.map((s) => s.lines).flat(),
+    };
+    newSections.push(descriptionSection);
+
+    if (modifiersSection) {
+      const flavourTextSection = {
+        index: newSections.length,
+        name: "Flavour text",
+        lines: [...modifiersSection.lines],
+      };
+      newSections.push(flavourTextSection);
+    }
+  } else {
+    if (modifiersSection) {
+      const descriptionSection = {
+        index: newSections.length,
+        name: "Div card description",
+        lines: [...modifiersSection.lines],
+      };
+      newSections.push(descriptionSection);
+    }
+
+    const flavourTextSection = sections.find((s) => s.name === "Flavour text");
+    if (flavourTextSection) {
+      newSections.push({ ...flavourTextSection, index: newSections.length });
+    }
+  }
+
+  return newSections;
 };
 
 const removeUnknownSections = (
