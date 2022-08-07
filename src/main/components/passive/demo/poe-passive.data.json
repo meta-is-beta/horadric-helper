@@ -258,8 +258,7 @@
     {
       "reference": "Stream of Consciousness",
       "props": {
-        "as-icon": true,
-        "as-showcase": true
+        "as-icon": true
       },
       "config": {
         "reference": "Stream of Consciousness",

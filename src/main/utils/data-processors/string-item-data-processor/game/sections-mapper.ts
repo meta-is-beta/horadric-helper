@@ -157,6 +157,7 @@ const getSectionName = (section: String[]): String => {
   if (section.some((x) => x.match(/^Flavour Text:/i))) {
     return "Flavour text";
   }
+
   return "Unknown";
 };
 
@@ -247,9 +248,13 @@ const reasignSectionsForDivCard = (
     return sections;
   }
 
+  let _sections = [...sections];
+  _sections = removeNamedSection(_sections, "Header");
   const newSections: PoeItemDataSection[] = [headerSection];
 
   const propertiesSection = sections.find((x) => x.name === "Properties");
+  _sections = removeNamedSection(_sections, "Properties");
+
   if (propertiesSection) {
     const stacksSection = { ...propertiesSection };
     stacksSection.name = "Div card stacks";
@@ -257,13 +262,10 @@ const reasignSectionsForDivCard = (
     newSections.push(stacksSection);
   }
 
-  const misslabeledSections = sections.filter(
-    (s) =>
-      !["Header", "Modifiers", "Properties", "Flavour text"].includes(
-        s.name as string
-      )
+  const misslabeledSections = _sections.filter(
+    (s) => !["Modifiers", "Flavour text"].includes(s.name as string)
   );
-  const modifiersSection = sections.find((s) => s.name === "Modifiers");
+  const modifiersSection = _sections.find((s) => s.name === "Modifiers");
 
   if (misslabeledSections.length > 0) {
     const descriptionSection: PoeItemDataSection = {
@@ -298,6 +300,19 @@ const reasignSectionsForDivCard = (
   }
 
   return newSections;
+};
+
+const removeNamedSection = (
+  sections: PoeItemDataSection[],
+  name: string
+): PoeItemDataSection[] => {
+  const sectionIndex = sections.findIndex((s) => s.name === name);
+  if (sectionIndex < 0) {
+    return sections;
+  }
+  sections.splice(sectionIndex, 1);
+
+  return sections;
 };
 
 const removeUnknownSections = (

@@ -11,8 +11,12 @@
         </div>
       </div>
       <div class="poe-divination-card-description">
-        <span v-for="(descLine, index) in description" :key="index">
-          {{ descLine }}
+        <span
+          v-for="(descLine, index) in description"
+          :key="index"
+          :class="`desc-line-${descLine.rarity}`"
+        >
+          {{ descLine.text }}
         </span>
       </div>
       <div class="poe-divination-card-flavour-text">
@@ -25,6 +29,8 @@
 </template>
 
 <script>
+const rarityRegex = /\((normal|rare|magic|unique|corrupted|gem)\)/gm;
+
 export default {
   name: "PoeDivinationCard",
   props: {
@@ -36,15 +42,27 @@ export default {
       return this.card?.name || "";
     },
     description() {
-      const description = this.card?.sections?.divCardDescription;
+      let description = this.card?.sections?.divCardDescription;
       if (!description) {
         return "";
       }
 
-      if (Array.isArray(description)) {
-        return description;
+      if (!Array.isArray(description)) {
+        description = [description];
       }
-      return [description];
+
+      const descriptionLines = description.map((l) => {
+        const rarityMatch = l.match(rarityRegex);
+        return {
+          text: l.replace(rarityRegex, ""),
+          rarity:
+            rarityMatch?.length > 0
+              ? rarityMatch[0].replace("(", "").replace(")", "")
+              : "normal",
+        };
+      });
+
+      return descriptionLines;
     },
     flavourText() {
       const flavourText = this.card?.sections?.flavourText;
@@ -136,6 +154,26 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
+
+  & .desc-line-normal {
+    color: var(--poe-color-normal);
+  }
+  & .desc-line-magic {
+    color: var(--poe-color-magic);
+  }
+  & .desc-line-rare {
+    color: var(--poe-color-rare);
+  }
+  & .desc-line-unique {
+    color: var(--poe-color-unique);
+  }
+  & .desc-line-corrupted {
+    color: var(--poe-color-corrupted);
+  }
+  & .desc-line-gem {
+    color: var(--poe-color-gemitem);
+  }
 }
 
 .poe-divination-card-flavour-text {
@@ -143,7 +181,7 @@ export default {
   margin-top: 274px;
   margin-left: 1px;
   height: 121px;
-  width: 258px;
+  width: 268px;
   display: flex;
   flex-direction: column;
   justify-content: center;
