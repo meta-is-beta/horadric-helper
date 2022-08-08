@@ -51,10 +51,10 @@ export default {
         description = [description];
       }
 
-      const descriptionLines = description.map((l) => {
-        const rarityMatch = l.match(rarityRegex);
+      const descriptionLines = description.map((d) => {
+        const rarityMatch = d.match(rarityRegex);
         return {
-          text: l.replace(rarityRegex, ""),
+          text: d.replace(rarityRegex, ""),
           rarity:
             rarityMatch?.length > 0
               ? rarityMatch[0].replace("(", "").replace(")", "")

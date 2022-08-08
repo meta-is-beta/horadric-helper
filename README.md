@@ -575,9 +575,10 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |   `scourgeMods`    |    `scourge-mods`    | `String[]` | List of item's Scourge mods. |
 |   `modifiers`    |    `modifiers`    | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 |    `statuses`    |    `statuses`     | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.                                                                                                    |
-| `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines.                                                                                                               |
+| `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. To set color of specifica line you can add |
+| `divCardDescription` | `div-card-description` | `String[]` | List of Divination Card's description text lines                                                                                                               |
 |  `talismanTier`  |  `talisman-tier`  |  `String`  | String of numerical value of talisman tier.                                                                                                              |
-|     `stacks`     |     `stacks`      |  `Number`  | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_                                                   |
+|     `stacks`     |     `stacks`      |  `Number|String`  | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_                                                   |
 |  `flavourText`   |  `flavour-text`   |  `String`  | List of item's flavour text lines.                                                                                                                       |
 
 ### `PoePassive` sections
@@ -641,6 +642,7 @@ _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/
 - Stacks can display how many of given item or passive there are.
 - They are defined by `stacks` section of Config Object or by line on raw item data (`Stack Size: {current stacks}/{max stacks}`)
 - They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
+- They can be passed as ether a number (eg. `5`), or as string that denotes part of total (eg. `5/10`).
 
 ### Flavour text
 
@@ -679,6 +681,30 @@ And that no beast can truly cover their tracks.
 --------
 Corrupted
 </code></pre>
+
+### Divintaion Cards
+#### Coloring text
+To color specific line in Div Card's description (`divCardDescription` section) you can add `(color)` at the end of each line. Avalible colors are: `normal`, `magic`, `rare`, `unique`, `gem` and `corrupted`.
+
+**Example**
+```
+Item Class: Divination Cards
+Rarity: Divination Card
+Left to Fate
+--------
+Stack Size: 2/4
+--------
+Map (rare)
+Map Tier: 16 (normal)
+Unidentified Corrupted (corrupted)
+--------
+Many strive for greatness,
+but it is challenge, unforeseen,
+that forges heroes.
+--------
+Shift click to unstack.
+```
+
 
 ### Dimming and hiding sections
 
