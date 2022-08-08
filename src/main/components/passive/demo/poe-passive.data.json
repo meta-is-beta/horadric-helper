@@ -254,6 +254,26 @@
         },
         "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/notable_atlas_example.png"
       }
+    },
+    {
+      "reference": "Stream of Consciousness",
+      "props": {
+        "as-icon": true
+      },
+      "config": {
+        "reference": "Stream of Consciousness",
+        "data": {
+          "name": "Stream of Consciousness",
+          "sections": {
+            "description": [
+              "Your Maps cannot be modified by Fragments",
+              "Your Maps have 50% more Base chance to contain Extra Content"
+            ]
+          },
+          "type": "atlas keystone"
+        },
+        "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/06/stream-of-consciousness-1.png"
+      }
     }
   ]
 }

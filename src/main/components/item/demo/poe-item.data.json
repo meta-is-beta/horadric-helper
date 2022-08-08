@@ -158,7 +158,8 @@
     {
       "props": {
         "asIcon": true,
-        "iconInside": true
+        "iconInside": true,
+        "show-stacks": true
       },
       "config": {
         "reference": "Exalted Orb 2",
@@ -688,11 +689,13 @@
     {
       "props": {
         "as-icon": true,
-        "icon-size": "lg"
+        "icon-size": "lg",
+        "show-stacks": true
       },
       "config": {
         "reference": "hate-cowl",
         "data": {
+          "stacks": 3,
           "rarity": "Rare",
           "type": "Equipment",
           "name": "Hate Cowl",
@@ -720,6 +723,67 @@
           }
         },
         "iconUrl": "https://meta-is-beta.com/wp-content/uploads/2022/02/Hate-Cowl.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true,
+        "iconInside": true
+      },
+      "config": {
+        "reference": "replica-voidwalker",
+        "data": "Item Class: Boots\nRarity: Unique\nReplica Voidwalker\nMurder Boots\n--------\nQuality: +20% (augmented)\nEvasion Rating: 533 (augmented)\nEnergy Shield: 52 (augmented)\n--------\nRequirements:\nLevel: 69\nDex: 82\nInt: 42\n--------\nSockets: R-G-G-B \n--------\nItem Level: 71\n--------\n+50 to Dexterity\n168% increased Evasion and Energy Shield\n30% increased Movement Speed\n10% increased Damage taken while Phasing\nYou have Phasing if you've Killed Recently\nProjectiles Chain +1 times while you have Phasing\nCelestial Footprints\n--------\n'Test subject was able to walk into the walls of his chamber after breaking a rabbit's neck.\nHe was not fast enough, however. Suggest we begin excavation to retrieve prototype.'\n--------\nShaper Item",
+        "iconUrl": "https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQXJtb3Vycy9Cb290cy9Dcm9zc2luZ1RoZVZvaWQiLCJ3IjoyLCJoIjoyLCJzY2FsZSI6MSwic2hhcGVyIjp0cnVlfV0/97df35ca87/CrossingTheVoid.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true
+      },
+      "config": {
+        "reference": "doedres-madness",
+        "data": "Item Class: Divination Cards\nRarity: Divination Card\nDoedre's Madness\n--------\nStack Size: 9/9\n--------\nDoedre Item\n--------\n`Hold your tongue before I claim it.` - Doedre Darktongue\n--------\nShift click to unstack.",
+        "iconUrl": "https://www.poewiki.net/images/e/e8/Doedre%27s_Madness_card_art.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true
+      },
+      "config": {
+        "reference": "the-skeleton",
+        "data": "Item Class: Divination Cards\nRarity: Divination Card\nThe Skeleton\n--------\nStack Size: 6/6\n--------\nLevel 1 Summon Skeletons (gem)\nQuality: +23%\nCorrupted (corrupted)\n--------\nThey stand among us, and within us.\n--------\nShift click to unstack.\n",
+        "iconUrl": "https://www.poewiki.net/images/d/d1/The_Skeleton_card_art.png"
+      }
+    },
+    {
+      "props": {
+        "asIcon": true
+      },
+      "config": {
+        "reference": "arrogance-of-the-vaal",
+        "data": "Item Class: Divination Cards\nRarity: Divination Card\nArrogance of the Vaal\n--------\nStack Size: 5/8\n--------\nItem (unique)\nTwo-Implicit (corrupted)\nCorrupted (corrupted)\n--------\nDiscovery can lead to beauty, or it can lead to ruin.\n--------\nShift click to unstack.",
+        "iconUrl": "https://www.poewiki.net/images/e/e8/Arrogance_of_the_Vaal_card_art.png"
+      }
+    },
+    {
+      "props": {
+        "as-icon": true,
+        "show-stacks": true
+      },
+      "config": {
+        "reference": "a-dab-of-ink",
+        "data": {
+          "type": "divination card",
+          "baseName": "Divination Card",
+          "name": "A Dab of Ink",
+          "stacks": "6/9",
+          "sections": {
+            "divCardDescription": "The Poet's Pen (unique)",
+            "flavourText": ["The Poet's blood is the", "Empire's ink."]
+          }
+        },
+        "iconUrl": "https://www.poewiki.net/images/b/b7/A_Dab_of_Ink_card_art.png"
       }
     }
   ]

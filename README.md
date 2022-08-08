@@ -235,6 +235,8 @@ Raw item data can be acquired from:
 - **PoE Trade** - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
 - **Path of Building (PoB)** - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
 
+:warning: Item data from the game works only in English. :warning:
+
 ### `PoeItem` object
 
 ```typescript
@@ -306,10 +308,6 @@ type PoeItem = {
     // Eg: ["corrupted", "split"]
     statuses?: ("corrupted" | "mirrored" | "split")[];
 
-    // List of item's gem description text lines
-    // Eg: ["Supports any skill that has a duration."]
-    gemDescription?: String[];
-
     // Numerical value of talisman tier.
     // Eg: "1"
     talismanTier?: String;
@@ -317,6 +315,14 @@ type PoeItem = {
     // List of item's floavur text lines.
     // Eg: ["You are slow, foolish and ignorant.", "I am not."]
     flavourText?: String;
+
+    // List of item's gem description text lines
+    // Eg: ["Supports any skill that has a duration."]
+    gemDescription?: String[];
+
+    // List of Divination Card's description text lines
+    // Eg: ["The Poet's blood is", "the Empire's ink."]
+    divCardDescription?: String[];
   };
 };
 ```
@@ -342,7 +348,7 @@ type PoePassive = {
     | "mastery"
     | "atlas basic"
     | "atlas notable"
-    | "atlas mastery";
+    | "atlas keystone";
 
   // All sections are optional
   sections: {
@@ -569,9 +575,10 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |   `scourgeMods`    |    `scourge-mods`    | `String[]` | List of item's Scourge mods. |
 |   `modifiers`    |    `modifiers`    | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 |    `statuses`    |    `statuses`     | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.                                                                                                    |
-| `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines.                                                                                                               |
+| `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. To set color of specifica line you can add |
+| `divCardDescription` | `div-card-description` | `String[]` | List of Divination Card's description text lines                                                                                                               |
 |  `talismanTier`  |  `talisman-tier`  |  `String`  | String of numerical value of talisman tier.                                                                                                              |
-|     `stacks`     |     `stacks`      |  `Number`  | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_                                                   |
+|     `stacks`     |     `stacks`      |  `Number|String`  | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_                                                   |
 |  `flavourText`   |  `flavour-text`   |  `String`  | List of item's flavour text lines.                                                                                                                       |
 
 ### `PoePassive` sections
@@ -635,6 +642,7 @@ _Full live example of stacks usage on [CodePen](https://codepen.io/meta-is-beta/
 - Stacks can display how many of given item or passive there are.
 - They are defined by `stacks` section of Config Object or by line on raw item data (`Stack Size: {current stacks}/{max stacks}`)
 - They can be displayed as either a number above the item's icon (through `show-stacks` prop) or as a prefix before the item's name in it's label (through `show-stacks-in-label` prop).
+- They can be passed as ether a number (eg. `5`), or as string that denotes part of total (eg. `5/10`).
 
 ### Flavour text
 
@@ -673,6 +681,30 @@ And that no beast can truly cover their tracks.
 --------
 Corrupted
 </code></pre>
+
+### Divintaion Cards
+#### Coloring text
+To color specific line in Div Card's description (`divCardDescription` section) you can add `(color)` at the end of each line. Avalible colors are: `normal`, `magic`, `rare`, `unique`, `gem` and `corrupted`.
+
+**Example**
+```
+Item Class: Divination Cards
+Rarity: Divination Card
+Left to Fate
+--------
+Stack Size: 2/4
+--------
+Map (rare)
+Map Tier: 16 (normal)
+Unidentified Corrupted (corrupted)
+--------
+Many strive for greatness,
+but it is challenge, unforeseen,
+that forges heroes.
+--------
+Shift click to unstack.
+```
+
 
 ### Dimming and hiding sections
 

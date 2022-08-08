@@ -193,7 +193,8 @@ export default {
       }
     }
   }
-  &.poe-passive-keystone {
+  &.poe-passive-keystone,
+  &.poe-passive-atlas-keystone {
     & .poe-passive-header {
       color: #e2dedd !important;
       background-position-y: -456px;
@@ -228,6 +229,15 @@ export default {
         background-position-y: 114px;
       }
     }
+  }
+}
+
+.poe-passive-atlas-keystone {
+  & .poe-passive-header-left-panel,
+  & .poe-passive-header,
+  & .poe-passive-header-right-panel {
+    background-color: #261200;
+    background-blend-mode: luminosity, normal;
   }
 }
 </style>

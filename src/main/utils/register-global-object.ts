@@ -1,5 +1,5 @@
 import processDataObject from "./data-processors/data-object-data-processor";
-import processStringData from "../data-processors/string-item-data-processor";
+import processStringData from "./data-processors/string-item-data-processor";
 import {
   PoeItem,
   PoePassive,

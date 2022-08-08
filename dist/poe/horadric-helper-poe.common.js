@@ -578,6 +578,34 @@ module.exports = function (fn, that) {
 
 /***/ }),
 
+/***/ "0481":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var flattenIntoArray = __webpack_require__("a2bf");
+var toObject = __webpack_require__("7b0b");
+var lengthOfArrayLike = __webpack_require__("07fa");
+var toIntegerOrInfinity = __webpack_require__("5926");
+var arraySpeciesCreate = __webpack_require__("65f0");
+
+// `Array.prototype.flat` method
+// https://tc39.es/ecma262/#sec-array.prototype.flat
+$({ target: 'Array', proto: true }, {
+  flat: function flat(/* depthArg = 1 */) {
+    var depthArg = arguments.length ? arguments[0] : undefined;
+    var O = toObject(this);
+    var sourceLen = lengthOfArrayLike(O);
+    var A = arraySpeciesCreate(O, 0);
+    A.length = flattenIntoArray(A, O, O, sourceLen, 0, depthArg === undefined ? 1 : toIntegerOrInfinity(depthArg));
+    return A;
+  }
+});
+
+
+/***/ }),
+
 /***/ "0549":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -751,13 +779,15 @@ __webpack_require__("caad");
 
 __webpack_require__("2532");
 
+__webpack_require__("2ca0");
+
+__webpack_require__("99af");
+
 __webpack_require__("d81d");
 
 __webpack_require__("4de4");
 
 __webpack_require__("5319");
-
-__webpack_require__("2ca0");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -770,14 +800,35 @@ exports.default = function (rawData) {
   sections = sections_mapper_1.remapSiegeOfTheAtlasInfluences(sections);
   var headerSection = getHeaderSection(sections);
   var itemClass = getItemClass(headerSection);
+  var itemType = getItemType(itemClass);
+  var name = getItemName(headerSection);
+  var rarity = getItemRarity(headerSection);
+
+  if (itemType === "divination card") {
+    var divCardStacks = getDivinationCardStacks(sections);
+    var divCardItem = {
+      name: name,
+      type: itemType,
+      class: itemClass,
+      baseName: rarity,
+      stacks: getStacks(divCardStacks),
+      sections: {
+        divCardStacks: extractDivCardsStacks(divCardStacks),
+        divCardDescription: getDivinationCardDescription(sections),
+        flavourText: getFlavorText(sections)
+      }
+    };
+    return divCardItem;
+  }
+
   var properties = getProperties(sections);
   return {
     class: itemClass,
-    rarity: getItemRarity(headerSection),
-    type: getItemType(itemClass),
-    name: getItemName(headerSection),
+    rarity: rarity,
+    type: itemType,
+    name: name,
     baseName: getItemBaseName(headerSection),
-    influences: getItemInfluences(sections),
+    influences: getItemInfluences(sections, name),
     sockets: getSockets(sections),
     stacks: getStacks(properties),
     sections: {
@@ -832,6 +883,7 @@ var getItemType = function getItemType(itemClass) {
   if (itemClass.includes("Gem")) return "gem";
   if (itemClass.includes("Currency")) return "currency";
   if (itemClass.includes("Maps")) return "map";
+  if (itemClass.includes("Divination")) return "divination card";
   return "equipment";
 };
 
@@ -839,25 +891,30 @@ var getItemBaseName = function getItemBaseName(headerSection) {
   return headerSection.lines[headerSection.lines.length - 1].trim();
 };
 
-var getItemInfluences = function getItemInfluences(sections) {
+var getItemInfluences = function getItemInfluences(sections, name) {
   var influencesSection = sections.find(function (x) {
     return x.name === "Influences";
   });
+  var influences = [];
 
-  if (!influencesSection) {
-    return [];
+  if (name && name.startsWith("Replica ")) {
+    influences.push("replica");
   }
 
-  return influencesSection.lines.map(function (line) {
-    var lineMatch = line.match(/^([A-z ]+) Item$/);
+  if (influencesSection) {
+    influences = influences.concat(influencesSection.lines.map(function (line) {
+      var lineMatch = line.match(/^([A-z ]+) Item$/);
 
-    if (lineMatch && lineMatch.length > 0) {
-      var influence = lineMatch[1];
-      return influence.toLowerCase().trim();
-    }
+      if (lineMatch && lineMatch.length > 0) {
+        var influence = lineMatch[1];
+        return influence.toLowerCase().trim();
+      }
 
-    return "";
-  });
+      return "";
+    }));
+  }
+
+  return influences;
 };
 
 var getItemLevel = function getItemLevel(sections) {
@@ -1039,6 +1096,33 @@ var getFlavorText = function getFlavorText(sections) {
 
   flavourText[0] = flavourText[0].replace(/Flavour text:/i, "");
   return flavourText;
+};
+
+var getDivinationCardStacks = function getDivinationCardStacks(sections) {
+  var _a;
+
+  return (_a = sections.find(function (x) {
+    return x.name === "Div card stacks";
+  })) === null || _a === void 0 ? void 0 : _a.lines;
+};
+
+var getDivinationCardDescription = function getDivinationCardDescription(sections) {
+  var _a;
+
+  return (_a = sections.find(function (x) {
+    return x.name === "Div card description";
+  })) === null || _a === void 0 ? void 0 : _a.lines;
+};
+
+var extractDivCardsStacks = function extractDivCardsStacks(divCardStacks) {
+  if (!divCardStacks) return undefined;
+  var itemStacksMatch = divCardStacks[0].match(/([0-9]+\/[0-9]+)/);
+
+  if (!itemStacksMatch) {
+    return undefined;
+  }
+
+  return itemStacksMatch[1];
 };
 
 /***/ }),
@@ -1584,36 +1668,6 @@ module.exports = function (METHOD_NAME) {
   });
 };
 
-
-/***/ }),
-
-/***/ "1e5e":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__("ac1f");
-
-__webpack_require__("00b4");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var tslib_1 = __webpack_require__("9ab4");
-
-var game_1 = tslib_1.__importDefault(__webpack_require__("0c0a"));
-
-var pob_1 = tslib_1.__importDefault(__webpack_require__("5c2a"));
-
-exports.default = function (rawData) {
-  return rawDataIsFromPob(rawData) ? pob_1.default(rawData) : game_1.default(rawData);
-};
-
-var rawDataIsFromPob = function rawDataIsFromPob(rawData) {
-  return /^\s*Rarity:/g.test(rawData);
-};
 
 /***/ }),
 
@@ -10307,6 +10361,19 @@ module.exports = {};
 
 /***/ }),
 
+/***/ "4069":
+/***/ (function(module, exports, __webpack_require__) {
+
+// this method was added to unscopables after implementation
+// in popular engines, so it's moved to a separate module
+var addToUnscopables = __webpack_require__("44d2");
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('flat');
+
+
+/***/ }),
+
 /***/ "428f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10554,6 +10621,17 @@ $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
     return $trim(this);
   }
 });
+
+
+/***/ }),
+
+/***/ "4a8b":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poe_divination_card_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("bf95");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poe_divination_card_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poe_divination_card_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
 
 
 /***/ }),
@@ -10997,6 +11075,17 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
+/***/ "571e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poe_item_image_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cfb7");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poe_item_image_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_9_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_9_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_9_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_lib_index_js_vue_loader_options_poe_item_image_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "577e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11101,7 +11190,7 @@ module.exports = function (argument) {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/popover-wrapper.vue?vue&type=template&id=0d888149&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/popover-wrapper.vue?vue&type=template&id=0d888149&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{directives:[{name:"touch",rawName:"v-touch:start",value:(_vm.handleTouchstart),expression:"handleTouchstart",arg:"start"},{name:"touch",rawName:"v-touch:end",value:(_vm.handleTouchstop),expression:"handleTouchstop",arg:"end"}],ref:"trigger",class:("" + _vm.triggerClasses),on:{"mouseover":_vm.handleMouseover,"mouseleave":_vm.handleMouseleave,"click":_vm.handleClick}},[_vm._t("trigger")],2),_c('div',{ref:"content",class:("" + _vm.contentClasses)},[_vm._t("content")],2)])}
 var staticRenderFns = []
 
@@ -13038,373 +13127,6 @@ module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ "5c2a":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _toConsumableArray = __webpack_require__("448a").default;
-
-var _slicedToArray = __webpack_require__("278c").default;
-
-__webpack_require__("99af");
-
-__webpack_require__("ac1f");
-
-__webpack_require__("00b4");
-
-__webpack_require__("4de4");
-
-__webpack_require__("d3b7");
-
-__webpack_require__("d81d");
-
-__webpack_require__("1276");
-
-__webpack_require__("498a");
-
-__webpack_require__("466d");
-
-__webpack_require__("5319");
-
-__webpack_require__("7db0");
-
-__webpack_require__("caad");
-
-__webpack_require__("2532");
-
-__webpack_require__("fb6a");
-
-__webpack_require__("2ca0");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (rawData) {
-  var item = {};
-  var dataLinesList = getDataLinesList(rawData);
-  var selectedVariant = getSelectedVariant(dataLinesList);
-  var sections = cleanMetadata(dataLinesList);
-  item.rarity = getItemRarity(sections);
-  var indexOffset = getHeaderIndexOffset(item.rarity);
-  item.name = sections[1];
-  item.baseName = getItemBaseName(indexOffset, sections);
-  indexOffset += item.baseName ? 2 : 1;
-  var defensiveValues = getItemDefenseValue(indexOffset, sections);
-  var quality = getItemQuality(sections);
-  indexOffset += defensiveValues ? defensiveValues.length : 1;
-  item.influences = getItemInfluences(indexOffset, sections);
-  item.type = getItemType(item.baseName);
-  item.sockets = getItemSockets(sections);
-
-  var _getItemImplicitsAndE = getItemImplicitsAndEnchants(sections, selectedVariant),
-      _getItemImplicitsAndE2 = _slicedToArray(_getItemImplicitsAndE, 3),
-      implicits = _getItemImplicitsAndE2[0],
-      enchants = _getItemImplicitsAndE2[1],
-      implicitsEndIndex = _getItemImplicitsAndE2[2];
-
-  var _getItemStatuses = getItemStatuses(sections),
-      _getItemStatuses2 = _slicedToArray(_getItemStatuses, 2),
-      statuses = _getItemStatuses2[0],
-      statusesStartIndex = _getItemStatuses2[1];
-
-  var modifiers = getItemModifiers(sections, implicitsEndIndex, statusesStartIndex);
-  item.sections = {
-    requirements: getItemRequirements(sections),
-    properties: [].concat(_toConsumableArray(quality), _toConsumableArray(defensiveValues)),
-    scourgeMods: getScourgeMods(sections),
-    implicits: implicits,
-    enchants: enchants,
-    modifiers: modifiers,
-    statuses: statuses
-  };
-  return item;
-};
-
-var getItemDefenseValue = function getItemDefenseValue(indexOffset, sections) {
-  var currentLine = sections[indexOffset];
-  var lineIndex = indexOffset;
-  var defensiveValues = [];
-
-  while (/(Evasion|Energy Shield|Armour|Ward):/.test(currentLine)) {
-    defensiveValues.push(currentLine);
-    lineIndex++;
-    currentLine = sections[lineIndex];
-  }
-
-  return defensiveValues;
-};
-
-var getDataLinesList = function getDataLinesList(rawData) {
-  return rawData.split("\n").map(function (l) {
-    return l.trim();
-  }).filter(function (l) {
-    return l.length > 0;
-  });
-};
-
-var getHeaderIndexOffset = function getHeaderIndexOffset(rarity) {
-  return rarity === "rare" || rarity === "unique" ? 1 : 0;
-};
-
-var processValuesInLine = function processValuesInLine(line) {
-  var rangeValueMatch = line.match(/{range:([0-9.]+)}/);
-
-  if (!rangeValueMatch) {
-    return line;
-  }
-
-  var rangePercentageValue = parseFloat(rangeValueMatch[1]);
-  var valuesMatch = line.match(/\(([0-9.]+)-([0-9.]+)\)/);
-
-  if (!valuesMatch) {
-    return line;
-  }
-
-  var lowerRangeValue = parseFloat(valuesMatch[1]);
-  var upperRangeValue = parseFloat(valuesMatch[2]);
-  var calculatedValue = Math.floor((upperRangeValue - lowerRangeValue) * rangePercentageValue + lowerRangeValue);
-  return line.replace(/\(([0-9.,]+-[0-9.,]+)\)/g, "".concat(calculatedValue));
-};
-
-var cleanStatLine = function cleanStatLine(line) {
-  return line.replace(/{range:([0-9.,]+)}/, "").replace(/{variant:[0-9.,]+}/, "").replace(/{tags:[a-z.,_]+}/, "");
-};
-
-var getItemQuality = function getItemQuality(sections) {
-  var qualityLine = sections.find(function (s) {
-    return s.includes("Quality: ");
-  });
-
-  if (!qualityLine || qualityLine.includes(" 0")) {
-    return [];
-  }
-
-  var qualityValueMatch = qualityLine.match(/: ([0-9]+)/);
-
-  if (!qualityValueMatch) {
-    return [];
-  }
-
-  return ["Quality: ".concat(qualityValueMatch[1], "%")];
-};
-
-var getItemStatuses = function getItemStatuses(sections) {
-  return getSectionsFromLine(sections, sections.length - 1, /^(Corrupted|Mirrored|Split)$/);
-};
-
-var getItemModifiers = function getItemModifiers(sections, implicitsEndIndex, statusesStartIndex) {
-  return sections.slice(implicitsEndIndex, statusesStartIndex === sections.length ? sections.length : statusesStartIndex).map(function (line) {
-    return cleanStatLine(processValuesInLine(line));
-  });
-};
-
-var getScourgeMods = function getScourgeMods(sections) {
-  return sections.filter(function (section) {
-    return section.includes("{scourge}");
-  }).map(function (section) {
-    return section.replace(/\{scourge\}/g, "");
-  });
-};
-
-var getItemImplicitsAndEnchants = function getItemImplicitsAndEnchants(sections, selectedVariant) {
-  var implicitsStartIndex = 0;
-  var implicitCountLine = sections.find(function (s, i) {
-    implicitsStartIndex = i;
-    return s.includes("Implicits: ");
-  });
-
-  if (!implicitCountLine) {
-    return [[], [], 0];
-  }
-
-  var matches = implicitCountLine.match(/^Implicits: ([0-9]+)$/);
-
-  if (!matches) {
-    return [[], [], 0];
-  }
-
-  var implicitsCount = matches[1];
-  var implicitLines = sections.slice(implicitsStartIndex + 1, implicitsStartIndex + 1 + parseInt(implicitsCount)).filter(function (line) {
-    if (!line.includes("{variant:")) {
-      return true;
-    }
-
-    if (!line.includes("{variant:".concat(selectedVariant, "}"))) {
-      return false;
-    }
-
-    return true;
-  }).map(function (line) {
-    return cleanStatLine(processValuesInLine(line));
-  });
-  var enchants = implicitLines.filter(function (line) {
-    return line.startsWith("{crafted}");
-  }).map(function (line) {
-    return line.replace("{crafted}", "");
-  });
-  var nonEnchants = implicitLines.filter(function (line) {
-    return !line.startsWith("{crafted}") && !line.startsWith("{scourge}");
-  });
-  return [nonEnchants, enchants, implicitsStartIndex + 1 + parseInt(implicitsCount)];
-};
-
-var getItemRequirements = function getItemRequirements(sections) {
-  var reqLine = sections.find(function (s) {
-    return s.includes("LevelReq:");
-  });
-
-  if (!reqLine) {
-    return [];
-  }
-
-  var matches = reqLine.match(/^LevelReq: (.+)$/);
-
-  if (!matches) {
-    return [];
-  }
-
-  return ["Level: ".concat(matches[1])];
-};
-
-var getItemSockets = function getItemSockets(sections) {
-  var socketsLine = sections.find(function (s) {
-    return s.includes("Sockets:");
-  });
-
-  if (!socketsLine) {
-    return undefined;
-  }
-
-  var matches = socketsLine.match(/^Sockets: (.+)$/);
-
-  if (!matches) {
-    return undefined;
-  }
-
-  return matches[1];
-};
-
-var getItemType = function getItemType(baseName) {
-  if (baseName.includes("Jewel")) return "jewel";
-  if (baseName.includes("Flask")) return "flask";
-  if (baseName.includes("Gem")) return "gem";
-  if (baseName.includes("Currency")) return "currency";
-  if (baseName.includes("Maps")) return "map";
-  return "equipment";
-};
-
-var getItemInfluences = function getItemInfluences(indexOffset, sections) {
-  var _getSectionsUpToLine = getSectionsUpToLine(sections, indexOffset, /^[A-z ]+ Item$/),
-      _getSectionsUpToLine2 = _slicedToArray(_getSectionsUpToLine, 1),
-      influenceSections = _getSectionsUpToLine2[0];
-
-  if (influenceSections.length < 0) {
-    return [];
-  }
-
-  return influenceSections.map(function (i) {
-    var match = i.match(/^([A-z ]+) Item$/);
-    return match ? match[1] : "";
-  });
-};
-
-var getItemBaseName = function getItemBaseName(headerIndexOffset, sections) {
-  if (/($(Evasion|Energy Shield|Armour|Ward):|(^[A-z ]+ Item$))/.test(sections[headerIndexOffset + 1])) {
-    return "";
-  } else {
-    return sections[headerIndexOffset + 1];
-  }
-};
-
-var getItemRarity = function getItemRarity(sections) {
-  var rarityLine = sections.find(function (s) {
-    return s.includes("Rarity: ");
-  });
-
-  if (!rarityLine) {
-    return "";
-  }
-
-  var matches = rarityLine.match(/^Rarity: ([A-Z]+)$/);
-
-  if (!matches) {
-    return "";
-  }
-
-  return matches[1].toLowerCase();
-};
-
-var getSelectedVariant = function getSelectedVariant(sections) {
-  var socketsLine = sections.find(function (s) {
-    return s.includes("Selected Variant:");
-  });
-
-  if (!socketsLine) {
-    return "";
-  }
-
-  var matches = socketsLine.match(/Selected Variant: ([0-9]+)$/);
-
-  if (!matches) {
-    return "";
-  }
-
-  return matches[1];
-};
-
-var getSectionsUpToLine = function getSectionsUpToLine(sections, startIndex, pattern) {
-  var selectedSections = [];
-  var currentLine = sections[startIndex];
-  var index = startIndex;
-
-  while (pattern.test(currentLine)) {
-    selectedSections.push(currentLine);
-    index++;
-
-    if (index + 1 === selectedSections.length) {
-      break;
-    }
-
-    currentLine = sections[index];
-  }
-
-  return [selectedSections, index - 1];
-};
-
-var getSectionsFromLine = function getSectionsFromLine(sections, startIndex, pattern) {
-  var selectedSections = [];
-  var currentLine = sections[startIndex];
-  var index = startIndex;
-
-  while (pattern.test(currentLine)) {
-    selectedSections.push(currentLine);
-    index--;
-
-    if (index === 0) {
-      break;
-    }
-
-    currentLine = sections[index];
-  }
-
-  return [selectedSections, index + 1];
-};
-
-var cleanMetadata = function cleanMetadata(dataLinesList) {
-  return dataLinesList.filter(function (line) {
-    if (line.includes("Prefix:") || line.includes("Suffix:") || line.includes("Variant: ") || line.includes("Crafted: ") || line.includes("BasePercentile: ") || line.includes("Unique ID: ")) {
-      return false;
-    }
-
-    return true;
-  });
-};
-
-/***/ }),
-
 /***/ "5c6c":
 /***/ (function(module, exports) {
 
@@ -13664,6 +13386,12 @@ __webpack_require__("2532");
 
 __webpack_require__("466d");
 
+__webpack_require__("cca6");
+
+__webpack_require__("0481");
+
+__webpack_require__("4069");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -13674,6 +13402,7 @@ var mapSections = function mapSections(rawData) {
   var namedSections = rawSectionsToNamedSections(rawSections);
   namedSections = fillUnknownSections(namedSections);
   namedSections = removeUnknownSections(namedSections);
+  namedSections = reasignSectionsForDivCard(namedSections);
   return namedSections;
 };
 
@@ -13869,7 +13598,7 @@ var getSectionName = function getSectionName(section) {
 };
 
 var fillUnknownSections = function fillUnknownSections(sections) {
-  var _a, _b;
+  var _a, _b, _c;
 
   var unknownSections = sections.filter(function (section) {
     return section.name === "Unknown";
@@ -13890,6 +13619,7 @@ var fillUnknownSections = function fillUnknownSections(sections) {
   var headerSectionIndex = headerSection === null || headerSection === void 0 ? void 0 : headerSection.index;
   var itemRarityLine = headerSection.lines[1];
   var itemIsGem = itemRarityLine.includes("Gem");
+  var itemIsDivinityCard = itemRarityLine.includes("Divination");
   var itemIsNormal = itemRarityLine.includes("Normal");
 
   if (sections[headerSectionIndex + 1].name === "Unknown") {
@@ -13923,7 +13653,99 @@ var fillUnknownSections = function fillUnknownSections(sections) {
     }
   }
 
+  if (itemIsDivinityCard) {
+    var divCardFlavorTextIndex = (_c = sections.find(function (x) {
+      return x.name === "Unknown";
+    })) === null || _c === void 0 ? void 0 : _c.index;
+
+    if (divCardFlavorTextIndex) {
+      sections[divCardFlavorTextIndex].name = "Flavour text";
+    }
+  }
+
   return sections;
+};
+
+var reasignSectionsForDivCard = function reasignSectionsForDivCard(sections) {
+  var headerSection = sections.find(function (x) {
+    return x.name === "Header";
+  });
+
+  if (!headerSection) {
+    return sections;
+  }
+
+  var itemRarityLine = headerSection.lines[1];
+
+  if (!itemRarityLine) {
+    return sections;
+  }
+
+  var itemIsDivinityCard = itemRarityLine.includes("Divination");
+
+  if (!itemIsDivinityCard) {
+    return sections;
+  }
+
+  var newSections = [headerSection];
+  var propertiesSection = sections.find(function (x) {
+    return x.name === "Properties";
+  });
+
+  if (propertiesSection) {
+    var stacksSection = Object.assign({}, propertiesSection);
+    stacksSection.name = "Div card stacks";
+    stacksSection.index = 1;
+    newSections.push(stacksSection);
+  }
+
+  var misslabeledSections = sections.filter(function (s) {
+    return !["Header", "Modifiers", "Properties", "Flavour text"].includes(s.name);
+  });
+  var modifiersSection = sections.find(function (s) {
+    return s.name === "Modifiers";
+  });
+
+  if (misslabeledSections.length > 0) {
+    var descriptionSection = {
+      index: newSections.length,
+      name: "Div card description",
+      lines: misslabeledSections.map(function (s) {
+        return s.lines;
+      }).flat()
+    };
+    newSections.push(descriptionSection);
+
+    if (modifiersSection) {
+      var flavourTextSection = {
+        index: newSections.length,
+        name: "Flavour text",
+        lines: _toConsumableArray(modifiersSection.lines)
+      };
+      newSections.push(flavourTextSection);
+    }
+  } else {
+    if (modifiersSection) {
+      var _descriptionSection = {
+        index: newSections.length,
+        name: "Div card description",
+        lines: _toConsumableArray(modifiersSection.lines)
+      };
+      newSections.push(_descriptionSection);
+    }
+
+    var _flavourTextSection = sections.find(function (s) {
+      return s.name === "Flavour text";
+    });
+
+    if (_flavourTextSection) {
+      newSections.push(Object.assign(Object.assign({}, _flavourTextSection), {
+        index: newSections.length
+      }));
+    }
+  }
+
+  return newSections;
 };
 
 var removeUnknownSections = function removeUnknownSections(sections) {
@@ -15445,7 +15267,7 @@ module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _home_runner_work_horadric_helper_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5530");
+/* harmony import */ var D_repos_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5530");
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("d3b7");
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("b64b");
@@ -15611,8 +15433,8 @@ var createGettersForProps = function createGettersForProps(props) {
       extensions: {}
     };
   },
-  props: Object(_home_runner_work_horadric_helper_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, mainProps),
-  computed: Object(_home_runner_work_horadric_helper_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(Object(_home_runner_work_horadric_helper_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, createGettersForProps(mainProps)), {}, {
+  props: Object(D_repos_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, mainProps),
+  computed: Object(D_repos_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(Object(D_repos_horadric_helper_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, createGettersForProps(mainProps)), {}, {
     displayMode: function displayMode() {
       if (this._asShowcase) {
         return "showcase";
@@ -15943,6 +15765,50 @@ $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
     return un$Join(toIndexedObject(this), separator === undefined ? ',' : separator);
   }
 });
+
+
+/***/ }),
+
+/***/ "a2bf":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var global = __webpack_require__("da84");
+var isArray = __webpack_require__("e8b5");
+var lengthOfArrayLike = __webpack_require__("07fa");
+var bind = __webpack_require__("0366");
+
+var TypeError = global.TypeError;
+
+// `FlattenIntoArray` abstract operation
+// https://tc39.github.io/proposal-flatMap/#sec-FlattenIntoArray
+var flattenIntoArray = function (target, original, source, sourceLen, start, depth, mapper, thisArg) {
+  var targetIndex = start;
+  var sourceIndex = 0;
+  var mapFn = mapper ? bind(mapper, thisArg) : false;
+  var element, elementLen;
+
+  while (sourceIndex < sourceLen) {
+    if (sourceIndex in source) {
+      element = mapFn ? mapFn(source[sourceIndex], sourceIndex, original) : source[sourceIndex];
+
+      if (depth > 0 && isArray(element)) {
+        elementLen = lengthOfArrayLike(element);
+        targetIndex = flattenIntoArray(target, original, element, elementLen, targetIndex, depth - 1) - 1;
+      } else {
+        if (targetIndex >= 0x1FFFFFFFFFFFFF) throw TypeError('Exceed the acceptable array length');
+        target[targetIndex] = element;
+      }
+
+      targetIndex++;
+    }
+    sourceIndex++;
+  }
+  return targetIndex;
+};
+
+module.exports = flattenIntoArray;
 
 
 /***/ }),
@@ -16407,6 +16273,373 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
+/***/ "a706":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _toConsumableArray = __webpack_require__("448a").default;
+
+var _slicedToArray = __webpack_require__("278c").default;
+
+__webpack_require__("99af");
+
+__webpack_require__("ac1f");
+
+__webpack_require__("00b4");
+
+__webpack_require__("4de4");
+
+__webpack_require__("d3b7");
+
+__webpack_require__("d81d");
+
+__webpack_require__("1276");
+
+__webpack_require__("498a");
+
+__webpack_require__("466d");
+
+__webpack_require__("5319");
+
+__webpack_require__("7db0");
+
+__webpack_require__("caad");
+
+__webpack_require__("2532");
+
+__webpack_require__("fb6a");
+
+__webpack_require__("2ca0");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (rawData) {
+  var item = {};
+  var dataLinesList = getDataLinesList(rawData);
+  var selectedVariant = getSelectedVariant(dataLinesList);
+  var sections = cleanMetadata(dataLinesList);
+  item.rarity = getItemRarity(sections);
+  var indexOffset = getHeaderIndexOffset(item.rarity);
+  item.name = sections[1];
+  item.baseName = getItemBaseName(indexOffset, sections);
+  indexOffset += item.baseName ? 2 : 1;
+  var defensiveValues = getItemDefenseValue(indexOffset, sections);
+  var quality = getItemQuality(sections);
+  indexOffset += defensiveValues ? defensiveValues.length : 1;
+  item.influences = getItemInfluences(indexOffset, sections);
+  item.type = getItemType(item.baseName);
+  item.sockets = getItemSockets(sections);
+
+  var _getItemImplicitsAndE = getItemImplicitsAndEnchants(sections, selectedVariant),
+      _getItemImplicitsAndE2 = _slicedToArray(_getItemImplicitsAndE, 3),
+      implicits = _getItemImplicitsAndE2[0],
+      enchants = _getItemImplicitsAndE2[1],
+      implicitsEndIndex = _getItemImplicitsAndE2[2];
+
+  var _getItemStatuses = getItemStatuses(sections),
+      _getItemStatuses2 = _slicedToArray(_getItemStatuses, 2),
+      statuses = _getItemStatuses2[0],
+      statusesStartIndex = _getItemStatuses2[1];
+
+  var modifiers = getItemModifiers(sections, implicitsEndIndex, statusesStartIndex);
+  item.sections = {
+    requirements: getItemRequirements(sections),
+    properties: [].concat(_toConsumableArray(quality), _toConsumableArray(defensiveValues)),
+    scourgeMods: getScourgeMods(sections),
+    implicits: implicits,
+    enchants: enchants,
+    modifiers: modifiers,
+    statuses: statuses
+  };
+  return item;
+};
+
+var getItemDefenseValue = function getItemDefenseValue(indexOffset, sections) {
+  var currentLine = sections[indexOffset];
+  var lineIndex = indexOffset;
+  var defensiveValues = [];
+
+  while (/(Evasion|Energy Shield|Armour|Ward):/.test(currentLine)) {
+    defensiveValues.push(currentLine);
+    lineIndex++;
+    currentLine = sections[lineIndex];
+  }
+
+  return defensiveValues;
+};
+
+var getDataLinesList = function getDataLinesList(rawData) {
+  return rawData.split("\n").map(function (l) {
+    return l.trim();
+  }).filter(function (l) {
+    return l.length > 0;
+  });
+};
+
+var getHeaderIndexOffset = function getHeaderIndexOffset(rarity) {
+  return rarity === "rare" || rarity === "unique" ? 1 : 0;
+};
+
+var processValuesInLine = function processValuesInLine(line) {
+  var rangeValueMatch = line.match(/{range:([0-9.]+)}/);
+
+  if (!rangeValueMatch) {
+    return line;
+  }
+
+  var rangePercentageValue = parseFloat(rangeValueMatch[1]);
+  var valuesMatch = line.match(/\(([0-9.]+)-([0-9.]+)\)/);
+
+  if (!valuesMatch) {
+    return line;
+  }
+
+  var lowerRangeValue = parseFloat(valuesMatch[1]);
+  var upperRangeValue = parseFloat(valuesMatch[2]);
+  var calculatedValue = Math.floor((upperRangeValue - lowerRangeValue) * rangePercentageValue + lowerRangeValue);
+  return line.replace(/\(([0-9.,]+-[0-9.,]+)\)/g, "".concat(calculatedValue));
+};
+
+var cleanStatLine = function cleanStatLine(line) {
+  return line.replace(/{range:([0-9.,]+)}/, "").replace(/{variant:[0-9.,]+}/, "").replace(/{tags:[a-z.,_]+}/, "");
+};
+
+var getItemQuality = function getItemQuality(sections) {
+  var qualityLine = sections.find(function (s) {
+    return s.includes("Quality: ");
+  });
+
+  if (!qualityLine || qualityLine.includes(" 0")) {
+    return [];
+  }
+
+  var qualityValueMatch = qualityLine.match(/: ([0-9]+)/);
+
+  if (!qualityValueMatch) {
+    return [];
+  }
+
+  return ["Quality: ".concat(qualityValueMatch[1], "%")];
+};
+
+var getItemStatuses = function getItemStatuses(sections) {
+  return getSectionsFromLine(sections, sections.length - 1, /^(Corrupted|Mirrored|Split)$/);
+};
+
+var getItemModifiers = function getItemModifiers(sections, implicitsEndIndex, statusesStartIndex) {
+  return sections.slice(implicitsEndIndex, statusesStartIndex === sections.length ? sections.length : statusesStartIndex).map(function (line) {
+    return cleanStatLine(processValuesInLine(line));
+  });
+};
+
+var getScourgeMods = function getScourgeMods(sections) {
+  return sections.filter(function (section) {
+    return section.includes("{scourge}");
+  }).map(function (section) {
+    return section.replace(/\{scourge\}/g, "");
+  });
+};
+
+var getItemImplicitsAndEnchants = function getItemImplicitsAndEnchants(sections, selectedVariant) {
+  var implicitsStartIndex = 0;
+  var implicitCountLine = sections.find(function (s, i) {
+    implicitsStartIndex = i;
+    return s.includes("Implicits: ");
+  });
+
+  if (!implicitCountLine) {
+    return [[], [], 0];
+  }
+
+  var matches = implicitCountLine.match(/^Implicits: ([0-9]+)$/);
+
+  if (!matches) {
+    return [[], [], 0];
+  }
+
+  var implicitsCount = matches[1];
+  var implicitLines = sections.slice(implicitsStartIndex + 1, implicitsStartIndex + 1 + parseInt(implicitsCount)).filter(function (line) {
+    if (!line.includes("{variant:")) {
+      return true;
+    }
+
+    if (!line.includes("{variant:".concat(selectedVariant, "}"))) {
+      return false;
+    }
+
+    return true;
+  }).map(function (line) {
+    return cleanStatLine(processValuesInLine(line));
+  });
+  var enchants = implicitLines.filter(function (line) {
+    return line.startsWith("{crafted}");
+  }).map(function (line) {
+    return line.replace("{crafted}", "");
+  });
+  var nonEnchants = implicitLines.filter(function (line) {
+    return !line.startsWith("{crafted}") && !line.startsWith("{scourge}");
+  });
+  return [nonEnchants, enchants, implicitsStartIndex + 1 + parseInt(implicitsCount)];
+};
+
+var getItemRequirements = function getItemRequirements(sections) {
+  var reqLine = sections.find(function (s) {
+    return s.includes("LevelReq:");
+  });
+
+  if (!reqLine) {
+    return [];
+  }
+
+  var matches = reqLine.match(/^LevelReq: (.+)$/);
+
+  if (!matches) {
+    return [];
+  }
+
+  return ["Level: ".concat(matches[1])];
+};
+
+var getItemSockets = function getItemSockets(sections) {
+  var socketsLine = sections.find(function (s) {
+    return s.includes("Sockets:");
+  });
+
+  if (!socketsLine) {
+    return undefined;
+  }
+
+  var matches = socketsLine.match(/^Sockets: (.+)$/);
+
+  if (!matches) {
+    return undefined;
+  }
+
+  return matches[1];
+};
+
+var getItemType = function getItemType(baseName) {
+  if (baseName.includes("Jewel")) return "jewel";
+  if (baseName.includes("Flask")) return "flask";
+  if (baseName.includes("Gem")) return "gem";
+  if (baseName.includes("Currency")) return "currency";
+  if (baseName.includes("Maps")) return "map";
+  return "equipment";
+};
+
+var getItemInfluences = function getItemInfluences(indexOffset, sections) {
+  var _getSectionsUpToLine = getSectionsUpToLine(sections, indexOffset, /^[A-z ]+ Item$/),
+      _getSectionsUpToLine2 = _slicedToArray(_getSectionsUpToLine, 1),
+      influenceSections = _getSectionsUpToLine2[0];
+
+  if (influenceSections.length < 0) {
+    return [];
+  }
+
+  return influenceSections.map(function (i) {
+    var match = i.match(/^([A-z ]+) Item$/);
+    return match ? match[1] : "";
+  });
+};
+
+var getItemBaseName = function getItemBaseName(headerIndexOffset, sections) {
+  if (/($(Evasion|Energy Shield|Armour|Ward):|(^[A-z ]+ Item$))/.test(sections[headerIndexOffset + 1])) {
+    return "";
+  } else {
+    return sections[headerIndexOffset + 1];
+  }
+};
+
+var getItemRarity = function getItemRarity(sections) {
+  var rarityLine = sections.find(function (s) {
+    return s.includes("Rarity: ");
+  });
+
+  if (!rarityLine) {
+    return "";
+  }
+
+  var matches = rarityLine.match(/^Rarity: ([A-Z]+)$/);
+
+  if (!matches) {
+    return "";
+  }
+
+  return matches[1].toLowerCase();
+};
+
+var getSelectedVariant = function getSelectedVariant(sections) {
+  var socketsLine = sections.find(function (s) {
+    return s.includes("Selected Variant:");
+  });
+
+  if (!socketsLine) {
+    return "";
+  }
+
+  var matches = socketsLine.match(/Selected Variant: ([0-9]+)$/);
+
+  if (!matches) {
+    return "";
+  }
+
+  return matches[1];
+};
+
+var getSectionsUpToLine = function getSectionsUpToLine(sections, startIndex, pattern) {
+  var selectedSections = [];
+  var currentLine = sections[startIndex];
+  var index = startIndex;
+
+  while (pattern.test(currentLine)) {
+    selectedSections.push(currentLine);
+    index++;
+
+    if (index + 1 === selectedSections.length) {
+      break;
+    }
+
+    currentLine = sections[index];
+  }
+
+  return [selectedSections, index - 1];
+};
+
+var getSectionsFromLine = function getSectionsFromLine(sections, startIndex, pattern) {
+  var selectedSections = [];
+  var currentLine = sections[startIndex];
+  var index = startIndex;
+
+  while (pattern.test(currentLine)) {
+    selectedSections.push(currentLine);
+    index--;
+
+    if (index === 0) {
+      break;
+    }
+
+    currentLine = sections[index];
+  }
+
+  return [selectedSections, index + 1];
+};
+
+var cleanMetadata = function cleanMetadata(dataLinesList) {
+  return dataLinesList.filter(function (line) {
+    if (line.includes("Prefix:") || line.includes("Suffix:") || line.includes("Variant: ") || line.includes("Crafted: ") || line.includes("BasePercentile: ") || line.includes("Unique ID: ")) {
+      return false;
+    }
+
+    return true;
+  });
+};
+
+/***/ }),
+
 /***/ "ab13":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16608,6 +16841,36 @@ if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
   });
 }
 
+
+/***/ }),
+
+/***/ "b217":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__("ac1f");
+
+__webpack_require__("00b4");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var tslib_1 = __webpack_require__("9ab4");
+
+var game_1 = tslib_1.__importDefault(__webpack_require__("0c0a"));
+
+var pob_1 = tslib_1.__importDefault(__webpack_require__("a706"));
+
+exports.default = function (rawData) {
+  return rawDataIsFromPob(rawData) ? pob_1.default(rawData) : game_1.default(rawData);
+};
+
+var rawDataIsFromPob = function rawDataIsFromPob(rawData) {
+  return /^\s*Rarity:/g.test(rawData);
+};
 
 /***/ }),
 
@@ -16852,6 +17115,13 @@ module.exports = !fails(function () {
 
 /***/ }),
 
+/***/ "bf95":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "c04e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16907,7 +17177,7 @@ var tslib_1 = __webpack_require__("9ab4");
 
 var data_object_data_processor_1 = tslib_1.__importDefault(__webpack_require__("8b0a"));
 
-var string_item_data_processor_1 = tslib_1.__importDefault(__webpack_require__("1e5e"));
+var string_item_data_processor_1 = tslib_1.__importDefault(__webpack_require__("b217"));
 
 window.HoradricHelper = window.HoradricHelper || {};
 window.HoradricHelper.PathOfExile = {
@@ -17226,6 +17496,13 @@ module.exports = function (key, value) {
   } return value;
 };
 
+
+/***/ }),
+
+/***/ "cfb7":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -18544,26 +18821,27 @@ module.exports.f = function (C) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/poe-item.vue?vue&type=template&id=d2ac53a2&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize,"showIconInside":_vm._iconInside,"showIconOutside":_vm._iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections,"showSockets":_vm._showSocketsInShowcase,"socketReferences":_vm.socketReferences,"showBorder":_vm.showBorder}})],1):_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('popover-wrapper',{attrs:{"contentClasses":_vm.popoverClassesComputed,"placement":_vm._popoverPosition}},[_c('template',{slot:"content"},[_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize,"showIconInside":_vm._iconInside,"showIconOutside":_vm._iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections,"showSockets":_vm._showSocketsInShowcase,"socketReferences":_vm.socketReferences,"showBorder":_vm.showBorder}})],1),_c('template',{slot:"trigger"},[_c('div',[(_vm.displayMode === "icon")?_c('div',[(_vm.shouldShowStacksOnIcon)?_c('svg',{staticClass:"poe-item-stacks"},[_c('text',{attrs:{"x":"2","y":"18"}},[_vm._v(_vm._s(_vm.item.stacks))])]):_vm._e(),_c('poe-item-image',{attrs:{"iconSize":_vm._iconSize,"iconUrl":_vm.iconUrl,"type":_vm.item.type}}),(_vm.shouldShowSockets)?_c('poe-item-sockets',{attrs:{"sockets":_vm.item.sockets,"socketReferences":_vm.socketReferences}}):_vm._e(),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))]),(_vm.shouldShowBaseName)?_c('div',{staticClass:"poe-icon-sublabel"},[_vm._v(" "+_vm._s(_vm.item.baseName)+" ")]):_vm._e()]):_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{class:_vm.linkClassesComputed},[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])])],2)],1)]):_vm._e()}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/poe-item.vue?vue&type=template&id=1b9069b1&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-item-showcase-wrapper"},[(_vm.item.type === "divination card")?_c('poe-divination-card',{attrs:{"card":_vm.item,"iconUrl":_vm.iconUrl}}):_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize,"showIconInside":_vm._iconInside,"showIconOutside":_vm._iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections,"showSockets":_vm._showSocketsInShowcase,"socketReferences":_vm.socketReferences,"showBorder":_vm.showBorder}})],1):_c('div',{staticClass:"poe-item-showcase-wrapper"},[_c('popover-wrapper',{attrs:{"contentClasses":_vm.popoverClassesComputed,"placement":_vm._popoverPosition}},[_c('template',{slot:"content"},[(_vm.item.type === "divination card")?_c('poe-divination-card',{attrs:{"card":_vm.item,"iconUrl":_vm.iconUrl}}):_c('poe-item-showcase',{attrs:{"item":_vm.item,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize,"showIconInside":_vm._iconInside,"showIconOutside":_vm._iconOutside,"dimedSections":_vm.dimedSections,"hiddenSections":_vm.hiddenSections,"showSockets":_vm._showSocketsInShowcase,"socketReferences":_vm.socketReferences,"showBorder":_vm.showBorder}})],1),_c('template',{slot:"trigger"},[_c('div',[(_vm.displayMode === "icon")?_c('div',[(_vm.shouldShowStacksOnIcon)?_c('svg',{staticClass:"poe-item-stacks"},[_c('text',{attrs:{"x":"2","y":"18"}},[_vm._v(_vm._s(_vm.item.stacks))])]):_vm._e(),_c('poe-item-image',{attrs:{"iconSize":_vm._iconSize,"iconUrl":_vm.iconUrl,"type":_vm.item.type,"classes":_vm.iconImageClassesComputed}}),(_vm.shouldShowSockets)?_c('poe-item-sockets',{attrs:{"sockets":_vm.item.sockets,"socketReferences":_vm.socketReferences}}):_vm._e(),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))]),(_vm.shouldShowBaseName)?_c('div',{staticClass:"poe-icon-sublabel"},[_vm._v(" "+_vm._s(_vm.item.baseName)+" ")]):_vm._e()]):_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{class:_vm.linkClassesComputed},[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])])],2)],1)]):_vm._e()}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/main/components/item/poe-item.vue?vue&type=template&id=d2ac53a2&
+// CONCATENATED MODULE: ./src/main/components/item/poe-item.vue?vue&type=template&id=1b9069b1&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-showcase.vue?vue&type=template&id=6e59d272&
-var poe_item_showcasevue_type_template_id_6e59d272_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon poe-item-icon-beside-showcase","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-showcase.vue?vue&type=template&id=ab3dce68&
+var poe_item_showcasevue_type_template_id_ab3dce68_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon poe-item-icon-beside-showcase","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{class:_vm.headerClasses},[_c('div',{class:_vm.leftHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()]),_c('div',{staticClass:"poe-item-header-center-panel"},[_c('div',[_vm._v(_vm._s(_vm.item.name))]),(
             _vm.item.name != _vm.item.baseName &&
+            _vm.item.rarity &&
             (_vm.item.rarity.toLowerCase() === 'rare' ||
               _vm.item.rarity.toLowerCase() === 'unique')
           )?_c('div',[_vm._v(" "+_vm._s(_vm.item.baseName)+" ")]):_vm._e()]),_c('div',{class:_vm.rightHeaderPanelClasses},[(_vm.itemInfluences.length > 0)?_c('div'):_vm._e()])]),_c('div',{staticClass:"poe-item-stats"},[(_vm.shouldShowSockets)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowSockets)?_c('poe-item-sockets',{attrs:{"sockets":_vm.item.sockets,"showBackground":false,"socketReferences":_vm.socketReferences}}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemProperties)?_c('div',_vm._l((_vm.itemProperties),function(property,index){return _c('div',{key:(index + "-property"),class:_vm.getPropertyClasses(index),domProps:{"innerHTML":_vm._s(property)}})}),0):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemLevel)?_c('div',{class:_vm.getItemLevelClasses()},[_vm._v(" Item Level: "),(_vm.item.sections.itemLevel)?_c('span',{staticClass:"poe-item-level-value"},[_vm._v(" "+_vm._s(_vm.item.sections.itemLevel)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowTalismanTier && !_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowTalismanTier)?_c('div',{class:_vm.getTalismanTierClasses()},[_vm._v(" Talisman Tier: "),(_vm.item.sections.talismanTier)?_c('span',{staticClass:"poe-item-talisman-tier"},[_vm._v(" "+_vm._s(_vm.item.sections.talismanTier)+" ")]):_vm._e()]):_vm._e(),(_vm.shouldShowItemRequirements && !_vm.shouldShowItemLevel)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemRequirements)?_c('div',{class:_vm.getRequirementsClasses()},[_c('div',{domProps:{"innerHTML":_vm._s(_vm.itemRequirements)}})]):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemEnchants)?_c('div',_vm._l((_vm.itemEnchants),function(enchant,index){return _c('div',{key:(index + "-enchant"),class:_vm.getEnchantsClasses(index)},[_vm._v(" "+_vm._s(enchant)+" ")])}),0):_vm._e(),(_vm.shouldShowItemScourgeMods)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemScourgeMods)?_c('div',_vm._l((_vm.itemScourgeMods),function(scourgeMod,index){return _c('div',{key:(index + "-scourge-mod"),class:_vm.getScourgeModClasses(index)},[_vm._v(" "+_vm._s(scourgeMod)+" ")])}),0):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemImplicits)?_c('div',_vm._l((_vm.itemImplicits),function(implicit,index){return _c('div',{key:(index + "-implicit"),class:_vm.getImplicitClasses(index)},[_vm._v(" "+_vm._s(implicit)+" ")])}),0):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowGemDescription)?_c('div',_vm._l((_vm.item.sections.gemDescription),function(desciptionLine,index){return _c('div',{key:(index + "-gem-desc"),class:_vm.getGemDescriptionClasses(index)},[_vm._v(" "+_vm._s(desciptionLine)+" ")])}),0):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowItemModifiers)?_c('div',_vm._l((_vm.itemModifiers),function(modifier,index){return _c('div',{key:(index + "-modifier"),class:_vm.getModifierClasses(modifier, index)},[_vm._v(" "+_vm._s(modifier.text)+" ")])}),0):_vm._e(),(_vm.shouldShowStatuses)?_c('div',[(_vm.itemIsCorrupted)?_c('div',{staticClass:"poe-item-corrupted"},[_vm._v("Corrupted")]):_vm._e(),(_vm.itemIsMirrored)?_c('div',{staticClass:"poe-item-mirrored"},[_vm._v("Mirrored")]):_vm._e(),(_vm.itemIsSplit)?_c('div',{staticClass:"poe-item-split"},[_vm._v("Split")]):_vm._e()]):_vm._e(),(_vm.shouldShowFlavorText)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowFlavorText)?_c('div',_vm._l((_vm.itemFlavorText),function(flavourLine,index){return _c('div',{key:(index + "-flavour"),class:_vm.getFlavorClasses(flavourLine, index)},[_vm._v(" "+_vm._s(flavourLine)+" ")])}),0):_vm._e(),(_vm.itemIsScourged)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.itemIsScourged)?_c('div',[_c('div',{staticClass:"poe-item-scourged"},[_vm._v("Scourged")])]):_vm._e(),(_vm.shouldShowIconInside)?_c('div',{staticClass:"poe-item-separator"}):_vm._e(),(_vm.shouldShowIconInside)?_c('poe-item-image',{attrs:{"classes":"poe-item-icon","iconSize":_vm.iconSize,"type":_vm.item.type,"iconUrl":_vm.iconUrl}}):_vm._e()],1)])],1)}
-var poe_item_showcasevue_type_template_id_6e59d272_staticRenderFns = []
+var poe_item_showcasevue_type_template_id_ab3dce68_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-item-showcase.vue?vue&type=template&id=6e59d272&
+// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-item-showcase.vue?vue&type=template&id=ab3dce68&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
@@ -18586,12 +18864,12 @@ var es_array_join = __webpack_require__("a15b");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-image.vue?vue&type=template&id=076323b3&
-var poe_item_imagevue_type_template_id_076323b3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('img',{class:_vm.classes,attrs:{"loading":"lazy","width":_vm.computedIconSize,"height":"auto","src":this.iconUrl,"alt":" ","onerror":"this.style.display='none'"}})}
-var poe_item_imagevue_type_template_id_076323b3_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-image.vue?vue&type=template&id=fc55dda8&
+var poe_item_imagevue_type_template_id_fc55dda8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('img',{class:_vm.classes,attrs:{"loading":"lazy","width":_vm.computedIconSize,"height":"auto","src":this.iconUrl,"alt":" ","onerror":"this.style.display='none'"}})}
+var poe_item_imagevue_type_template_id_fc55dda8_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-item-image.vue?vue&type=template&id=076323b3&
+// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-item-image.vue?vue&type=template&id=fc55dda8&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-image.vue?vue&type=script&lang=js&
 //
@@ -18656,6 +18934,9 @@ var poe_item_imagevue_type_template_id_076323b3_staticRenderFns = []
 });
 // CONCATENATED MODULE: ./src/main/components/item/fragments/poe-item-image.vue?vue&type=script&lang=js&
  /* harmony default export */ var fragments_poe_item_imagevue_type_script_lang_js_ = (poe_item_imagevue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/main/components/item/fragments/poe-item-image.vue?vue&type=style&index=0&lang=scss&
+var poe_item_imagevue_type_style_index_0_lang_scss_ = __webpack_require__("571e");
+
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__("2877");
 
@@ -18665,12 +18946,13 @@ var componentNormalizer = __webpack_require__("2877");
 
 
 
+
 /* normalize component */
 
 var component = Object(componentNormalizer["a" /* default */])(
   fragments_poe_item_imagevue_type_script_lang_js_,
-  poe_item_imagevue_type_template_id_076323b3_render,
-  poe_item_imagevue_type_template_id_076323b3_staticRenderFns,
+  poe_item_imagevue_type_template_id_fc55dda8_render,
+  poe_item_imagevue_type_template_id_fc55dda8_staticRenderFns,
   false,
   null,
   null,
@@ -18679,7 +18961,7 @@ var component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var poe_item_image = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-sockets.vue?vue&type=template&id=03502ea9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-item-sockets.vue?vue&type=template&id=03502ea9&
 var poe_item_socketsvue_type_template_id_03502ea9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:"poe-sockets " + (_vm.showBackground ? "poe-icon-label" : "")},[_vm._l((_vm.socketsList),function(socket,index){return [(_vm.socketReferences && _vm.socketReferences[index + 1])?_c('div',[_c('poe-item',{key:(index + "-item"),ref:("poe-item-" + index),refInFor:true,attrs:{"reference":_vm.socketReferences[index + 1],"classes":("poe-socketed-item poe-socket poe-item-socket-" + socket),"label-text":"◉","popover-position":"bottom","as-text":true,"as-showcase":false,"as-icon":false,"icon-inside":true,"icon-outside":false}})],1):_vm._e(),_c('div',{key:(index + "-socket"),class:_vm.getSocketClasses(socket, index)}),(_vm.linksList[index])?_c('div',{key:(index + "-link"),staticClass:"socket-link"}):_vm._e()]})],2)}
 var poe_item_socketsvue_type_template_id_03502ea9_staticRenderFns = []
 
@@ -19058,6 +19340,7 @@ var showcase_mixin = __webpack_require__("7954");
 //
 //
 //
+//
 
 
 
@@ -19253,9 +19536,15 @@ var showcase_mixin = __webpack_require__("7954");
       return classes;
     },
     headerClasses: function headerClasses() {
+      var _this$item;
+
       var classes = "poe-item-header";
 
-      if (this.item.rarity && this.item.rarity.toLowerCase() === "rare" || this.item.rarity.toLowerCase() === "unique") {
+      if (((_this$item = this.item) === null || _this$item === void 0 ? void 0 : _this$item.rarity) === undefined) {
+        return classes;
+      }
+
+      if (this.item.rarity.toLowerCase() === "rare" || this.item.rarity.toLowerCase() === "unique") {
         classes += " poe-item-header-double";
       } else {
         classes += " poe-item-header-single";
@@ -19313,8 +19602,8 @@ var poe_item_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__("7f
 
 var poe_item_showcase_component = Object(componentNormalizer["a" /* default */])(
   fragments_poe_item_showcasevue_type_script_lang_js_,
-  poe_item_showcasevue_type_template_id_6e59d272_render,
-  poe_item_showcasevue_type_template_id_6e59d272_staticRenderFns,
+  poe_item_showcasevue_type_template_id_ab3dce68_render,
+  poe_item_showcasevue_type_template_id_ab3dce68_staticRenderFns,
   false,
   null,
   null,
@@ -19329,6 +19618,149 @@ var popover_wrapper = __webpack_require__("5a0a");
 // EXTERNAL MODULE: ./src/main/mixins/entity.mixin.js
 var entity_mixin = __webpack_require__("9b48");
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-divination-card.vue?vue&type=template&id=5c9bfc6a&
+var poe_divination_cardvue_type_template_id_5c9bfc6a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{ref:"div-card-wrapper",staticClass:"poe-divination-card-wrapper"},[_c('div',{staticClass:"poe-divination-card-bg-img"}),_c('div',{staticClass:"poe-divination-card-name"},[_c('span',[_vm._v(_vm._s(_vm.name))])]),_c('div',{staticClass:"poe-divination-card-stacks"},[_c('div',[_c('span',[_vm._v(_vm._s(_vm.stacks))])])]),_c('div',{staticClass:"poe-divination-card-description"},_vm._l((_vm.description),function(descLine,index){return _c('span',{key:index},[_vm._v(" "+_vm._s(descLine)+" ")])}),0),_c('div',{staticClass:"poe-divination-card-flavour-text"},_vm._l((_vm.flavourText),function(flavLine,index){return _c('span',{key:index},[_vm._v(" "+_vm._s(flavLine)+" ")])}),0)])])}
+var poe_divination_cardvue_type_template_id_5c9bfc6a_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-divination-card.vue?vue&type=template&id=5c9bfc6a&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/fragments/poe-divination-card.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var poe_divination_cardvue_type_script_lang_js_ = ({
+  name: "PoeDivinationCard",
+  props: {
+    card: {
+      type: Object,
+      default: function _default() {}
+    },
+    iconUrl: {
+      type: String,
+      default: ""
+    }
+  },
+  computed: {
+    name: function name() {
+      var _this$card;
+
+      return ((_this$card = this.card) === null || _this$card === void 0 ? void 0 : _this$card.name) || "";
+    },
+    description: function description() {
+      var _this$card2, _this$card2$sections;
+
+      var description = (_this$card2 = this.card) === null || _this$card2 === void 0 ? void 0 : (_this$card2$sections = _this$card2.sections) === null || _this$card2$sections === void 0 ? void 0 : _this$card2$sections.divCardDescription;
+
+      if (!description) {
+        return "";
+      }
+
+      if (Array.isArray(description)) {
+        return description;
+      }
+
+      return [description];
+    },
+    flavourText: function flavourText() {
+      var _this$card3, _this$card3$sections;
+
+      var flavourText = (_this$card3 = this.card) === null || _this$card3 === void 0 ? void 0 : (_this$card3$sections = _this$card3.sections) === null || _this$card3$sections === void 0 ? void 0 : _this$card3$sections.flavourText;
+
+      if (!flavourText) {
+        return "";
+      }
+
+      if (Array.isArray(flavourText)) {
+        return flavourText;
+      }
+
+      return [flavourText];
+    },
+    stacks: function stacks() {
+      var _this$card4, _this$card4$sections;
+
+      return ((_this$card4 = this.card) === null || _this$card4 === void 0 ? void 0 : (_this$card4$sections = _this$card4.sections) === null || _this$card4$sections === void 0 ? void 0 : _this$card4$sections.divCardStacks) || "";
+    }
+  },
+  watch: {
+    iconUrl: {
+      immediate: false,
+      handler: function handler(value) {
+        if (value) {
+          var _this$$refs$divCard;
+
+          var imgStyle = (_this$$refs$divCard = this.$refs["div-card-wrapper"]) === null || _this$$refs$divCard === void 0 ? void 0 : _this$$refs$divCard.style;
+
+          if (imgStyle) {
+            imgStyle.backgroundImage = "url(\"".concat(value, "\")");
+          }
+        }
+      }
+    }
+  },
+  mounted: function mounted() {
+    if (this.iconUrl) {
+      var _this$$refs$divCard2;
+
+      var imgStyle = (_this$$refs$divCard2 = this.$refs["div-card-wrapper"]) === null || _this$$refs$divCard2 === void 0 ? void 0 : _this$$refs$divCard2.style;
+
+      if (imgStyle) {
+        imgStyle.backgroundImage = "url(\"".concat(this.iconUrl, "\")");
+      }
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-divination-card.vue?vue&type=script&lang=js&
+ /* harmony default export */ var fragments_poe_divination_cardvue_type_script_lang_js_ = (poe_divination_cardvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/main/components/item/fragments/poe-divination-card.vue?vue&type=style&index=0&lang=scss&
+var poe_divination_cardvue_type_style_index_0_lang_scss_ = __webpack_require__("4a8b");
+
+// CONCATENATED MODULE: ./src/main/components/item/fragments/poe-divination-card.vue
+
+
+
+
+
+
+/* normalize component */
+
+var poe_divination_card_component = Object(componentNormalizer["a" /* default */])(
+  fragments_poe_divination_cardvue_type_script_lang_js_,
+  poe_divination_cardvue_type_template_id_5c9bfc6a_render,
+  poe_divination_cardvue_type_template_id_5c9bfc6a_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var poe_divination_card = (poe_divination_card_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/item/poe-item.vue?vue&type=script&lang=js&
 
 //
@@ -19407,6 +19839,24 @@ var entity_mixin = __webpack_require__("9b48");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -19418,7 +19868,8 @@ var entity_mixin = __webpack_require__("9b48");
     PoeItemShowcase: poe_item_showcase,
     PoeItemImage: poe_item_image,
     PoeItemSockets: poe_item_sockets,
-    PopoverWrapper: popover_wrapper["a" /* default */]
+    PopoverWrapper: popover_wrapper["a" /* default */],
+    PoeDivinationCard: poe_divination_card
   },
   mixins: [entity_mixin["a" /* default */]],
   computed: {
@@ -19458,6 +19909,10 @@ var entity_mixin = __webpack_require__("9b48");
         classes += " poe-item-link-".concat(this.item.rarity.toLowerCase());
       }
 
+      return classes;
+    },
+    iconImageClassesComputed: function iconImageClassesComputed() {
+      var classes = this.item.type === "divination card" ? "poe-item-div-card-icon" : "";
       return classes;
     },
     shouldShowBaseName: function shouldShowBaseName() {
@@ -19590,22 +20045,22 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// EXTERNAL MODULE: ./src/main/components/item/poe-item.vue + 19 modules
+// EXTERNAL MODULE: ./src/main/components/item/poe-item.vue + 24 modules
 var poe_item = __webpack_require__("f150");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/passive/poe-passive.vue?vue&type=template&id=c463e7a0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/passive/poe-passive.vue?vue&type=template&id=c463e7a0&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.show)?_c('div',{class:_vm.classesComputed},[(_vm.displayMode === "showcase")?_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize,"showIconInside":_vm._iconInside,"showIconOutside":_vm._iconOutside,"dimedSections":_vm.dimedSections,"showBorder":_vm.showBorder}})],1):_c('div',{staticClass:"poe-passive-showcase-wrapper"},[_c('popover-wrapper',{attrs:{"contentClasses":_vm.popoverClassesComputed,"placement":_vm._popoverPosition}},[_c('template',{slot:"content"},[_c('poe-passive-showcase',{attrs:{"passive":_vm.passive,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize,"showIconInside":_vm._iconInside,"showIconOutside":_vm._iconOutside,"dimedSections":_vm.dimedSections,"showBorder":_vm.showBorder}})],1),_c('template',{slot:"trigger"},[(_vm.displayMode === "icon")?_c('div',[(_vm.shouldShowStacksOnIcon)?_c('svg',{staticClass:"poe-item-stacks"},[_c('text',{attrs:{"x":"2","y":"18"}},[_vm._v(_vm._s(_vm.passive.stacks))])]):_vm._e(),_c('poe-passive-image',{attrs:{"type":_vm.passive.type,"iconUrl":_vm.iconUrl,"iconSize":_vm._iconSize}}),(!_vm.showCustomLabel)?_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))]),_c('div',{staticClass:"poe-icon-sublabel"},[_vm._v(" "+_vm._s(_vm.passive.type)+" ")])]):_c('div',{staticClass:"poe-icon-label"},[_c('div',[_vm._v(" "+_vm._s(_vm.labelTextComputed)+" ")])])],1):_c('div',{staticClass:"poe-passive-link"},[_c('div',[_vm._v(_vm._s(_vm.labelTextComputed))])])])],2)],1)]):_vm._e()}
 var staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/main/components/passive/poe-passive.vue?vue&type=template&id=c463e7a0&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/passive/fragments/poe-passive-showcase.vue?vue&type=template&id=20cd13ec&
-var poe_passive_showcasevue_type_template_id_20cd13ec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-passive-image',{staticClass:"poe-passive-icon-beside-showcase",attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{staticClass:"poe-passive-header"},[_c('div',{staticClass:"poe-passive-header-left-panel"}),_c('div',{staticClass:"poe-passive-header-center-panel"},[_vm._v(" "+_vm._s(_vm.passiveName)+" ")]),_c('div',{staticClass:"poe-passive-header-right-panel"})]),_c('div',{staticClass:"poe-passive-description"},_vm._l((_vm.passiveDescription),function(descLine,index){return _c('div',{key:(index + "-desc-line"),class:_vm.getDescriptionClasses(index)},[_vm._v(" "+_vm._s(descLine)+" ")])}),0),(_vm.passiveFlavourText && _vm.passiveFlavourText.length > 0)?_c('div',{staticClass:"poe-passive-flavour-text"},_vm._l((_vm.passiveFlavourText),function(flavourTextLine,index){return _c('div',{key:(index + "-flav-line"),class:_vm.getFlavourTextClasses(index)},[_vm._v(" "+_vm._s(flavourTextLine)+" ")])}),0):_vm._e(),(_vm.shouldShowIconInside)?_c('poe-passive-image',{attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e()],1)],1)}
-var poe_passive_showcasevue_type_template_id_20cd13ec_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/passive/fragments/poe-passive-showcase.vue?vue&type=template&id=41e16a15&
+var poe_passive_showcasevue_type_template_id_41e16a15_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"display":"flex"}},[(_vm.shouldShowIconOutside)?_c('poe-passive-image',{staticClass:"poe-passive-icon-beside-showcase",attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e(),_c('div',{class:_vm.wrapperClasses},[_c('div',{staticClass:"poe-passive-header"},[_c('div',{staticClass:"poe-passive-header-left-panel"}),_c('div',{staticClass:"poe-passive-header-center-panel"},[_vm._v(" "+_vm._s(_vm.passiveName)+" ")]),_c('div',{staticClass:"poe-passive-header-right-panel"})]),_c('div',{staticClass:"poe-passive-description"},_vm._l((_vm.passiveDescription),function(descLine,index){return _c('div',{key:(index + "-desc-line"),class:_vm.getDescriptionClasses(index)},[_vm._v(" "+_vm._s(descLine)+" ")])}),0),(_vm.passiveFlavourText && _vm.passiveFlavourText.length > 0)?_c('div',{staticClass:"poe-passive-flavour-text"},_vm._l((_vm.passiveFlavourText),function(flavourTextLine,index){return _c('div',{key:(index + "-flav-line"),class:_vm.getFlavourTextClasses(index)},[_vm._v(" "+_vm._s(flavourTextLine)+" ")])}),0):_vm._e(),(_vm.shouldShowIconInside)?_c('poe-passive-image',{attrs:{"type":_vm.passiveType,"iconUrl":this.iconUrl,"iconSize":_vm.iconSize}}):_vm._e()],1)],1)}
+var poe_passive_showcasevue_type_template_id_41e16a15_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/main/components/passive/fragments/poe-passive-showcase.vue?vue&type=template&id=20cd13ec&
+// CONCATENATED MODULE: ./src/main/components/passive/fragments/poe-passive-showcase.vue?vue&type=template&id=41e16a15&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
@@ -19622,12 +20077,12 @@ var es_regexp_exec = __webpack_require__("ac1f");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1c4fae0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/passive/fragments/poe-passive-image.vue?vue&type=template&id=4aabd860&
-var poe_passive_imagevue_type_template_id_4aabd860_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.passiveWrapperClasses},[_c('div'),_c('img',{attrs:{"loading":"lazy","src":this.iconUrl,"alt":" "},on:{"error":_vm.handleMissingImage}})])}
-var poe_passive_imagevue_type_template_id_4aabd860_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b6f58616-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/components/passive/fragments/poe-passive-image.vue?vue&type=template&id=04a2d59e&
+var poe_passive_imagevue_type_template_id_04a2d59e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.passiveWrapperClasses},[_c('div'),_c('img',{attrs:{"loading":"lazy","src":this.iconUrl,"alt":" "},on:{"error":_vm.handleMissingImage}})])}
+var poe_passive_imagevue_type_template_id_04a2d59e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/main/components/passive/fragments/poe-passive-image.vue?vue&type=template&id=4aabd860&
+// CONCATENATED MODULE: ./src/main/components/passive/fragments/poe-passive-image.vue?vue&type=template&id=04a2d59e&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -19696,8 +20151,8 @@ var componentNormalizer = __webpack_require__("2877");
 
 var component = Object(componentNormalizer["a" /* default */])(
   fragments_poe_passive_imagevue_type_script_lang_js_,
-  poe_passive_imagevue_type_template_id_4aabd860_render,
-  poe_passive_imagevue_type_template_id_4aabd860_staticRenderFns,
+  poe_passive_imagevue_type_template_id_04a2d59e_render,
+  poe_passive_imagevue_type_template_id_04a2d59e_staticRenderFns,
   false,
   null,
   null,
@@ -19836,8 +20291,8 @@ var poe_passive_showcasevue_type_style_index_0_lang_scss_ = __webpack_require__(
 
 var poe_passive_showcase_component = Object(componentNormalizer["a" /* default */])(
   fragments_poe_passive_showcasevue_type_script_lang_js_,
-  poe_passive_showcasevue_type_template_id_20cd13ec_render,
-  poe_passive_showcasevue_type_template_id_20cd13ec_staticRenderFns,
+  poe_passive_showcasevue_type_template_id_41e16a15_render,
+  poe_passive_showcasevue_type_template_id_41e16a15_staticRenderFns,
   false,
   null,
   null,

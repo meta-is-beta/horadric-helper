@@ -1,4 +1,9 @@
-import { PoeItem, PoeItemDataSection, PoeItemType } from "@/types";
+import {
+  PoeItem,
+  PoeItemDataSection,
+  PoeItemInfluence,
+  PoeItemType,
+} from "@/types";
 import { mapSections, remapSiegeOfTheAtlasInfluences } from "./sections-mapper";
 
 export default (rawData: String): PoeItem => {
@@ -6,15 +11,37 @@ export default (rawData: String): PoeItem => {
   sections = remapSiegeOfTheAtlasInfluences(sections);
   const headerSection = getHeaderSection(sections);
   const itemClass = getItemClass(headerSection);
+  const itemType = getItemType(itemClass);
+  const name = getItemName(headerSection);
+  const rarity = getItemRarity(headerSection);
+
+  if (itemType === "divination card") {
+    const divCardStacks = getDivinationCardStacks(sections);
+    const divCardItem: PoeItem = {
+      name,
+      type: itemType,
+      class: itemClass,
+      baseName: rarity,
+      stacks: getStacks(divCardStacks),
+      sections: {
+        divCardStacks: extractDivCardsStacks(divCardStacks),
+        divCardDescription: getDivinationCardDescription(sections),
+        flavourText: getFlavorText(sections),
+      },
+    };
+
+    return divCardItem;
+  }
+
   const properties = getProperties(sections);
 
   return {
     class: itemClass,
-    rarity: getItemRarity(headerSection),
-    type: getItemType(itemClass),
-    name: getItemName(headerSection),
+    rarity,
+    type: itemType,
+    name,
     baseName: getItemBaseName(headerSection),
-    influences: getItemInfluences(sections),
+    influences: getItemInfluences(sections, name),
     sockets: getSockets(sections),
     stacks: getStacks(properties),
     sections: {
@@ -68,6 +95,7 @@ const getItemType = (itemClass: String): PoeItemType => {
   if (itemClass.includes("Gem")) return "gem";
   if (itemClass.includes("Currency")) return "currency";
   if (itemClass.includes("Maps")) return "map";
+  if (itemClass.includes("Divination")) return "divination card";
 
   return "equipment";
 };
@@ -75,31 +103,39 @@ const getItemType = (itemClass: String): PoeItemType => {
 const getItemBaseName = (headerSection: PoeItemDataSection) =>
   headerSection.lines[headerSection.lines.length - 1].trim();
 
-const getItemInfluences = (sections: PoeItemDataSection[]) => {
+const getItemInfluences = (sections: PoeItemDataSection[], name: string) => {
   const influencesSection = sections.find((x) => x.name === "Influences");
-  if (!influencesSection) {
-    return [];
+  let influences: PoeItemInfluence[] = [];
+
+  if (name && name.startsWith("Replica ")) {
+    influences.push("replica");
   }
 
-  return influencesSection.lines.map((line) => {
-    const lineMatch = line.match(/^([A-z ]+) Item$/);
+  if (influencesSection) {
+    influences = influences.concat(
+      influencesSection.lines.map((line) => {
+        const lineMatch = line.match(/^([A-z ]+) Item$/);
 
-    if (lineMatch && lineMatch.length > 0) {
-      const influence = lineMatch[1];
+        if (lineMatch && lineMatch.length > 0) {
+          const influence = lineMatch[1];
 
-      return influence.toLowerCase().trim() as
-        | "crusader"
-        | "warlord"
-        | "hunter"
-        | "redeemer"
-        | "elder"
-        | "shaper"
-        | "replica"
-        | "eater of worlds"
-        | "searing exarch";
-    }
-    return "";
-  });
+          return influence.toLowerCase().trim() as
+            | "crusader"
+            | "warlord"
+            | "hunter"
+            | "redeemer"
+            | "elder"
+            | "shaper"
+            | "replica"
+            | "eater of worlds"
+            | "searing exarch";
+        }
+        return "";
+      })
+    );
+  }
+
+  return influences;
 };
 
 const getItemLevel = (sections: PoeItemDataSection[]) => {
@@ -203,6 +239,7 @@ const getStacks = (
   const itemStacksLine = itemProperties.find((prop) =>
     prop.startsWith("Stack ")
   );
+
   if (!itemStacksLine) {
     return undefined;
   }
@@ -225,4 +262,23 @@ const getFlavorText = (sections: PoeItemDataSection[]) => {
   flavourText[0] = flavourText[0].replace(/Flavour text:/i, "");
 
   return flavourText;
+};
+
+const getDivinationCardStacks = (sections: PoeItemDataSection[]) =>
+  sections.find((x) => x.name === "Div card stacks")?.lines;
+
+const getDivinationCardDescription = (sections: PoeItemDataSection[]) =>
+  sections.find((x) => x.name === "Div card description")?.lines;
+
+const extractDivCardsStacks = (
+  divCardStacks?: String[]
+): string | undefined => {
+  if (!divCardStacks) return undefined;
+
+  const itemStacksMatch = divCardStacks[0].match(/([0-9]+\/[0-9]+)/);
+  if (!itemStacksMatch) {
+    return undefined;
+  }
+
+  return itemStacksMatch[1];
 };

@@ -262,7 +262,6 @@ export default {
     window.HoradricHelper.PathOfExile.defaults = {
       asText: true,
       iconOutside: true,
-      showSocketsInShowcase: true,
     };
   },
   watch: {
