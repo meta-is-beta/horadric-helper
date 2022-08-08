@@ -7,7 +7,7 @@
       </div>
       <div class="poe-divination-card-stacks">
         <div>
-          <span>{{ stacks }}</span>
+          <span>{{ this.card.stacks }}</span>
         </div>
       </div>
       <div class="poe-divination-card-description">
@@ -74,9 +74,6 @@ export default {
         return flavourText;
       }
       return [flavourText];
-    },
-    stacks() {
-      return this.card?.sections?.divCardStacks || "";
     },
   },
   watch: {

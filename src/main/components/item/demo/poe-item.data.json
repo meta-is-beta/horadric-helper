@@ -158,7 +158,8 @@
     {
       "props": {
         "asIcon": true,
-        "iconInside": true
+        "iconInside": true,
+        "show-stacks": true
       },
       "config": {
         "reference": "Exalted Orb 2",
@@ -688,11 +689,13 @@
     {
       "props": {
         "as-icon": true,
-        "icon-size": "lg"
+        "icon-size": "lg",
+        "show-stacks": true
       },
       "config": {
         "reference": "hate-cowl",
         "data": {
+          "stacks": 3,
           "rarity": "Rare",
           "type": "Equipment",
           "name": "Hate Cowl",
@@ -765,16 +768,17 @@
     },
     {
       "props": {
-        "asShowcase": true
+        "as-icon": true,
+        "show-stacks": true
       },
       "config": {
         "reference": "a-dab-of-ink",
         "data": {
           "type": "divination card",
+          "baseName": "Divination Card",
           "name": "A Dab of Ink",
-          "stacks": 6,
+          "stacks": "6/9",
           "sections": {
-            "divCardStacks": "6/9",
             "divCardDescription": "The Poet's Pen (unique)",
             "flavourText": ["The Poet's blood is the", "Empire's ink."]
           }

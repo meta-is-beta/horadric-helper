@@ -148,6 +148,24 @@ export default {
     shouldShowStacksOnIcon() {
       return this.data.stacks && this._showStacks;
     },
+    stacks() {
+      const _stacks = this.data.stacks;
+      if (!_stacks) {
+        return "";
+      }
+
+      if (!isNaN(_stacks)) {
+        return _stacks;
+      }
+
+      const stacksMatch = _stacks.match(/([0-9]+)\/[0-9]+/);
+
+      if (stacksMatch.length > 0) {
+        return stacksMatch[1];
+      }
+
+      return "";
+    },
     showBorder() {
       if (this._borderless !== undefined) {
         return false;

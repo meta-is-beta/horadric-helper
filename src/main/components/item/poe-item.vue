@@ -55,7 +55,7 @@
             <!-- Icon -->
             <div v-if="displayMode === `icon`">
               <svg class="poe-item-stacks" v-if="shouldShowStacksOnIcon">
-                <text x="2" y="18">{{ item.stacks }}</text>
+                <text x="2" y="18">{{ stacks }}</text>
               </svg>
               <poe-item-image
                 :iconSize="_iconSize"

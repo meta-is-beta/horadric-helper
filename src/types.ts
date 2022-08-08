@@ -80,7 +80,7 @@ export type PoeItem = {
   influences?: PoeItemInfluence[];
   sockets?: String;
   sections?: PoeItemSections;
-  stacks?: Number;
+  stacks?: Number | String;
 };
 
 export type PoePassive = {

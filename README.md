@@ -308,10 +308,6 @@ type PoeItem = {
     // Eg: ["corrupted", "split"]
     statuses?: ("corrupted" | "mirrored" | "split")[];
 
-    // List of item's gem description text lines
-    // Eg: ["Supports any skill that has a duration."]
-    gemDescription?: String[];
-
     // Numerical value of talisman tier.
     // Eg: "1"
     talismanTier?: String;
@@ -319,6 +315,14 @@ type PoeItem = {
     // List of item's floavur text lines.
     // Eg: ["You are slow, foolish and ignorant.", "I am not."]
     flavourText?: String;
+
+    // List of item's gem description text lines
+    // Eg: ["Supports any skill that has a duration."]
+    gemDescription?: String[];
+
+    // List of Divination Card's description text lines
+    // Eg: ["The Poet's blood is", "the Empire's ink."]
+    divCardDescription?: String[];
   };
 };
 ```
