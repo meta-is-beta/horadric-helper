@@ -768,7 +768,7 @@
     },
     {
       "props": {
-        "as-icon": true,
+        "as-showcase": true,
         "show-stacks": true
       },
       "config": {

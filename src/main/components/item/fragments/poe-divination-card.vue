@@ -20,9 +20,11 @@
         </span>
       </div>
       <div class="poe-divination-card-flavour-text">
-        <span v-for="(flavLine, index) in flavourText" :key="index">
-          {{ flavLine }}
-        </span>
+        <div>
+          <span v-for="(flavLine, index) in flavourText" :key="index">
+            {{ flavLine }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -178,13 +180,21 @@ export default {
   margin-top: 274px;
   margin-left: 1px;
   height: 121px;
-  width: 268px;
+  width: 270px;
+  max-width: 270px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: var(--poe-color-unique);
+
+  & div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: var(--poe-color-unique);
+  }
 }
 </style>

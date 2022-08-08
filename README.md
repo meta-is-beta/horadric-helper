@@ -28,8 +28,8 @@ You can also check it out live on [Codepen](https://codepen.io/meta-is-beta/pen/
 #### 1. Include `js` and `css` files on your site.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.12.2/dist/poe/horadric-helper-poe.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.12.2/dist/poe/horadric-helper-poe.css"/>
+<script src="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.13/dist/poe/horadric-helper-poe.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meta-is-beta/horadric-helper@v0.13/dist/poe/horadric-helper-poe.css"/>
 ```
 
 #### 2. Add a component to your website's Html.

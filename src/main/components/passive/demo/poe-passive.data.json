@@ -256,12 +256,12 @@
       }
     },
     {
-      "reference": "Stream of Consciousness",
+      "reference": "Stream-of-Consciousness",
       "props": {
         "as-icon": true
       },
       "config": {
-        "reference": "Stream of Consciousness",
+        "reference": "Stream-of-Consciousness",
         "data": {
           "name": "Stream of Consciousness",
           "sections": {
