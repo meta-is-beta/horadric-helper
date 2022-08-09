@@ -576,7 +576,7 @@ _(Live on [Codepen](https://codepen.io/meta-is-beta/pen/LYWQXGK))_
 |   `modifiers`    |    `modifiers`    | `String[]` | List of item's modifiers text lines ([wiki](https://pathofexile.fandom.com/wiki/Modifiers#Explicit_modifiers)) _(also known as **explicit modifiers**)_. |
 |    `statuses`    |    `statuses`     | `String[]` | Available statuses: `corrupted`, `mirrored`, `split`.                                                                                                    |
 | `gemDescription` | `gem-description` | `String[]` | List of item's gem description text lines. To set color of specifica line you can add |
-| `divCardDescription` | `div-card-description` | `String[]` | List of Divination Card's description text lines                                                                                                               |
+| `divCardDescription` | `div-card-description` | `String[]` | List of Divination Card's description text lines. _(More about div cards in [Divination Cards](#divintaion-cards) section.)_                                                                                                               |
 |  `talismanTier`  |  `talisman-tier`  |  `String`  | String of numerical value of talisman tier.                                                                                                              |
 |     `stacks`     |     `stacks`      |  `Number|String`  | Numerical value of how many given items there are. _(More about stacks in [Stacks](#stacks) section.)_                                                   |
 |  `flavourText`   |  `flavour-text`   |  `String`  | List of item's flavour text lines.                                                                                                                       |
@@ -684,7 +684,7 @@ Corrupted
 
 ### Divintaion Cards
 #### Coloring text
-To color specific line in Div Card's description (`divCardDescription` section) you can add `(color)` at the end of each line. Avalible colors are: `normal`, `magic`, `rare`, `unique`, `gem` and `corrupted`.
+To color specific line in Div Card's description (`divCardDescription` section) you can add `(color)` at the end of each line. Available colors are: `normal`, `magic`, `rare`, `unique`, `gem` and `corrupted`.
 
 **Example**
 ```
