@@ -738,27 +738,31 @@
     },
     {
       "props": {
-        "asIcon": true
+        "asIcon": true,
+        "show-stacks": true
       },
       "config": {
         "reference": "doedres-madness",
-        "data": "Item Class: Divination Cards\nRarity: Divination Card\nDoedre's Madness\n--------\nStack Size: 9/9\n--------\nDoedre Item\n--------\n`Hold your tongue before I claim it.` - Doedre Darktongue\n--------\nShift click to unstack.",
+        "data": "Item Class: Divination Cards\nRarity: Divination Card\nDoedre's Madness\n--------\nStack Size: 2/9\n--------\nDoedre Item\n--------\n`Hold your tongue before I claim it.` - Doedre Darktongue\n--------\nShift click to unstack.",
         "iconUrl": "https://www.poewiki.net/images/e/e8/Doedre%27s_Madness_card_art.png"
       }
     },
     {
       "props": {
-        "asIcon": true
+        "asIcon": true,
+        "show-stacks": true
       },
       "config": {
         "reference": "the-skeleton",
-        "data": "Item Class: Divination Cards\nRarity: Divination Card\nThe Skeleton\n--------\nStack Size: 6/6\n--------\nLevel 1 Summon Skeletons (gem)\nQuality: +23%\nCorrupted (corrupted)\n--------\nThey stand among us, and within us.\n--------\nShift click to unstack.\n",
+        "data": "Item Class: Divination Cards\nRarity: Divination Card\nThe Skeleton\n--------\nStack Size: 5/6\n--------\nLevel 1 Summon Skeletons (gem)\nQuality: +23%\nCorrupted (corrupted)\n--------\nThey stand among us, and within us.\n--------\nShift click to unstack.\n",
         "iconUrl": "https://www.poewiki.net/images/d/d1/The_Skeleton_card_art.png"
       }
     },
     {
       "props": {
-        "asIcon": true
+        "as-showcase": true,
+        "asIcon": true,
+        "show-stacks": true
       },
       "config": {
         "reference": "arrogance-of-the-vaal",

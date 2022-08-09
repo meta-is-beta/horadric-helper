@@ -820,9 +820,8 @@ exports.default = function (rawData) {
       type: itemType,
       class: itemClass,
       baseName: rarity,
-      stacks: getStacks(divCardStacks),
+      stacks: extractDivCardsStacks(divCardStacks),
       sections: {
-        divCardStacks: extractDivCardsStacks(divCardStacks),
         divCardDescription: getDivinationCardDescription(sections),
         flavourText: getFlavorText(sections)
       }
