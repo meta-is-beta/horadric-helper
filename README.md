@@ -698,8 +698,10 @@ Corrupted
 </code></pre>
 
 ### Divintaion Cards
+Divintaion Card’s data can be copied from the game like any other item (CTRL+C while hovering over item in you inventory).
+
 #### Coloring text
-To color specific line in Div Card's description (`divCardDescription` section) you can add `(color)` at the end of each line. Available colors are: `normal`, `magic`, `rare`, `unique`, `gem` and `corrupted`.
+To color specific line in Divintaion Card's description (`divCardDescription` section) you can add `(color)` at the end of each line. Available colors are: `normal`, `magic`, `rare`, `unique`, `gem` and `corrupted`.
 
 **Example**
 ```
