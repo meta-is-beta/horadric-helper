@@ -14,10 +14,24 @@ To see more examples checkout [this](https://meta-is-beta.com/?p=40) post on my 
 - [Installation](#installation)
 - [Html Components](#html-components)
 - [Html Component Props](#html-component-props)
-- [Configuration object](#configuration-object)
+- [Loading items and passives](#loading-items-and-passives)
+  - [`PoeConfig` object](#poeconfig-object)
+    - [`PoeItem` object](#poeitem-object)
+    - [`PoePassive` object](#poepassive-object)
+  - [Getting item data](#getting-item-data)
+  - [Examples](#examples-of-loading-configs)
 - [Showcase sections](#showcase-sections)
+  - [`PoeItem` sections](#PoeItem-sections)
+  - [`PoePassive` sections](#poepassive-sections)
+  - [Sockets](#sockets)
+  - [Stacks](#stacks)
+  - [Flavour text](#flavour-text)
+  - [Divintaion Cards](#divintaion-cards)
+  - [Dimming and hiding sections](#dimming-and-hiding-sections)
 - [Skills and Passives data](#skills-and-passives-data)
 - [Contribution](#contribution)
+  - [About library setup](#about-library-setup)
+  - [Local development](#local-development)
 
 ## How-to TLDR
 
@@ -182,10 +196,10 @@ Priority of prop values from lowest to highest:
 2. global `defaults` object value
 3. local prop value
 
-## Configuration object
+## Loading Items and Passives
 
 When the library is loaded it will register a global object called `HoradricHelper`.
-You can use the `HoradricHelper.PathOfExile.applyConfig` method to load either a single `PoeConfig` object or an array of `PoeConfig` objects.
+You can use the `HoradricHelper.PathOfExile.applyConfig` method to load either a single `PoeConfig` object or an array of `PoeConfig` objects that represent items and passives you want to use.
 
 ### `PoeConfig` object
 
@@ -202,7 +216,8 @@ type PoeConfig = {
   iconUrl?: String;
 
   // Required
-  // Object which describes all properties of item or passive you want to display or string with raw item data.
+  // Object which describes all properties of item or passive you want to display
+  // or string with raw item data from the game or PoB.
   data: PoeItem | PoePassive | String;
 
   // Optional
@@ -222,20 +237,6 @@ type PoeConfig = {
   };
 };
 ```
-
-### Getting item data
-
-`data` property of `PoeConfig` object accepts data of type `PoeItem`, `PoePassive` and `String`.
-`PoeItem` and `PoePassive` are objects with structure described in their respective sections and allow you to define your own items and passives.
-
-In case of PoE items you can also pass raw item data from different sources and the library will try to parse and display them.
-Raw item data can be acquired from:
-
-- **The game** - To copy an item's data to clipboard press CTRL+C while hovering over an item in-game.
-- **PoE Trade** - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
-- **Path of Building (PoB)** - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
-
-:warning: Item data from the game works only in English. :warning:
 
 ### `PoeItem` object
 
@@ -370,6 +371,20 @@ type PoePassive = {
   };
 };
 ```
+
+### Getting item data
+
+`data` property of `PoeConfig` object accepts data of type `PoeItem`, `PoePassive` and `String`.
+`PoeItem` and `PoePassive` are objects with structure described in their respective sections and allow you to define your own items and passives.
+
+In case of PoE items you can also pass raw item data from different sources and the library will try to parse and display them.
+Raw item data can be acquired from:
+
+- **The game** - To copy an item's data to clipboard press CTRL+C while hovering over an item in-game.
+- **PoE Trade** - Each search result has a "Copy Item" button. This will behave in the same way as copying data from the game.
+- **Path of Building (PoB)** - To copy item's data to clipboard navigate to "Items" tab, select item you want to copy and press CTRL+C. (Do not copy item's data from "Edit Item" popup - it is incomplete and won't work).
+
+:warning: Item data from the game works only in English. :warning:
 
 ### Examples of loading configs
 
@@ -786,10 +801,6 @@ There are premade configs for skill gems and passive that you can use.
 - WebComponents implementation done using [vue-custom-element](https://github.com/karol-f/vue-custom-element).
 - Popover handling is done using [v-tooltip](https://www.npmjs.com/package/v-tooltip) (Vue implementation of [popper.js](https://popper.js.org/)).
 - Typescript support is enabled, but only a few files are in typescript (where I decided that strong typing will be most useful).
-- `/src` is split into different folders for each target:
-  - Each game has it's own folder.
-  - `demo` folder holds the entry point for the demo.
-  - `shared` folder holds all modules common to all games.
 
 ### Local development
 
